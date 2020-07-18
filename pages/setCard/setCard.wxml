@@ -1,0 +1,52 @@
+<view class="fk_page fk_setCard">
+  <mp-form id="form">
+    <view class="fk_setCard_header">
+      <view class="fk_setCard_header_title">创建名片</view>
+      <view class="fk_setCard_header_subTitle">请填写以下信息，用于名片显示</view>
+    </view>
+    <view class="fk_setCard_headImg">
+      <view class="fk_setCard_headImg_name">头像</view>
+      <view class="fk_setCard_headImg_img_wrap">
+        <view class="fk_setCard_headImg_img_wrap_img"></view>
+      </view>
+    </view>
+    <mp-cells title="基本信息">
+      <mp-cell show-error prop="idcard" title="卡号" ext-class="">
+          <input bindinput="formInputChange" data-field="idcard" class="weui-input" placeholder="请输入您的姓名"/>
+      </mp-cell>
+      <mp-cell show-error prop="idcard" title="手机" ext-class="">
+          <input bindinput="formInputChange" data-field="idcard" class="weui-input" placeholder="请输入您的手机号"/>
+      </mp-cell>
+    </mp-cells>
+    <mp-cells title="更多信息（选填）">
+      <mp-cell show-error prop="idcard" title="所在地区" ext-class="">
+          <input bindinput="formInputChange" data-field="idcard" class="weui-input" placeholder="请输入您的姓名"/>
+      </mp-cell>
+      <mp-cell show-error prop="idcard" title="地址" ext-class="">
+          <input bindinput="formInputChange" data-field="idcard" class="weui-input" placeholder="请输入您的地址"/>
+      </mp-cell>
+      <mp-cell show-error prop="idcard" title="微信号" ext-class="">
+          <input bindinput="formInputChange" data-field="idcard" class="weui-input" placeholder="请输入您的微信号"/>
+      </mp-cell>
+      <mp-cell show-error prop="idcard" title="QQ号" ext-class="">
+          <input bindinput="formInputChange" data-field="idcard" class="weui-input" placeholder="请输入您的QQ号"/>
+      </mp-cell>
+      <mp-cell show-error prop="idcard" title="邮箱" ext-class="">
+          <input bindinput="formInputChange" data-field="idcard" class="weui-input" placeholder="请输入您的邮箱"/>
+      </mp-cell>
+    </mp-cells>
+    <view class="weui-cells__title">介绍简介</view>
+    <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell">
+            <view class="weui-cell__bd">
+                <textarea class="weui-textarea" placeholder="请输入文本" style="height: 3.3em" />
+                <!-- <view class="weui-textarea-counter">0/200</view> -->
+            </view>
+        </view>
+    </view>
+    <view class="weui-btn-area">
+        <button class="weui-btn" type="primary" bindtap="submitForm">确定</button>
+        <!-- <button class="weui-btn" bindtap="reback">返回</button> -->
+    </view>
+  </mp-form>
+</view>

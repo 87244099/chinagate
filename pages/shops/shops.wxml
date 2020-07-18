@@ -1,0 +1,4 @@
+<view>
+  123
+  <tab-bar class="fk_tabBar"></tab-bar>
+</view>

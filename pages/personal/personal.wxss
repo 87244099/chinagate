@@ -1,0 +1,98 @@
+/* pages/personal/personal.wxss */
+@import "/icons.wxss";
+
+.fk_personal_header{
+  position: relative;
+  display: block;
+  display: flex;
+  align-items: center;
+  padding: 30rpx;
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+.fk_personal_header_img{
+  width: 120rpx;
+  height: 120rpx;
+  background-color: #ccc;
+}
+.fk_personal_header_info{
+  padding-left: 30rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.fk_personal_header_info_name{
+  font-size: 30rpx;
+  font-weight: bolder;
+}
+.fk_personal_header_info_wxAcct{
+  color: #8c8c8c;
+  font-size: 26rpx;
+}
+
+.fk_personal_section_title{
+  font-size: 32rpx;
+  background-color: #ebebeb;
+  color: #8c8c8c;
+  padding: 0 30rpx;
+  line-height: 96rpx;
+}
+
+.fk_personal_section_item{
+  padding: 20rpx 30rpx;
+  display: flex;
+  align-items: center;
+  position: relative;
+  justify-content: space-between;
+  flex-direction: row;
+  box-sizing: border-box;
+}
+.fk_personal_header_left{
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+
+.icon-right::after{
+  font-family: "iconfont" !important;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  font-family: "iconfont" !important;
+  content: "\e609";
+  color: #8c8c8c;
+  font-size: 30rpx;
+  display: block;
+}
+
+.fk_personal_section_item_left{
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+.fk_personal_section_item_icon{
+  margin-right: 16rpx;
+}
+.fk_personal_section_item_text{
+  font-size: 32rpx;
+}
+
+.fk_personal_header_block{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+}
+
+.fk_personal_section_item navigator {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  flex-direction: row;
+  justify-content: flex-start;
+
+}

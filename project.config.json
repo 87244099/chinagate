@@ -1,0 +1,122 @@
+{
+	"description": "项目配置文件",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": true,
+		"es6": true,
+		"enhance": true,
+		"postcss": true,
+		"preloadBackgroundData": false,
+		"minified": true,
+		"newFeature": true,
+		"coverView": true,
+		"autoAudits": false,
+		"showShadowRootInWxmlPanel": true,
+		"scopeDataCheck": false,
+		"checkInvalidKey": true,
+		"checkSiteMap": true,
+		"uploadWithSourceMap": true,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		},
+		"useCompilerModule": true,
+		"userConfirmedUseCompilerModuleSwitch": false
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.8.0",
+	"appid": "wx41ef0a04dcd2c3ad",
+	"projectname": "chinagate",
+	"debugOptions": {
+		"hidedInDevtools": []
+	},
+	"isGameTourist": false,
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"gamePlugin": {
+			"current": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": -1,
+			"list": [
+				{
+					"id": -1,
+					"name": "个人中心",
+					"pathName": "pages/personal/personal",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 1,
+					"name": "创建名片",
+					"pathName": "pages/setCard/setCard",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "个人名片详情",
+					"pathName": "pages/card/card",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "新闻详情页",
+					"pathName": "pages/newsDetail/newsDetail",
+					"query": "id=1772",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "产品详情页",
+					"pathName": "pages/productDetail/productDetail",
+					"query": "id=33",
+					"scene": null
+				},
+				{
+					"id": 5,
+					"name": "企业中心",
+					"pathName": "pages/productCenter/productCenter",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 6,
+					"name": "产品搜索",
+					"pathName": "pages/productSearch/productSearch",
+					"query": "word=不锈钢",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我的收藏",
+					"pathName": "pages/myCollect/myCollect",
+					"query": "",
+					"scene": null
+				}
+			]
+		}
+	}
+}

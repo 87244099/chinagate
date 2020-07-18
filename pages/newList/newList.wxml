@@ -1,0 +1,14 @@
+<view>
+  <view class="fk_main_article_list_content">
+    <navigator url="/pages/newsDetail/newsDetail?id={{item.newsID}}" class="fk_main_article_item" wx:for="{{setting.articleList}}" wx:key="newsID">
+      <view class="fk_main_article_item_title">{{item.title}}</view>
+      <view class="fk_main_article_item_content">
+        <view class="fk_main_article_item_content_img">
+          <image src="{{staticDomain+item.smallImgPath}}" mode="aspectFill" style="width:100%;height:100%"></image>
+        </view>
+        <view class="fk_main_article_item_content_desc">{{item.content}}</view>
+      </view>
+    </navigator>
+  </view>
+  <tab-bar class="fk_tabBar"></tab-bar>
+</view>

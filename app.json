@@ -1,0 +1,33 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/newList/newList",
+    "pages/shops/shops",
+    "pages/personal/personal",
+    "pages/setCard/setCard",
+    "pages/card/card",
+    "pages/newsDetail/newsDetail",
+    "pages/productDetail/productDetail",
+    "pages/productCenter/productCenter",
+    "pages/productSearch/productSearch",
+    "pages/myCollect/myCollect"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "中出网",
+    "navigationBarTextStyle": "black"
+  },
+  "useExtendedLib": {
+    "weui": true
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "plugins": {
+    "wxparserPlugin": {
+      "version": "0.2.1",
+      "provider": "wx9d4d4ffa781ff3ac"
+    }
+  }
+}

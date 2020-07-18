@@ -1,0 +1,72 @@
+<view>
+  <navigator class="fk_personal_header" url="/pages/setCard/setCard">
+    <view class="fk_personal_header_block">
+      <view class="fk_personal_header_left">
+        <view class="fk_personal_header_img"></view>
+        <view class="fk_personal_header_info">
+          <view class="fk_personal_header_info_name">名称</view>
+          <view class="fk_personal_header_info_wxAcct">微信号：86799444</view>
+        </view>
+      </view>
+      <view class="fk_personal_header_right">
+        <view class="iconfont icon-right"></view> 
+      </view>
+    </view>
+  </navigator>
+  <view class="fk_personal_section">
+    <view class="fk_personal_section_title">个人中心</view>
+    <view class="fk_personal_section_list">
+      <navigator class="fk_personal_section_item" url="/pages/card/card">
+        <view class="fk_personal_section_item_left">
+          <view class="fk_personal_section_item_icon iconfont icon-mingpian" style="color: #3cceff;"></view>
+          <view class="fk_personal_section_item_text">我的名片</view>
+        </view>
+        <view class="fk_personal_section_item_right">
+          <view class="iconfont icon-right"></view> 
+        </view>
+      </navigator>
+      <navigator class="fk_personal_section_item">
+        <view class="fk_personal_section_item_left">
+          <view class="fk_personal_section_item_icon iconfont icon-start1" style="color: red;"></view>
+          <view class="fk_personal_section_item_text">我的收藏</view>
+        </view>
+        <view class="fk_personal_section_item_right">
+          <view class="iconfont icon-right"></view> 
+        </view>
+      </navigator>
+      <navigator class="fk_personal_section_item">
+        <view class="fk_personal_section_item_left">
+          <view class="fk_personal_section_item_icon iconfont icon-tongjifenxi" style="color: #e37429;"></view>
+          <view class="fk_personal_section_item_text">我的资讯</view>
+        </view>
+        <view class="fk_personal_section_item_right">
+          <view class="iconfont icon-right"></view> 
+        </view>
+      </navigator>
+    </view>
+  </view>
+  <view class="fk_personal_section">
+    <view class="fk_personal_section_title">企业</view>
+    <view class="fk_personal_section_list">
+      <navigator class="fk_personal_section_item">
+        <view class="fk_personal_section_item_left">
+          <view class="fk_personal_section_item_icon iconfont icon-mingpian" style="color: #3cceff;"></view>
+          <view class="fk_personal_section_item_text">我的公司名片</view>
+        </view>
+        <view class="fk_personal_section_item_right">
+          <view class="iconfont icon-right"></view> 
+        </view>
+      </navigator>
+      <navigator class="fk_personal_section_item">
+        <view class="fk_personal_section_item_left">
+          <view class="fk_personal_section_item_icon iconfont icon-yonghu1-copy" style="color: #daa520;"></view>
+          <view class="fk_personal_section_item_text">我的公司</view>
+        </view>
+        <view class="fk_personal_section_item_right">
+          <view class="iconfont icon-right"></view> 
+        </view>
+      </navigator>
+    </view>
+  </view>
+  <tab-bar class="fk_tabBar"></tab-bar>
+</view>

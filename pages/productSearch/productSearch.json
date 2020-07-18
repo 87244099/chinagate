@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "mp-searchbar": "weui-miniprogram/searchbar/searchbar",
+    "wxparser": "plugin://wxparserPlugin/wxparser",
+    "mp-tabbar": "weui-miniprogram/tabbar/tabbar",
+    "tab-bar": "/components/tab-bar/tab-bar"
+  }
+}

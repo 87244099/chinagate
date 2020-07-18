@@ -1,0 +1,24 @@
+/* pages/myCollect/myCollect.wxss */
+@import "/icons.wxss";
+
+.fk_myCollect_list{
+  display: flex;
+  align-items: center;
+  border-top: 6rpx solid #f2f2f2;
+}
+.fk_myCollect_item{
+  width: 33.33%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-bottom: 1rpx solid #ebebeb;
+  border-left: 1rpx solid #ebebeb;
+  height: 246rpx;
+  text-align: center;
+  font-size: 30rpx;
+}
+
+.fk_myCollect_item_icon{
+  font-size: 60rpx;
+  margin-bottom: 10rpx;
+}

@@ -1,0 +1,72 @@
+<!--index.wxml-->
+<view class="fk_page">
+  <view class="fk_banner">
+    <swiper style="height:100%;" indicator-dots="true"
+      indicator-active-color="#0062d7"
+      autoplay="true" interval="3000" duration="500" circular="true">
+      <block wx:for="{{bannerList}}" wx:key="*this">
+        <swiper-item>
+          <image style="width:100%;height:100%" mode="aspectFill" src="{{item}}"/>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <view class="fk_main">
+    <view class="fk_main_func_list">
+      <navigator class="fk_main_func_item" url="/pages/card/card">
+        <view class="iconfont icon-mingpian  fk_main_func_item_icon" style="color:#3f51b5"></view>
+        <view class="fk_main_func_item_text">我的名片</view>
+      </navigator>
+      <view class="fk_main_func_item">
+        <view class="iconfont icon-qiye  fk_main_func_item_icon" style="color:#795548"></view>
+        <view class="fk_main_func_item_text">我的企业</view>
+      </view>
+      <navigator class="fk_main_func_item" url="/pages/newList/newList">
+        <view class="iconfont icon-liebiaodaohang_zixun  fk_main_func_item_icon" style="color:#17abe3"></view>
+        <view class="fk_main_func_item_text">行业资讯</view>
+      </navigator>
+      <view class="fk_main_func_item">
+        <view class="iconfont icon-goumai  fk_main_func_item_icon" style="color:#cfcf00"></view>
+        <view class="fk_main_func_item_text">我要购买</view>
+      </view>
+      <view class="fk_main_func_item">
+        <view class="iconfont icon-weixiu  fk_main_func_item_icon" style="color:green"></view>
+        <view class="fk_main_func_item_text">我要维修</view>
+      </view>
+      <view class="fk_main_func_item">
+        <view class="iconfont icon-fujin  fk_main_func_item_icon" style="color:red"></view>
+        <view class="fk_main_func_item_text">附近商家</view>
+      </view>
+      <view class="fk_main_func_item">
+        <view class="iconfont icon-tousu  fk_main_func_item_icon" style="color:#760000"></view>
+        <view class="fk_main_func_item_text">投诉建议</view>
+      </view>
+      <view class="fk_main_func_item">
+        <view class="iconfont icon-dianhua  fk_main_func_item_icon" style="color:#e37429"></view>
+        <view class="fk_main_func_item_text">人工咨询</view>
+      </view>
+      <view class="fk_main_func_item">
+        <view class="iconfont icon-weiguanwang  fk_main_func_item_icon" style="color:#5b5bff"></view>
+        <view class="fk_main_func_item_text">中出网官网</view>
+      </view>
+    </view>
+    <view class="fk_main_article_list">
+      <view class="fk_main_article_list_header">
+        <view class="fk_main_article_list_header_dot"></view>
+        <view class="fk_main_article_list_header_text">文章列表</view>
+      </view>
+      <view class="fk_main_article_list_content">
+        <navigator url="/pages/newsDetail/newsDetail?id={{item.newsID}}" class="fk_main_article_item" wx:for="{{setting.articleList}}" wx:key="newsID">
+          <view class="fk_main_article_item_title">{{item.title}}</view>
+          <view class="fk_main_article_item_content">
+            <view class="fk_main_article_item_content_img">
+              <image src="{{staticDomain+item.smallImgPath}}" mode="aspectFill" style="width:100%;height:100%"></image>
+            </view>
+            <view class="fk_main_article_item_content_desc">{{item.content}}</view>
+          </view>
+        </navigator>
+      </view>
+    </view>
+  </view>
+  <tab-bar class="fk_tabBar"></tab-bar>
+</view>

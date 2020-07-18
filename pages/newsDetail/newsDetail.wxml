@@ -1,0 +1,8 @@
+<view class="fk_page">
+  <view class="fk_newsDetail">
+    <view class="fk_newsDetail_title">{{setting.newsInfo.title}}</view>
+    <view class="fk_newsDetail_pubTime">发布时间：{{setting.newsInfo.pubTime}}</view>
+    <wxparser rich-text="{{setting.newsInfo.content}}" bind:tapImg="tapImg" bind:tapLink="tapLink"/>
+  </view>
+  <tab-bar class="fk_tabBar"></tab-bar>
+</view>

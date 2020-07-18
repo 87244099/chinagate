@@ -1,0 +1,23 @@
+/* pages/newsDetail/newsDetail.wxss */
+.fk_newsDetail{
+  padding:0 20rpx
+}
+.fk_newsDetail_title{
+text-align: center;
+  font-size: 40rpx;
+  line-height: 50rpx;
+  font-weight: bold;
+  padding-top: 40rpx;
+  padding-bottom: 20rpx;
+}
+.fk_newsDetail_pubTime{
+  text-align: center;
+  font-size: 26rpx;
+  color: #a5a5a5;
+  /* padding-bottom: 60rpx; */
+}
+
+.wxparser--wxParser-inline{
+  max-width: 100%;
+  font-size: 24rpx;
+}
