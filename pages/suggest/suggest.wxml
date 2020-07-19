@@ -1,0 +1,42 @@
+<view class="fk_page">
+  <view class="fk_suggest">
+    <view class="fk_suggest_form">
+      <van-cell-group>
+        <van-field
+          label="您的姓名"
+          value="{{ value }}"
+          placeholder="请输入您的姓名"
+          border="{{ false }}"
+          bind:change="onChange"
+        />
+        <van-field
+          label="您的手机"
+          value="{{ value }}"
+          placeholder="请输入您的手机"
+          border="{{ false }}"
+          bind:change="onChange"
+        />
+        <van-field
+          label="邮箱地址"
+          value="{{ value }}"
+          placeholder="请输入您的邮箱地址"
+          border="{{ false }}"
+          bind:change="onChange"
+        />
+        <van-field
+          class="fk_suggest_advContent"
+          value="{{ message }}"
+          label="建议/投诉内容"
+          type="textarea"
+          placeholder="请输入您的建议/投诉内容"
+          border="{{ false }}"
+        />
+      </van-cell-group>
+      <view class="fk_suggest_button_wrap">
+        <van-button type="info" size="small" block>确定提交</van-button>
+      </view>
+    </view>
+    
+  </view>
+  <tab-bar class="fk_tabBar"></tab-bar>
+</view>

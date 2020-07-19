@@ -3,7 +3,7 @@
 const app = getApp();
 const Fai = require("../../utils/util");
 const config = require("../../utils/config");
-
+import Toast from "../../miniprogram_npm/@vant/weapp/toast/toast";
 Page({
   data: {
     list: [{
@@ -54,8 +54,9 @@ Page({
       return;
     }
 
-    wx.showLoading({
-      title: '加载中...',
+    Toast.loading({
+      message: '加载中...',
+      duration:0,
     });
     Fai.request({
       url: "/ajax/article/article?cmd=getArticleList&pageNo=1&pageSize=10",
@@ -63,9 +64,7 @@ Page({
         pageNo: this.data.setting.pageNo,
         pageSize: 10
       },
-      complete:()=>{
-        wx.hideLoading()
-      },
+      beforeConsume:Toast.clear,
       success: (res)=>{
         let result = res.data;
         if(result.success){
@@ -76,12 +75,21 @@ Page({
             "setting.totalSize": result.data.totalSize
           });
         }else{
-          
+          Toast.fail(result.msg || '网络繁忙，请稍后重试');
         }
+      },
+      fail:()=>{
+        Toast.fail(result.msg || '网络繁忙，请稍后重试');
       }
     })
   },
   onReachBottom: function(){
     this.loadNextArticles();
+  },
+  callPhone: function(event){
+    let phone = event.currentTarget.dataset.phone;
+    wx.makePhoneCall({
+      phoneNumber: phone,
+    })
   }
 })

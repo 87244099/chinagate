@@ -20,7 +20,11 @@
     </mp-cells>
     <mp-cells title="更多信息（选填）">
       <mp-cell show-error prop="idcard" title="所在地区" ext-class="">
-          <input bindinput="formInputChange" data-field="idcard" class="weui-input" placeholder="请输入您的姓名"/>
+        <view style="display:flex;">
+          <view catchtap="onSelectProvince" style="max-width:33.33%;width:100%">111</view>
+          <view catchtap="onSelectCity" style="max-width:33.33%;width:100%">222</view>
+          <view catchtap="onSelectCountry" style="max-width:33.33%;width:100%">333</view>
+        </view>
       </mp-cell>
       <mp-cell show-error prop="idcard" title="地址" ext-class="">
           <input bindinput="formInputChange" data-field="idcard" class="weui-input" placeholder="请输入您的地址"/>

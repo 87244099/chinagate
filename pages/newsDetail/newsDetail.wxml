@@ -5,4 +5,5 @@
     <wxparser rich-text="{{setting.newsInfo.content}}" bind:tapImg="tapImg" bind:tapLink="tapLink"/>
   </view>
   <tab-bar class="fk_tabBar"></tab-bar>
+  <van-toast id="van-toast" />
 </view>

@@ -1,8 +1,8 @@
 // pages/newsDetail/newsDetail.js
 //获取应用实例
-const app = getApp();
 const Fai = require("../../utils/util");
-const config = require("../../utils/config");
+import Toast from "../../miniprogram_npm/@vant/weapp/toast/toast";
+
 Page({
 
   /**
@@ -26,15 +26,15 @@ Page({
   },
   loadArticle: function(){
     // https://pf.86crk.com/ajax/article/article?cmd=getArticle&id=568
-    wx.showLoading({
-      title: '加载中...',
+    
+    Toast.loading({
+      message: '加载中...',
+      duration: 0
     });
     Fai.request({
       url: "/ajax/article/article?cmd=getArticle&id="+this.data.setting.newsId,
-      complete(){
-        wx.hideLoading({
-          complete: (res) => {},
-        })
+      beforeConsume(){
+        Toast.clear();
       },
       success: (res)=>{
         let result = res.data;
@@ -42,7 +42,12 @@ Page({
           this.setData({
             "setting.newsInfo":result.data
           });
+        }else{
+          Toast.fail(result.msg || '网络繁忙，请稍后重试');
         }
+      },
+      fail:()=>{
+        Toast.fail("网络繁忙，请稍后重试");
       }
     })
   },
@@ -57,7 +62,6 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
   },
 
   /**

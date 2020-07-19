@@ -17,35 +17,35 @@
         <view class="iconfont icon-mingpian  fk_main_func_item_icon" style="color:#3f51b5"></view>
         <view class="fk_main_func_item_text">我的名片</view>
       </navigator>
-      <view class="fk_main_func_item">
+      <view class="fk_main_func_item" open-type="redirect">
         <view class="iconfont icon-qiye  fk_main_func_item_icon" style="color:#795548"></view>
         <view class="fk_main_func_item_text">我的企业</view>
       </view>
-      <navigator class="fk_main_func_item" url="/pages/newList/newList">
+      <navigator class="fk_main_func_item" open-type="redirect" url="/pages/newList/newList">
         <view class="iconfont icon-liebiaodaohang_zixun  fk_main_func_item_icon" style="color:#17abe3"></view>
         <view class="fk_main_func_item_text">行业资讯</view>
       </navigator>
-      <view class="fk_main_func_item">
+      <navigator url="/pages/buy/buy" class="fk_main_func_item" open-type="redirect">
         <view class="iconfont icon-goumai  fk_main_func_item_icon" style="color:#cfcf00"></view>
         <view class="fk_main_func_item_text">我要购买</view>
-      </view>
-      <view class="fk_main_func_item">
+      </navigator>
+      <navigator url="/pages/repairSign/repairSign" class="fk_main_func_item" open-type="redirect">
         <view class="iconfont icon-weixiu  fk_main_func_item_icon" style="color:green"></view>
         <view class="fk_main_func_item_text">我要维修</view>
-      </view>
-      <view class="fk_main_func_item">
+      </navigator>
+      <view class="fk_main_func_item" open-type="redirect">
         <view class="iconfont icon-fujin  fk_main_func_item_icon" style="color:red"></view>
         <view class="fk_main_func_item_text">附近商家</view>
       </view>
-      <view class="fk_main_func_item">
+      <navigator url="/pages/suggest/suggest" class="fk_main_func_item" open-type="redirect">
         <view class="iconfont icon-tousu  fk_main_func_item_icon" style="color:#760000"></view>
         <view class="fk_main_func_item_text">投诉建议</view>
-      </view>
-      <view class="fk_main_func_item">
+      </navigator>
+      <view class="fk_main_func_item" open-type="redirect" catchtap="callPhone" data-phone="15816195453">
         <view class="iconfont icon-dianhua  fk_main_func_item_icon" style="color:#e37429"></view>
         <view class="fk_main_func_item_text">人工咨询</view>
       </view>
-      <view class="fk_main_func_item">
+      <view class="fk_main_func_item" open-type="redirect">
         <view class="iconfont icon-weiguanwang  fk_main_func_item_icon" style="color:#5b5bff"></view>
         <view class="fk_main_func_item_text">中出网官网</view>
       </view>
@@ -69,4 +69,5 @@
     </view>
   </view>
   <tab-bar class="fk_tabBar"></tab-bar>
+  <van-toast id="van-toast" />
 </view>

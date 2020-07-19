@@ -1,0 +1,28 @@
+/* pages/buy/buy.wxss */
+.fk_buy{
+  padding: 20rpx;
+  background-color: #ebebeb;
+  height: 100vh;
+  box-sizing: border-box;
+}
+.fk_buy_form{
+  background-color: #fff;
+  border-radius: 10rpx;
+  overflow: hidden;
+}
+.van-field__label, .van-cell__title{
+  width: 135rpx !important;
+  min-width: 135rpx !important;
+  max-width: 135rpx !important;
+}
+.van-field__input--textarea{
+  min-height: 200rpx;
+  height: 200rpx !important;
+}
+.fk_buy_button_wrap{
+  padding:  40rpx;
+}
+
+.fk_buy .van-button--info{
+  background-color: #0062d7;
+}

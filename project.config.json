@@ -12,6 +12,7 @@
 		"minified": true,
 		"newFeature": true,
 		"coverView": true,
+		"nodeModules": true,
 		"autoAudits": false,
 		"showShadowRootInWxmlPanel": true,
 		"scopeDataCheck": false,
@@ -24,7 +25,8 @@
 			"outputPath": ""
 		},
 		"useCompilerModule": true,
-		"userConfirmedUseCompilerModuleSwitch": false
+		"userConfirmedUseCompilerModuleSwitch": false,
+		"bundle": true
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.8.0",
@@ -113,6 +115,34 @@
 					"id": -1,
 					"name": "我的收藏",
 					"pathName": "pages/myCollect/myCollect",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "产品收藏",
+					"pathName": "pages/productCollect/productCollect",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我要购买",
+					"pathName": "pages/buy/buy",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我要维修",
+					"pathName": "pages/repairSign/repairSign",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "投诉建议",
+					"pathName": "pages/suggest/suggest",
 					"query": "",
 					"scene": null
 				}

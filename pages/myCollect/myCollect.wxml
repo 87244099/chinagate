@@ -6,7 +6,7 @@
         <view class="fk_myCollect_item_icon iconfont icon-qiye" style="color: green;"></view>
         <view class="fk_myCollect_item_text">店铺收藏</view>
       </navigator>
-      <navigator class="fk_myCollect_item">
+      <navigator url="/pages/productCollect/productCollect" class="fk_myCollect_item">
         <view class="fk_myCollect_item_icon iconfont icon-apply" style="color: red;"></view>
         <view class="fk_myCollect_item_text">产品收藏</view>
       </navigator>
@@ -17,5 +17,4 @@
     </view>
   </view>
   <tab-bar class="fk_tabBar"></tab-bar>
-
 </view>

@@ -3,6 +3,7 @@
 const app = getApp();
 const Fai = require("../../utils/util");
 const config = require("../../utils/config");
+import Toast from "../../miniprogram_npm/@vant/weapp/toast/toast";
 Page({
 
   /**
@@ -79,18 +80,17 @@ Page({
     if(this.data.setting.articleList.length>=this.data.setting.totalSize && this.data.setting.totalSize!==null){
       return;
     }
-
-    wx.showLoading({
-      title: '加载中...',
-    });
+    Toast.loading({
+      message:"加载中...",
+    })
     Fai.request({
       url: "/ajax/article/article?cmd=getArticleList&pageNo=1&pageSize=10",
       data: {
         pageNo: this.data.setting.pageNo,
         pageSize: 10
       },
-      complete:()=>{
-        wx.hideLoading()
+      beforeConsume(){
+        Toast.clear();
       },
       success: (res)=>{
         let result = res.data;
@@ -102,8 +102,11 @@ Page({
             "setting.totalSize": result.data.totalSize
           });
         }else{
-          
+          Toast.fail(result.msg || "网络繁忙，请稍后重试");
         }
+      },
+      fail(){
+        Toast.fail("网络繁忙，请稍后重试");
       }
     })
   },

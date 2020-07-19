@@ -25,7 +25,7 @@
           <view class="iconfont icon-right"></view> 
         </view>
       </navigator>
-      <navigator class="fk_personal_section_item">
+      <navigator class="fk_personal_section_item" url="/pages/myCollect/myCollect">
         <view class="fk_personal_section_item_left">
           <view class="fk_personal_section_item_icon iconfont icon-start1" style="color: red;"></view>
           <view class="fk_personal_section_item_text">我的收藏</view>

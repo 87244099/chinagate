@@ -1,4 +1,8 @@
 // pages/setCard/setCard.js
+const app = getApp();
+const Fai = require("../../utils/util");
+const config = require("../../utils/config");
+import Toast from "../../miniprogram_npm/@vant/weapp/toast/toast";
 Page({
 
   /**
@@ -12,7 +16,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.loadProvince();
   },
 
   /**
@@ -86,5 +90,26 @@ Page({
     wx.navigateBack({
       complete: (res) => {},
     })
-  }
+  },
+  loadProvince: function(){
+    Toast.loading({
+      message:"加载中...",
+      duration: 0
+    });
+    Fai.request({
+      url: "/ajax/Common/GetCommData?cmd=getProvinceList",
+      beforeComsume:Toast.clear,
+      success:(res)=>{
+        let result = res.data;
+        if(result.success){
+          console.log("result", result);
+        }else{
+          Toast.fail(result.msg || "网络繁忙，请稍后重试")
+        }
+      },
+      fail:()=>{
+        Toast.fail("网络繁忙，请稍后重试");
+      }
+    })
+  },
 })

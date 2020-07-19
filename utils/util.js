@@ -30,6 +30,7 @@ function delay(handler, time) {
 
 module.exports = {
   formatTime: formatTime,
+  delay,
   ...require("./request.js"),
-  delay
+  ...require("./cookie.js"),
 }

@@ -24,3 +24,7 @@
 .fk_page{
   padding-bottom: 100rpx;
 }
+
+van-toast{
+  text-align: center;
+}

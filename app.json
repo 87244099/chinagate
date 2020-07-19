@@ -11,7 +11,11 @@
     "pages/productDetail/productDetail",
     "pages/productCenter/productCenter",
     "pages/productSearch/productSearch",
-    "pages/myCollect/myCollect"
+    "pages/myCollect/myCollect",
+    "pages/productCollect/productCollect",
+    "pages/buy/buy",
+    "pages/repairSign/repairSign",
+    "pages/suggest/suggest"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -22,7 +26,6 @@
   "useExtendedLib": {
     "weui": true
   },
-  "style": "v2",
   "sitemapLocation": "sitemap.json",
   "plugins": {
     "wxparserPlugin": {
