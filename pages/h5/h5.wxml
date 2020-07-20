@@ -1,0 +1,6 @@
+<!--pages/h5/h5.wxml-->
+<view class="fk_page">
+  <view class="fk_h5">
+    <web-view class="fk_h5_webView" src="{{setting.src}}"></web-view>
+  </view>
+</view>

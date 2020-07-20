@@ -6,7 +6,6 @@
 }
 .fk_productDetail_banner{
   height: 346rpx;
-  background-color: #ccc;
 }
 .fk_productDetail_func_list{
   display: flex;

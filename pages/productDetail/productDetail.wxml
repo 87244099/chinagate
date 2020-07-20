@@ -1,7 +1,9 @@
 <!--pages/productDetail/productDetail.wxml-->
 <view class="fk_page">
   <view class="fk_productDetail">
-    <view class="fk_productDetail_banner"></view>
+    <view class="fk_productDetail_banner">
+      <image style="width:100%;height:100%;" mode="aspectFill" src="{{staticDomain}}/{{pageData.productInfo.smallImgPath}}"></image>
+    </view>
     <view class="fk_productDetail_func">
       <view class="fk_productDetail_func_list">
         <view class="fk_productDetail_func_item">

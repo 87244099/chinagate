@@ -4,7 +4,7 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": true,
+		"urlCheck": false,
 		"es6": true,
 		"enhance": true,
 		"postcss": true,
@@ -24,9 +24,9 @@
 			"disablePlugins": [],
 			"outputPath": ""
 		},
+		"bundle": true,
 		"useCompilerModule": true,
-		"userConfirmedUseCompilerModuleSwitch": false,
-		"bundle": true
+		"userConfirmedUseCompilerModuleSwitch": false
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.8.0",
@@ -99,7 +99,7 @@
 				},
 				{
 					"id": 5,
-					"name": "企业中心",
+					"name": "产品中心",
 					"pathName": "pages/productCenter/productCenter",
 					"query": "",
 					"scene": null
@@ -143,6 +143,20 @@
 					"id": -1,
 					"name": "投诉建议",
 					"pathName": "pages/suggest/suggest",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "h5",
+					"pathName": "pages/h5/h5",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 13,
+					"name": "店铺收藏",
+					"pathName": "pages/shopCollect/shopCollect",
 					"query": "",
 					"scene": null
 				}

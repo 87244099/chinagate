@@ -13,11 +13,11 @@
           <view class="fk_productSearch_product_priceInfo">
             <view class="fk_productSearch_product_priceInfo_line">
               <view class="fk_productSearch_product_priceInfo_label">普通批发价：</view>
-              <view class="fk_productSearch_product_priceInfo_value">868286</view>
+              <view class="fk_productSearch_product_priceInfo_value">￥{{item.ordinaryWholesalePrice}}</view>
             </view>
             <view class="fk_productSearch_product_priceInfo_line">
               <view class="fk_productSearch_product_priceInfo_label">vip批发价：</view>
-              <view class="fk_productSearch_product_priceInfo_value">868286</view>
+              <view class="fk_productSearch_product_priceInfo_value">￥{{item.vipWholesalePrice}}</view>
             </view>
           </view>
         </navigator>

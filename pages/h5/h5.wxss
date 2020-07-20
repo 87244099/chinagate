@@ -1,0 +1,6 @@
+/* pages/h5/h5.wxss */
+
+.fk_h5_webView{
+  width: 100%;
+  height: 100vh;
+}

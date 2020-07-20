@@ -15,7 +15,9 @@
     "pages/productCollect/productCollect",
     "pages/buy/buy",
     "pages/repairSign/repairSign",
-    "pages/suggest/suggest"
+    "pages/suggest/suggest",
+    "pages/h5/h5",
+    "pages/shopCollect/shopCollect"
   ],
   "window": {
     "backgroundTextStyle": "light",

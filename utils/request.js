@@ -29,24 +29,6 @@ const RequestMQ = (function(){
   }
 }());
 
-function promiseRequest(option){
-  return new Promise((resolve, reject)=>{
-    
-    let settingOption = Object.assign({}, option);
-    settingOption.success = ()=>{
-      resolve(...arguments);
-      option.success(...arguments);
-    };
-    settingOption.fail = ()=>{
-      reject(...arguments);
-      option.fail(...arguments);
-    }
-
-    wx.request(settingOption);
-
-  });
-}
-
 function noop(){}
 function assignOption(option){
   let defaultOption = {
@@ -74,6 +56,8 @@ function request(option){
   let cookie = CookieUtils.getRequestCookie(settingOption.header);
   settingOption.header["Cookie"] = cookie;
 
+  let retryCount =  settingOption.retryCount;
+
   let requestOption = {
     url: config.domain + settingOption.url,
     data: settingOption.data,
@@ -85,18 +69,31 @@ function request(option){
     enableHttp2: settingOption.enableHttp2,
     enableQuic: settingOption.enableQuic,
     enableCache: settingOption.enableCache,
-    success(response){
-      CookieUtils.cacheResponseCookie(response);//把response的cookie写入缓存
-      settingOption.beforeConsume();
-      settingOption.success(...arguments);
-    },
+    success: successHandler,
     fail(){
-      settingOption.beforeConsume();
-      settingOption.fail(...arguments);
+      // 重试机制
+      if(retryCount>0){
+        retryCount--;
+        wx.request(requestOption);
+      }else{
+        failHandler(...arguments);
+      }
+      
     },
     complete: settingOption.complete,
-  }
+  };
   wx.request(requestOption);
+
+  function failHandler(){
+    settingOption.beforeConsume();
+    settingOption.fail(...arguments);
+  }
+  function successHandler(response){
+    CookieUtils.cacheResponseCookie(response);//把response的cookie写入缓存
+    settingOption.beforeConsume();
+    settingOption.success(...arguments);
+  }
+
 }
 
 module.exports = {
