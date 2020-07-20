@@ -79,7 +79,7 @@ Page({
         }
       },
       fail:()=>{
-        Toast.fail(result.msg || '网络繁忙，请稍后重试');
+        Toast.fail('网络繁忙，请稍后重试');
       }
     })
   },
