@@ -2,7 +2,7 @@
 <view class="fk_page">
   <view class="fk_myCollect">
     <view class="fk_myCollect_list">
-      <navigator class="fk_myCollect_item">
+      <navigator url="/pages/shopCollect/shopCollect" class="fk_myCollect_item">
         <view class="fk_myCollect_item_icon iconfont icon-qiye" style="color: green;"></view>
         <view class="fk_myCollect_item_text">店铺收藏</view>
       </navigator>
@@ -10,7 +10,7 @@
         <view class="fk_myCollect_item_icon iconfont icon-apply" style="color: red;"></view>
         <view class="fk_myCollect_item_text">产品收藏</view>
       </navigator>
-      <navigator class="fk_myCollect_item">
+      <navigator url="/pages/staffCollect/staffCollect" class="fk_myCollect_item">
         <view class="fk_myCollect_item_icon iconfont icon-mingpian" style="color: #3cceff;"></view>
         <view class="fk_myCollect_item_text">名片收藏</view>
       </navigator>

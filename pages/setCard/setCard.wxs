@@ -1,0 +1,12 @@
+function map(list, field){
+  var finalList = [];
+  for(var i=0; i<list.length; i++){
+    var item = list[i];
+    finalList.push(item[field]);
+  }
+  return finalList;
+}
+
+module.exports = {
+  map: map
+};

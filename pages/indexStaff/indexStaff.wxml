@@ -1,0 +1,126 @@
+<view class="fk_page">
+  <view class="fk_indexStaff">
+    <view class="fk_indexStaff_header">
+      <view class="fk_indexStaff_header_name">小罗</view>
+      <view class="fk_indexStaff_header_job">主管</view>
+    </view>
+    <view class="fk_indexStaff_func">
+      <view class="fk_indexStaff_func_list">
+        <view class="fk_indexStaff_func_item">
+          <view class="fk_indexStaff_func_item_icon iconfont icon-dianhua"></view>
+          <view class="fk_indexStaff_func_item_text">呼叫</view>
+        </view>
+        <view class="fk_indexStaff_func_item">
+          <view class="fk_indexStaff_func_item_icon iconfont icon-zhuanfa"></view>
+          <view class="fk_indexStaff_func_item_text">转发</view>
+        </view>
+        <view class="fk_indexStaff_func_item">
+          <view class="fk_indexStaff_func_item_icon iconfont icon-start"></view>
+          <view class="fk_indexStaff_func_item_text">收藏</view>
+        </view>
+        <view class="fk_indexStaff_func_item">
+          <view class="fk_indexStaff_func_item_icon iconfont icon-liaotian"></view>
+          <view class="fk_indexStaff_func_item_text">聊天</view>
+        </view>
+      </view>
+    </view>
+    <view class="fk_indexStaff_message">
+      <view class="fk_indexStaff_message_line">
+        <view class="fk_indexStaff_message_label">手机：</view>
+        <view class="fk_indexStaff_message_value">15816195453</view>
+      </view>
+      <view class="fk_indexStaff_message_line">
+        <view class="fk_indexStaff_message_label">手机：</view>
+        <view class="fk_indexStaff_message_value">15816195453</view>
+      </view>
+      <view class="fk_indexStaff_message_line">
+        <view class="fk_indexStaff_message_label">手机：</view>
+        <view class="fk_indexStaff_message_value">15816195453</view>
+      </view>
+      <view class="fk_indexStaff_message_line">
+        <view class="fk_indexStaff_message_label">手机：</view>
+        <view class="fk_indexStaff_message_value">15816195453</view>
+      </view>
+      <view class="fk_indexStaff_message_line">
+        <view class="fk_indexStaff_message_label">手机：</view>
+        <view class="fk_indexStaff_message_value">15816195453</view>
+      </view>
+    </view>
+    <view class="fk_indexStaff_banner"></view>
+    <view class="fk_indexStaff_productIntro">
+      <view class="fk_indexStaff_productIntro_bigTitle">
+        <view class="fk_indexStaff_productIntro_bigTitle_text">产品展示</view>
+        <view class="fk_indexStaff_productIntro_bigTitle_desc">PRODUCT</view>
+      </view>
+
+      <view class="fk_indexStaff_productIntro_group">
+        <view class="fk_indexStaff_productIntro_group_title">
+          <view class="fk_indexStaff_productIntro_group_title_text">伸缩门</view>
+          <view class="fk_indexStaff_productIntro_group_title_arrow">更多></view>
+        </view>
+        <view class="fk_indexStaff_productIntro_group_main">
+          <view class="fk_indexStaff_productIntro_group_main_product_list">
+            <view class="fk_indexStaff_productIntro_group_main_product_item">
+              <view class="fk_indexStaff_productIntro_group_main_product_item_img"></view>
+              <view class="fk_indexStaff_productIntro_group_main_product_item_name"></view>
+              <view class="fk_indexStaff_productIntro_group_main_product_priceInfo">
+                <view class="fk_indexStaff_productIntro_group_main_product_priceInfo_line">
+                  <view class="fk_indexStaff_productIntro_group_main_product_priceInfo_label">普通批发价：￥</view>
+                  <view class="fk_indexStaff_productIntro_group_main_product_priceInfo_value"></view>
+                </view>
+                <view class="fk_indexStaff_productIntro_group_main_product_priceInfo_line">
+                  <view class="fk_indexStaff_productIntro_group_main_product_priceInfo_label">vip批发价：￥</view>
+                  <view class="fk_indexStaff_productIntro_group_main_product_priceInfo_value"></view>
+                </view>
+              </view>
+            </view>
+            <view class="fk_indexStaff_productIntro_group_main_product_item">
+              <view class="fk_indexStaff_productIntro_group_main_product_item_img"></view>
+              <view class="fk_indexStaff_productIntro_group_main_product_item_name">
+                南北德信学府一号不锈钢伸缩门
+              </view>
+              <view class="fk_indexStaff_productIntro_group_main_product_priceInfo">
+                <view class="fk_indexStaff_productIntro_group_main_product_priceInfo_line">
+                  <view class="fk_indexStaff_productIntro_group_main_product_priceInfo_label">普通批发价：￥</view>
+                  <view class="fk_indexStaff_productIntro_group_main_product_priceInfo_value"></view>
+                </view>
+                <view class="fk_indexStaff_productIntro_group_main_product_priceInfo_line">
+                  <view class="fk_indexStaff_productIntro_group_main_product_priceInfo_label">vip批发价：￥</view>
+                  <view class="fk_indexStaff_productIntro_group_main_product_priceInfo_value"></view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      
+      
+    </view>
+    <view class="fk_indexStaff_about">
+      <view class="fk_indexStaff_productIntro_bigTitle">
+        <view class="fk_indexStaff_productIntro_bigTitle_text">关于我们</view>
+        <view class="fk_indexStaff_productIntro_bigTitle_desc">ABOUT</view>
+      </view>
+      <view></view>
+    </view>
+    <view class="fk_indexStaff_contact">
+      <view class="fk_indexStaff_productIntro_bigTitle">
+        <view class="fk_indexStaff_productIntro_bigTitle_text">联系我们</view>
+        <view class="fk_indexStaff_productIntro_bigTitle_desc">CONTACT</view>
+      </view>
+      <view class="fk_indexStaff_contact_message">
+        <view class="fk_indexStaff_contact_message_line">
+          企业：佛山市南北鼎新机电设备科技有限公司-智能名片
+        </view>
+        <view class="fk_indexStaff_contact_message_line">电话：佛山市南北鼎新机电设备科技有限公司-智能名片
+        </view>
+        <view class="fk_indexStaff_contact_message_line">地区：广东省 > 佛山市 > 南海区-智能名片
+        </view>
+        <view class="fk_indexStaff_contact_message_line">地址：广东省佛山市南海区里水镇宏岗工业区7-C座 (点击导航-智能名片
+        </view>
+      </view>
+    </view>
+  </view>
+  <tab-bar class="fk_tabBar"></tab-bar>
+</view>

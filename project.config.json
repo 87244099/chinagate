@@ -159,6 +159,34 @@
 					"pathName": "pages/shopCollect/shopCollect",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "个人首页",
+					"pathName": "pages/indexStaff/indexStaff",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "名片收藏",
+					"pathName": "pages/staffCollect/staffCollect",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "个人名片首页",
+					"pathName": "pages/indexStaff/indexStaff",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "企业首页",
+					"pathName": "pages/indexCompany/indexCompany",
+					"query": "",
+					"scene": null
 				}
 			]
 		}

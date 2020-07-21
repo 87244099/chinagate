@@ -1,0 +1,24 @@
+<view class="fk_page">
+  <view class="fk_staffCollect">
+    <view class="fk_staffCollect_list">
+      <navigator class="fk_staffCollect_item" wx:for="{{setting.companyList}}">
+        <view class="fk_staffCollect_item_left">
+          <view class="fk_staffCollect_item_img">
+            <image style="width:100%;height:100%;" mode="aspectFill" src="{{staticDomain}}/{{item.companyLogoUrl}}"></image>
+          </view>
+          <view class="fk_staffCollect_item_info">
+            <view class="fk_staffCollect_item_info_name">名片收藏：{{item.companyName}}</view>
+            <view class="fk_staffCollect_item_info_opt" catchtap="onCancelstaffCollect">
+              <view class="fk_staffCollect_item_info_opt_icon iconfont icon-start1"></view>
+              <view class="fk_staffCollect_item_info_opt_text">取消收藏</view>
+            </view>
+          </view>
+        </view>
+        <view class="fk_staffCollect_item_right">
+          <view class="fk_staffCollect_item_right_icon"></view>
+        </view>
+      </navigator>
+    </view>
+  </view>
+  <tab-bar class="fk_tabBar"></tab-bar>
+</view> 

@@ -45,7 +45,7 @@
 <block wx:elif="{{type=='company'}}">
   <view class="fk_tabBar">
     <view class="fk_tabBar_item">
-      <navigator open-type="redirect" url="/pages/index/index">
+      <navigator open-type="redirect" url="/pages/indexCompany/indexCompany">
         <view class="iconfont icon-home fk_tabBar_item_icon"></view>
         <view class="fk_tabBar_item_text">首页</view>
       </navigator>

@@ -52,3 +52,12 @@
 .fk_setCard .cell--weui-cell{
   padding: 20rpx 30rpx;
 }
+
+.fk_setCart_area{
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #fff;
+  z-index: 999;
+}

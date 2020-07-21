@@ -1,0 +1,19 @@
+function parseAddr(provinceName, cityName, countryName){
+
+  var arr = [];
+  if(provinceName){
+    arr.push(provinceName);
+  }
+  if(cityName){
+    arr.push(cityName);
+  }
+  if(countryName){
+    arr.push(countryName);
+  }
+
+  return arr.join(" > ");
+}
+
+module.exports = {
+  parseAddr:parseAddr
+}

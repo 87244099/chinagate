@@ -1,3 +1,5 @@
+<wxs src="./setCard.wxs" module="setCard" />
+
 <view class="fk_page fk_setCard">
   <mp-form id="form">
     <view class="fk_setCard_header">
@@ -21,9 +23,13 @@
     <mp-cells title="更多信息（选填）">
       <mp-cell show-error prop="idcard" title="所在地区" ext-class="">
         <view style="display:flex;">
-          <view catchtap="onSelectProvince" style="max-width:33.33%;width:100%">111</view>
-          <view catchtap="onSelectCity" style="max-width:33.33%;width:100%">222</view>
-          <view catchtap="onSelectCountry" style="max-width:33.33%;width:100%">333</view>
+          <view catchtap="onSelectProvince" style="max-width:33.33%;width:100%">
+            {{setting.provinceList[setting.provinceIndex].name || '请选择'}}
+          </view>
+          <view catchtap="onSelectCity" wx:if="{{setting.provinceIndex>=0}}" style="max-width:33.33%;width:100%">
+            {{setting.cityList[setting.cityIndex].name|| '请选择'}} </view>
+          <view catchtap="onSelectCountry" wx:if="{{setting.cityIndex>=0}}" style="max-width:33.33%;width:100%">
+            {{setting.countryList[setting.countryIndex].name || '请选择' }} </view>
         </view>
       </mp-cell>
       <mp-cell show-error prop="idcard" title="地址" ext-class="">
@@ -53,4 +59,22 @@
         <!-- <button class="weui-btn" bindtap="reback">返回</button> -->
     </view>
   </mp-form>
+
+  <van-popup 
+    show="{{ setting.areaPickerOpened }}"
+    position="bottom"
+    bind:close="onAreaPopupClose">
+    <van-picker
+      show-toolbar 
+      wx:if="{{setting.areaPickerOpened}}"
+      confirm="onAreaPickerConfirm"
+      columns="{{ setCard.map(setting.currAreaList, 'name') }}" 
+      default-index="{{setting.areaDefaultIndex}}"
+
+      bind:confirm="onAreaPickerConfirm"
+      bind:cancel="onAreaPickerCancel"
+      bind:change="onAreaPickerChange"
+    />
+  </van-popup>
+  <van-toast id="van-toast" />
 </view>

@@ -59,7 +59,7 @@ Page({
       duration:0,
     });
     Fai.request({
-      url: "/ajax/article/articl666e?cmd=getArticleList&pageNo=1&pageSize=10",
+      url: "/ajax/article/article?cmd=getArticleList&pageNo=1&pageSize=10",
       data: {
         pageNo: this.data.setting.pageNo,
         pageSize: 10

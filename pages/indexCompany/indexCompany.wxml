@@ -1,0 +1,139 @@
+<wxs src="./indexCompany.wxs" module="indexCompany" />
+
+<view class="fk_page">
+  <view class="fk_indexCompany">
+    <view class="fk_indexCompany_banner">
+      <swiper style="height:100%;" indicator-dots="true"
+        indicator-active-color="#0062d7"
+        autoplay="true" interval="3000" duration="500" circular="true">
+        <block wx:for="{{pageData.carouselList}}" wx:key="*this">
+          <swiper-item>
+            <image style="width:100%;height:100%" mode="aspectFill" src="{{staticDomain}}/{{item}}"/>
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
+    <view class="fk_indexCompany_func">
+      <view class="fk_indexCompany_func_list">
+        <view class="fk_indexCompany_func_item" data-phone="{{pageData.companyInfo.companyPhone}}" catchtap="callPhone">
+          <view class="fk_indexCompany_func_item_icon iconfont icon-dianhua"></view>
+          <view class="fk_indexCompany_func_item_text">呼叫</view>
+        </view>
+        <view class="fk_indexCompany_func_item">
+          <view class="fk_indexCompany_func_item_icon iconfont icon-zhuanfa"></view>
+          <view class="fk_indexCompany_func_item_text">转发</view>
+        </view>
+        <view class="fk_indexCompany_func_item">
+          <view class="fk_indexCompany_func_item_icon iconfont icon-start"></view>
+          <view class="fk_indexCompany_func_item_text">收藏</view>
+        </view>
+        <view class="fk_indexCompany_func_item">
+          <view class="fk_indexCompany_func_item_icon iconfont icon-liaotian"></view>
+          <view class="fk_indexCompany_func_item_text">聊天</view>
+        </view>
+      </view>
+    </view>
+    <!-- <view class="fk_indexCompany_message">
+      <view class="fk_indexCompany_message_line">
+        <view class="fk_indexCompany_message_label">手机：</view>
+        <view class="fk_indexCompany_message_value">15816195453</view>
+      </view>
+      <view class="fk_indexCompany_message_line">
+        <view class="fk_indexCompany_message_label">微信：</view>
+        <view class="fk_indexCompany_message_value">15816195453</view>
+      </view>
+      <view class="fk_indexCompany_message_line">
+        <view class="fk_indexCompany_message_label">QQ：</view>
+        <view class="fk_indexCompany_message_value">15816195453</view>
+      </view>
+      <view class="fk_indexCompany_message_line">
+        <view class="fk_indexCompany_message_label">邮箱：</view>
+        <view class="fk_indexCompany_message_value">15816195453</view>
+      </view>
+      <view class="fk_indexCompany_message_line">
+        <view class="fk_indexCompany_message_label">地址：</view>
+        <view class="fk_indexCompany_message_value">15816195453</view>
+      </view>
+    </view> -->
+    <view class="fk_indexCompany_productIntro">
+      <view class="fk_indexCompany_productIntro_bigTitle">
+        <view class="fk_indexCompany_productIntro_bigTitle_text">产品展示</view>
+        <view class="fk_indexCompany_productIntro_bigTitle_desc">PRODUCT</view>
+      </view>
+
+      <view class="fk_indexCompany_productIntro_group" wx:for-item="group" wx:for="{{pageData.productGroupList}}">
+        <view class="fk_indexCompany_productIntro_group_title">
+          <view class="fk_indexCompany_productIntro_group_title_text">{{group.productTypeName}}</view>
+          <navigator url="/pages/productCenter/productCenter" open-type="redirect" class="fk_indexCompany_productIntro_group_title_arrow">更多></navigator>
+        </view>
+        <view class="fk_indexCompany_productIntro_group_main">
+          <view class="fk_indexCompany_productIntro_group_main_product_list">
+            <view class="fk_indexCompany_productIntro_group_main_product_item" data-id="{{product.productID}}"  wx:for-item="product" wx:for="{{group.productList}}">
+              <view class="fk_indexCompany_productIntro_group_main_product_item_img">
+                <image style="width:100%;height:100%" src="{{staticDomain}}/{{product.smallImgPath}}"></image>
+              </view>
+              <view class="fk_indexCompany_productIntro_group_main_product_item_name">{{product.title}}</view>
+              <view class="fk_indexCompany_productIntro_group_main_product_priceInfo">
+                <view class="fk_indexCompany_productIntro_group_main_product_priceInfo_line">
+                  <view class="fk_indexCompany_productIntro_group_main_product_priceInfo_label">普通批发价：￥</view>
+                  <view class="fk_indexCompany_productIntro_group_main_product_priceInfo_value">{{product.ordinaryWholesalePrice}}</view>
+                </view>
+                <view class="fk_indexCompany_productIntro_group_main_product_priceInfo_line">
+                  <view class="fk_indexCompany_productIntro_group_main_product_priceInfo_label">vip批发价：￥</view>
+                  <view class="fk_indexCompany_productIntro_group_main_product_priceInfo_value">{{product.vipWholesalePrice}}</view>
+                </view>
+              </view>
+            </view>
+            <view class="fk_indexCompany_productIntro_group_main_product_item">
+              <view class="fk_indexCompany_productIntro_group_main_product_item_img"></view>
+              <view class="fk_indexCompany_productIntro_group_main_product_item_name">
+                南北德信学府一号不锈钢伸缩门
+              </view>
+              <view class="fk_indexCompany_productIntro_group_main_product_priceInfo">
+                <view class="fk_indexCompany_productIntro_group_main_product_priceInfo_line">
+                  <view class="fk_indexCompany_productIntro_group_main_product_priceInfo_label">普通批发价：￥</view>
+                  <view class="fk_indexCompany_productIntro_group_main_product_priceInfo_value"></view>
+                </view>
+                <view class="fk_indexCompany_productIntro_group_main_product_priceInfo_line">
+                  <view class="fk_indexCompany_productIntro_group_main_product_priceInfo_label">vip批发价：￥</view>
+                  <view class="fk_indexCompany_productIntro_group_main_product_priceInfo_value"></view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      
+      
+    </view>
+    <view class="fk_indexCompany_about">
+      <view class="fk_indexCompany_productIntro_bigTitle">
+        <view class="fk_indexCompany_productIntro_bigTitle_text">关于我们</view>
+        <view class="fk_indexCompany_productIntro_bigTitle_desc">ABOUT</view>
+      </view>
+      <view>
+        <wxparser rich-text="{{pageData.companyInfo.companyIntroduction}}"/>
+      </view>
+    </view>
+    <view class="fk_indexCompany_contact">
+      <view class="fk_indexCompany_productIntro_bigTitle">
+        <view class="fk_indexCompany_productIntro_bigTitle_text">联系我们</view>
+        <view class="fk_indexCompany_productIntro_bigTitle_desc">CONTACT</view>
+      </view>
+      <view class="fk_indexCompany_contact_message">
+        <view class="fk_indexCompany_contact_message_line">
+          企业：{{pageData.companyInfo.companyName}}
+        </view>
+        <view class="fk_indexCompany_contact_message_line">电话：{{pageData.companyInfo.companyPhone}}
+        </view>
+        <view class="fk_indexCompany_contact_message_line">地区： {{indexCompany.parseAddr(pageData.companyInfo.provinceName, pageData.companyInfo.provinceName, pageData.companyInfo.coutryName)}}
+        </view>
+        <view class="fk_indexCompany_contact_message_line" catchtap="callMap">地址：广东省佛山市南海区里水镇宏岗工业区7-C座 (点击导航-智能名片
+        </view>
+      </view>
+    </view>
+  </view>
+  <tab-bar class="fk_tabBar" type="company"></tab-bar>
+  <van-toast id="van-toast" />
+</view>
