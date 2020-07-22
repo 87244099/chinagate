@@ -45,10 +45,10 @@
         <view class="iconfont icon-dianhua  fk_main_func_item_icon" style="color:#e37429"></view>
         <view class="fk_main_func_item_text">人工咨询</view>
       </view>
-      <view class="fk_main_func_item" open-type="redirect">
+      <navigator url="/pages/h5/h5" class="fk_main_func_item">
         <view class="iconfont icon-weiguanwang  fk_main_func_item_icon" style="color:#5b5bff"></view>
         <view class="fk_main_func_item_text">中出网官网</view>
-      </view>
+      </navigator>
     </view>
     <view class="fk_main_article_list">
       <view class="fk_main_article_list_header">

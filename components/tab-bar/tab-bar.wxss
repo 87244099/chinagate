@@ -54,3 +54,19 @@ navigator{
   width: 100%;
   justify-content: center;
 }
+
+.fk_goTop{
+  position: fixed;
+  bottom: 154rpx;
+  right: 20rpx;
+  width: 88rpx;
+  height: 88rpx;
+  line-height: 88rpx;
+  text-align: center;
+  border-radius: 50%;
+  background-color: #ffffff;
+  border: 2rpx solid #cccccc;
+  color: #bbbbbb;
+  z-index: 1000;
+  font-size: 40rpx;
+}

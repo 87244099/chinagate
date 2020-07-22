@@ -10,10 +10,10 @@ function parseAddr(provinceName, cityName, countryName){
   if(countryName){
     arr.push(countryName);
   }
-
+  console.log("arr", arr);
   return arr.join(" > ");
 }
 
 module.exports = {
-  parseAddr:parseAddr
+  parseAddr : parseAddr
 }

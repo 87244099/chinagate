@@ -127,9 +127,9 @@
         </view>
         <view class="fk_indexCompany_contact_message_line">电话：{{pageData.companyInfo.companyPhone}}
         </view>
-        <view class="fk_indexCompany_contact_message_line">地区： {{indexCompany.parseAddr(pageData.companyInfo.provinceName, pageData.companyInfo.provinceName, pageData.companyInfo.coutryName)}}
+        <view class="fk_indexCompany_contact_message_line">地区： {{indexCompany.parseAddr(pageData.companyInfo.addrInfo.provinceName, pageData.companyInfo.addrInfo.cityName, pageData.companyInfo.addrInfo.coutryName)}}
         </view>
-        <view class="fk_indexCompany_contact_message_line" catchtap="callMap">地址：广东省佛山市南海区里水镇宏岗工业区7-C座 (点击导航-智能名片
+        <view class="fk_indexCompany_contact_message_line" catchtap="callMap">地址：{{pageData.companyInfo.addrInfo.address}}（<text class="">点击导航</text><text class="iconfont icon-map" style="color: #34aaef;font-size:32rpx"></text>）
         </view>
       </view>
     </view>

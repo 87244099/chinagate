@@ -3,32 +3,6 @@
 const config = require("./config");
 const CookieUtils = require("./cookie");
 
-const RequestMQ = (function(){
-
-  let readyQueue = [];//可以执行的任务队列
-  let pendingQueue = [];//执行中的任务队列
-  const TASK_MAX = 6;//最多同时有6个任务
-
-
-  return {
-    add: function(requestOption){
-      readyQueue.push(requestOption);
-      trigger();
-    }
-  }
-
-  function trigger(){
-    if(pendingQueue.length<TASK_MAX){
-
-
-      pendingQueue.push(readyQueue.pop());
-
-
-
-    }
-  }
-}());
-
 function noop(){}
 function assignOption(option){
   let defaultOption = {
@@ -48,7 +22,7 @@ function assignOption(option){
   return settingOption;
 }
 //断网重试机制
-//同一时间只能有6个以内的并发请求，除非处理完了
+//同一时间只能有6个以内的并发请求，除非处理完了(还未实现)
 function request(option){
   let settingOption = assignOption(option);
 

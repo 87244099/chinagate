@@ -1,36 +1,68 @@
-const formatTime = date => {
-  const year = date.getFullYear()
-  const month = date.getMonth() + 1
-  const day = date.getDate()
-  const hour = date.getHours()
-  const minute = date.getMinutes()
-  const second = date.getSeconds()
 
-  return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':')
+
+const cacheUtils = require("./cache.js");
+const requestUtils = require("./request.js");
+
+async function getGlobalData(){
+
+  let globalData = cacheUtils.MemoryCache.getCache("globalData");
+  if(globalData){
+    return globalData;
+  }
+  
+  return new Promise((resolve, reject)=>{
+    requestUtils.request({
+      url:"/ajax/common/GetCommData?cmd=getGlobalData",
+      success(response){
+        let result = response.data;
+        if(result.success){
+          cacheUtils.MemoryCache.setCache("globalData", result.data);
+          resolve(result.data);
+        }else{
+          resolve({});
+        }
+      },
+      fail(){
+        resolve({});
+      }
+    })
+  })
 }
 
-const formatNumber = n => {
-  n = n.toString()
-  return n[1] ? n : '0' + n
+async function getQrCode(page, scene){
+  return new Promise((resolve,reject)=>{
+    requestUtils.request({
+      url: "/ajax/common/getCommData?cmd=getQrCode",
+      data:{
+        page,
+        scene
+      },
+      success(response){
+        let result = response.data;
+        if(result.success){
+          resolve(result);
+        }else{
+          reject(result);
+        }
+      },
+      fail(){
+        reject();
+      }
+    })
+  });
 }
 
-//函数节流
-function delay(handler, time) {
-  var timer = null;
-  let finalTime = time || 300;
-  return function () {
-    var args = arguments;
-    clearTimeout(timer);
-    let that = this;
-    timer = setTimeout(function () {
-      handler.apply(that, args);
-    }, finalTime);
-  };
-}
+const loginUtils = require("./login");
 
-module.exports = {
-  formatTime: formatTime,
-  delay,
-  ...require("./request.js"),
+const Fai = {
+  ...require("./tools.js"),
   ...require("./cookie.js"),
+  ...requestUtils,
+  ...cacheUtils,
+  ...loginUtils,
+  getGlobalData,
+  getQrCode
 }
+
+
+module.exports = Fai;

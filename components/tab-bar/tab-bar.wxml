@@ -1,3 +1,4 @@
+<view class="iconfont icon-gouTop fk_goTop" id="gotoTop" catchtap="goTop"></view>
 <block wx:if="{{type=='index'}}">
   <view class="fk_tabBar">
     <view class="fk_tabBar_item">

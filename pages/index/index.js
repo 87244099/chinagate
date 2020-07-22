@@ -1,3 +1,5 @@
+let scene;
+
 //index.js
 //获取应用实例
 const app = getApp();
@@ -28,7 +30,8 @@ Page({
     bannerList: [
       config.staticDomain + "/Content/Images/banner1.jpg",
       config.staticDomain + "/Content/Images/banner2.jpg",
-    ]
+    ],
+    globalData: {}
   },
   //事件处理函数
   bindViewTap: function() {
@@ -36,8 +39,22 @@ Page({
       url: '../logs/logs'
     })
   },
-  onLoad: function () {
+  onLoad: function (options) {
     this.loadNextArticles();
+    
+    scene = decodeURIComponent(options.scene)
+
+    Fai.getQrCode("pages/index/index", scene);
+
+    Fai.login();
+
+    (async()=>{
+      let globalData = await Fai.getGlobalData();
+      console.log("globalData", globalData);
+      this.setData({
+        globalData: globalData
+      })
+    })();
   },
   getUserInfo: function(e) {
     console.log(e)
@@ -87,9 +104,9 @@ Page({
     this.loadNextArticles();
   },
   callPhone: function(event){
-    let phone = event.currentTarget.dataset.phone;
+    // let phone = event.currentTarget.dataset.phone;
     wx.makePhoneCall({
-      phoneNumber: phone,
+      phoneNumber: this.data.globalData.hotline,
     })
   }
 })
