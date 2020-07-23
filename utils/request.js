@@ -24,13 +24,19 @@ function assignOption(option){
 //断网重试机制
 //同一时间只能有6个以内的并发请求，除非处理完了(还未实现)
 function request(option){
+  option.header = option.header || {};
+  let header = option.header;
+  if(option.method === "POST" && !header['content-type']){
+    header['content-type'] = 'application/x-www-form-urlencoded';
+  }
+
   let settingOption = assignOption(option);
 
   //将缓存里面的cookie写入请求头
   let cookie = CookieUtils.getRequestCookie(settingOption.header);
   settingOption.header["Cookie"] = cookie;
-
   let retryCount =  settingOption.retryCount;
+
 
   let requestOption = {
     url: config.domain + settingOption.url,

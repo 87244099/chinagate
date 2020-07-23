@@ -85,6 +85,9 @@ Page({
     let setting = this.data.setting;
     Fai.request({
       method:"POST",
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
       url:"/ajax/apply/applyForm?cmd=applyAdvise",
       data: {
         customerName: setting.customerName,
