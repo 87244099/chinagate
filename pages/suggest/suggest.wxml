@@ -7,21 +7,25 @@
           value="{{ value }}"
           placeholder="请输入您的姓名"
           border="{{ false }}"
-          bind:change="onChange"
+          bind:blur="onFieldBlur"
+
+          data-field="customerName"
         />
         <van-field
           label="您的手机"
           value="{{ value }}"
           placeholder="请输入您的手机"
           border="{{ false }}"
-          bind:change="onChange"
+          bind:blur="onFieldBlur"
+          data-field="customerTel"
         />
         <van-field
           label="邮箱地址"
           value="{{ value }}"
           placeholder="请输入您的邮箱地址"
           border="{{ false }}"
-          bind:change="onChange"
+          bind:blur="onFieldBlur"
+          data-field="email"
         />
         <van-field
           class="fk_suggest_advContent"
@@ -30,13 +34,16 @@
           type="textarea"
           placeholder="请输入您的建议/投诉内容"
           border="{{ false }}"
+          data-field="leaveMessage"
+          bind:blur="onFieldBlur"
         />
       </van-cell-group>
       <view class="fk_suggest_button_wrap">
-        <van-button type="info" size="small" block>确定提交</van-button>
+        <van-button type="info" size="small" block catchtap="submitSuggestForm">确定提交</van-button>
       </view>
     </view>
     
   </view>
   <tab-bar class="fk_tabBar"></tab-bar>
+  <van-toast id="van-toast" />
 </view>
