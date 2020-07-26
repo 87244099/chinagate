@@ -20,7 +20,9 @@
     "pages/shopCollect/shopCollect",
     "pages/indexStaff/indexStaff",
     "pages/indexCompany/indexCompany",
-    "pages/staffCollect/staffCollect"
+    "pages/staffCollect/staffCollect",
+    "pages/reg/reg",
+    "pages/login/login"
   ],
   "window": {
     "backgroundTextStyle": "light",

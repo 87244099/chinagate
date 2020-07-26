@@ -9,7 +9,7 @@
     <view class="fk_setCard_headImg">
       <view class="fk_setCard_headImg_name">头像</view>
       <view class="fk_setCard_headImg_img_wrap">
-        <view class="fk_setCard_headImg_img_wrap_img"></view>
+        <view class="fk_setCard_headImg_img_wrap_img" catchtap="onUploadHeadImg"></view>
       </view>
     </view>
     <mp-cells title="基本信息">

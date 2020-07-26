@@ -3,6 +3,7 @@
 const app = getApp();
 const Fai = require("../../utils/util");
 const config = require("../../utils/config");
+import Toast from "../../miniprogram_npm/@vant/weapp/toast/toast";
 Page({
 
   /**
@@ -96,5 +97,25 @@ Page({
         }
       });
     }
+  },
+  setProductCollect: function(){
+    Fai.request({
+      url:"/ajax/product/productCollection?cmd=setProductCollect",
+      method:"POST",
+      data:{
+        id: this.data.setting.productId
+      },
+      success:(response)=>{
+        let result = response.data;
+        if(result.success){
+          Toast.success(result.msg);
+        }else{
+          Toast.fail(result.msg || "网络繁忙，请稍后重试");
+        }
+      },
+      fail:()=>{
+        Toast.fail("网络繁忙，请稍后重试");
+      }
+    })
   }
 })

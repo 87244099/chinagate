@@ -4,8 +4,8 @@
       <view class="fk_personal_header_left">
         <view class="fk_personal_header_img"></view>
         <view class="fk_personal_header_info">
-          <view class="fk_personal_header_info_name">名称</view>
-          <view class="fk_personal_header_info_wxAcct">微信号：86799444</view>
+          <view class="fk_personal_header_info_name">{{pageData.memberInfo.memberName}}</view>
+          <view class="fk_personal_header_info_wxAcct">微信号：{{pageData.memberInfo.weChat || ''}}</view>
         </view>
       </view>
       <view class="fk_personal_header_right">
@@ -45,10 +45,11 @@
       </navigator>
     </view>
   </view>
-  <view class="fk_personal_section">
+  <!-- 只有员工才能看到企业信息 -->
+  <view class="fk_personal_section"  wx:if="{{pageData.memberInfo.staffID>0 && pageData.memberInfo.merchantForLevelAID>0}}">
     <view class="fk_personal_section_title">企业</view>
     <view class="fk_personal_section_list">
-      <navigator class="fk_personal_section_item">
+      <navigator class="fk_personal_section_item" url="/pages/indexStaff/indexStaff?companyId={{pageData.memberInfo.merchantForLevelAID}}&staffID={{pageData.memberInfo.staffID>0 ? pageData.memberInfo.staffID : -1}}">
         <view class="fk_personal_section_item_left">
           <view class="fk_personal_section_item_icon iconfont icon-mingpian" style="color: #3cceff;"></view>
           <view class="fk_personal_section_item_text">我的公司名片</view>
@@ -57,7 +58,7 @@
           <view class="iconfont icon-right"></view> 
         </view>
       </navigator>
-      <navigator class="fk_personal_section_item">
+      <navigator class="fk_personal_section_item" url="/pages/indexCompany/indexCompany?companyId={{pageData.memberInfo.companyId}}&staffID={{pageData.memberInfo.staffID}}">
         <view class="fk_personal_section_item_left">
           <view class="fk_personal_section_item_icon iconfont icon-yonghu1-copy" style="color: #daa520;"></view>
           <view class="fk_personal_section_item_text">我的公司</view>
@@ -69,4 +70,5 @@
     </view>
   </view>
   <tab-bar class="fk_tabBar"></tab-bar>
+  <van-toast id="van-toast" />
 </view>

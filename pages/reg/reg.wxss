@@ -1,0 +1,33 @@
+/* pages/reg/reg.wxss */
+.fk_reg{
+  padding: 0 60rpx;
+  /* padding: 30px; */
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+}
+.fk_reg_header_logo{
+  width: 102rpx;
+  height: 56rpx;
+  background-color: #ccc;
+  margin-bottom: 10rpx;
+}
+.fk_reg_header_text{
+  font-size: 56rpx;
+  font-weight: bolder;
+}
+.fk_reg_form{
+  margin-top: 100rpx;
+  padding-bottom: 300rpx;
+}
+
+.fk_reg .van-cell{
+  line-height: 80rpx;
+  background-color: #e8e8e8;
+  border-radius: 12rpx;
+  font-size: 40rpx;
+  margin-bottom: 20rpx;
+}

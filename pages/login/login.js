@@ -1,24 +1,16 @@
-// pages/personal/personal.js
+// pages/login/login.js
 const app = getApp();
 const Fai = require("../../utils/util");
 const Ajax = require("../../ajax/index");
 const config = require("../../utils/config");
 import Toast from "../../miniprogram_npm/@vant/weapp/toast/toast";
-
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    setting: {
-      companyId: -1,//当前名片所属公司
-      staffId: -1//当前名片所属员工
-    },
-    pageData:{
-      memberInfo: {},
-      staffInfo: {},
-    }
+
   },
 
   /**
@@ -26,8 +18,8 @@ Page({
    */
   onLoad: function (options) {
     
-    this.loadPersonalData();
-  },
+  },  
+  
 
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -77,35 +69,39 @@ Page({
   onShareAppMessage: function () {
 
   },
-  async loadPersonalData(){
-    Toast.loading({
-      message:"加载中...",
-      duration: 0,
-      mask:true
-    });
+  onLogin: async function(){
+    Toast.loading("登陆中..")
     try{
-      let response = await Ajax.getMemberInfo();
-      let result = response.data;
-      let memberInfo = result.data;
-      this.setData({
-        "pageData.memberInfo":memberInfo
-      });
-    }catch(e){
-      Toast.fail("网络繁忙，请稍后重试");
-      return;
+      let response = await Ajax.login();
+      Toast.success(response.data.msg);
+
+      setTimeout(()=>{
+        console.log(1111);
+        wx.redirectTo({
+          url: '/pages/personal/personal',
+        });
+      }, 1500);
+
+    }catch(response){
+      if(response){
+        let result = response.data;
+        if(result.rt === 1){//不存在
+          setTimeout(()=>{
+            wx.redirectTo({
+              url: '/pages/reg/reg',
+            });
+          }, 1500);
+        }
+        Toast.fail(response.data.msg);
+      }else{
+        Toast.fail("网络繁忙,请稍后重试");
+      }
     }
-
-    // try{
-    //   let response = await Ajax.getCompanyAIndexPageData(this.data.pageData.memberInfo.merchantForLevelAID);
-      
-    //   this.setData({
-    //     "pageData.companyPageData":response.data.data
-    //   });
-    // }catch(e){
-    //   Toast.fail("网络繁忙，请稍后重试");
-    //   return;
+    
+    // 先进行登录尝试,如果已经登陆过则不需要
+    // if(!getApp().globalData.isLogin){
+      // getApp().globalData.isLogin=true;
     // }
-
-    Toast.clear();
-  }
+  },
+  
 })

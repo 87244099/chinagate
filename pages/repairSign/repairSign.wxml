@@ -4,39 +4,49 @@
       <van-cell-group>
         <van-field
           label="您的姓名"
-          value="{{ value }}"
+          value="{{setting.form.customerName}}"
           placeholder="请输入您的姓名"
           border="{{ false }}"
-          bind:change="onChange"
+          bind:blur="onFieldBlur"
+
+          data-field="customerName"
         />
         <van-field
           label="您的手机"
-          value="{{ value }}"
+          value="{{setting.form.customerTel}}"
           placeholder="请输入您的手机"
           border="{{ false }}"
-          bind:change="onChange"
+          bind:blur="onFieldBlur"
+
+          data-field="customerTel"
         />
         <van-field
           label="您的地址"
-          value="{{ value }}"
+          value="{{setting.form.address}}"
           placeholder="请输入您的地址"
           border="{{ false }}"
-          bind:change="onChange"
+          bind:blur="onFieldBlur"
+
+          data-field="address"
         />
         <van-field
-          value="{{ message }}"
+          value="{{ setting.form.leaveMessage }}"
           label="维修内容"
           type="textarea"
           placeholder="请填写需要维修的产品类型和故障描述"
           autosize
           border="{{ false }}"
+
+          data-field="leaveMessage"
+          bind:blur="onFieldBlur"
         />
       </van-cell-group>
       <view class="fk_repairSign_button_wrap">
-        <van-button type="info" size="small" block>确定提交</van-button>
+        <van-button type="info" size="small" block catchtap="onSubmitForm">确定提交</van-button>
       </view>
     </view>
     
   </view>
   <tab-bar class="fk_tabBar"></tab-bar>
+  <van-toast id="van-toast" />
 </view>

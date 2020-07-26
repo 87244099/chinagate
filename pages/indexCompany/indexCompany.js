@@ -10,7 +10,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    setting: {},
+    setting: {
+      companyId: -1
+    },
     pageData: {},
     staticDomain: config.staticDomain
   },
@@ -19,7 +21,14 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.loadIndexCompanyPageData();
+    this.setData({
+      "setting.companyId": parseInt(options.id) || -1
+    })
+    if(this.data.setting.companyId>=0){
+      this.loadIndexCompanyPageData();
+    }else{
+      Toast.fail("该企业不存在");
+    }
   },
 
   /**
@@ -76,7 +85,7 @@ Page({
       duration: 0
     });
     Fai.request({
-      url: "/ajax/company/company?cmd=getCompanyBIndexPageData&id=1",
+      url: "/ajax/company/company?cmd=getCompanyBIndexPageData&id="+this.data.setting.companyId,
       beforeConsume:Toast.clear,
       success:(response)=>{
         let result = response.data;
@@ -109,5 +118,28 @@ Page({
       scale: 18
     };
     wx.openLocation(locData);
+  },
+  setProductCollectCancel:()=>{
+    Toast.loading({
+      message: "加载中...",
+      duration: 0
+    });
+    Fai.request({
+      url: "/ajax/company/company?cmd=getCompanyBIndexPageData&id=1",
+      beforeConsume:Toast.clear,
+      success:(response)=>{
+        let result = response.data;
+        if(result.success){
+          this.setData({
+            "pageData":result.data
+          });
+        }else{
+          Toast.fail(result.msg || '网络繁忙，请稍后重试');
+        }
+      },
+      fail:()=>{
+        Toast.fail('网络繁忙，请稍后重试');
+      }
+    });
   }
 })

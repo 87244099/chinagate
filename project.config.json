@@ -161,10 +161,10 @@
 					"scene": null
 				},
 				{
-					"id": -1,
-					"name": "个人首页",
+					"id": 14,
+					"name": "员工名片首页",
 					"pathName": "pages/indexStaff/indexStaff",
-					"query": "",
+					"query": "companyId=1&staffID=5",
 					"scene": null
 				},
 				{
@@ -175,16 +175,30 @@
 					"scene": null
 				},
 				{
-					"id": -1,
-					"name": "个人名片首页",
+					"id": 16,
+					"name": "员工名片首页",
 					"pathName": "pages/indexStaff/indexStaff",
-					"query": "",
+					"query": "companyId=1&staffID=5",
+					"scene": null
+				},
+				{
+					"id": 17,
+					"name": "企业首页",
+					"pathName": "pages/indexCompany/indexCompany",
+					"query": "id=1",
 					"scene": null
 				},
 				{
 					"id": -1,
-					"name": "企业首页",
-					"pathName": "pages/indexCompany/indexCompany",
+					"name": "登录页面",
+					"pathName": "pages/login/login",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 19,
+					"name": "注册",
+					"pathName": "pages/reg/reg",
 					"query": "",
 					"scene": null
 				}

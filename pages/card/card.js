@@ -2,6 +2,7 @@
 //获取应用实例
 const app = getApp();
 const Fai = require("../../utils/util");
+const Ajax = require("../../ajax/index");
 const config = require("../../utils/config");
 
 // pages/card/card.js
@@ -25,6 +26,16 @@ Page({
     // this.setData({
     //   "setting.shareImgUrl": this.data.staticDomain+""
     // });
+
+    Fai.request({
+      url: "/ajax/user/userCollection?cmd=getUserCollectInfo",
+      data:{
+        id:3228
+      },
+      success:(response)=>{
+        console.log("response", response);
+      }
+    })
   },
 
   /**
@@ -96,5 +107,7 @@ Page({
   onShowWxAppCode: function(){
     
   },
-  onCollect: function(){}
+  onCollect: function(){
+
+  }
 })

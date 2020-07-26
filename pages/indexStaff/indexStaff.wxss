@@ -43,19 +43,21 @@
 
 }
 .fk_indexStaff_message_label{
-  width: 120rpx;
-  text-align: right;
+  text-align: left;
+}
+.fk_indexStaff_message_value{
+  flex: 1;
 }
 
 .fk_indexStaff_banner{
   height: 352rpx;
-  background-color: #ccc;
   text-align: center;
 }
 
 .fk_indexStaff_productIntro{
   overflow: hidden;
   padding: 20rpx;
+  background-color: #fff;
 }
 
 .fk_indexStaff_productIntro_bigTitle{
@@ -118,6 +120,7 @@
 .fk_indexStaff_productIntro_group_main_product_list{
   display: flex;
   align-items: flex-start;
+  flex-wrap: wrap;
 }
 .fk_indexStaff_productIntro_group_main_product_item{
   width: 50%;
@@ -145,6 +148,7 @@
 .fk_indexStaff_productIntro_group_main_product_priceInfo_line{
   font-size: 26rpx;
   color: #ff5000;
+  display: flex;
 }
 
 .fk_indexStaff_contact_message_line{
@@ -152,7 +156,14 @@
   color: #8f8f8f;
   line-height: 64rpx;
 }
-
+.fk_indexStaff_productIntro_group_main_product_priceInfo_label{
+  width: 190rpx;
+  /* min-width: 160rpx; */
+  text-align: right;
+}
+.fk_indexStaff_productIntro_group_main_product_priceInfo_value{
+  flex: 1;
+}
 .fk_indexStaff_about, 
 .fk_indexStaff_contact{
   overflow: hidden;

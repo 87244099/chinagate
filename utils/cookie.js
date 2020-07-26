@@ -51,7 +51,8 @@ const setCookie = (key, value, maxAge) => {
   });
 }
 //从响应体里面读取cookie，设置进入缓存
-function cacheResponseCookie(header){
+function cacheResponseCookie(response){
+  let header = response.header;
   //将cookie转为localStorage
   let { "Set-Cookie": cookieStr = "" } = header;
   cookieStr = cookieStr.split("GMT,").join("GMT;,");

@@ -1,16 +1,18 @@
 <view class="fk_page">
   <view class="fk_staffCollect">
     <view class="fk_staffCollect_list">
-      <navigator class="fk_staffCollect_item" wx:for="{{setting.companyList}}">
+      <navigator class="fk_staffCollect_item" wx:for="{{setting.companyList}}" data-item="{{item}}" catchtap="onJumpCard">
         <view class="fk_staffCollect_item_left">
           <view class="fk_staffCollect_item_img">
-            <image style="width:100%;height:100%;" mode="aspectFill" src="{{staticDomain}}/{{item.companyLogoUrl}}"></image>
+            <image style="width:100%;height:100%;" mode="aspectFill" src="{{config.domain}}/{{item.avatarPhoto}}"></image>
           </view>
           <view class="fk_staffCollect_item_info">
-            <view class="fk_staffCollect_item_info_name">名片收藏：{{item.companyName}}</view>
-            <view class="fk_staffCollect_item_info_opt" catchtap="onCancelstaffCollect">
-              <view class="fk_staffCollect_item_info_opt_icon iconfont icon-start1"></view>
-              <view class="fk_staffCollect_item_info_opt_text">取消收藏</view>
+            <view class="fk_staffCollect_item_info_name">名片收藏：{{item.name}}</view>
+            <view class="fk_staffCollect_item_info_opt">
+              <view style="display:flex" data-item="{{item}}" data-index="{{index}}" catchtap="onCancelStaffCollect">
+                <view class="fk_staffCollect_item_info_opt_icon iconfont icon-start1"></view>
+                <view class="fk_staffCollect_item_info_opt_text">取消收藏</view>
+              </view>
             </view>
           </view>
         </view>
@@ -21,4 +23,5 @@
     </view>
   </view>
   <tab-bar class="fk_tabBar"></tab-bar>
+  <van-toast id="van-toast" />
 </view> 

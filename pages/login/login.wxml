@@ -1,0 +1,6 @@
+<view class="fk_page">
+  <view class="fk_login">
+    <button catchtap="onLogin">登录测试</button>
+  </view>
+  <van-toast id="van-toast" />
+</view>

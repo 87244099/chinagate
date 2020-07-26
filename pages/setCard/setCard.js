@@ -21,6 +21,19 @@ Page({
       provinceIndex:-1,
       cityIndex:-1,
       countryIndex: -1,
+    },
+    for: {
+      name: "",
+      phone:"",
+      addrInfo: {
+        provinceCode: -1,
+        cityCode: -1,
+        countryCode: -1,
+      },
+      wecharAcct:"",
+      qqAcct: "",
+      email: "",
+      description: ""
     }
   },
 
@@ -293,14 +306,59 @@ Page({
 
   },
   onAreaPickerChange(){},
-
-  
-  // onProvinceChange(){},
-  // onCityChange(){},
-  // onCountryChange(){}
   onAreaPopupClose(){
     this.setData({
       "setting.areaPickerOpened": false
+    })
+  },
+  onSubmitForm(){
+    Toast.loading({
+      message: "保存成功...",
+      duration: 0
+    });
+    let form = this.data.setting.form;
+    let data = Object.assign({}, form);
+    data.addrInfo = JSON.stringify(form.addrInfo);
+    Fai.request({
+      url: "/ajax/user/userCollection?cmd=setUserCollectInfo",
+      method:"POST",
+      header:{
+        "Content-Type":"multipart/form-data",
+        "Accept":"application/json",
+      },
+      data: data,
+      beforeConsume:Toast.clear,
+      success(response){
+        let result = response.data;
+        if(result.success){
+          Toast.success(result.msg);
+        }else{
+          Toast.fail(result.msg || "网络繁忙，请稍后重试");
+        }
+      },
+      fail(){
+        Toast.fail("网络繁忙，请稍后重试");
+      }
+    })
+  },
+  onUploadHeadImg(){
+    wx.chooseImage({
+      success (res) {
+        debugger;
+        const tempFilePaths = res.tempFilePaths
+        wx.uploadFile({
+          url: config.domain + '/upload', //仅为示例，非真实的接口地址
+          filePath: tempFilePaths[0],
+          name: 'file',
+          formData: {
+            'user': 'test'
+          },
+          success (res){
+            const data = res.data
+            //do something
+          }
+        })
+      }
     })
   }
 })

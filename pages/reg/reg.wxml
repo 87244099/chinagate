@@ -1,0 +1,40 @@
+<view class="fk_reg">
+  <view class="fk_reg_header">
+    <view class="fk_reg_header_logo">
+      <image style="width:100%;height:100%" src="{{staticDomain}}/Register_files/logo.png"></image>
+    </view>
+    <view class="fk_reg_header_text">欢迎注册中出网会员</view>
+  </view>
+  <view class="fk_reg_form">
+    <van-cell-group>
+      <van-field
+        value="{{ setting.form.name }}"
+        center
+        clearable
+        label=""
+        placeholder="请输入名称"
+        border="{{ false }}"
+
+        data-field="name"
+        bind:blur="onFieldBlur"
+      >
+      </van-field>
+      <van-field
+        value="{{ setting.form.phone }}"
+        center
+        clearable
+        label=""
+        placeholder="请输入名称"
+        border="{{ false }}"
+        use-button-slot
+
+        data-field="phone"
+        bind:blur="onFieldBlur"
+      > 
+        <button slot="button" class="" open-type="getPhoneNumber" bindgetphonenumber="getphonenumber">获取手机号</button>
+      </van-field>
+    </van-cell-group>
+    <van-button type="info" block catchtap="onReg">确定</van-button>
+    <van-toast id="van-toast" />
+  </view>
+</view>

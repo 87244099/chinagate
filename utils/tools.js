@@ -30,5 +30,6 @@ function delay(handler, time) {
 }
 
 module.exports = {
-  delay
+  delay,
+  formatTime
 }

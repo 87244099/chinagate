@@ -1,5 +1,3 @@
-let scene;
-
 //index.js
 //获取应用实例
 const app = getApp();
@@ -28,8 +26,8 @@ Page({
     },
     staticDomain: config.staticDomain,
     bannerList: [
-      config.staticDomain + "/Content/Images/banner1.jpg",
-      config.staticDomain + "/Content/Images/banner2.jpg",
+      config.wwwwStaticDomain + "/Content/Images/banner1.jpg",
+      config.wwwwStaticDomain + "/Content/Images/banner2.jpg",
     ],
     globalData: {}
   },
@@ -44,17 +42,17 @@ Page({
     
     scene = decodeURIComponent(options.scene)
 
-    Fai.getQrCode("pages/index/index", scene);
+    // Fai.getQrCode("pages/index/index", scene);
 
-    Fai.login();
+    // Fai.login();
 
-    (async()=>{
-      let globalData = await Fai.getGlobalData();
-      console.log("globalData", globalData);
-      this.setData({
-        globalData: globalData
-      })
-    })();
+    // (async()=>{
+    //   let globalData = await Fai.getGlobalData();
+    //   console.log("globalData", globalData);
+    //   this.setData({
+    //     globalData: globalData
+    //   })
+    // })();
   },
   getUserInfo: function(e) {
     console.log(e)

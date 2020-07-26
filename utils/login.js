@@ -1,5 +1,4 @@
 
-const requestUtils = require("./request");
 
 async function getLoginCodeNullIsEmpty(){
   return new Promise((resolve, reject)=>{
@@ -25,30 +24,8 @@ async function checkSession(){
 }
 
 
-async function login(){
-  let code = await getLoginCodeNullIsEmpty();
-  return new Promise((resolve, reject)=>{
-    requestUtils.request({
-      url:"/ajax/logAction/action?cmd=login",
-      data: {
-        code: code
-      },
-      success(response){
-        let result = response.data;
-        if(result.success){
-          resolve(result);
-        }else{
-          reject(result);
-        }
-      },
-      fail(){
-        reject();
-      }
-    })
 
-  });
-}
 
 module.exports = {
-  login
+  getLoginCodeNullIsEmpty
 }
