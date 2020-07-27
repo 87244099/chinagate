@@ -5,5 +5,6 @@ module.exports = {
   ...require("./request.js"),
   ...require("./cache.js"),
   ...require("./login"),
+  ...require("./page")
 }
 

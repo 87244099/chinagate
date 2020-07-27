@@ -4,6 +4,6 @@
     <view class="fk_newsDetail_pubTime">发布时间：{{setting.newsInfo.pubTime}}</view>
     <wxparser rich-text="{{setting.newsInfo.content}}" bind:tapImg="tapImg" bind:tapLink="tapLink"/>
   </view>
-  <tab-bar class="fk_tabBar"></tab-bar>
+  <tab-bar class="fk_tabBar" rollbackVisible="{{_commPageConfigData.rollbackVisible}}"></tab-bar>
   <van-toast id="van-toast" />
 </view>

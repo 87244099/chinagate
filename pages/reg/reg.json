@@ -3,6 +3,5 @@
     "van-button": "@vant/weapp/button/index",
     "van-toast": "@vant/weapp/toast/index",
     "van-field": "@vant/weapp/field/index"
-  },
-  "navigationBarTitleText": "注册"
+  }
 }

@@ -1,6 +1,7 @@
 // pages/productCollect/productCollect.js
 const app = getApp();
 const Fai = require("../../utils/util");
+const Ajax = require("../../ajax/index");
 const config = require("../../utils/config");
 Page({
 
@@ -23,6 +24,7 @@ Page({
    */
   onLoad: function (options) {
     this.loadCollectedProducts();
+    Ajax.setNormalTitle("productCollect");
   },
 
   /**

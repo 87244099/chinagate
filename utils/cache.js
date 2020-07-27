@@ -2,7 +2,7 @@
 let MemoryCache = (function(){
 
   let cache = {};
-  let lifeCycle = 5000;//默认缓存5s
+  let lifeCycle = 60 * 1000;//默认缓存1分钟
 
   return {
     getCache(key){
@@ -16,6 +16,9 @@ let MemoryCache = (function(){
         timestamp:new Date().getTime(),
         value: value
       }
+    },
+    clearCache(){
+      cache = {};//清空
     }
   }
 

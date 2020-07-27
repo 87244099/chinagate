@@ -1,6 +1,7 @@
 // pages/setCard/setCard.js
 const app = getApp();
 const Fai = require("../../utils/util");
+const Ajax = require("../../ajax/index");
 const config = require("../../utils/config");
 import Toast from "../../miniprogram_npm/@vant/weapp/toast/toast";
 Page({
@@ -21,26 +22,32 @@ Page({
       provinceIndex:-1,
       cityIndex:-1,
       countryIndex: -1,
+
+      cardForm: {
+        memberName: "",
+        region: {
+          provinceCode: -1,
+          cityCode: -1,
+          countryCode: -1,
+        },
+        weChat:"",
+        qq: "",
+        memberEmail: "",
+        personalIntroduction: "",
+        address: ""
+      }
     },
-    for: {
-      name: "",
-      phone:"",
-      addrInfo: {
-        provinceCode: -1,
-        cityCode: -1,
-        countryCode: -1,
-      },
-      wecharAcct:"",
-      qqAcct: "",
-      email: "",
-      description: ""
-    }
+    
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    (async ()=>{
+      let res = await Ajax.getMemberInfo();
+      console.log("res", res);
+    })();
   },
 
   /**
@@ -48,6 +55,16 @@ Page({
    */
   onReady: function () {
 
+  },
+  
+  onFieldBlur(event){
+    let dataset = event.currentTarget.dataset;
+    let field = dataset.field;
+    let value = event.detail.value;
+    console.log(field, value);
+    this.setData({
+      [`setting.cardForm.${field}`]:value
+    });
   },
 
   /**
@@ -92,24 +109,6 @@ Page({
 
   },
   
-  submitForm() {
-    this.selectComponent('#form').validate((valid, errors) => {
-        console.log('valid', valid, errors)
-        if (!valid) {
-            const firstError = Object.keys(errors)
-            if (firstError.length) {
-                this.setData({
-                    error: errors[firstError[0]].message
-                })
-
-            }
-        } else {
-            wx.showToast({
-                title: '校验通过'
-            })
-        }
-    })
-  },
   reback(){
     wx.navigateBack({
       complete: (res) => {},
@@ -224,7 +223,9 @@ Page({
     })
   },
   onSelectProvince: async function(){
-    await this.loadProvince();
+    await this.loadProvince().catch((err)=>{
+      console.log("err", err);
+    });
     let setting = this.data.setting;
     this.setData({
       "setting.areaPickerOpened": true,
@@ -311,14 +312,14 @@ Page({
       "setting.areaPickerOpened": false
     })
   },
-  onSubmitForm(){
+  onCardFormSubmit(){
     Toast.loading({
       message: "保存成功...",
       duration: 0
     });
-    let form = this.data.setting.form;
-    let data = Object.assign({}, form);
-    data.addrInfo = JSON.stringify(form.addrInfo);
+    let cardForm = this.data.setting.cardForm;
+    let data = Object.assign({}, cardForm);
+    data.region = JSON.stringify(cardForm.region);
     Fai.request({
       url: "/ajax/user/userCollection?cmd=setUserCollectInfo",
       method:"POST",
@@ -343,19 +344,20 @@ Page({
   },
   onUploadHeadImg(){
     wx.chooseImage({
+      count: 1,
+      sizeType: ['original', 'compressed'],
+      sourceType: ['album', 'camera'],
       success (res) {
-        debugger;
         const tempFilePaths = res.tempFilePaths
+        console.log("tempFilePaths", tempFilePaths);
         wx.uploadFile({
-          url: config.domain + '/upload', //仅为示例，非真实的接口地址
+          url: config.domain + '/ajax/user/userInfo?cmd=uploadHeadImg', //仅为示例，非真实的接口地址
           filePath: tempFilePaths[0],
-          name: 'file',
-          formData: {
-            'user': 'test'
-          },
+          name: 'avatarPhotoFile',
           success (res){
             const data = res.data
             //do something
+            console.log("data", data);
           }
         })
       }

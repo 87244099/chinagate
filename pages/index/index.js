@@ -2,9 +2,10 @@
 //获取应用实例
 const app = getApp();
 const Fai = require("../../utils/util");
+const Ajax = require("../../ajax/index");
 const config = require("../../utils/config");
 import Toast from "../../miniprogram_npm/@vant/weapp/toast/toast";
-Page({
+Page(Fai.mixin(Fai.commPageConfig, {
   data: {
     list: [{
       "text": "对话",
@@ -39,20 +40,19 @@ Page({
   },
   onLoad: function (options) {
     this.loadNextArticles();
-    
-    scene = decodeURIComponent(options.scene)
 
     // Fai.getQrCode("pages/index/index", scene);
 
     // Fai.login();
 
-    // (async()=>{
-    //   let globalData = await Fai.getGlobalData();
-    //   console.log("globalData", globalData);
-    //   this.setData({
-    //     globalData: globalData
-    //   })
-    // })();
+    (async()=>{
+      let globalData = await Ajax.getGlobalData();
+      this.setData({
+        globalData: globalData,
+        bannerList: globalData.carouselList
+      });
+      Ajax.setNormalTitle("platformIndex");
+    })();
   },
   getUserInfo: function(e) {
     console.log(e)
@@ -107,4 +107,4 @@ Page({
       phoneNumber: this.data.globalData.hotline,
     })
   }
-})
+}));

@@ -4,7 +4,7 @@
   <view class="fk_indexCompany">
     <view class="fk_indexCompany_banner">
       <swiper style="height:100%;" indicator-dots="true"
-        indicator-active-color="#0062d7"
+        indicator-active-color="{{pageData.companyInfo.themeColor}}"
         autoplay="true" interval="3000" duration="500" circular="true">
         <block wx:for="{{pageData.carouselList}}" wx:key="*this">
           <swiper-item>
@@ -15,21 +15,21 @@
     </view>
     <view class="fk_indexCompany_func">
       <view class="fk_indexCompany_func_list">
-        <view class="fk_indexCompany_func_item" data-phone="{{pageData.companyInfo.companyPhone}}" catchtap="callPhone">
-          <view class="fk_indexCompany_func_item_icon iconfont icon-dianhua"></view>
-          <view class="fk_indexCompany_func_item_text">呼叫</view>
+        <view class="fk_indexCompany_func_item">
+          <view class="fk_indexCompany_func_item_icon iconfont icon-dianhua" data-phone="{{pageData.companyInfo.companyPhone}}" catchtap="callPhone" style="background-color:{{pageData.companyInfo.themeColor}}"></view>
+          <view class="fk_indexCompany_func_item_text">咨询</view>
         </view>
         <view class="fk_indexCompany_func_item">
-          <view class="fk_indexCompany_func_item_icon iconfont icon-zhuanfa"></view>
-          <view class="fk_indexCompany_func_item_text">转发</view>
+          <view class="fk_indexCompany_func_item_icon iconfont icon-map" catchtap="callMap" style="background-color:{{pageData.companyInfo.themeColor}}"></view>
+          <view class="fk_indexCompany_func_item_text">导航</view>
         </view>
         <view class="fk_indexCompany_func_item">
-          <view class="fk_indexCompany_func_item_icon iconfont icon-start"></view>
+          <view class="fk_indexCompany_func_item_icon iconfont icon-start" style="background-color:{{pageData.companyInfo.themeColor}}"></view>
           <view class="fk_indexCompany_func_item_text">收藏</view>
         </view>
         <view class="fk_indexCompany_func_item">
-          <view class="fk_indexCompany_func_item_icon iconfont icon-liaotian"></view>
-          <view class="fk_indexCompany_func_item_text">聊天</view>
+          <view class="fk_indexCompany_func_item_icon iconfont icon-erweima" style="background-color:{{pageData.companyInfo.themeColor}}"></view>
+          <view class="fk_indexCompany_func_item_text">企业码</view>
         </view>
       </view>
     </view>
@@ -57,13 +57,13 @@
     </view> -->
     <view class="fk_indexCompany_productIntro">
       <view class="fk_indexCompany_productIntro_bigTitle">
-        <view class="fk_indexCompany_productIntro_bigTitle_text">产品展示</view>
+        <view class="fk_indexCompany_productIntro_bigTitle_text" style="color:{{pageData.companyInfo.themeColor}}">产品展示</view>
         <view class="fk_indexCompany_productIntro_bigTitle_desc">PRODUCT</view>
       </view>
 
       <view class="fk_indexCompany_productIntro_group" wx:for-item="group" wx:for="{{pageData.productGroupList}}">
         <view class="fk_indexCompany_productIntro_group_title">
-          <view class="fk_indexCompany_productIntro_group_title_text">{{group.productTypeName}}</view>
+          <view class="fk_indexCompany_productIntro_group_title_text" style="border-color:{{pageData.companyInfo.themeColor}}">{{group.productTypeName}}</view>
           <navigator url="/pages/productCenter/productCenter" open-type="redirect" class="fk_indexCompany_productIntro_group_title_arrow">更多></navigator>
         </view>
         <view class="fk_indexCompany_productIntro_group_main">
@@ -109,7 +109,7 @@
     </view>
     <view class="fk_indexCompany_about">
       <view class="fk_indexCompany_productIntro_bigTitle">
-        <view class="fk_indexCompany_productIntro_bigTitle_text">关于我们</view>
+        <view class="fk_indexCompany_productIntro_bigTitle_text" style="color:{{pageData.companyInfo.themeColor}}">关于我们</view>
         <view class="fk_indexCompany_productIntro_bigTitle_desc">ABOUT</view>
       </view>
       <view>
@@ -118,7 +118,7 @@
     </view>
     <view class="fk_indexCompany_contact">
       <view class="fk_indexCompany_productIntro_bigTitle">
-        <view class="fk_indexCompany_productIntro_bigTitle_text">联系我们</view>
+        <view class="fk_indexCompany_productIntro_bigTitle_text" style="color:{{pageData.companyInfo.themeColor}}">联系我们</view>
         <view class="fk_indexCompany_productIntro_bigTitle_desc">CONTACT</view>
       </view>
       <view class="fk_indexCompany_contact_message">
@@ -134,6 +134,6 @@
       </view>
     </view>
   </view>
-  <tab-bar class="fk_tabBar" type="company"></tab-bar>
+  <tab-bar class="fk_tabBar" type="company" style="background-color:{{pageData.companyInfo.themeColor}}" rollbackVisible="{{_commPageConfigData.rollbackVisible}}"></tab-bar>
   <van-toast id="van-toast" />
 </view>

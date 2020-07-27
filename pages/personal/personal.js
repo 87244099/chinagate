@@ -5,7 +5,7 @@ const Ajax = require("../../ajax/index");
 const config = require("../../utils/config");
 import Toast from "../../miniprogram_npm/@vant/weapp/toast/toast";
 
-Page({
+Page(Fai.mixin(Fai.commPageConfig, {
 
   /**
    * 页面的初始数据
@@ -108,4 +108,4 @@ Page({
 
     Toast.clear();
   }
-})
+}));

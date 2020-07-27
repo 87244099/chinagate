@@ -3,7 +3,7 @@
 const Fai = require("../../utils/util");
 import Toast from "../../miniprogram_npm/@vant/weapp/toast/toast";
 
-Page({
+Page(Fai.mixin(Fai.commPageConfig, {
 
   /**
    * 页面的初始数据
@@ -23,6 +23,7 @@ Page({
       "setting.newsId": parseInt(options.id) || -1
     });
     this.loadArticle();
+    
   },
   loadArticle: function(){
     // https://pf.86crk.com/ajax/article/article?cmd=getArticle&id=568
@@ -42,6 +43,9 @@ Page({
           this.setData({
             "setting.newsInfo":result.data
           });
+          wx.setNavigationBarTitle({
+            title: this.data.setting.newsInfo.title,
+          })
         }else{
           Toast.fail(result.msg || '网络繁忙，请稍后重试');
         }
@@ -105,4 +109,4 @@ Page({
     let url = event.detail;
     console.log("url", url);
   }
-})
+}));

@@ -48,7 +48,15 @@ async function getGlobalData(){
   })
 }
 
+async function setNormalTitle(key){
+  let globalData = await getGlobalData();
+  wx.setNavigationBarTitle({
+    title: globalData.titleData[key],
+  });
+}
+
 module.exports = {
   getQrCode,
-  getGlobalData
+  getGlobalData,
+  setNormalTitle
 }

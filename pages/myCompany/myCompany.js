@@ -1,6 +1,7 @@
 // pages/indexStaff/indexStaff.js
 const app = getApp();
 const Fai = require("../../utils/util");
+const Ajax = require("../../ajax/index");
 const config = require("../../utils/config");
 import Toast from "../../miniprogram_npm/@vant/weapp/toast/toast";
 
@@ -11,7 +12,8 @@ Page(Fai.mixin(Fai.commPageConfig, {
    */
   data: {
     setting: {
-      companyId: -1
+      companyId: -1,
+      memberInfo:{}
     },
     pageData: {},
     staticDomain: config.staticDomain
@@ -21,14 +23,7 @@ Page(Fai.mixin(Fai.commPageConfig, {
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({
-      "setting.companyId": parseInt(options.id) || -1
-    })
-    if(this.data.setting.companyId>=0){
-      this.loadIndexCompanyPageData();
-    }else{
-      Toast.fail("该企业不存在");
-    }
+    this.loadMyCompanyPageData();
   },
 
   /**
@@ -79,31 +74,55 @@ Page(Fai.mixin(Fai.commPageConfig, {
   onShareAppMessage: function () {
 
   },
-  loadIndexCompanyPageData: function(){
+  loadMyCompanyPageData: async function(){
+
     Toast.loading({
       message: "加载中...",
       duration: 0
     });
-    Fai.request({
-      url: "/ajax/company/company?cmd=getCompanyBIndexPageData&id="+this.data.setting.companyId,
-      beforeConsume:Toast.clear,
-      success:(response)=>{
-        let result = response.data;
-        if(result.success){
-          this.setData({
-            "pageData":result.data
-          });
-          wx.setNavigationBarTitle({
-            title: this.data.pageData.companyInfo.companyName,
-          })
-        }else{
-          Toast.fail(result.msg || '网络繁忙，请稍后重试');
-        }
-      },
-      fail:()=>{
-        Toast.fail('网络繁忙，请稍后重试');
+
+    try{
+      let response = await Ajax.getMemberInfo();
+      let memberInfo = response.data.data;
+      this.setData({
+        "setting.companyId": memberInfo.merchantForLevelAID,
+        "setting.memberInfo": memberInfo
+      });
+    }catch(errResponse){
+      if(errResponse){
+        Toast.fail(errResponse.msg);
+      }else{
+        Toast.fail("网络繁忙,请稍后重试");
       }
-    });
+      return;
+    }
+
+    if(this.data.setting.companyId>=0){
+
+      Fai.request({
+        url: "/ajax/company/company?cmd=getCompanyBIndexPageData&id="+this.data.setting.companyId,
+        beforeConsume:Toast.clear,
+        success:(response)=>{
+          let result = response.data;
+          if(result.success){
+            this.setData({
+              "pageData":result.data
+            });
+          }else{
+            Toast.fail(result.msg || '网络繁忙，请稍后重试');
+          }
+        },
+        fail:()=>{
+          Toast.fail('网络繁忙，请稍后重试');
+        }
+      });
+    }else{
+      Toast.fail("该企业不存在");
+    }
+
+    
+
+
   
   },
   callPhone(event){

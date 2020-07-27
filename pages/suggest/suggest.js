@@ -2,6 +2,7 @@
 const app = getApp();
 const Fai = require("../../utils/util");
 const config = require("../../utils/config");
+const Ajax = require("../../ajax/index");
 import Toast from "../../miniprogram_npm/@vant/weapp/toast/toast";
 Page({
 
@@ -18,7 +19,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.subM
+    Ajax.setNormalTitle("suggest");
   },
 
   /**

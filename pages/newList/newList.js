@@ -2,9 +2,10 @@
 //获取应用实例
 const app = getApp();
 const Fai = require("../../utils/util");
+const Ajax = require("../../ajax/index");
 const config = require("../../utils/config");
 import Toast from "../../miniprogram_npm/@vant/weapp/toast/toast";
-Page({
+Page(Fai.mixin(Fai.commPageConfig,{
 
   /**
    * 页面的初始数据
@@ -25,6 +26,8 @@ Page({
    */
   onLoad: function (options) {
     this.loadNextArticles();
+
+    Ajax.setNormalTitle("tradeNews");
   },
 
   /**
@@ -113,4 +116,4 @@ Page({
   onReachBottom: function(){
     this.loadNextArticles();
   }
-})
+}));

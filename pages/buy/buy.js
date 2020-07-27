@@ -2,6 +2,7 @@
 
 const app = getApp();
 const Fai = require("../../utils/util");
+const Ajax = require("../../ajax/index");
 const config = require("../../utils/config");
 import Toast from "../../miniprogram_npm/@vant/weapp/toast/toast";
 Page({
@@ -23,7 +24,10 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {},
+  onLoad: function (options) {
+    
+    Ajax.setNormalTitle("buy");
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -113,6 +117,6 @@ Page({
     let value = event.detail.value;
     this.setData({
       [`setting.form.${field}`]:value
-    })
+    });
   },
 })

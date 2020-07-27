@@ -3,6 +3,7 @@
     "mp-tabbar": "weui-miniprogram/tabbar/tabbar",
     "tab-bar": "/components/tab-bar/tab-bar",
     "van-toast": "@vant/weapp/toast/index",
-    "van-button": "@vant/weapp/button/index"
-  }
+    "wxparser": "plugin://wxparserPlugin/wxparser"
+  },
+  "navigationBarTitleText": "首页"
 }

@@ -4,14 +4,22 @@ const app = getApp();
 const Fai = require("../../utils/util");
 const config = require("../../utils/config");
 import Toast from "../../miniprogram_npm/@vant/weapp/toast/toast";
-Page({
+Page(Fai.mixin(Fai.commPageConfig, {
 
   /**
    * 页面的初始数据
    */
   data: {
     setting: {
-      productId: -1
+      productId: -1,
+      serviceForm:{
+        name:"",
+        phone:"",
+        content:"",
+        merchantForLevelAID:-1,
+        merchantForLevelBID:-1,
+        staffID:-1
+      }
     },
     pageData: {},
     staticDomain: config.staticDomain
@@ -117,5 +125,32 @@ Page({
         Toast.fail("网络繁忙，请稍后重试");
       }
     })
-  }
-})
+  },
+  onServiceFormSubmit(){
+    let data = this.data.setting.serviceForm;
+    Fai.request({
+      url:"/ajax/apply/applyForm?cmd=applyService",
+      method:"POST",
+      data: data,
+      success:(response)=>{
+        let result = response.data;
+        if(result.success){
+          Toast.success(result.msg);
+        }else{
+          Toast.fail(result.msg);
+        }
+      },
+      fail(){
+        Toast.fail("网络繁忙,请稍后重试");
+      }
+    })
+  },
+  onFieldBlur(event){
+    let dataset = event.currentTarget.dataset;
+    let field = dataset.field;
+    let value = event.detail.value;
+    this.setData({
+      [`setting.serviceForm.${field}`]:value
+    })
+  },
+}));

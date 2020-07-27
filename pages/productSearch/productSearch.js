@@ -2,7 +2,7 @@
 const app = getApp();
 const Fai = require("../../utils/util");
 const config = require("../../utils/config");
-Page({
+Page(Fai.mixin(Fai.commPageConfig, {
 
   /**
    * 页面的初始数据
@@ -15,7 +15,8 @@ Page({
       word: "",
       id:1,
       productList: []
-    }
+    },
+    config:config
   },
 
   /**
@@ -136,5 +137,5 @@ Page({
         
       }
     }
-  }),
-})
+  })
+}));

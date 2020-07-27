@@ -74,7 +74,10 @@ Page({
   loadPageData(){
     wx.showLoading({
       title: '加载中...',
-    })
+    });
+
+    
+
     Fai.request({
       url:"/ajax/product/product?cmd=getProductCenterPageData&id=1",
       complete(){

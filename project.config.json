@@ -29,7 +29,7 @@
 		"userConfirmedUseCompilerModuleSwitch": false
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.8.0",
+	"libVersion": "2.11.1",
 	"appid": "wx41ef0a04dcd2c3ad",
 	"projectname": "chinagate",
 	"debugOptions": {
@@ -77,10 +77,10 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 2,
 					"name": "个人名片详情",
 					"pathName": "pages/card/card",
-					"query": "",
+					"query": "wgd=666",
 					"scene": null
 				},
 				{
@@ -175,13 +175,6 @@
 					"scene": null
 				},
 				{
-					"id": 16,
-					"name": "员工名片首页",
-					"pathName": "pages/indexStaff/indexStaff",
-					"query": "companyId=1&staffID=5",
-					"scene": null
-				},
-				{
 					"id": 17,
 					"name": "企业首页",
 					"pathName": "pages/indexCompany/indexCompany",
@@ -199,6 +192,27 @@
 					"id": 19,
 					"name": "注册",
 					"pathName": "pages/reg/reg",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "附近商家",
+					"pathName": "pages/shops/shops",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我的企业",
+					"pathName": "pages/myCompany/myCompany",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "资讯",
+					"pathName": "pages/newList/newList",
 					"query": "",
 					"scene": null
 				}

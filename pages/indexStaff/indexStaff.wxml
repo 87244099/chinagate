@@ -126,6 +126,6 @@
       </view>
     </view>
   </view>
-  <tab-bar class="fk_tabBar" type="company"></tab-bar>
+  <tab-bar class="fk_tabBar" type="company" rollbackVisible="{{_commPageConfigData.rollbackVisible}}"></tab-bar>
   <van-toast id="van-toast" />
 </view>

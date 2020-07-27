@@ -8,7 +8,7 @@
       <view class="fk_productDetail_func_list">
         <view class="fk_productDetail_func_item">
           <view class="fk_productDetail_func_item_icon iconfont icon-dianhua"></view>
-          <view class="fk_productDetail_func_item_text">资讯</view>
+          <view class="fk_productDetail_func_item_text">咨询</view>
         </view>
         <view class="fk_productDetail_func_item">
           <view catchtap="setProductCollect" class="fk_productDetail_func_item_icon iconfont icon-start"></view>
@@ -44,26 +44,26 @@
           <view class="fk_productDetail_service_form_line">
             <view class="fk_productDetail_service_form_label">姓名</view>
             <view class="fk_productDetail_service_form_value">
-              <input placeholder="请输入姓名"></input>
+              <input placeholder="请输入姓名" data-field="name" bindtap="onFieldBlur"></input>
             </view>
           </view>
           <view class="fk_productDetail_service_form_line">
             <view class="fk_productDetail_service_form_label">手机</view>
             <view class="fk_productDetail_service_form_value">
-              <input placeholder="请输入手机"></input>
+              <input placeholder="请输入手机" data-field="phone" bindtap="onFieldBlur"></input>
             </view>
           </view>
           <view class="fk_productDetail_service_form_line">
             <view class="fk_productDetail_service_form_label">内容</view>
             <view class="fk_productDetail_service_form_value">
-              <textarea placeholder="请输入内容"></textarea>
+              <textarea placeholder="请输入内容" data-field="content" bindtap="onFieldBlur"></textarea>
             </view>
           </view>
-          <view class="fk_productDetail_service_form_button">确定提交</view>
+          <view class="fk_productDetail_service_form_button" catchtap="onServiceFormSubmit">确定提交</view>
         </view>
       </view>
     </view>
   </view>
-  <tab-bar class="fk_tabBar"></tab-bar>
+  <tab-bar class="fk_tabBar" type="company" rollbackVisible="{{_commPageConfigData.rollbackVisible}}"></tab-bar>
   <van-toast id="van-toast" />
 </view>

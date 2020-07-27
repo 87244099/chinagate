@@ -49,6 +49,7 @@
 .fk_shopCollect_item_info_opt{
   display: flex;
   align-items: center;
+  max-width: 150rpx;
 }
 .fk_shopCollect_item_info_opt_icon{
   font-size: 32rpx;

@@ -11,6 +11,10 @@ Component({
     readonly: {
       type: Boolean,
       value: false
+    },
+    rollbackVisible: {
+      type:Boolean,
+      value: false
     }
   },
   /**

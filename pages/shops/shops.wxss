@@ -1,1 +1,67 @@
 /* pages/shops/shops.wxss */
+@import "/icons.wxss";
+
+.fk_shops_item{
+  display: flex;
+  padding: 50rpx 30rpx;
+  background-color: #fff;
+}
+.fk_shops_item{
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  justify-content: center;
+  flex-direction: row;
+}
+.fk_shops_item_right{
+  width: 30rpx;
+}
+.fk_shops_item_left{
+  flex: 1;
+  display: flex;
+}
+.fk_shops_item_img{
+  width: 140rpx;
+  height: 140rpx;
+  /* margin-right: 25px; */
+  border-radius: 50%;
+  background-color: #999999;
+}
+.fk_shops_item_info{
+  flex: 1;
+  padding-left: 50rpx;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.fk_shops_item_info_name{
+  font-size: 36rpx;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 410rpx;
+}
+.fk_shops_item_info_opt{
+  display: flex;
+  align-items: center;
+}
+.fk_shops_item_info_opt_icon{
+  font-size: 32rpx;
+  color: yellow;
+}
+.fk_shops_item_info_opt_text{
+  font-size: 24rpx;
+}
+
+.fk_shops_item_right_icon::after{
+  font-family: "iconfont" !important;
+  content: "\e609";
+  width: 30rpx;
+  height: 100%;
+  color: #8c8c8c;
+  font-size: 30rpx;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  /* margin-right: 10px; */
+}

@@ -1,26 +1,26 @@
-/* pages/indexCompany/indexCompany.wxss */
+/* pages/myCompany/myCompany.wxss */
 @import "/icons.wxss";
 
-.fk_indexCompany{
+.fk_myCompany{
   background-color: #f0f0f0;
 }
-.fk_indexCompany_header{
+.fk_myCompany_header{
   padding: 30rpx;
   background-color: #fff;
 }
-.fk_indexCompany_header_name{
+.fk_myCompany_header_name{
   display: block;
     font-size: 48rpx;
     font-weight: bold;
 }
-.fk_indexCompany_header_job{
+.fk_myCompany_header_job{
   display: block;
   font-size: 34rpx;
   color: #8f8f8f;
   margin-top: 10rpx;
 }
 
-.fk_indexCompany_func_list{
+.fk_myCompany_func_list{
   background-color: #fff;
   display: flex;
   justify-content: space-around;
@@ -29,12 +29,12 @@
   margin-top: 8rpx;
 }
 
-.fk_indexCompany_message{
+.fk_myCompany_message{
   background-color: #fff;
   padding: 30rpx 20rpx;
   margin-top: 8rpx;
 }
-.fk_indexCompany_message_line{
+.fk_myCompany_message_line{
   display: flex;
   align-items: center;
   font-size: 32rpx;
@@ -42,33 +42,34 @@
   line-height: 64rpx;
 
 }
-.fk_indexCompany_message_label{
+.fk_myCompany_message_label{
   width: 120rpx;
   text-align: right;
 }
 
-.fk_indexCompany_banner{
+.fk_myCompany_banner{
   height: 352rpx;
   background-color: #ccc;
   text-align: center;
 }
 
-.fk_indexCompany_productIntro{
+.fk_myCompany_productIntro{
   overflow: hidden;
   padding: 20rpx;
 }
 
-.fk_indexCompany_productIntro_bigTitle{
+.fk_myCompany_productIntro_bigTitle{
   text-align: center;
 }
-.fk_indexCompany_productIntro_bigTitle_text{
+.fk_myCompany_productIntro_bigTitle_text{
   font-size: 50rpx;
+  color: #0062d7;
   position: relative;
   display: inline-block;
 }
 
-.fk_indexCompany_productIntro_bigTitle_text::before,
-.fk_indexCompany_productIntro_bigTitle_text::after
+.fk_myCompany_productIntro_bigTitle_text::before,
+.fk_myCompany_productIntro_bigTitle_text::after
 {
   content: "";
   display: block;
@@ -80,14 +81,14 @@
   position: absolute;
   margin-left: -132rpx;
 }
-.fk_indexCompany_productIntro_bigTitle_text::after{
+.fk_myCompany_productIntro_bigTitle_text::after{
   left: auto;
   margin-left: unset;
   right: 0;
   margin-right: -132rpx;
 }
 
-.fk_indexCompany_productIntro_bigTitle_desc{
+.fk_myCompany_productIntro_bigTitle_desc{
   font-size: 52rpx;
   color: #8a8a8a;
   text-transform: uppercase;
@@ -95,7 +96,7 @@
   font-weight: bolder;
 }
 
-.fk_indexCompany_productIntro_group_title{
+.fk_myCompany_productIntro_group_title{
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
@@ -103,26 +104,26 @@
   margin-bottom: 30rpx;
   color: #333333;
 }
-.fk_indexCompany_productIntro_group_title_text{
+.fk_myCompany_productIntro_group_title_text{
   border-left: 8rpx solid #0062d7;
   padding-left: 10rpx;
   font-size: 40rpx;
   line-height: 1;
 }
 
-.fk_indexCompany_productIntro_group_title_arrow{
+.fk_myCompany_productIntro_group_title_arrow{
   color: #b8b8b8;
   font-size: 24rpx;
   display: block;
   width: auto;
   
 }
-.fk_indexCompany_productIntro_group_main_product_list{
+.fk_myCompany_productIntro_group_main_product_list{
   display: flex;
   align-items: flex-start;
   flex-wrap: wrap;
 }
-.fk_indexCompany_productIntro_group_main_product_item{
+.fk_myCompany_productIntro_group_main_product_item{
   width: 50%;
   padding-left: 10rpx;
   padding-right: 10rpx;
@@ -132,12 +133,12 @@
   box-sizing: border-box;
   min-width: 50%;
 }
-.fk_indexCompany_productIntro_group_main_product_item_img{
+.fk_myCompany_productIntro_group_main_product_item_img{
   height: 106px;
   background-color: #ccc;
 }
 
-.fk_indexCompany_productIntro_group_main_product_item_name{
+.fk_myCompany_productIntro_group_main_product_item_name{
   text-align: center;
   font-size: 28rpx;
   padding-top: 10rpx;
@@ -146,32 +147,32 @@
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-.fk_indexCompany_productIntro_group_main_product_priceInfo_line{
+.fk_myCompany_productIntro_group_main_product_priceInfo_line{
   font-size: 26rpx;
   color: #ff5000;
   display: flex;
 }
 
-.fk_indexCompany_contact_message_line{
+.fk_myCompany_contact_message_line{
   font-size: 32rpx;
   color: #8f8f8f;
   line-height: 64rpx;
 }
 
-.fk_indexCompany_about, 
-.fk_indexCompany_contact{
+.fk_myCompany_about, 
+.fk_myCompany_contact{
   overflow: hidden;
   padding: 20rpx;
   background-color: #fff;
   margin-top: 10rpx;
 }
 
-.fk_indexCompany_func_item{
+.fk_myCompany_func_item{
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
-.fk_indexCompany_func_item_icon{
+.fk_myCompany_func_item_icon{
   display: block;
   width: 84rpx;
   height: 84rpx;
@@ -183,7 +184,7 @@
   border-radius: 50%;
   color: #ececec;
 }
-.fk_indexCompany_func_item_text{
+.fk_myCompany_func_item_text{
   display: block;
     color: #8f8f8f;
     text-align: center;

@@ -4,12 +4,12 @@
     <swiper style="height:100%;" indicator-dots="true"
       indicator-active-color="#0062d7"
       autoplay="true" interval="3000" duration="500" circular="true">
-      <block wx:for="{{bannerList}}" wx:key="*this">
+      <block wx:for="{{bannerList}}">
         <swiper-item>
           <image style="width:100%;height:100%" mode="aspectFill" src="{{item}}"/>
         </swiper-item>
       </block>
-    </swiper>
+    </swiper><!--  -->
   </view>
   <view class="fk_main">
     <view class="fk_main_func_list">
@@ -17,10 +17,10 @@
         <view class="iconfont icon-mingpian  fk_main_func_item_icon" style="color:#3f51b5"></view>
         <view class="fk_main_func_item_text">我的名片</view>
       </navigator>
-      <view class="fk_main_func_item" open-type="redirect">
+      <navigator class="fk_main_func_item" url="/pages/myCompany/myCompany"  open-type="redirect">
         <view class="iconfont icon-qiye  fk_main_func_item_icon" style="color:#795548"></view>
         <view class="fk_main_func_item_text">我的企业</view>
-      </view>
+      </navigator>
       <navigator class="fk_main_func_item" open-type="redirect" url="/pages/newList/newList">
         <view class="iconfont icon-liebiaodaohang_zixun  fk_main_func_item_icon" style="color:#17abe3"></view>
         <view class="fk_main_func_item_text">行业资讯</view>
@@ -33,10 +33,10 @@
         <view class="iconfont icon-weixiu  fk_main_func_item_icon" style="color:green"></view>
         <view class="fk_main_func_item_text">我要维修</view>
       </navigator>
-      <view class="fk_main_func_item" open-type="redirect">
+      <navigator url="/pages/shops/shops" class="fk_main_func_item" open-type="redirect">
         <view class="iconfont icon-fujin  fk_main_func_item_icon" style="color:red"></view>
         <view class="fk_main_func_item_text">附近商家</view>
-      </view>
+      </navigator>
       <navigator url="/pages/suggest/suggest" class="fk_main_func_item" open-type="redirect">
         <view class="iconfont icon-tousu  fk_main_func_item_icon" style="color:#760000"></view>
         <view class="fk_main_func_item_text">投诉建议</view>
@@ -68,6 +68,6 @@
       </view>
     </view>
   </view>
-  <tab-bar class="fk_tabBar"></tab-bar>
+  <tab-bar class="fk_tabBar" rollbackVisible="{{_commPageConfigData.rollbackVisible}}"></tab-bar>
   <van-toast id="van-toast" />
 </view>

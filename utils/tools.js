@@ -29,7 +29,33 @@ function delay(handler, time) {
   };
 }
 
+//保留页面间的函数继承引用
+function mixin(){
+  let objList = [...arguments];
+  let obj = {};
+  objList.forEach(item=>{
+    Object.keys(item).forEach(key=>{
+
+      let value = item[key];
+      let oldValue = obj[key];
+
+      if(value && oldValue && (value instanceof Function)&& (oldValue instanceof Function)){
+        obj[key] = function(){
+          value.apply(this, arguments);
+          oldValue.apply(this, arguments);
+        };
+      }else{
+        obj[key] = value;
+      }
+
+    })
+  }); 
+
+  return obj;
+}
+
 module.exports = {
   delay,
-  formatTime
+  formatTime,
+  mixin
 }

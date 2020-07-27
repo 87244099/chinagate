@@ -58,7 +58,7 @@
           <view class="iconfont icon-right"></view> 
         </view>
       </navigator>
-      <navigator class="fk_personal_section_item" url="/pages/indexCompany/indexCompany?companyId={{pageData.memberInfo.companyId}}&staffID={{pageData.memberInfo.staffID}}">
+      <navigator class="fk_personal_section_item" url="/pages/myCompany/myCompany">
         <view class="fk_personal_section_item_left">
           <view class="fk_personal_section_item_icon iconfont icon-yonghu1-copy" style="color: #daa520;"></view>
           <view class="fk_personal_section_item_text">我的公司</view>
@@ -69,6 +69,6 @@
       </navigator>
     </view>
   </view>
-  <tab-bar class="fk_tabBar"></tab-bar>
+  <tab-bar class="fk_tabBar" rollbackVisible="{{_commPageConfigData.rollbackVisible}}"></tab-bar>
   <van-toast id="van-toast" />
 </view>

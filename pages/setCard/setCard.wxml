@@ -13,11 +13,11 @@
       </view>
     </view>
     <mp-cells title="基本信息">
-      <mp-cell show-error prop="idcard" title="卡号" ext-class="">
-          <input bindinput="formInputChange" data-field="idcard" class="weui-input" placeholder="请输入您的姓名"/>
+      <mp-cell show-error prop="idcard" title="姓名" ext-class="">
+          <input bindblur="onFieldBlur" data-field="memberName" class="weui-input" placeholder="请输入您的姓名"/>
       </mp-cell>
       <mp-cell show-error prop="idcard" title="手机" ext-class="">
-          <input bindinput="formInputChange" data-field="idcard" class="weui-input" placeholder="请输入您的手机号"/>
+          <input disabled="true" class="weui-input" placeholder="请输入您的手机号"/>
       </mp-cell>
     </mp-cells>
     <mp-cells title="更多信息（选填）">
@@ -33,30 +33,31 @@
         </view>
       </mp-cell>
       <mp-cell show-error prop="idcard" title="地址" ext-class="">
-          <input bindinput="formInputChange" data-field="idcard" class="weui-input" placeholder="请输入您的地址"/>
+          <input bindblur="onFieldBlur" data-field="address" class="weui-input" placeholder="请输入您的地址"/>
       </mp-cell>
       <mp-cell show-error prop="idcard" title="微信号" ext-class="">
-          <input bindinput="formInputChange" data-field="idcard" class="weui-input" placeholder="请输入您的微信号"/>
+          <input bindblur="onFieldBlur" data-field="weChat" class="weui-input" placeholder="请输入您的微信号"/>
       </mp-cell>
       <mp-cell show-error prop="idcard" title="QQ号" ext-class="">
-          <input bindinput="formInputChange" data-field="idcard" class="weui-input" placeholder="请输入您的QQ号"/>
+          <input bindblur="onFieldBlur" data-field="qq" class="weui-input" placeholder="请输入您的QQ号"/>
       </mp-cell>
       <mp-cell show-error prop="idcard" title="邮箱" ext-class="">
-          <input bindinput="formInputChange" data-field="idcard" class="weui-input" placeholder="请输入您的邮箱"/>
+          <input bindblur="onFieldBlur" data-field="memberEmail" class="weui-input" placeholder="请输入您的邮箱"/>
       </mp-cell>
     </mp-cells>
     <view class="weui-cells__title">介绍简介</view>
     <view class="weui-cells weui-cells_after-title">
         <view class="weui-cell">
             <view class="weui-cell__bd">
-                <textarea class="weui-textarea" placeholder="请输入文本" style="height: 3.3em" />
+                <textarea data-field="personalIntroduction" bindblur="onFieldBlur" class="weui-textarea" placeholder="请输入文本" style="height: 3.3em" />
                 <!-- <view class="weui-textarea-counter">0/200</view> -->
             </view>
         </view>
     </view>
     <view class="weui-btn-area">
-        <button class="weui-btn" type="primary" bindtap="submitForm">确定</button>
+        <!-- <button class="weui-btn" type="primary" bindtap="submitForm">确定</button> -->
         <!-- <button class="weui-btn" bindtap="reback">返回</button> -->
+        <van-button type="primary" bindtap="onCardFormSubmit" block>确定</van-button>
     </view>
   </mp-form>
 

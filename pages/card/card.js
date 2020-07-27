@@ -27,6 +27,8 @@ Page({
     //   "setting.shareImgUrl": this.data.staticDomain+""
     // });
 
+    
+
     Fai.request({
       url: "/ajax/user/userCollection?cmd=getUserCollectInfo",
       data:{
@@ -42,7 +44,6 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
   },
 
   /**
@@ -83,8 +84,12 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-
+  onShareAppMessage: function(res) {
+    console.log("Abs", Fai.getCurrAbsPath());
+    return {
+      title: 'xxx小程序',
+      path: Fai.getCurrAbsPath(),
+    }
   },
   onShareMaskClick: function(){
     this.setData({

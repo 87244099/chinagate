@@ -20,6 +20,7 @@
     "pages/shopCollect/shopCollect",
     "pages/indexStaff/indexStaff",
     "pages/indexCompany/indexCompany",
+    "pages/myCompany/myCompany",
     "pages/staffCollect/staffCollect",
     "pages/reg/reg",
     "pages/login/login"

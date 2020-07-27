@@ -24,7 +24,7 @@ Page({
    */
   onLoad: function (options) {
     //获取手机号码
-    
+    Ajax.setNormalTitle("reg");
   },
 
   /**

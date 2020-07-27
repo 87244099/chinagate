@@ -1,5 +1,6 @@
 const app = getApp();
 const Fai = require("../../utils/util");
+const Ajax = require("../../ajax/index");
 const config = require("../../utils/config");
 import Toast from "../../miniprogram_npm/@vant/weapp/toast/toast";
 Page({
@@ -21,6 +22,7 @@ Page({
    */
   onLoad: function (options) {
     this.loadShopCollections();
+    Ajax.setNormalTitle("shopCollect");
   },
 
   /**
@@ -108,7 +110,31 @@ Page({
     })
   
   },
-  onCancelShopCollect: function(){
-    
+  onCancelShopCollect: function(event){
+    let company = event.currentTarget.dataset.company;
+
+    let data = {};
+    if(company.collectSubTypeID == 1){
+      data.merchantForLevelAID = company.merchantForLevelAID;
+    }else{
+      data.merchantForLevelBID = company.merchantForLevelBID;
+    }
+
+    Fai.request({
+      method:"POST",
+      url: "/ajax/company/companyCollect?cmd=setCompanyCollectCancel",
+      data:data,
+      success:(response)=>{
+        let result = response.data;
+        if(result.success){
+          Toast.success(result.msg);
+        }else{
+          Toast.fail(result.msg);
+        }
+      },
+      fail(){
+        Toast.fail("网络繁忙,请稍后重试");
+      }
+    })
   }
 })

@@ -11,6 +11,7 @@ async function login(){
       success(response){
         let result = response.data;
         if(result.success){
+          Fai.MemoryCache.clearCache();//清空缓存
           resolve(response);
         }else{
           reject(response);
