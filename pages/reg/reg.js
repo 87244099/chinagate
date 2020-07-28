@@ -25,6 +25,7 @@ Page({
   onLoad: function (options) {
     //获取手机号码
     Ajax.setNormalTitle("reg");
+    this.setCode();
   },
 
   /**
@@ -140,7 +141,34 @@ Page({
       [`setting.form.${field}`]:value
     })
   },
-  getphonenumber(){
-    console.log("getphonenumber", arguments);
+  async setCode(){
+    this.setData({
+      "setting.code": await Fai.getLoginCodeNullIsEmpty()
+    })
+  },
+  getphonenumber(event){
+    let detail = event.detail;
+    console.log("detail", detail);
+    let data = detail;
+    data.code = this.data.setting.code;
+    Fai.requestPost({
+      url:"/ajax/common/getCommData?cmd=parseWxPhone",
+      data: data,
+      afterConsume:this.setCode,
+      success:(response)=>{
+        let result = response.data;
+        if(result.success){
+          this.setData({
+            "setting.form.phone": result.data.phoneNumber
+          });
+          Toast.success(result.msg);
+        }else{
+          Toast.fail(result.msg);
+        }
+      },
+      fail(){
+        Toast.fail("网络繁忙，请稍后重试");
+      }
+    })
   }
 })

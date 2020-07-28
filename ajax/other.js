@@ -92,9 +92,6 @@ async function setUserCollect(memberId){
   });
 }
 
-async function loadWithToast(requestHandler){
-  return requestWithToast(requestHandler, "加载中...");
-};
 import Toast from "../miniprogram_npm/@vant/weapp/toast/toast";
 async function requestWithToast(requestHandler, message){
   if(message){
@@ -118,6 +115,11 @@ async function requestWithToast(requestHandler, message){
     }
   }
 }
+
+async function loadWithToast(requestHandler){
+  return requestWithToast(requestHandler, "加载中...");
+};
+
 
 async function setUserCollectCancel4Staff(memberId, staffId, companyId){
   return new Promise((resolve, reject)=>{

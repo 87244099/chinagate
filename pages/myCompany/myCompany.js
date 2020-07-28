@@ -76,49 +76,20 @@ Page(Fai.mixin(Fai.commPageConfig, {
   },
   loadMyCompanyPageData: async function(){
 
-    Toast.loading({
-      message: "加载中...",
-      duration: 0
-    });
 
-    try{
+    Ajax.loadWithToast(async()=>{
       let response = await Ajax.getMemberInfo();
       let memberInfo = response.data.data;
+      //如果拿不到，说明自己不是企业的员工
+      response = await Ajax.getCompanyAIndexPageData(memberInfo.merchantForLevelAID);
       this.setData({
+        "pageData":response.data.data,
         "setting.companyId": memberInfo.merchantForLevelAID,
         "setting.memberInfo": memberInfo
       });
-    }catch(errResponse){
-      if(errResponse){
-        Toast.fail(errResponse.msg);
-      }else{
-        Toast.fail("网络繁忙,请稍后重试");
-      }
-      return;
-    }
 
-    if(this.data.setting.companyId>=0){
-
-      Fai.request({
-        url: "/ajax/company/company?cmd=getCompanyBIndexPageData&id="+this.data.setting.companyId,
-        beforeConsume:Toast.clear,
-        success:(response)=>{
-          let result = response.data;
-          if(result.success){
-            this.setData({
-              "pageData":result.data
-            });
-          }else{
-            Toast.fail(result.msg || '网络繁忙，请稍后重试');
-          }
-        },
-        fail:()=>{
-          Toast.fail('网络繁忙，请稍后重试');
-        }
-      });
-    }else{
-      Toast.fail("该企业不存在");
-    }
+      return Promise.resolve(response);
+    });
 
     
 

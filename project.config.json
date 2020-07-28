@@ -101,7 +101,7 @@
 					"id": 5,
 					"name": "产品中心",
 					"pathName": "pages/productCenter/productCenter",
-					"query": "",
+					"query": "id=1",
 					"scene": null
 				},
 				{

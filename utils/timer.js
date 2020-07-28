@@ -8,18 +8,40 @@ let SecondTimer = (()=>{
 
   return {
     add(task){
-      taskList.push(task);
+      task = Array.isArray(task) ? task : [task];
+      taskList.push(...task);
     },
-    remove(task){
-      let index = taskList.indexOf(task);
-      if(index>=0){
-        taskList.splice(task, 1);
-      }
+    remove(task){//支持数组或单个传入的用法
+      task = Array.isArray(task) ? task : [task];
+      task.forEach(item=>{
+        let index = taskList.indexOf(item);
+        if(index>=0){
+          taskList.splice(index, 1);
+        }
+      })
+    },
+    clear(){
+      taskList = [];
     }
   }
 })();
 
 
+//函数节流
+function delay(handler, time) {
+  var timer = null;
+  let finalTime = time || 300;
+  return function () {
+    var args = arguments;
+    clearTimeout(timer);
+    let that = this;
+    timer = setTimeout(function () {
+      handler.apply(that, args);
+    }, finalTime);
+  };
+}
+
 module.exports = {
-  SecondTimer
+  SecondTimer,
+  delay
 }

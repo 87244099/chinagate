@@ -15,19 +15,6 @@ const formatNumber = n => {
 }
 
 
-//函数节流
-function delay(handler, time) {
-  var timer = null;
-  let finalTime = time || 300;
-  return function () {
-    var args = arguments;
-    clearTimeout(timer);
-    let that = this;
-    timer = setTimeout(function () {
-      handler.apply(that, args);
-    }, finalTime);
-  };
-}
 
 //保留页面间的函数继承引用
 function mixin(){
@@ -55,7 +42,6 @@ function mixin(){
 }
 
 module.exports = {
-  delay,
   formatTime,
   mixin
 }

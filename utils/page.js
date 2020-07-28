@@ -1,4 +1,6 @@
-const tools = require("./tools");
+const Typer = require("./typer");
+const Timer = require("./timer");
+
 function getCurrAbsPath(){
   let page = getCurrentPages()[getCurrentPages().length-1];
   let queryObject = page.options;
@@ -17,7 +19,7 @@ function getCurrPage(){
 
 // 所有页面共享的配置
 let commPageConfig = {
-  onPageScroll: tools.delay((event)=>{
+  onPageScroll: Timer.delay((event)=>{
     let scrollTop = event.scrollTop;
     let systemInfo = wx.getSystemInfoSync();
     let windowHeight = systemInfo.windowHeight;
@@ -36,7 +38,15 @@ let commPageConfig = {
       });
     }
 
-  }, 500)
+  }, 500),
+  onReady(){
+    Timer.SecondTimer.clear();
+  },
+  onUnload(){
+    let page = getCurrPage();
+    let taskList = Object.key(page).filter(key=>Typer.isFunction(page[key])).map(key=>page[key]);
+    Timer.SecondTimer.remove(taskList);//回收各个页面注入的定时任务
+  }
 }
 
 module.exports = {
