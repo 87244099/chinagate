@@ -43,10 +43,32 @@ async function getMemberInfo(){
     })
   });
 }
+async function getMemberInfoById(id){
+  return new Promise((resolve, reject)=>{
+    Fai.request({
+      url: "/ajax/logAction/action?cmd=getMemberInfoById",
+      data:{
+        memberId:id
+      },
+      success:(response)=>{
+        let result = response.data;
+        if(result.success){
+          resolve(response);
+        }else{
+          reject(response);
+        }
+      },
+      fail:()=>{
+        reject();
+      }
+    })
+  });
+}
 
 
 
 module.exports = {
   login,
-  getMemberInfo
+  getMemberInfo,
+  getMemberInfoById
 }

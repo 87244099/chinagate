@@ -39,6 +39,7 @@ Page(Fai.mixin(Fai.commPageConfig, {
     })
   },
   onLoad: function (options) {
+
     this.loadNextArticles();
 
     // Fai.getQrCode("pages/index/index", scene);
@@ -108,3 +109,5 @@ Page(Fai.mixin(Fai.commPageConfig, {
     })
   }
 }));
+
+

@@ -11,6 +11,8 @@ Page({
    */
   data: {
     setting: {
+      
+
       provinceList: [],
       cityList: [],
       countryList: [],
@@ -22,6 +24,8 @@ Page({
       provinceIndex:-1,
       cityIndex:-1,
       countryIndex: -1,
+
+      avatarPhotoPath: "",
 
       cardForm: {
         memberName: "",
@@ -38,15 +42,31 @@ Page({
       }
     },
     
+    pageData:{
+      cardInfo: {}
+    }
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    Toast.loading({
+      message:"加载中...",
+      duration: 0
+    });
     (async ()=>{
-      let res = await Ajax.getMemberInfo();
-      console.log("res", res);
+      try{
+        let res = await Ajax.getMemberInfo();
+        let memberInfo = res.data.data;
+        res = await Ajax.getUserCollectInfo(memberInfo.memberID);
+        this.setData({
+          "pageData.cardInfo":res.data.data.userInfo
+        });
+        Toast.clear();
+      }catch(errorResponse){
+        Toast.fail(errorResponse.msg);
+      }
     })();
   },
 
@@ -347,19 +367,35 @@ Page({
       count: 1,
       sizeType: ['original', 'compressed'],
       sourceType: ['album', 'camera'],
-      success (res) {
+      success :(res) =>{
         const tempFilePaths = res.tempFilePaths
         console.log("tempFilePaths", tempFilePaths);
-        wx.uploadFile({
+        let uploadFileTask = wx.uploadFile({
           url: config.domain + '/ajax/user/userInfo?cmd=uploadHeadImg', //仅为示例，非真实的接口地址
           filePath: tempFilePaths[0],
           name: 'avatarPhotoFile',
-          success (res){
-            const data = res.data
-            //do something
-            console.log("data", data);
+          success: (response)=>{
+            Toast.clear();
+            let result = response.data;
+            result = JSON.parse(result);
+            if(result.success){
+              //do something
+              this.setData({
+                "setting.avatarPhotoPath": result.data.avatarPhotoPath
+              });
+              Toast.success(result.msg);
+            }else{
+              Toast.fail(result.msg);
+            }
           }
-        })
+        });
+        uploadFileTask.onProgressUpdate((progress)=>{
+          console.log('progress', progress);
+          Toast.loading({
+            message:`图片正在上传...${progress.progress}%`,
+            duration: 0
+          });
+        });
       }
     })
   }

@@ -24,6 +24,8 @@
 }
 .fk_page{
   padding-bottom: 100rpx;
+  box-sizing: border-box;
+  min-height: 100vh;
 }
 
 van-toast{

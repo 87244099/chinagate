@@ -99,7 +99,14 @@ function trans4AutoLogin(option){
   return option;
 }
 
+function requestPost(option){
+  option = Object.assign({
+    method:"POST"
+  }, option);
+  return request(option);
+}
 
 module.exports = {
-  request
+  request,
+  requestPost
 }
