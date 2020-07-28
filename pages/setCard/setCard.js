@@ -358,6 +358,9 @@ Page({
             const data = res.data
             //do something
             console.log("data", data);
+          },
+          fail(){
+            console.log("fail", arguments);
           }
         })
       }
