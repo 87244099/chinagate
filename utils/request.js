@@ -27,6 +27,7 @@ function request(option){
       CookieUtils.cacheResponseCookie(response);//把response的cookie写入缓存
       settingOption.beforeConsume();
       settingOption.success(response);
+      settingOption.afterConsume();
     },
     fail(){
       // 重试机制
@@ -36,6 +37,7 @@ function request(option){
       }else{
         settingOption.beforeConsume();
         settingOption.fail(...arguments);
+        settingOption.afterConsume();
       }
       
     },
@@ -52,6 +54,7 @@ function assignOption(option){
     data: {},
     header: {},
     beforeConsume: noop,//在响应被消费之前触发
+    afterConsume: noop,//在响应被消费之后触发
     retryCount: 3,//请求重试机制（断网、服务器错误、超时)
     complete: noop,
     success: noop,
@@ -99,7 +102,14 @@ function trans4AutoLogin(option){
   return option;
 }
 
+function requestPost(option){
+  option = Object.assign({
+    method:"POST"
+  }, option);
+  return request(option);
+}
 
 module.exports = {
-  request
+  request,
+  requestPost
 }

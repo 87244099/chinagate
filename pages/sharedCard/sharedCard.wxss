@@ -1,15 +1,15 @@
 /* pages/card/card.wxss */
 @import "/icons.wxss";
 
-.fk_card{
+.fk_sharedCard{
   background-color: #ebebeb;
 
 }
-.fk_card_main{
+.fk_sharedCard_main{
   padding: 30rpx 40rpx;
   text-align: center;
 }
-.fk_card_main_imgWrap_img{
+.fk_sharedCard_main_imgWrap_img{
   display: block;
     width: 240rpx;
     height: 240rpx;
@@ -18,18 +18,18 @@
     margin: 0 auto;
     background-color: #ccc;
 }
-.fk_card_main_name{
+.fk_sharedCard_main_name{
   display: block;
     font-size: 80rpx;
 }
-.fk_card_main_desc{
+.fk_sharedCard_main_desc{
   display: block;
     font-size: 30rpx;
     color: #777;
     line-height: 1.8;
     margin-top: 20rpx;
 }
-.fk_card_func_list{
+.fk_sharedCard_func_list{
   align-items: center;
   display: flex;
   justify-content: space-around;
@@ -37,14 +37,14 @@
   padding: 26rpx 40rpx;
   background-color: #fff;
 }
-.fk_card_func_item{
+.fk_sharedCard_func_item{
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
   flex: 1;
 }
-.fk_card_func_item_icon{
+.fk_sharedCard_func_item_icon{
   display: block;
     width: 50rpx;
     height: 50rpx;
@@ -57,14 +57,14 @@
     padding: 26rpx;
     color: #ececec;
 }
-.fk_card_func_item_text{
+.fk_sharedCard_func_item_text{
   display: block;
   color: #8f8f8f;
   text-align: center;
   font-style: normal;
   margin-top: 10rpx;
 }
-.fk_card_func_info{
+.fk_sharedCard_func_info{
   padding: 30rpx 20rpx;
   font-size: 36rpx;
   color: #8f8f8f;
@@ -73,14 +73,14 @@
   background-color: #fff;
   padding-bottom: 0;
 }
-.fk_card_func_info_line{
+.fk_sharedCard_func_info_line{
   display: flex;
 }
-.fk_card_func_info_value{
+.fk_sharedCard_func_info_value{
   flex: 1;
 }
 
-.fk_card_share{
+.fk_sharedCard_share{
   position: fixed;
   width: 100%;
   height: 100%;

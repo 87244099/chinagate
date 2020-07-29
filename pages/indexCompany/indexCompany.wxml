@@ -64,7 +64,7 @@
       <view class="fk_indexCompany_productIntro_group" wx:for-item="group" wx:for="{{pageData.productGroupList}}">
         <view class="fk_indexCompany_productIntro_group_title">
           <view class="fk_indexCompany_productIntro_group_title_text" style="border-color:{{pageData.companyInfo.themeColor}}">{{group.productTypeName}}</view>
-          <navigator url="/pages/productCenter/productCenter" open-type="redirect" class="fk_indexCompany_productIntro_group_title_arrow">更多></navigator>
+          <navigator url="/pages/productCenter/productCenter?companyId={{setting.companyId}}" open-type="redirect" class="fk_indexCompany_productIntro_group_title_arrow">更多></navigator>
         </view>
         <view class="fk_indexCompany_productIntro_group_main">
           <view class="fk_indexCompany_productIntro_group_main_product_list">

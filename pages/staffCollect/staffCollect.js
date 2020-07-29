@@ -124,9 +124,8 @@ Page({
   //取消个人名片收藏
   setCardCollectCancel4Normal(item, index){
     let id = item.id;
-    Fai.request({
+    Fai.requestPost({
       url:"/ajax/user/userCollection?cmd=setUserCollectCancel",
-      method:"POST",
       data: {
         id:id
       },
@@ -150,25 +149,15 @@ Page({
   //取消员工名片收藏
   setCardCollectCancel4Staff(item, index){
     let id = item.id;
-    let staffId = item.staffId;
+    console.log("item", item);
 
-    Fai.request({
-      url:"/ajax/user/userCollection?cmd=setUserCollectCancel4Staff",
-      method:"POST",
-      data: {
-        id,
-        staffId
-      },
-      success: (response)=>{
-        let result = response.data;
-        if(result.success){
-          Toast.success(result.msg);
-          this.removeCard(index);
-        }else{
-          Toast.fail(result.msg || "网络繁忙,请稍后重试");
-        }
-      }
-    })
+    Ajax.requestWithToast(async()=>{
+      let response = await Ajax.getMemberInfoById(id);
+      let memberInfo = response.data.data;
+      response = await Ajax.setUserCollectCancel4Staff(memberInfo.memberID, memberInfo.staffID, memberInfo.merchantForLevelAID);
+      this.removeCard(index);
+      return Promise.resolve(response);
+    });
 
   },
   //跳转到对应的名片

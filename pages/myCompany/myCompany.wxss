@@ -49,13 +49,14 @@
 
 .fk_myCompany_banner{
   height: 352rpx;
-  background-color: #ccc;
   text-align: center;
+  background-color: #fff;
 }
 
 .fk_myCompany_productIntro{
   overflow: hidden;
   padding: 20rpx;
+  background-color: #fff;
 }
 
 .fk_myCompany_productIntro_bigTitle{

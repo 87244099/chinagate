@@ -1,10 +1,11 @@
 
 module.exports = {
-  ...require("./tools.js"),
-  ...require("./cookie.js"),
-  ...require("./request.js"),
-  ...require("./cache.js"),
+  ...require("./tools"),
+  ...require("./cookie"),
+  ...require("./request"),
+  ...require("./cache"),
   ...require("./login"),
-  ...require("./page")
+  ...require("./page"),
+  ...require("./timer")
 }
 

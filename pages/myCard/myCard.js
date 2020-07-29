@@ -15,6 +15,10 @@ Page({
     setting: {
       shared: false,
       shareMaskVisible: false,
+      memberId: -1
+    },
+    pageData:{
+      cardInfo:{}
     },
     staticDomain: config.staticDomain
   },
@@ -27,19 +31,25 @@ Page({
     //   "setting.shareImgUrl": this.data.staticDomain+""
     // });
 
+    this.setData({
+      "setting.memberId":parseInt(options.id)||-1
+    });
     
+    this.loadData();
+    
+  },
+  loadData: async function(){
 
-    Fai.request({
-      url: "/ajax/user/userCollection?cmd=getUserCollectInfo",
-      data:{
-        id:3228
-      },
-      success:(response)=>{
-        console.log("response", response);
-      }
+    Ajax.loadWithToast(async()=>{
+      let response = await Ajax.getUserCollectInfo(this.data.setting.memberId);
+      let cardInfo = response.data.data.userInfo;
+  
+      this.setData({
+        "pageData.cardInfo": cardInfo
+      });
+      return Promise.resolve(response);
     })
   },
-
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -106,13 +116,16 @@ Page({
   },
   onCallPhone: function(){
     wx.makePhoneCall({
-      phoneNumber: 'phoneNumber',
+      phoneNumber: this.data.pageData.cardInfo.memberPhone,
     })
   },
   onShowWxAppCode: function(){
     
   },
-  onCollect: function(){
-
+  onCollect: async function(){
+    Ajax.requestWithToast(async()=>{
+      let response = Ajax.setUserCollect(this.data.setting.memberId);
+      return Promise.resolve(response);
+    })
   }
 })

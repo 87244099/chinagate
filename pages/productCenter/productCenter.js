@@ -11,7 +11,8 @@ Page({
   data: {
     pageData: {},
     setting: {
-      tabIndex: 0
+      tabIndex: 0,
+      companyId: -1,
     },
     staticDomain: config.staticDomain
   },
@@ -20,6 +21,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.setData({
+      "setting.companyId":parseInt(options.id) || -1
+    })
     this.loadPageData();
   },
 
@@ -75,11 +79,8 @@ Page({
     wx.showLoading({
       title: '加载中...',
     });
-
-    
-
     Fai.request({
-      url:"/ajax/product/product?cmd=getProductCenterPageData&id=1",
+      url:"/ajax/product/product?cmd=getProductCenterPageData&id="+this.data.setting.companyId,
       complete(){
         wx.hideLoading({
           complete: (res) => {},
@@ -91,7 +92,6 @@ Page({
           this.setData({
             pageData: result.data
           });
-          console.log(this.data.pageData);
         }
       }
     })

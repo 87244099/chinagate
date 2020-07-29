@@ -27,11 +27,13 @@
         placeholder="请输入名称"
         border="{{ false }}"
         use-button-slot
-
+        disabled
         data-field="phone"
         bind:blur="onFieldBlur"
       > 
-        <button slot="button" class="" open-type="getPhoneNumber" bindgetphonenumber="getphonenumber">获取手机号</button>
+        <button style="padding:0" slot="button" class="" open-type="getPhoneNumber" bindgetphonenumber="getphonenumber">
+          <van-button size="small" type="primary" block>获取手机号</van-button>
+        </button>
       </van-field>
     </van-cell-group>
     <van-button type="info" block catchtap="onReg">确定</van-button>

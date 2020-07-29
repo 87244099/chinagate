@@ -78,9 +78,9 @@
 				},
 				{
 					"id": 2,
-					"name": "个人名片详情",
-					"pathName": "pages/card/card",
-					"query": "wgd=666",
+					"name": "我的名片详情",
+					"pathName": "pages/myCard/myCard",
+					"query": "id=3228",
 					"scene": null
 				},
 				{
@@ -101,7 +101,7 @@
 					"id": 5,
 					"name": "产品中心",
 					"pathName": "pages/productCenter/productCenter",
-					"query": "",
+					"query": "id=1",
 					"scene": null
 				},
 				{
@@ -214,6 +214,13 @@
 					"name": "资讯",
 					"pathName": "pages/newList/newList",
 					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "分享状态的名片",
+					"pathName": "pages/sharedCard/sharedCard",
+					"query": "id=3228",
 					"scene": null
 				}
 			]
