@@ -114,3 +114,6 @@ textarea{
   border-radius: 10rpx;
   font-size: 30rpx;
 }
+.fk_page{
+  padding-bottom: 200rpx;
+}

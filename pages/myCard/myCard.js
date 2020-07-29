@@ -18,7 +18,8 @@ Page({
       memberId: -1
     },
     pageData:{
-      cardInfo:{}
+      cardInfo:{},
+      memberInfo:{}
     },
     staticDomain: config.staticDomain
   },
@@ -41,11 +42,16 @@ Page({
   loadData: async function(){
 
     Ajax.loadWithToast(async()=>{
-      let response = await Ajax.getUserCollectInfo(this.data.setting.memberId);
+      let response = await Ajax.getMemberInfo();
+      let memberInfo = response.data.data;
+      response = await Ajax.getUserCollectInfo(memberInfo.memberID);
       let cardInfo = response.data.data.userInfo;
-  
+      wx.setNavigationBarTitle({
+        title: memberInfo.memberName,
+      })
       this.setData({
-        "pageData.cardInfo": cardInfo
+        "pageData.cardInfo": cardInfo,
+        "pageData.memberInfo":memberInfo
       });
       return Promise.resolve(response);
     })
@@ -124,7 +130,7 @@ Page({
   },
   onCollect: async function(){
     Ajax.requestWithToast(async()=>{
-      let response = Ajax.setUserCollect(this.data.setting.memberId);
+      let response = await Ajax.setUserCollect(this.data.pageData.memberInfo.memberID);
       return Promise.resolve(response);
     })
   }

@@ -21,8 +21,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.loadShopCollections();
+    this.loadData();
     Ajax.setNormalTitle("shopCollect");
+  },
+  async loadData(){
+    this.loadShopCollections();
   },
 
   /**
@@ -73,68 +76,62 @@ Page({
   onShareAppMessage: function () {
 
   },
-  loadShopCollections: function(){
+  loadShopCollections: async function(){
     let setting = this.data.setting;
     if(setting.totalSize>=0 && setting.companyList.length>=setting.totalSize){
-      return;
+      return Promise.reject();
     }
 
-    Toast.loading({
-      message: "加载中...",
-      duration: 0
-    });
-    Fai.request({
-      url: "/ajax/company/companyCollect?cmd=getCompanyCollectionList&pageNo=1&pageSize=6",
-      data: {
-        pageNo: setting.pageNo+1,
-        pageSize: setting.pageSize
-      },
-      beforeCousume: Toast.clear,
-      success:(response)=>{
-        let result = response.data;
-        if(result.success){
-          console.log("result", result);
-          setting.companyList.push(...result.data.companyList)
-          this.setData({
-            "setting.pageNo": setting.pageNo+1,
-            "setting.companyList": setting.companyList,
-            "setting.totalSize": result.data.totalSize
-          })
-        }else{
-          Toast.fail(result.msg || "网络繁忙，请稍后重试");
-        }
-      },
-      fail:()=>{
-        Toast.fail( "网络繁忙，请稍后重试");
-      }
+    Ajax.requestWithToast(async()=>{
+      let response = await Fai.promiseRequest({
+        url: "/ajax/company/companyCollect?cmd=getCompanyCollectionList",
+        data: {
+          pageNo: setting.pageNo+1,
+          pageSize: setting.pageSize
+        },
+      });
+      let result = response.data;
+
+      setting.companyList.push(...result.data.companyList)
+      this.setData({
+        "setting.pageNo": setting.pageNo+1,
+        "setting.companyList": setting.companyList,
+        "setting.totalSize": result.data.totalSize
+      });
+
+      return Promise.resolve(response);
     })
   
   },
-  onCancelShopCollect: function(event){
-    let company = event.currentTarget.dataset.company;
+  onCancelShopCollect: async function(event){
+    let dataset = event.currentTarget.dataset;
+    let company = dataset.company;
+    let index = dataset.index;
 
-    let data = {};
-    if(company.collectSubTypeID == 1){
-      data.merchantForLevelAID = company.merchantForLevelAID;
-    }else{
-      data.merchantForLevelBID = company.merchantForLevelBID;
-    }
+    
 
-    Fai.request({
-      method:"POST",
-      url: "/ajax/company/companyCollect?cmd=setCompanyCollectCancel",
-      data:data,
-      success:(response)=>{
-        let result = response.data;
-        if(result.success){
-          Toast.success(result.msg);
-        }else{
-          Toast.fail(result.msg);
-        }
-      },
-      fail(){
-        Toast.fail("网络繁忙,请稍后重试");
+    Ajax.requestWithToast(async()=>{
+
+      let data = {
+        merchantForLevelAID : 0,
+        merchantForLevelBID : 0
+      };
+      if(company.collectSubTypeID == 1){
+        data.merchantForLevelAID = company.merchantForLevelAID;
+      }else{
+        data.merchantForLevelBID = company.merchantForLevelBID;
       }
-    })
+      let response = await Fai.promiseRequestPost({
+        url: "/ajax/company/companyCollect?cmd=setCompanyCollectCancel",
+        data:data
+      });
+
+      this.data.setting.companyList.splice(index,1);
+      this.setData({
+        "setting.companyList": this.data.setting.companyList
+      });
+
+      return Promise.resolve(response);
+    });
   }
 })

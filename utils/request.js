@@ -109,6 +109,11 @@ function requestPost(option){
   return request(option);
 }
 
+async function promiseRequestPost(option){
+  option.method = "POST";
+  return await promiseRequest(option);
+}
+
 async function promiseRequest(option){
   return new Promise((resolve, reject)=>{
     
@@ -128,8 +133,49 @@ async function promiseRequest(option){
   });
 }
 
+function uploadFile(option){
+  let defaultOption = {
+    url: "",
+    name: "",
+    filePath: "",
+    header:{},
+    success: noop,
+    fail: noop,
+    beforeConsume:noop,
+    onProgressUpdate: noop
+  };
+  let settingOption = Object.assign(defaultOption, option);
+
+  settingOption.header["Cookie"] = CookieUtils.getRequestCookie(settingOption.header);
+  settingOption.header["content-type"] = "multipart/form-data";
+
+  let uploadFileOption = {
+    url: config.uploadFileDomain + settingOption.url, //仅为示例，非真实的接口地址
+    filePath: settingOption.filePath,
+    name: settingOption.name,
+    header: settingOption.header,
+    success: (response)=>{
+      settingOption.beforeConsume();
+      let result = response.data;
+      result = JSON.parse(result);
+      response.data = result;
+      settingOption.success(response);
+    },
+    fail(){
+      settingOption.beforeConsume();
+      settingOption.fail(...arguments);
+    }
+  };
+
+  let uploadTask = wx.uploadFile(uploadFileOption);
+  uploadTask.onProgressUpdate(settingOption.onProgressUpdate);
+  return uploadTask;
+}
+
 module.exports = {
   request,
   requestPost,
-  promiseRequest
+  promiseRequest,
+  promiseRequestPost,
+  uploadFile
 }

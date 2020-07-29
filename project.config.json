@@ -91,10 +91,10 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 4,
 					"name": "产品详情页",
 					"pathName": "pages/productDetail/productDetail",
-					"query": "id=33",
+					"query": "companyId=1&id=33",
 					"scene": null
 				},
 				{

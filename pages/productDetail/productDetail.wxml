@@ -7,15 +7,15 @@
     <view class="fk_productDetail_func">
       <view class="fk_productDetail_func_list">
         <view class="fk_productDetail_func_item">
-          <view class="fk_productDetail_func_item_icon iconfont icon-dianhua"></view>
+          <view class="fk_productDetail_func_item_icon iconfont icon-dianhua" style="background-color:{{pageData.companyInfo.themeColor}}" catchtap="callPhone"></view>
           <view class="fk_productDetail_func_item_text">咨询</view>
         </view>
         <view class="fk_productDetail_func_item">
-          <view catchtap="setProductCollect" class="fk_productDetail_func_item_icon iconfont icon-start"></view>
+          <view catchtap="setProductCollect" class="fk_productDetail_func_item_icon iconfont icon-start" style="background-color:{{pageData.companyInfo.themeColor}}"></view>
           <view class="fk_productDetail_func_item_text">收藏</view>
         </view>
         <view class="fk_productDetail_func_item">
-          <view class="fk_productDetail_func_item_icon iconfont icon-erweima"></view>
+          <view class="fk_productDetail_func_item_icon iconfont icon-erweima" style="background-color:{{pageData.companyInfo.themeColor}}"></view>
           <view class="fk_productDetail_func_item_text">产品码</view>
         </view>
       </view>
@@ -29,7 +29,7 @@
     </view>
     <view class="fk_productDetail_main">
       <view class="fk_productDetail_intro">
-        <view class="fk_productDetail_intro_title">
+        <view class="fk_productDetail_intro_title" style="border-color:{{pageData.companyInfo.themeColor}}">
           详细介绍
         </view>
         <view class="fk_productDetail_intro_content">
@@ -37,33 +37,33 @@
         </view>
       </view>
       <view class="fk_productDetail_service">
-        <view class="fk_productDetail_intro_title">
+        <view class="fk_productDetail_intro_title" style="border-color:{{pageData.companyInfo.themeColor}}">
           咨询客服
         </view>
         <view class="fk_productDetail_service_form">
           <view class="fk_productDetail_service_form_line">
             <view class="fk_productDetail_service_form_label">姓名</view>
             <view class="fk_productDetail_service_form_value">
-              <input placeholder="请输入姓名" data-field="name" bindtap="onFieldBlur"></input>
+              <input placeholder="请输入姓名" value="{{setting.serviceForm.name}}" data-field="name" bindblur="onFieldBlur"></input>
             </view>
           </view>
           <view class="fk_productDetail_service_form_line">
             <view class="fk_productDetail_service_form_label">手机</view>
             <view class="fk_productDetail_service_form_value">
-              <input placeholder="请输入手机" data-field="phone" bindtap="onFieldBlur"></input>
+              <input placeholder="请输入手机" value="{{setting.serviceForm.phone}}" data-field="phone" bindblur="onFieldBlur"></input>
             </view>
           </view>
           <view class="fk_productDetail_service_form_line">
             <view class="fk_productDetail_service_form_label">内容</view>
             <view class="fk_productDetail_service_form_value">
-              <textarea placeholder="请输入内容" data-field="content" bindtap="onFieldBlur"></textarea>
+              <textarea placeholder="请输入内容" value="{{setting.serviceForm.content}}" data-field="content" bindblur="onFieldBlur"></textarea>
             </view>
           </view>
-          <view class="fk_productDetail_service_form_button" catchtap="onServiceFormSubmit">确定提交</view>
+          <view class="fk_productDetail_service_form_button" catchtap="onServiceFormSubmit" style="background-color:{{pageData.companyInfo.themeColor}}">确定提交</view>
         </view>
       </view>
     </view>
   </view>
-  <tab-bar class="fk_tabBar" type="company" rollbackVisible="{{_commPageConfigData.rollbackVisible}}"></tab-bar>
+  <tab-bar class="fk_tabBar" type="company" rollbackVisible="{{_commPageConfigData.rollbackVisible}}" style="background-color:{{pageData.companyInfo.themeColor}}"></tab-bar>
   <van-toast id="van-toast" />
 </view>

@@ -16,6 +16,9 @@ Page({
       totalSize: -1,
       productList: []
     },
+    pageData:{
+      memberInfo: {}
+    },
     staticDomain: config.staticDomain
   },
 
@@ -23,7 +26,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.loadCollectedProducts();
+    this.loadPageData();
+
     Ajax.setNormalTitle("productCollect");
   },
 
@@ -75,6 +79,20 @@ Page({
   onShareAppMessage: function () {
 
   },
+  async loadPageData(){
+
+    Ajax.requestWithToast(async()=>{
+      let response = await Ajax.getMemberInfo();
+      let memberInfo = response.data.data;
+      this.setData({
+        "pageData.memberInfo":memberInfo
+      })
+
+      this.loadCollectedProducts();
+      return Promise.resolve(response);
+    })
+
+  },
   loadCollectedProducts: function(){
     let setting = this.data.setting;
     if(setting.totalSize>=0 && setting.productList.length>=setting.totalSize);
@@ -83,9 +101,9 @@ Page({
       title: '加载中...',
     });
     Fai.request({
-      url:"/ajax/product/product?cmd=getProductCollectionList&memberId=1&pageNo=1&pageSize=6",
+      url:"/ajax/product/product?cmd=getProductCollectionList&pageNo=1&pageSize=6",
       data:{
-        memberId: setting.memberId,
+        memberId: this.data.pageData.memberInfo.memberID,
         pageNo: setting.pageNo,
         pageSize: setting.pageSize
       },

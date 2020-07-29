@@ -16,7 +16,6 @@
     border-radius: 50%;
     overflow: hidden;
     margin: 0 auto;
-    background-color: #ccc;
 }
 .fk_myCard_main_name{
   display: block;

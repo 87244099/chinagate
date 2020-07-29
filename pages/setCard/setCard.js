@@ -27,19 +27,6 @@ Page({
 
       avatarPhotoPath: "",
 
-      cardForm: {
-        memberName: "",
-        region: {
-          provinceCode: -1,
-          cityCode: -1,
-          countryCode: -1,
-        },
-        weChat:"",
-        qq: "",
-        memberEmail: "",
-        personalIntroduction: "",
-        address: ""
-      }
     },
     
     pageData:{
@@ -81,9 +68,8 @@ Page({
     let dataset = event.currentTarget.dataset;
     let field = dataset.field;
     let value = event.detail.value;
-    console.log(field, value);
     this.setData({
-      [`setting.cardForm.${field}`]:value
+      [`pageData.cardInfo.${field}`]:value
     });
   },
 
@@ -332,35 +318,35 @@ Page({
       "setting.areaPickerOpened": false
     })
   },
+  getAddrCode(addrList, index){
+    return (addrList.length>0 && addrList[index] ? addrList[index] : {}).id || -1
+  },
   onCardFormSubmit(){
-    Toast.loading({
-      message: "保存成功...",
-      duration: 0
-    });
-    let cardForm = this.data.setting.cardForm;
-    let data = Object.assign({}, cardForm);
-    data.region = JSON.stringify(cardForm.region);
-    Fai.request({
-      url: "/ajax/user/userCollection?cmd=setUserCollectInfo",
-      method:"POST",
-      header:{
-        "Content-Type":"multipart/form-data",
-        "Accept":"application/json",
-      },
-      data: data,
-      beforeConsume:Toast.clear,
-      success(response){
-        let result = response.data;
-        if(result.success){
-          Toast.success(result.msg);
-        }else{
-          Toast.fail(result.msg || "网络繁忙，请稍后重试");
-        }
-      },
-      fail(){
-        Toast.fail("网络繁忙，请稍后重试");
-      }
+    
+    let cardInfo = this.data.pageData.cardInfo;
+    let setting = this.data.setting;
+    let data = {
+      region: JSON.stringify({
+        provinceCode: this.getAddrCode(setting.provinceList, setting.provinceIndex),
+        cityCode: this.getAddrCode(setting.cityList, setting.cityIndex),
+        countryCode: this.getAddrCode(setting.countryList, setting.countryIndex),
+      }),
+      id: cardInfo.memberID,
+      memberName: cardInfo.memberName,
+      address: cardInfo.address,
+      weChat: cardInfo.weChat,
+      memberEmail: cardInfo.email,
+      personalIntroduction: cardInfo.personalIntroduction,
+    };
+    Ajax.requestWithToast(async()=>{
+      return Fai.promiseRequest({
+        url: "/ajax/user/userCollection?cmd=setUserCollectInfo",
+        method: "POST",
+        data: data
+      });
     })
+
+    
   },
   onUploadHeadImg(){
     wx.chooseImage({
@@ -368,38 +354,33 @@ Page({
       sizeType: ['original', 'compressed'],
       sourceType: ['album', 'camera'],
       success :(res) =>{
-        const tempFilePaths = res.tempFilePaths
-        console.log("tempFilePaths", tempFilePaths);
-        let uploadFileTask = wx.uploadFile({
-          url: config.domain + '/ajax/user/userInfo?cmd=uploadHeadImg', //仅为示例，非真实的接口地址
+        const tempFilePaths = res.tempFilePaths;
+        Fai.uploadFile({
+          url:'/ajax/user/userInfo?cmd=uploadHeadImg',
           filePath: tempFilePaths[0],
           name: 'avatarPhotoFile',
-          header: {
-            "Cookie":Fai.getRequestCookie({}) 
-          },
-          success: (response)=>{
-            Toast.clear();
+          beforeConsume:Toast.clear,
+          success:(response)=>{
             let result = response.data;
-            result = JSON.parse(result);
-            console.log("result", result);
             if(result.success){
               //do something
               this.setData({
-                "setting.avatarPhotoPath": result.data.avatarPhotoPath
+                "pageData.cardInfo.avatarPhoto": result.data.avatarPhotoPath
               });
               Toast.success(result.msg);
             }else{
               Toast.fail(result.msg);
             }
+          },
+          onProgressUpdate: (progress)=>{
+            console.log('progress', progress);
+            Toast.loading({
+              message:`图片正在上传...${progress.progress}%`,
+              duration: 0
+            });
           }
-        });
-        uploadFileTask.onProgressUpdate((progress)=>{
-          console.log('progress', progress);
-          Toast.loading({
-            message:`图片正在上传...${progress.progress}%`,
-            duration: 0
-          });
-        });
+        })
+
       }
     })
   }

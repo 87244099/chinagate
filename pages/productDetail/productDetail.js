@@ -2,6 +2,7 @@
 //获取应用实例
 const app = getApp();
 const Fai = require("../../utils/util");
+const Ajax = require("../../ajax/index");
 const config = require("../../utils/config");
 import Toast from "../../miniprogram_npm/@vant/weapp/toast/toast";
 Page(Fai.mixin(Fai.commPageConfig, {
@@ -31,6 +32,9 @@ Page(Fai.mixin(Fai.commPageConfig, {
   onLoad: function (options) {
     this.setData({
       "setting.productId": parseInt(options.id) || -1
+    });
+    this.setData({
+      "setting.merchantForLevelAID": parseInt(options.companyId) || -1
     });
     this.loadPageData();
   },
@@ -83,67 +87,63 @@ Page(Fai.mixin(Fai.commPageConfig, {
   onShareAppMessage: function () {
 
   },
-  loadPageData: function(){
-    if(this.data.setting.productId>-1){
-      wx.showLoading({
-        title: '加载中...',
-      })
-      Fai.request({
-        url:"/ajax/product/product?cmd=getProductDetailPageData&productId="+this.data.setting.productId,
-        complete(){
-          wx.hideLoading({
-            complete: (res) => {},
-          })
-        },
-        success: (res)=>{
-          let result = res.data;
-          if(result.success){
-            this.setData({
-              pageData: result.data
-            });
-          }
-        }
+  loadPageData: async function(){
+      
+    Ajax.requestWithToast(async()=>{
+      let response = await Ajax.getMemberInfo();
+      let memberInfo = response.data.data;
+      response = await Fai.promiseRequest({
+        url:"/ajax/product/product?cmd=getProductDetailPageData&productId="+this.data.setting.productId
       });
-    }
+      let productInfo =  response.data.data.productInfo;
+
+      response = await Ajax.getCompanyAIndexPageData(this.data.setting.merchantForLevelAID);
+      let companyInfo = response.data.data.companyInfo;
+
+      wx.setNavigationBarTitle({
+        title: `${productInfo.title}-${companyInfo.companyName}`,
+      });
+
+      this.setData({
+        "pageData.memberInfo": memberInfo,
+        "pageData.companyInfo": companyInfo,
+        "pageData.productInfo":productInfo
+      });
+
+      return Promise.resolve(response);
+    }, "加载中...");
   },
   setProductCollect: function(){
-    Fai.request({
-      url:"/ajax/product/productCollection?cmd=setProductCollect",
-      method:"POST",
-      data:{
-        id: this.data.setting.productId
-      },
-      success:(response)=>{
-        let result = response.data;
-        if(result.success){
-          Toast.success(result.msg);
-        }else{
-          Toast.fail(result.msg || "网络繁忙，请稍后重试");
+    Ajax.requestWithToast(async()=>{
+      return await Fai.promiseRequest({
+        url:"/ajax/product/productCollection?cmd=setProductCollect",
+        method:"POST",
+        data:{
+          productId: this.data.setting.productId,
+          merchantForLevelAID: this.data.setting.merchantForLevelAID,
+          merchantForLevelBID: 0,
+          staffId: this.data.pageData.memberInfo.staffID
         }
-      },
-      fail:()=>{
-        Toast.fail("网络繁忙，请稍后重试");
-      }
-    })
+      });
+    });
   },
   onServiceFormSubmit(){
     let data = this.data.setting.serviceForm;
-    Fai.request({
-      url:"/ajax/apply/applyForm?cmd=applyService",
-      method:"POST",
-      data: data,
-      success:(response)=>{
-        let result = response.data;
-        if(result.success){
-          Toast.success(result.msg);
-        }else{
-          Toast.fail(result.msg);
-        }
-      },
-      fail(){
-        Toast.fail("网络繁忙,请稍后重试");
-      }
-    })
+    data.merchantForLevelAID = this.data.pageData.companyInfo.merchantForLevelAID;
+    data.merchantForLevelBID = 0;
+    data.staffID = this.data.pageData.memberInfo.staffID;
+    Ajax.requestWithToast(async()=>{
+      let response = await Fai.promiseRequestPost({
+        url:"/ajax/apply/applyForm?cmd=applyService",
+        data: data,
+      })
+
+      this.setData({
+        "setting.serviceForm": {}
+      });
+
+      return Promise.resolve(response);
+    });
   },
   onFieldBlur(event){
     let dataset = event.currentTarget.dataset;
@@ -153,4 +153,9 @@ Page(Fai.mixin(Fai.commPageConfig, {
       [`setting.serviceForm.${field}`]:value
     })
   },
+  callPhone(){
+    wx.makePhoneCall({
+      phoneNumber: this.data.pageData.companyInfo.companyPhone,
+    });
+  }
 }));

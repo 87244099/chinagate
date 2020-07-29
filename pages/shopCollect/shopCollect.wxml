@@ -8,7 +8,7 @@
           </view>
           <view class="fk_shopCollect_item_info">
             <view class="fk_shopCollect_item_info_name">{{item.companyName}}</view>
-            <view class="fk_shopCollect_item_info_opt" data-company="{{item}}" catchtap="onCancelShopCollect">
+            <view class="fk_shopCollect_item_info_opt" data-company="{{item}}" data-index="{{index}}" catchtap="onCancelShopCollect">
               <view class="fk_shopCollect_item_info_opt_icon iconfont icon-start1"></view>
               <view class="fk_shopCollect_item_info_opt_text">取消收藏</view>
             </view>
@@ -21,4 +21,5 @@
     </view>
   </view>
   <tab-bar class="fk_tabBar"></tab-bar>
+  <van-toast id="van-toast" />
 </view> 

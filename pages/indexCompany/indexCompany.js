@@ -1,6 +1,7 @@
 // pages/indexStaff/indexStaff.js
 const app = getApp();
 const Fai = require("../../utils/util");
+const Ajax = require("../../ajax/index");
 const config = require("../../utils/config");
 import Toast from "../../miniprogram_npm/@vant/weapp/toast/toast";
 
@@ -143,6 +144,19 @@ Page(Fai.mixin(Fai.commPageConfig, {
       fail:()=>{
         Toast.fail('网络繁忙，请稍后重试');
       }
+    });
+  },
+  onCompanyCollect(){
+    Ajax.requestWithToast(async()=>{
+      let response = Fai.promiseRequestPost({
+        url:"/ajax/company/companyCollect?cmd=setCompanyCollect",
+        data:{
+          merchantForLevelAID: this.data.setting.companyId,
+          merchantForLevelBID: 0
+        }
+      });
+
+      return Promise.resolve(response);
     });
   }
 }));

@@ -9,7 +9,7 @@
           <view class="fk_staffCollect_item_info">
             <view class="fk_staffCollect_item_info_name">名片收藏：{{item.name}}</view>
             <view class="fk_staffCollect_item_info_opt">
-              <view style="display:flex" data-item="{{item}}" data-index="{{index}}" catchtap="onCancelStaffCollect">
+              <view style="display:flex;align-items:center;" data-item="{{item}}" data-index="{{index}}" catchtap="onCancelStaffCollect">
                 <view class="fk_staffCollect_item_info_opt_icon iconfont icon-start1"></view>
                 <view class="fk_staffCollect_item_info_opt_text">取消收藏</view>
               </view>

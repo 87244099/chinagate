@@ -135,6 +135,7 @@
 .fk_indexCompany_productIntro_group_main_product_item_img{
   height: 106px;
   background-color: #ccc;
+  width: 100%;
 }
 
 .fk_indexCompany_productIntro_group_main_product_item_name{
@@ -145,6 +146,10 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  width: 100%;
+}
+.fk_indexCompany_productIntro_group_main_product_priceInfo{
+  width: 100%;
 }
 .fk_indexCompany_productIntro_group_main_product_priceInfo_line{
   font-size: 26rpx;

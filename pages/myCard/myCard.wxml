@@ -2,7 +2,9 @@
 <view class="fk_page fk_myCard">
   <view class="fk_myCard_main">
     <view class="fk_myCard_main_imgWrap">
-      <view class="fk_myCard_main_imgWrap_img"></view>
+      <view class="fk_myCard_main_imgWrap_img">
+        <image style="width:100%;height:100%;" src="{{pageData.cardInfo.avatarPhoto}}"></image>
+      </view>
     </view>
     <view class="fk_myCard_main_name">{{pageData.cardInfo.memberName}}</view>
   </view>

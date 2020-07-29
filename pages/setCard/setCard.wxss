@@ -31,7 +31,6 @@
 .fk_setCard_headImg_img_wrap_img{
   width: 120rpx;
   height: 120rpx;
-  background-color: #ccc;
 }
 .fk_setCard .weui-cell{
   font-size: 32rpx;

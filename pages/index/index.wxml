@@ -13,7 +13,7 @@
   </view>
   <view class="fk_main">
     <view class="fk_main_func_list">
-      <navigator class="fk_main_func_item" url="/pages/card/card">
+      <navigator class="fk_main_func_item" url="/pages/myCard/myCard">
         <view class="iconfont icon-mingpian  fk_main_func_item_icon" style="color:#3f51b5"></view>
         <view class="fk_main_func_item_text">我的名片</view>
       </navigator>

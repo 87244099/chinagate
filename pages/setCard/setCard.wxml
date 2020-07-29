@@ -10,7 +10,7 @@
       <view class="fk_setCard_headImg_name">头像</view>
       <view class="fk_setCard_headImg_img_wrap">
         <view class="fk_setCard_headImg_img_wrap_img" catchtap="onUploadHeadImg">
-          <image style="width:100%;height:100%;" src="{{setting.avatarPhotoPath}}"></image>
+          <image style="width:100%;height:100%;" src="{{pageData.cardInfo.avatarPhoto}}"></image>
         </view>
       </view>
     </view>
@@ -35,16 +35,16 @@
         </view>
       </mp-cell>
       <mp-cell show-error prop="idcard" title="地址" ext-class="">
-          <input bindblur="onFieldBlur" data-field="address" class="weui-input" placeholder="请输入您的地址"/>
+          <input bindblur="onFieldBlur" data-field="address" value="{{pageData.cardInfo.address}}" class="weui-input" placeholder="请输入您的地址"/>
       </mp-cell>
       <mp-cell show-error prop="idcard" title="微信号" ext-class="">
           <input bindblur="onFieldBlur" value="{{pageData.cardInfo.weChat}}" data-field="weChat" class="weui-input" placeholder="请输入您的微信号"/>
       </mp-cell>
       <mp-cell show-error prop="idcard" title="QQ号" ext-class="">
-          <input bindblur="onFieldBlur" data-field="qq" class="weui-input" placeholder="请输入您的QQ号"/>
+          <input bindblur="onFieldBlur" value="{{pageData.cardInfo.qq}}" data-field="qq" class="weui-input" placeholder="请输入您的QQ号"/>
       </mp-cell>
       <mp-cell show-error prop="idcard" title="邮箱" ext-class="">
-          <input bindblur="onFieldBlur" data-field="memberEmail" class="weui-input" placeholder="请输入您的邮箱"/>
+          <input bindblur="onFieldBlur" value="{{pageData.cardInfo.email}}" data-field="memberEmail" class="weui-input" placeholder="请输入您的邮箱"/>
       </mp-cell>
     </mp-cells>
     <view class="weui-cells__title">介绍简介</view>
