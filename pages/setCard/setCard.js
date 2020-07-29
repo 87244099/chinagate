@@ -374,19 +374,14 @@ Page({
           url: config.domain + '/ajax/user/userInfo?cmd=uploadHeadImg', //仅为示例，非真实的接口地址
           filePath: tempFilePaths[0],
           name: 'avatarPhotoFile',
-<<<<<<< HEAD
-          success (res){
-            const data = res.data
-            //do something
-            console.log("data", data);
+          header: {
+            "Cookie":Fai.getRequestCookie({}) 
           },
-          fail(){
-            console.log("fail", arguments);
-=======
           success: (response)=>{
             Toast.clear();
             let result = response.data;
             result = JSON.parse(result);
+            console.log("result", result);
             if(result.success){
               //do something
               this.setData({
@@ -396,7 +391,6 @@ Page({
             }else{
               Toast.fail(result.msg);
             }
->>>>>>> 851fe2167da0ae06732a0830ef513bd9ca25f295
           }
         });
         uploadFileTask.onProgressUpdate((progress)=>{

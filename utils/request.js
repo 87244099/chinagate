@@ -109,7 +109,27 @@ function requestPost(option){
   return request(option);
 }
 
+async function promiseRequest(option){
+  return new Promise((resolve, reject)=>{
+    
+    // 用了Promise就不需要回调api了
+    option.success = function(response){
+      if(response.data.success){
+        resolve(response);
+      }else{
+        reject(response);
+      }
+    };
+    option.fail = function(response){
+      reject(response);
+    };
+
+    request(option);
+  });
+}
+
 module.exports = {
   request,
-  requestPost
+  requestPost,
+  promiseRequest
 }

@@ -51,7 +51,7 @@
     <view class="weui-cells weui-cells_after-title">
         <view class="weui-cell">
             <view class="weui-cell__bd">
-                <textarea data-field="personalIntroduction" bindblur="onFieldBlur" class="weui-textarea" placeholder="请输入文本" style="height: 3.3em" />
+                <textarea value="{{pageData.cardInfo.personalIntroduction}}" data-field="personalIntroduction" bindblur="onFieldBlur" class="weui-textarea" placeholder="请输入文本" style="height: 3.3em" />
                 <!-- <view class="weui-textarea-counter">0/200</view> -->
             </view>
         </view>

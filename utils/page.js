@@ -44,7 +44,7 @@ let commPageConfig = {
   },
   onUnload(){
     let page = getCurrPage();
-    let taskList = Object.key(page).filter(key=>Typer.isFunction(page[key])).map(key=>page[key]);
+    let taskList = Object.keys(page).filter(key=>Typer.isFunction(page[key])).map(key=>page[key]);
     Timer.SecondTimer.remove(taskList);//回收各个页面注入的定时任务
   }
 }

@@ -37,7 +37,7 @@
       <navigator class="fk_personal_section_item">
         <view class="fk_personal_section_item_left">
           <view class="fk_personal_section_item_icon iconfont icon-tongjifenxi" style="color: #e37429;"></view>
-          <view class="fk_personal_section_item_text">我的资讯</view>
+          <view class="fk_personal_section_item_text">我的咨询</view>
         </view>
         <view class="fk_personal_section_item_right">
           <view class="iconfont icon-right"></view> 

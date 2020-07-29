@@ -114,7 +114,6 @@ function cacheResponseCookie(response){
 function getRequestCookie(header){
   let { Cookie: cookie = "" } = header;
   let storageCookie = wx.getStorageInfoSync();
-  console.log("storageCookie", storageCookie);
   let keys = storageCookie ? (storageCookie.keys || []) : [];
   keys.forEach(function (key, index) {
     let tmpInfo = getCookie(key);
