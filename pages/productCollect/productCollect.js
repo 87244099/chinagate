@@ -101,7 +101,7 @@ Page({
       title: '加载中...',
     });
     Fai.request({
-      url:"/ajax/product/product?cmd=getProductCollectionList&pageNo=1&pageSize=6",
+      url:"/ajax/product/productCollection?cmd=getProductCollectionList&pageNo=1&pageSize=6",
       data:{
         memberId: this.data.pageData.memberInfo.memberID,
         pageNo: setting.pageNo,
@@ -124,5 +124,20 @@ Page({
         }
       }
     })
+  },
+  async onCancelProductCollect(event){
+    let item = event.currentTarget.dataset.item;
+    console.log(item);
+    Ajax.requestWithToast(async()=>{
+      return Fai.promiseRequestPost({
+        url:"/ajax/product/productCollection?cmd=setProductCollectCancel",
+        data:{
+          productId: item.productID,
+          staffID: this.data.pageData.memberInfo.staffID,
+          merchantForLevelAID: item.merchantForLevelAID,
+          merchantForLevelBID: item.merchantForLevelBID,
+        }
+      })
+    });
   }
 })
