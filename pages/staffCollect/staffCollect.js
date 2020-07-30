@@ -154,7 +154,7 @@ Page({
     Ajax.requestWithToast(async()=>{
       let response = await Ajax.getMemberInfoById(id);
       let memberInfo = response.data.data;
-      response = await Ajax.setUserCollectCancel4Staff(memberInfo.memberID, memberInfo.staffID, memberInfo.merchantForLevelAID);
+      response = await Ajax.setUserCollectCancel4Staff(item.id, item.merchantForLevelAID);
       this.removeCard(index);
       return Promise.resolve(response);
     });
