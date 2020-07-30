@@ -143,9 +143,8 @@ Page(Fai.mixin(Fai.commPageConfig, {
       message:"收藏中...",
       duration: 0
     })
-    Fai.request({
+    Fai.requestPost({
       url:"/ajax/user/userCollection?cmd=setUserCollect4Staff",
-      method:"POST",
       data:{
         staffId: this.data.pageData.staffInfo.staffID
       },
