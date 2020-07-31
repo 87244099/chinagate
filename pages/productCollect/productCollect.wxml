@@ -7,17 +7,22 @@
           <image style="width:100%;height:100%" mode="" src="{{staticDomain}}/{{item.smallImgPath}}"></image>
         </view>
         <view class="fk_productSearch_product_name">{{item.title}}</view>
-        <view class="fk_productSearch_product_priceInfo">
-          <view class="fk_productSearch_product_priceInfo_line">
-            <view class="fk_productSearch_product_priceInfo_label">普通批发价：</view>
-            <view class="fk_productSearch_product_priceInfo_value">868286</view>
+        <view class="fk_productSearch_product_priceInfo_wrap">
+          <view class="fk_productSearch_product_priceInfo">
+            <view class="fk_productSearch_product_priceInfo_line">
+              <view class="fk_productSearch_product_priceInfo_label">普通批发价：</view>
+              <view class="fk_productSearch_product_priceInfo_value">{{item.ordinaryWholesalePrice}}</view>
+            </view>
+            <view class="fk_productSearch_product_priceInfo_line">
+              <view class="fk_productSearch_product_priceInfo_label">vip批发价：</view>
+              <view class="fk_productSearch_product_priceInfo_value">{{item.vipWholesalePrice}}</view>
+            </view>
           </view>
-          <view class="fk_productSearch_product_priceInfo_line">
-            <view class="fk_productSearch_product_priceInfo_label">vip批发价：</view>
-            <view class="fk_productSearch_product_priceInfo_value">868286</view>
-          </view>
+          <view class="fk_productSearch_product_collectBtn" data-item="{{item}}" catchtap="onCancelProductCollect">...</view>
         </view>
+        
       </navigator>
     </view>
   </view>
+  <van-toast id="van-toast" />
 </view>

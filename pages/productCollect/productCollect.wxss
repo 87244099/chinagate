@@ -37,12 +37,18 @@
   width: 100%;
   box-sizing: border-box;
 }
+.fk_productSearch_product_priceInfo_wrap{
+  display: flex;
+  align-items: flex-end;
+  width: 100%;
+}
 .fk_productSearch_product_priceInfo{
   padding-top: 8rpx;
   font-size: 26rpx;
   color: #ff5000;
   line-height: 1.2;
   width: 100%;
+  flex: 1;
 }
 .fk_productSearch_product_priceInfo_line{
   display: flex;

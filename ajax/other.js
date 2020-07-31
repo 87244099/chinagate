@@ -121,12 +121,11 @@ async function loadWithToast(requestHandler){
 };
 
 
-async function setUserCollectCancel4Staff(memberId, staffId, companyId){
+async function setUserCollectCancel4Staff(staffId, companyId){
   return new Promise((resolve, reject)=>{
     Fai.requestPost({
       url:"/ajax/user/userCollection?cmd=setUserCollectCancel4Staff",
       data: {
-        id:memberId,
         staffId:staffId,
         companyId: companyId
       },

@@ -12,7 +12,7 @@ Page({
     setting: {
       memberId:1,
       pageNo: 0,
-      pageSize:6,
+      pageSize:8,
       totalSize: -1,
       productList: []
     },
@@ -70,7 +70,9 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    if(!this.isAllProductLoaded()){
+      this.loadNextCollectedProducts();
+    }
   },
 
   /**
@@ -80,49 +82,85 @@ Page({
 
   },
   async loadPageData(){
-
+    let setting = this.data.setting;
     Ajax.requestWithToast(async()=>{
       let response = await Ajax.getMemberInfo();
       let memberInfo = response.data.data;
-      this.setData({
-        "pageData.memberInfo":memberInfo
-      })
 
-      this.loadCollectedProducts();
+      response = await this.loadCollectedProducts(
+        memberInfo.memberID,
+        setting.pageNo,
+        setting.pageSize
+      );
+
+      setting.productList.push(...response.data.data.productInfo);
+
+      this.setData({
+        "setting.totalSize": response.data.data.totalSize,
+        "pageData.memberInfo":memberInfo,
+        "setting.pageNo": setting.pageNo+1,
+        "setting.productList": setting.productList
+      })
       return Promise.resolve(response);
-    })
+    });
 
   },
-  loadCollectedProducts: function(){
+  isAllProductLoaded(){
     let setting = this.data.setting;
-    if(setting.totalSize>=0 && setting.productList.length>=setting.totalSize);
+    return (setting.totalSize>=0 && setting.productList.length>=setting.totalSize);
+  },
+  async loadNextCollectedProducts(){
+    Ajax.requestWithToast(async()=>{
+      let setting = this.data.setting;
+      let response = await this.loadCollectedProducts(
+        this.data.pageData.memberInfo.memberID,
+        setting.pageNo,
+        setting.pageSize
+      );
+      let result = response.data;
+      setting.productList.push(...result.data.productInfo);
+      this.setData({
+        "setting.totalSize": response.data.data.totalSize,
+        "setting.pageNo": setting.pageNo+1,
+        "setting.productList": setting.productList
+      });
 
+<<<<<<< HEAD
     wx.showLoading({
       title: '加载中...',
     });
     Fai.request({
+=======
+      return Promise.resolve(response);
+    }, "加载中...");
+  },
+  loadCollectedProducts: async function(memberId, pageNo, pageSize){
+    return Fai.promiseRequest({
+>>>>>>> 694c59baf621a55284942a4a82c0118d69248c66
       url:"/ajax/product/productCollection?cmd=getProductCollectionList&pageNo=1&pageSize=6",
       data:{
-        memberId: this.data.pageData.memberInfo.memberID,
-        pageNo: setting.pageNo,
-        pageSize: setting.pageSize
-      },
-      complete(){
-        wx.hideLoading({
-          complete: (res) => {},
-        })
-      },
-      success: (res)=>{
-        let result = res.data;
-        if(result.success){
-          console.log("data", result.data);
-          setting.productList.push(...result.data.productInfo);
-          this.setData({
-            "setting.pageNo": setting.pageNo+1,
-            "setting.productList": setting.productList
-          })
-        }
+        // memberId: this.data.pageData.memberInfo.memberID,
+        // pageNo: setting.pageNo,
+        // pageSize: setting.pageSize
+        memberId: memberId,
+        pageNo: pageNo,
+        pageSize: pageSize
       }
-    })
+    });
+  },
+  async onCancelProductCollect(event){
+    let item = event.currentTarget.dataset.item;
+    console.log(item);
+    Ajax.requestWithToast(async()=>{
+      return Fai.promiseRequestPost({
+        url:"/ajax/product/productCollection?cmd=setProductCollectCancel",
+        data:{
+          productId: item.productID,
+          staffID: this.data.pageData.memberInfo.staffID,
+          merchantForLevelAID: item.merchantForLevelAID,
+          merchantForLevelBID: item.merchantForLevelBID,
+        }
+      })
+    });
   }
 })

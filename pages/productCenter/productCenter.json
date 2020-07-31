@@ -4,5 +4,6 @@
     "wxparser": "plugin://wxparserPlugin/wxparser",
     "mp-tabbar": "weui-miniprogram/tabbar/tabbar",
     "tab-bar": "/components/tab-bar/tab-bar"
-  }
+  },
+  "navigationBarTitleText": "产品中心"
 }
