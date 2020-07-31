@@ -1,10 +1,10 @@
 // pages/productDetail/productDetail.js
 //获取应用实例
-const app = getApp();
+// const app = getApp();
 const Fai = require("../../utils/util");
 const Ajax = require("../../ajax/index");
 const config = require("../../utils/config");
-import Toast from "../../miniprogram_npm/@vant/weapp/toast/toast";
+// import Toast from "../../miniprogram_npm/@vant/weapp/toast/toast";
 Page(Fai.mixin(Fai.commPageConfig, {
 
   /**

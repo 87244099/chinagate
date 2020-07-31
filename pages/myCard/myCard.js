@@ -1,6 +1,5 @@
 //index.js
 //获取应用实例
-const app = getApp();
 const Fai = require("../../utils/util");
 const Ajax = require("../../ajax/index");
 const config = require("../../utils/config");
@@ -100,8 +99,7 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function(res) {
-    console.log("Abs", Fai.getCurrAbsPath());
+  onShareAppMessage: function() {
     return {
       title: 'xxx小程序',
       path: Fai.getCurrAbsPath(),

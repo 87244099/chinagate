@@ -14,7 +14,7 @@ let CacheFactory = (cache, lifeCycle)=>{
       this.cache[key] = {
         timestamp:new Date().getTime(),
         value: value
-      }
+      };
     },
     clearCache(){
       Object.keys(this.cache).forEach(key=>{
@@ -39,8 +39,8 @@ let CacheFactory = (cache, lifeCycle)=>{
         }
       });
     }
-  }
-}
+  };
+};
 
 // 内存缓存
 let MemoryCache = (function(){
@@ -68,7 +68,7 @@ let DiskCache = (function(){
       Cacher.clearCache();
       wx.removeStorageSync(DISK_CACHE_KEY);
     }
-  }
+  };
 
 })();
 
@@ -76,4 +76,4 @@ module.exports = {
   MemoryCache,
   DiskCache,
   CacheFactory
-}
+};

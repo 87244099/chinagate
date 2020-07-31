@@ -2,7 +2,7 @@
 let SecondTimer = (()=>{
   let taskList = [];
 
-  let timer = setInterval(()=>{
+  setInterval(()=>{
     taskList.forEach(task=>task());
   }, 1000);
 
@@ -18,12 +18,12 @@ let SecondTimer = (()=>{
         if(index>=0){
           taskList.splice(index, 1);
         }
-      })
+      });
     },
     clear(){
       taskList = [];
     }
-  }
+  };
 })();
 
 
@@ -44,4 +44,4 @@ function delay(handler, time) {
 module.exports = {
   SecondTimer,
   delay
-}
+};

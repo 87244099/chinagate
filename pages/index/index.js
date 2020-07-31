@@ -38,7 +38,7 @@ Page(Fai.mixin(Fai.commPageConfig, {
       url: '../logs/logs'
     })
   },
-  onLoad: function (options) {
+  onLoad: function () {
 
     this.loadNextArticles();
 
@@ -102,7 +102,7 @@ Page(Fai.mixin(Fai.commPageConfig, {
   onReachBottom: function(){
     this.loadNextArticles();
   },
-  callPhone: function(event){
+  callPhone: function(){
     // let phone = event.currentTarget.dataset.phone;
     wx.makePhoneCall({
       phoneNumber: this.data.globalData.hotline,

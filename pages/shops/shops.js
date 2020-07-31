@@ -1,5 +1,7 @@
 // pages/shops/shops.js
 const Ajax = require("../../ajax/index");
+const Fai = require("../../utils/util");
+const config = require("../../utils/config");
 import Dialog from '../../miniprogram_npm/@vant/weapp/dialog/dialog';
 
 Page({
@@ -10,13 +12,14 @@ Page({
   data: {
     setting: {
       position:{}
-    }
+    },
+    config:config
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function () {
     
     Ajax.setNormalTitle("recentShop");
     this.initPage();
@@ -65,16 +68,13 @@ Page({
         url: '/pages/index/index',
       });
     }
-
-    wx.getLocation({
-      altitude: 'altitude',
-    }).then(()=>{
-
-    }).catch(()=>{
-      wx.redirectTo({
-        url: '/pages/index/index',
-      });
-    })
+    response = await Fai.promiseRequest({
+      url:"/ajax/company/company?cmd=getRecentCompanyList",
+      data: this.data.setting.position
+    });
+    this.setData({
+      "pageData.companyList": response.data.data.companyList
+    });
   },
 
   /**

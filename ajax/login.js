@@ -20,7 +20,7 @@ async function login(){
       fail(){
         reject();
       }
-    })
+    });
 
   });
 }
@@ -40,7 +40,7 @@ async function getMemberInfo(){
       fail:()=>{
         reject();
       }
-    })
+    });
   });
 }
 async function getMemberInfoById(id){
@@ -61,7 +61,7 @@ async function getMemberInfoById(id){
       fail:()=>{
         reject();
       }
-    })
+    });
   });
 }
 
@@ -71,4 +71,4 @@ module.exports = {
   login,
   getMemberInfo,
   getMemberInfoById
-}
+};

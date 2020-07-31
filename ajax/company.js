@@ -16,7 +16,7 @@ async function getCompanyAIndexPageData(companyId){
         reject();
       }
     });
-  })
+  });
 }
 
 async function getInfo4CompanyA(id){
@@ -44,4 +44,4 @@ async function getInfo4CompanyA(id){
 module.exports = {
   getCompanyAIndexPageData,
   getInfo4CompanyA
-}
+};

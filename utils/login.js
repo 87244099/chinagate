@@ -1,7 +1,7 @@
 
 
 async function getLoginCodeNullIsEmpty(){
-  return new Promise((resolve, reject)=>{
+  return new Promise((resolve)=>{
     wx.login({
       complete: (res) => {
         if(res.errMsg === "login:ok"){
@@ -10,8 +10,8 @@ async function getLoginCodeNullIsEmpty(){
           resolve("");
         }
       },
-    })
-  })
+    });
+  });
 }
 
 async function checkSession(){
@@ -20,12 +20,13 @@ async function checkSession(){
 　　　　success: resolve,
 　　　　fail: reject
 　　});
-  })
+  });
 }
 
 
 
 
 module.exports = {
-  getLoginCodeNullIsEmpty
-}
+  getLoginCodeNullIsEmpty,
+  checkSession
+};

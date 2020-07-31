@@ -20,7 +20,7 @@ const getCookie = key => {
   }
 
   return cookieObj["value"];
-}
+};
 //setter
 // 封装setCookie 和wx.setStorageSync的区别在于发起请求的时候会带上
 const setCookie = (key, value, maxAge) => {
@@ -29,14 +29,14 @@ const setCookie = (key, value, maxAge) => {
   if (!isNaN(maxAge) && maxAge <= 0) {
     wx.removeStorage({
       key: key,
-      success: function (res) { }
+      success: function () { }
     });
     return;
   }
 
   let cookieObj = {
     value: value
-  }
+  };
 
   if (!isNaN(maxAge) && maxAge > 0) {
     let nowDate = new Date();
@@ -49,7 +49,7 @@ const setCookie = (key, value, maxAge) => {
     key: key,
     data: cookieObj
   });
-}
+};
 //从响应体里面读取cookie，设置进入缓存
 function cacheResponseCookie(response){
   let header = response.header;
@@ -57,7 +57,7 @@ function cacheResponseCookie(response){
   let { "Set-Cookie": cookieStr = "" } = header;
   cookieStr = cookieStr.split("GMT,").join("GMT;,");
   let cookies = cookieStr.split(";,");
-  cookies.forEach(function (item, index) {
+  cookies.forEach(function (item) {
     let cookie = item.split("; "),
       cookieObj = {},
       cookieKey = "";
@@ -115,7 +115,7 @@ function getRequestCookie(header){
   let { Cookie: cookie = "" } = header;
   let storageCookie = wx.getStorageInfoSync();
   let keys = storageCookie ? (storageCookie.keys || []) : [];
-  keys.forEach(function (key, index) {
+  keys.forEach(function (key) {
     let tmpInfo = getCookie(key);
     if (tmpInfo) {
       cookie += ";" + key + "=" + tmpInfo;
@@ -129,4 +129,4 @@ module.exports = {
   setCookie,
   cacheResponseCookie,
   getRequestCookie
-}
+};

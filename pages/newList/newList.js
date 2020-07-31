@@ -1,6 +1,5 @@
 //index.js
 //获取应用实例
-const app = getApp();
 const Fai = require("../../utils/util");
 const Ajax = require("../../ajax/index");
 const config = require("../../utils/config");
@@ -69,7 +68,7 @@ Page(Fai.mixin(Fai.commPageConfig,{
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    this.loadNextArticles();
   },
 
   /**
@@ -113,7 +112,4 @@ Page(Fai.mixin(Fai.commPageConfig,{
       }
     })
   },
-  onReachBottom: function(){
-    this.loadNextArticles();
-  }
 }));

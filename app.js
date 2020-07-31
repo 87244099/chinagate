@@ -1,4 +1,3 @@
-const Fai = require("./utils/util");
 
 App({
   globalData: {
@@ -8,4 +7,4 @@ App({
 
    
   }
-})
+});

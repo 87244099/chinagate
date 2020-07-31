@@ -7,5 +7,5 @@ module.exports = {
   ...require("./login"),
   ...require("./page"),
   ...require("./timer")
-}
+};
 

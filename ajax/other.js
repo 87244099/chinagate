@@ -19,7 +19,7 @@ async function getQrCode(page, scene){
       fail(){
         reject();
       }
-    })
+    });
   });
 }
 
@@ -29,7 +29,7 @@ async function getGlobalData(){
     return globalData;
   }
   
-  return new Promise((resolve, reject)=>{
+  return new Promise((resolve)=>{
     Fai.request({
       url:"/ajax/common/GetCommData?cmd=getGlobalData",
       success(response){
@@ -44,8 +44,8 @@ async function getGlobalData(){
       fail(){
         resolve({});
       }
-    })
-  })
+    });
+  });
 }
 
 async function setNormalTitle(key){
@@ -68,8 +68,8 @@ async function getUserCollectInfo(memberId){
         }
       },
       fail:reject
-    })
-  })
+    });
+  });
 }
 async function setUserCollect(memberId){
   return new Promise((resolve, reject)=>{
@@ -88,7 +88,7 @@ async function setUserCollect(memberId){
       fail(){
         reject();
       }
-    })
+    });
   });
 }
 
@@ -118,7 +118,7 @@ async function requestWithToast(requestHandler, message){
 
 async function loadWithToast(requestHandler){
   return requestWithToast(requestHandler, "加载中...");
-};
+}
 
 
 async function setUserCollectCancel4Staff(staffId, companyId){
@@ -139,9 +139,9 @@ async function setUserCollectCancel4Staff(staffId, companyId){
         }
       },
       fail(){
-        reject()
+        reject();
       }
-    })
+    });
   });
 }
 
@@ -154,4 +154,4 @@ module.exports = {
   setUserCollect,
   requestWithToast,
   setUserCollectCancel4Staff
-}
+};

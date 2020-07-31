@@ -1,9 +1,7 @@
 // pages/buy/buy.js
 
-const app = getApp();
 const Fai = require("../../utils/util");
 const Ajax = require("../../ajax/index");
-const config = require("../../utils/config");
 import Toast from "../../miniprogram_npm/@vant/weapp/toast/toast";
 Page({
 
@@ -24,7 +22,7 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function () {
     
     Ajax.setNormalTitle("buy");
   },
@@ -106,7 +104,7 @@ Page({
           }
         },
         fail: ()=>{
-          Toast.fail(result.msg || "网络繁忙、请稍后重试");
+          Toast.fail("网络繁忙、请稍后重试");
         }
       });
     })

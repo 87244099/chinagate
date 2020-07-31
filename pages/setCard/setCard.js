@@ -1,8 +1,6 @@
 // pages/setCard/setCard.js
-const app = getApp();
 const Fai = require("../../utils/util");
 const Ajax = require("../../ajax/index");
-const config = require("../../utils/config");
 import Toast from "../../miniprogram_npm/@vant/weapp/toast/toast";
 Page({
 
@@ -37,7 +35,7 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: async function (options) {
+  onLoad: async function () {
     
     Ajax.requestWithToast(async()=>{
       let response = await Ajax.getMemberInfo();
@@ -151,7 +149,6 @@ Page({
   
   reback(){
     wx.navigateBack({
-      complete: (res) => {},
     })
   },
   loadProvince: async function(){
@@ -233,7 +230,7 @@ Page({
   },
 
   onAreaPickerConfirm(event){
-    const { picker, value, index } = event.detail;
+    const { index } = event.detail;
     let setting = this.data.setting;
     if(setting.currAreaType == "province"){
       let finalData = {

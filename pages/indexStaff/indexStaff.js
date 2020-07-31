@@ -1,6 +1,4 @@
 // pages/indexStaff/indexStaff.js
-
-const app = getApp();
 const Fai = require("../../utils/util");
 const config = require("../../utils/config");
 import Toast from "../../miniprogram_npm/@vant/weapp/toast/toast";

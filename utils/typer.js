@@ -5,4 +5,4 @@ function isFunction(value){
 
 module.exports={
   isFunction
-}
+};

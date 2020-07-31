@@ -1,4 +1,3 @@
-const app = getApp();
 const Fai = require("../../utils/util");
 const Ajax = require("../../ajax/index");
 const config = require("../../utils/config");
@@ -21,7 +20,7 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function () {
     this.loadStaffCollections();
     Ajax.setNormalTitle("cardCollect");
   },
@@ -148,13 +147,11 @@ Page({
   },
   //取消员工名片收藏
   setCardCollectCancel4Staff(item, index){
-    let id = item.id;
-    console.log("item", item);
 
     Ajax.requestWithToast(async()=>{
-      let response = await Ajax.getMemberInfoById(id);
-      let memberInfo = response.data.data;
-      response = await Ajax.setUserCollectCancel4Staff(item.id, item.merchantForLevelAID);
+      // let response = await Ajax.getMemberInfoById(id);
+      // let memberInfo = response.data.data;
+      let response = await Ajax.setUserCollectCancel4Staff(item.id, item.merchantForLevelAID);
       this.removeCard(index);
       return Promise.resolve(response);
     });

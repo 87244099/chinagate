@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "jscpd": "jscpd ./"
+    "jscpd": "jscpd ./",
+    "jshint": "jshint ./"
   },
   "repository": {
     "type": "git",
@@ -19,11 +20,16 @@
   "homepage": "https://github.com/87244099/chinagate#readme",
   "dependencies": {
     "@vant/weapp": "^1.4.0",
-    "jscpd": "^3.3.0-rc.10"
+    "jscpd": "^3.3.0-rc.10",
+    "jshint": "^2.11.2"
   },
   "jscpd": {
     "threshold": 0.1,
-    "reporters": ["html", "console", "badge"],
+    "reporters": [
+      "html",
+      "console",
+      "badge"
+    ],
     "ignore": [
       "**/__snapshots__/**",
       "**/node_modules/**",
@@ -31,5 +37,21 @@
     ],
     "absolute": true,
     "gitignore": true
+  },
+  "jshintConfig":{
+    "undef": true,
+    "unused": false,
+    "globals": {
+      "Page": true,
+      "wx": true,
+      "getCurrentPages":true,
+      "getApp":true,
+      "App":true,
+      "Component":true
+    },
+    "node": true,
+    "esversion": 9,
+    "asi":true,
+    "sub":true
   }
 }

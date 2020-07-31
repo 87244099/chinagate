@@ -70,7 +70,7 @@ function assignOption(option){
 //将缓存里面的cookie写入请求头
 function trans4Cookie(option){
     let cookie = CookieUtils.getRequestCookie(option.header);
-    option.header["Cookie"] = cookie;
+    option.header.Cookie = cookie;
     return option;
 }
 // 如果写入post方法，在没有指定header的content-type 的情况下，强制转换为'application/x-www-form-urlencoded'
@@ -97,7 +97,7 @@ function trans4AutoLogin(option){
       }
     }
     oldSuccess(response);
-  }
+  };
   
   return option;
 }
@@ -146,7 +146,7 @@ function uploadFile(option){
   };
   let settingOption = Object.assign(defaultOption, option);
 
-  settingOption.header["Cookie"] = CookieUtils.getRequestCookie(settingOption.header);
+  settingOption.header.Cookie = CookieUtils.getRequestCookie(settingOption.header);
   settingOption.header["content-type"] = "multipart/form-data";
 
   let uploadFileOption = {
@@ -178,4 +178,4 @@ module.exports = {
   promiseRequest,
   promiseRequestPost,
   uploadFile
-}
+};

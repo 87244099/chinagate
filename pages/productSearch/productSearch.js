@@ -1,5 +1,4 @@
 // pages/productSearch/productSearch.js
-const app = getApp();
 const Fai = require("../../utils/util");
 const config = require("../../utils/config");
 Page(Fai.mixin(Fai.commPageConfig, {
@@ -105,7 +104,6 @@ Page(Fai.mixin(Fai.commPageConfig, {
       },
       complete:()=>{
         wx.hideLoading({
-          complete: (res) => {},
         })
       },
       success:(res)=>{

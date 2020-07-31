@@ -1,5 +1,5 @@
 // pages/productCollect/productCollect.js
-const app = getApp();
+// const app = getApp();
 const Fai = require("../../utils/util");
 const Ajax = require("../../ajax/index");
 const config = require("../../utils/config");
@@ -25,7 +25,7 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function () {
     this.loadPageData();
 
     Ajax.setNormalTitle("productCollect");

@@ -1,5 +1,4 @@
 // pages/reg/reg.js
-const app = getApp();
 const Fai = require("../../utils/util");
 const Ajax = require("../../ajax/index");
 const config = require("../../utils/config");
@@ -22,7 +21,7 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function () {
     //获取手机号码
     Ajax.setNormalTitle("reg");
     this.setCode();
@@ -114,7 +113,7 @@ Page({
   },
   async autoLogin(){
     try{
-      let loginResponse = await Ajax.login();//进行登录
+      await Ajax.login();//进行登录
 
       //注册后自动登录,然后跳转到
       //跳转到个人中心
