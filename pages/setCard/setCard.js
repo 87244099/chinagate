@@ -335,7 +335,8 @@ Page({
       memberName: cardInfo.memberName,
       address: cardInfo.address,
       weChat: cardInfo.weChat,
-      memberEmail: cardInfo.email,
+      memberEmail: cardInfo.memberEmail,
+      qq: cardInfo.qq,
       personalIntroduction: cardInfo.personalIntroduction,
     };
     Ajax.requestWithToast(async()=>{

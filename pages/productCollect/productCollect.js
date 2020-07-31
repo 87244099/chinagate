@@ -101,7 +101,7 @@ Page({
       title: '加载中...',
     });
     Fai.request({
-      url:"/ajax/product/product?cmd=getProductCollectionList&pageNo=1&pageSize=6",
+      url:"/ajax/product/productCollection?cmd=getProductCollectionList&pageNo=1&pageSize=6",
       data:{
         memberId: this.data.pageData.memberInfo.memberID,
         pageNo: setting.pageNo,

@@ -41,10 +41,10 @@
           <input bindblur="onFieldBlur" value="{{pageData.cardInfo.weChat}}" data-field="weChat" class="weui-input" placeholder="请输入您的微信号"/>
       </mp-cell>
       <mp-cell show-error prop="idcard" title="QQ号" ext-class="">
-          <input bindblur="onFieldBlur" value="{{pageData.cardInfo.qq}}" data-field="qq" class="weui-input" placeholder="请输入您的QQ号"/>
+          <input bindblur="onFieldBlur" data-val="{{pageData.cardInfo.qq}}" value="{{pageData.cardInfo.qq}}" data-field="qq" class="weui-input" placeholder="请输入您的QQ号"/>
       </mp-cell>
       <mp-cell show-error prop="idcard" title="邮箱" ext-class="">
-          <input bindblur="onFieldBlur" value="{{pageData.cardInfo.email}}" data-field="memberEmail" class="weui-input" placeholder="请输入您的邮箱"/>
+          <input bindblur="onFieldBlur" value="{{pageData.cardInfo.memberEmail}}" data-field="memberEmail" class="weui-input" placeholder="请输入您的邮箱"/>
       </mp-cell>
     </mp-cells>
     <view class="weui-cells__title">介绍简介</view>
