@@ -18,7 +18,7 @@
               <view class="fk_productSearch_product_priceInfo_value">{{item.vipWholesalePrice}}</view>
             </view>
           </view>
-          <view class="fk_productSearch_product_collectBtn" data-item="{{item}}" catchtap="onCancelProductCollect">...</view>
+          <view class="fk_productSearch_product_collectBtn" data-item="{{item}}" data-index="{{index}}" catchtap="onCancelProductCollect">...</view>
         </view>
         
       </navigator>

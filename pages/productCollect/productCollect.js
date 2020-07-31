@@ -125,18 +125,11 @@ Page({
         "setting.productList": setting.productList
       });
 
-<<<<<<< HEAD
-    wx.showLoading({
-      title: '加载中...',
-    });
-    Fai.request({
-=======
       return Promise.resolve(response);
     }, "加载中...");
   },
   loadCollectedProducts: async function(memberId, pageNo, pageSize){
     return Fai.promiseRequest({
->>>>>>> 694c59baf621a55284942a4a82c0118d69248c66
       url:"/ajax/product/productCollection?cmd=getProductCollectionList&pageNo=1&pageSize=6",
       data:{
         // memberId: this.data.pageData.memberInfo.memberID,
@@ -150,17 +143,22 @@ Page({
   },
   async onCancelProductCollect(event){
     let item = event.currentTarget.dataset.item;
-    console.log(item);
+    let index = event.currentTarget.dataset.index;
     Ajax.requestWithToast(async()=>{
-      return Fai.promiseRequestPost({
+      let response = Fai.promiseRequestPost({
         url:"/ajax/product/productCollection?cmd=setProductCollectCancel",
         data:{
           productId: item.productID,
-          staffID: this.data.pageData.memberInfo.staffID,
+          staffID: item.staffID,
           merchantForLevelAID: item.merchantForLevelAID,
           merchantForLevelBID: item.merchantForLevelBID,
         }
+      });
+      this.data.setting.productList.splice(index, 1);
+      this.setData({
+        "setting.productList": this.data.setting.productList
       })
+      return Promise.resolve(response);
     });
   }
 })

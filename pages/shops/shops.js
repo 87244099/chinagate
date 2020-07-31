@@ -1,5 +1,6 @@
 // pages/shops/shops.js
 const Ajax = require("../../ajax/index");
+import Dialog from '../../miniprogram_npm/@vant/weapp/dialog/dialog';
 
 Page({
 
@@ -7,7 +8,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    setting: {
+      position:{}
+    }
   },
 
   /**
@@ -16,6 +19,62 @@ Page({
   onLoad: function (options) {
     
     Ajax.setNormalTitle("recentShop");
+    this.initPage();
+    
+  },
+  async initPage(){
+    
+    let response;
+    try{
+      response = await wx.getSetting();
+      if(response.errMsg == "getSetting:ok"){
+        let authSetting = response.authSetting;
+        if(authSetting["scope.userLocation"] === undefined){//未验证过
+          response = await wx.getLocation();
+          let latitude = response.latitude;
+          let longitude = response.longitude;
+          this.setData({
+            "setting.position": {
+              latitude,
+              longitude
+            }
+          });
+          return;
+        }else if(authSetting["scope.userLocation"] === false){
+          response = await Dialog.confirm({
+            // title: '标题',
+            message: '请打开地理位置',
+            confirmButtonText:"去设置"
+          });
+          wx.openSetting();
+          return;
+        }else{
+          response = await wx.getLocation();
+          let latitude = response.latitude;
+          let longitude = response.longitude;
+          this.setData({
+            "setting.position": {
+              latitude,
+              longitude
+            }
+          });
+        }
+      }
+    }catch(errResponse){
+      wx.redirectTo({
+        url: '/pages/index/index',
+      });
+    }
+
+    wx.getLocation({
+      altitude: 'altitude',
+    }).then(()=>{
+
+    }).catch(()=>{
+      wx.redirectTo({
+        url: '/pages/index/index',
+      });
+    })
   },
 
   /**

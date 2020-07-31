@@ -1,7 +1,8 @@
 {
   "usingComponents": {
     "mp-tabbar": "weui-miniprogram/tabbar/tabbar",
-    "tab-bar": "/components/tab-bar/tab-bar"
+    "tab-bar": "/components/tab-bar/tab-bar",
+    "van-dialog": "@vant/weapp/dialog/index"
   },
   "navigationBarTitleText": "附近商家"
 }
