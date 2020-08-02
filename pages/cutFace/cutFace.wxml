@@ -1,0 +1,11 @@
+<import src='/components/we-cropper/we-cropper.wxml'/>
+<view class="cropper-wrapper">
+    <view style="height:calc(100vh - 100rpx);width:100%">
+      <template is="we-cropper" data="{{...cropperOpt}}"/>
+    </view>
+    <view class="cropper-buttons">
+      <van-button type="info" bindtap="uploadTap" size="small">上传</van-button>
+      <van-button type="info" bindtap="getCropperImage" size="small">保存</van-button>
+    </view>
+    <van-toast id="van-toast"/>
+</view>

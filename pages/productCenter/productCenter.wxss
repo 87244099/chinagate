@@ -50,7 +50,7 @@
   background-color: #fff;
   display: flex;
   align-items: flex-start;
-  height: calc( 100vh - 212rpx );
+  height: calc( 100vh - 116rpx - 48px );
 }
 .fk_productCenter_group_side{
   min-width: 224rpx;

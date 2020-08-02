@@ -68,13 +68,18 @@ Page({
         url: '/pages/index/index',
       });
     }
-    response = await Fai.promiseRequest({
-      url:"/ajax/company/company?cmd=getRecentCompanyList",
-      data: this.data.setting.position
-    });
-    this.setData({
-      "pageData.companyList": response.data.data.companyList
-    });
+    
+    Ajax.requestWithToast(async()=>{
+      response = await Fai.promiseRequest({
+        url:"/ajax/company/company?cmd=getRecentCompanyList",
+        data: this.data.setting.position
+      });
+      this.setData({
+        "pageData.companyList": response.data.data.companyList
+      });
+
+      return Promise.resolve(response);
+    })
   },
 
   /**

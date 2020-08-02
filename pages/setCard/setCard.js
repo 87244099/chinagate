@@ -8,6 +8,9 @@ Page({
    * 页面的初始数据
    */
   data: {
+
+
+
     setting: {
       
 
@@ -37,6 +40,30 @@ Page({
    */
   onLoad: async function () {
     
+
+    
+  },
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+
+  },
+  
+  onFieldBlur(event){
+    let dataset = event.currentTarget.dataset;
+    let field = dataset.field;
+    let value = event.detail.value;
+    this.setData({
+      [`pageData.cardInfo.${field}`]:value
+    });
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
     Ajax.requestWithToast(async()=>{
       let response = await Ajax.getMemberInfo();
       let memberInfo = response.data.data;
@@ -84,32 +111,8 @@ Page({
         "pageData.cardInfo":cardInfo,
         "setting": setting
       });
-
       return Promise.resolve(response);
     }, "加载中...");
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-  
-  onFieldBlur(event){
-    let dataset = event.currentTarget.dataset;
-    let field = dataset.field;
-    let value = event.detail.value;
-    this.setData({
-      [`pageData.cardInfo.${field}`]:value
-    });
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
   },
 
   /**
@@ -317,39 +320,9 @@ Page({
     
   },
   onUploadHeadImg(){
-    wx.chooseImage({
-      count: 1,
-      sizeType: ['original', 'compressed'],
-      sourceType: ['album', 'camera'],
-      success :(res) =>{
-        const tempFilePaths = res.tempFilePaths;
-        Fai.uploadFile({
-          url:'/ajax/user/userInfo?cmd=uploadHeadImg',
-          filePath: tempFilePaths[0],
-          name: 'avatarPhotoFile',
-          beforeConsume:Toast.clear,
-          success:(response)=>{
-            let result = response.data;
-            if(result.success){
-              //do something
-              this.setData({
-                "pageData.cardInfo.avatarPhoto": result.data.avatarPhotoPath
-              });
-              Toast.success(result.msg);
-            }else{
-              Toast.fail(result.msg);
-            }
-          },
-          onProgressUpdate: (progress)=>{
-            console.log('progress', progress);
-            Toast.loading({
-              message:`图片正在上传...${progress.progress}%`,
-              duration: 0
-            });
-          }
-        })
-
-      }
-    })
+    wx.navigateTo({
+      url: '/pages/cutFace/cutFace',
+    });
+    
   }
 })

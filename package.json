@@ -19,9 +19,7 @@
   },
   "homepage": "https://github.com/87244099/chinagate#readme",
   "dependencies": {
-    "@vant/weapp": "^1.4.0",
-    "jscpd": "^3.3.0-rc.10",
-    "jshint": "^2.11.2"
+    "@vant/weapp": "^1.4.0"
   },
   "jscpd": {
     "threshold": 0.1,
@@ -38,20 +36,20 @@
     "absolute": true,
     "gitignore": true
   },
-  "jshintConfig":{
+  "jshintConfig": {
     "undef": true,
     "unused": false,
     "globals": {
       "Page": true,
       "wx": true,
-      "getCurrentPages":true,
-      "getApp":true,
-      "App":true,
-      "Component":true
+      "getCurrentPages": true,
+      "getApp": true,
+      "App": true,
+      "Component": true
     },
     "node": true,
     "esversion": 9,
-    "asi":true,
-    "sub":true
+    "asi": true,
+    "sub": true
   }
 }

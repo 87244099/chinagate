@@ -12,7 +12,6 @@
 .fk_reg_header_logo{
   width: 102rpx;
   height: 56rpx;
-  background-color: #ccc;
   margin-bottom: 10rpx;
 }
 .fk_reg_header_text{

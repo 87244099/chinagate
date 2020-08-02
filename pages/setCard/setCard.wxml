@@ -1,4 +1,5 @@
 <wxs src="./setCard.wxs" module="setCard" />
+<import src='/components/we-cropper/we-cropper'/>
 
 <view class="fk_page fk_setCard">
   <mp-form id="form">

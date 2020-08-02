@@ -3,7 +3,7 @@
 const Fai = require("../../utils/util");
 const Ajax = require("../../ajax/index");
 const config = require("../../utils/config");
-Page({
+Page(Fai.mixin(Fai.commPageConfig, {
 
   /**
    * 页面的初始数据
@@ -102,7 +102,7 @@ Page({
         "setting.productList": setting.productList
       })
       return Promise.resolve(response);
-    });
+    }, "加载中...");
 
   },
   isAllProductLoaded(){
@@ -161,4 +161,4 @@ Page({
       return Promise.resolve(response);
     });
   }
-})
+}));

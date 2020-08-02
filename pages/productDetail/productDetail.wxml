@@ -64,6 +64,6 @@
       </view>
     </view>
   </view>
-  <tab-bar class="fk_tabBar" type="company" rollbackVisible="{{_commPageConfigData.rollbackVisible}}" style="background-color:{{pageData.companyInfo.themeColor}}"></tab-bar>
+  <tab-bar class="fk_tabBar" type="company" rollbackVisible="{{_commPageConfigData.rollbackVisible}}" style="background-color:{{pageData.companyInfo.themeColor}}" companyInfo="{{pageData.companyInfo}}"></tab-bar>
   <van-toast id="van-toast" />
 </view>

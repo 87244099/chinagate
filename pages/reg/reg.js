@@ -147,7 +147,10 @@ Page({
   },
   getphonenumber(event){
     let detail = event.detail;
-    console.log("detail", detail);
+    if(detail.errMsg == "getPhoneNumber:fail user deny"){
+      return;
+    };
+
     let data = detail;
     data.code = this.data.setting.code;
     Fai.requestPost({

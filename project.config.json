@@ -175,10 +175,10 @@
 					"scene": null
 				},
 				{
-					"id": 17,
+					"id": 16,
 					"name": "企业首页",
 					"pathName": "pages/indexCompany/indexCompany",
-					"query": "id=1",
+					"query": "companyId=1",
 					"scene": null
 				},
 				{
@@ -221,6 +221,13 @@
 					"name": "分享状态的名片",
 					"pathName": "pages/sharedCard/sharedCard",
 					"query": "id=3228",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "裁切头像",
+					"pathName": "pages/cutFace/cutFace",
+					"query": "",
 					"scene": null
 				}
 			]

@@ -46,22 +46,22 @@
 <block wx:elif="{{type=='company'}}">
   <view class="fk_tabBar">
     <view class="fk_tabBar_item">
-      <navigator open-type="redirect" url="/pages/indexCompany/indexCompany">
+      <navigator open-type="redirect" url="/pages/indexCompany/indexCompany?companyId={{companyInfo.merchantForLevelAID}}">
         <view class="iconfont icon-home fk_tabBar_item_icon"></view>
         <view class="fk_tabBar_item_text">首页</view>
       </navigator>
     </view>
     <view class="fk_tabBar_item">
-      <navigator open-type="redirect" url="/pages/productCenter/productCenter">
+      <navigator open-type="redirect" url="/pages/productCenter/productCenter?companyId={{companyInfo.merchantForLevelAID}}">
         <view class="iconfont icon-apply fk_tabBar_item_icon"></view>
         <view class="fk_tabBar_item_text">产品中心</view>
       </navigator>
     </view>
     <view class="fk_tabBar_item">
-      <navigator open-type="redirect">
+      <view catchtap="callPhone" data-phone="{{companyInfo.companyPhone}}">
         <view class="iconfont icon-fujin fk_tabBar_item_icon"></view>
         <view class="fk_tabBar_item_text">联系电话</view>
-      </navigator>
+      </view>
     </view>
     <view class="fk_tabBar_item">
       <navigator open-type="redirect" url="/pages/personal/personal">

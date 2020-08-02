@@ -15,6 +15,10 @@ Component({
     rollbackVisible: {
       type:Boolean,
       value: false
+    },
+    companyInfo:{
+      type: Object,
+      value: {}
     }
   },
   /**
@@ -39,6 +43,12 @@ Component({
           content: '当前微信版本过低，无法使用该功能，请升级到最新微信版本后重试。'
         });
       }
+    },
+    callPhone(event){
+      let phone = event.currentTarget.dataset.phone;
+      wx.makePhoneCall({
+        phoneNumber: phone,
+      });
     }
   }
 });

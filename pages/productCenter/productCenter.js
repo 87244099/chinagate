@@ -2,6 +2,7 @@
 //获取应用实例
 const app = getApp();
 const Fai = require("../../utils/util");
+const Ajax = require("../../ajax/index");
 const config = require("../../utils/config");
 Page({
 
@@ -22,7 +23,7 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      "setting.companyId":parseInt(options.id) || -1
+      "setting.companyId":parseInt(options.companyId) || -1
     })
     this.loadPageData();
   },
@@ -75,26 +76,20 @@ Page({
   onShareAppMessage: function () {
 
   },
-  loadPageData(){
-    wx.showLoading({
-      title: '加载中...',
-    });
-    Fai.request({
-      url:"/ajax/product/product?cmd=getProductCenterPageData&id="+this.data.setting.companyId,
-      complete(){
-        wx.hideLoading({
-          complete: (res) => {},
-        })
-      },
-      success: (res)=>{
-        let result = res.data;
-        if(result.success){
-          this.setData({
-            pageData: result.data
-          });
-        }
-      }
-    })
+  async loadPageData(){
+    Ajax.requestWithToast(async()=>{
+      let response = await Ajax.getCompanyAIndexPageData(this.data.setting.companyId);
+      let companyPageData = response.data.data;
+      response = await Fai.promiseRequest({
+        url:"/ajax/product/product?cmd=getProductCenterPageData&id="+this.data.setting.companyId,
+      });
+      
+      this.setData({
+        "pageData.productGroupList": response.data.data.productGroupList,
+        "pageData.companyPageData": companyPageData
+      });
+      return Promise.resolve(response);
+    }, "加载中...");
   },
   onGroupTabClick: function(event){
     let index = event.currentTarget.dataset.index;
@@ -114,8 +109,8 @@ Page({
       value = value.trim();
       if(value.length > 0){
         wx.navigateTo({
-          url: '/pages/productSearch/productSearch?word='+value,
-        })
+          url: '/pages/productSearch/productSearch?word='+value+"&companyId="+this.data.setting.companyId,
+        });
       }else{
       }
     }

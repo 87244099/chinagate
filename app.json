@@ -24,7 +24,10 @@
     "pages/myCompany/myCompany",
     "pages/staffCollect/staffCollect",
     "pages/reg/reg",
-    "pages/login/login"
+    "pages/login/login",
+    "pages/cutFace/cutFace",
+    "templates/indexCompany/indexCompany",
+    "templates/card/card"
   ],
   "window": {
     "backgroundTextStyle": "light",

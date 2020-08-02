@@ -1,0 +1,16 @@
+/* pages/cutFace/cutFace.wxss */
+
+.cropper-buttons{
+  display: flex;
+  height: 100rpx;
+  justify-content: space-between;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  align-items: center;
+  background: #fff;
+  padding: 0 20rpx;
+  box-sizing: border-box;
+  z-index: 9999;
+}

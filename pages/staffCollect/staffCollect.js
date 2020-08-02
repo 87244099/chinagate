@@ -160,13 +160,14 @@ Page({
   //跳转到对应的名片
   onJumpCard(event){
     let item = event.currentTarget.dataset.item;
+    console.log("item", item);
     if(item.collectSubTypeID == 1){//个人名片
       wx.navigateTo({
         url: '/pages/card/card',
       });
     }else{//企业员工名片
       wx.navigateTo({
-        url: '/pages/indexStaff/indexStaff',
+        url: '/pages/indexStaff/indexStaff?companyId='+item.merchantForLevelAID+"&staffID="+item.id,
       });
     }
   }
