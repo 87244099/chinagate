@@ -1,0 +1,74 @@
+<template name="personal">
+  <navigator class="fk_personal_header" url="/pages/setCard/setCard">
+    <view class="fk_personal_header_block">
+      <view class="fk_personal_header_left">
+        <view class="fk_personal_header_img">
+          <image style="width:100%;height:100%" src="{{pageData.memberInfo.avatarPhoto}}"></image>
+        </view>
+        <view class="fk_personal_header_info">
+          <view class="fk_personal_header_info_name">{{pageData.memberInfo.memberName}}</view>
+          <view class="fk_personal_header_info_wxAcct">微信号：{{pageData.memberInfo.weChat || ''}}</view>
+        </view>
+      </view>
+      <view class="fk_personal_header_right">
+        <view class="iconfont icon-right"></view> 
+      </view>
+    </view>
+  </navigator>
+  <view class="fk_personal_section">
+    <view class="fk_personal_section_title">个人中心</view>
+    <view class="fk_personal_section_list">
+      <navigator class="fk_personal_section_item" url="/pages/myCard/myCard">
+        <view class="fk_personal_section_item_left">
+          <view class="fk_personal_section_item_icon iconfont icon-mingpian" style="color: #3cceff;"></view>
+          <view class="fk_personal_section_item_text">我的名片</view>
+        </view>
+        <view class="fk_personal_section_item_right">
+          <view class="iconfont icon-right"></view> 
+        </view>
+      </navigator>
+      <navigator class="fk_personal_section_item" url="/pages/myCollect/myCollect">
+        <view class="fk_personal_section_item_left">
+          <view class="fk_personal_section_item_icon iconfont icon-start1" style="color: red;"></view>
+          <view class="fk_personal_section_item_text">我的收藏</view>
+        </view>
+        <view class="fk_personal_section_item_right">
+          <view class="iconfont icon-right"></view> 
+        </view>
+      </navigator>
+      <navigator class="fk_personal_section_item">
+        <view class="fk_personal_section_item_left">
+          <view class="fk_personal_section_item_icon iconfont icon-tongjifenxi" style="color: #e37429;"></view>
+          <view class="fk_personal_section_item_text">我的咨询</view>
+        </view>
+        <view class="fk_personal_section_item_right">
+          <view class="iconfont icon-right"></view> 
+        </view>
+      </navigator>
+    </view>
+  </view>
+  <!-- 只有员工才能看到企业信息 -->
+  <view class="fk_personal_section"  wx:if="{{pageData.memberInfo.staffID>0 && pageData.memberInfo.merchantForLevelAID>0}}">
+    <view class="fk_personal_section_title">企业</view>
+    <view class="fk_personal_section_list">
+      <navigator class="fk_personal_section_item" url="/pages/indexStaff/indexStaff?companyId={{pageData.memberInfo.merchantForLevelAID}}&staffID={{pageData.memberInfo.staffID>0 ? pageData.memberInfo.staffID : -1}}">
+        <view class="fk_personal_section_item_left">
+          <view class="fk_personal_section_item_icon iconfont icon-mingpian" style="color: #3cceff;"></view>
+          <view class="fk_personal_section_item_text">我的公司名片</view>
+        </view>
+        <view class="fk_personal_section_item_right">
+          <view class="iconfont icon-right"></view> 
+        </view>
+      </navigator>
+      <navigator class="fk_personal_section_item" url="/pages/myCompany/myCompany">
+        <view class="fk_personal_section_item_left">
+          <view class="fk_personal_section_item_icon iconfont icon-yonghu1-copy" style="color: #daa520;"></view>
+          <view class="fk_personal_section_item_text">我的公司</view>
+        </view>
+        <view class="fk_personal_section_item_right">
+          <view class="iconfont icon-right"></view> 
+        </view>
+      </navigator>
+    </view>
+  </view>
+</template>

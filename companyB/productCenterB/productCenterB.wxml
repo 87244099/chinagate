@@ -3,6 +3,6 @@
   
   <template is="productCenter" data="{{setting, pageData, config}}"></template>
 
-  <tab-bar class="fk_tabBar" type="company" companyInfo="{{pageData.companyPageData.companyInfo}}"></tab-bar>
+  <tab-bar class="fk_tabBar" type="company" companyInfo="{{pageData.companyPageData.companyInfo}}" companyType="2"></tab-bar>
   <van-toast id="van-toast" />
 </view>

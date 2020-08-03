@@ -4,6 +4,7 @@ const Fai = require("../../utils/util");
 const Ajax = require("../../ajax/index");
 const config = require("../../utils/config");
 const Card = require("../../templates/card/card");
+console.log("Card", Card);
 // pages/card/card.js
 Page(Fai.mixin(Fai.commPageConfig, Card, {
 

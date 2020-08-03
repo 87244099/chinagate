@@ -1,5 +1,6 @@
 // pages/login/login.js
 const Ajax = require("../../ajax/index");
+const config = require("../../utils/config");
 import Toast from "../../miniprogram_npm/@vant/weapp/toast/toast";
 Page({
 
@@ -9,7 +10,8 @@ Page({
   data: {
     pageData:{
       wxUserInfo:{}
-    }
+    },
+    config
   },
 
   /**

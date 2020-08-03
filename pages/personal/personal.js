@@ -1,9 +1,5 @@
-// pages/personal/personal.js
-const app = getApp();
 const Fai = require("../../utils/util");
 const Ajax = require("../../ajax/index");
-const config = require("../../utils/config");
-import Toast from "../../miniprogram_npm/@vant/weapp/toast/toast";
 
 Page(Fai.mixin(Fai.commPageConfig, {
 
@@ -77,34 +73,14 @@ Page(Fai.mixin(Fai.commPageConfig, {
 
   },
   async loadPersonalData(){
-    Toast.loading({
-      message:"加载中...",
-      duration: 0,
-      mask:true
-    });
-    try{
+    Ajax.requestWithToast(async()=>{
+      
       let response = await Ajax.getMemberInfo();
-      let result = response.data;
-      let memberInfo = result.data;
+      let memberInfo = response.data.data;
       this.setData({
         "pageData.memberInfo":memberInfo
       });
-    }catch(e){
-      Toast.fail("网络繁忙，请稍后重试");
-      return;
-    }
-
-    // try{
-    //   let response = await Ajax.getCompanyAIndexPageData(this.data.pageData.memberInfo.merchantForLevelAID);
-      
-    //   this.setData({
-    //     "pageData.companyPageData":response.data.data
-    //   });
-    // }catch(e){
-    //   Toast.fail("网络繁忙，请稍后重试");
-    //   return;
-    // }
-
-    Toast.clear();
+      return Promise.resolve(response);
+    }, "加载中...");
   }
 }));

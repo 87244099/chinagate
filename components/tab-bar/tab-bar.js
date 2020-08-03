@@ -19,6 +19,10 @@ Component({
     companyInfo:{
       type: Object,
       value: {}
+    },
+    companyType: {
+      type:Number,
+      value: 1
     }
   },
   /**

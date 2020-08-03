@@ -82,10 +82,12 @@ module.exports = {
    * 用户点击右上角分享
    */
   onShareAppMessage: function() {
-    return {
-      title: 'xxx小程序',
-      path: Fai.getCurrAbsPath(),
-    }
+    let data = {
+      title: this.data.pageData.cardInfo.memberName,
+      path: "pages/sharedCard/sharedCard?id="+ this.data.pageData.cardInfo.memberID,
+    };
+    console.log("data", data);
+    return data;
   },
   onShareMaskClick: function(){
     this.setData({

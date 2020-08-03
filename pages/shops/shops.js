@@ -29,11 +29,11 @@ Page({
     
     let response;
     try{
-      response = await wx.getSetting();
+      response = await Fai.getSetting();
       if(response.errMsg == "getSetting:ok"){
         let authSetting = response.authSetting;
         if(authSetting["scope.userLocation"] === undefined){//未验证过
-          response = await wx.getLocation();
+          response = await Fai.getLocation();
           let latitude = response.latitude;
           let longitude = response.longitude;
           this.setData({
@@ -52,7 +52,7 @@ Page({
           wx.openSetting();
           return;
         }else{
-          response = await wx.getLocation();
+          response = await Fai.getLocation();
           let latitude = response.latitude;
           let longitude = response.longitude;
           this.setData({
@@ -129,5 +129,17 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  onJumpToCompany(event){
+    let item = event.currentTarget.dataset.item;
+    if(item.typeID == 1){
+      wx.navigateTo({
+        url: "/pages/indexCompany/indexCompany?companyId="+item.merchantForLevelAID,
+      });
+    }else{
+      wx.navigateTo({
+        url: "/companyB/indexCompanyB/indexCompanyB?companyId="+item.merchantForLevelAID,
+      });
+    }
   }
 })

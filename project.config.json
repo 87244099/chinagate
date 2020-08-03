@@ -29,7 +29,7 @@
 		"userConfirmedUseCompilerModuleSwitch": false
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.11.1",
+	"libVersion": "2.8.1",
 	"appid": "wx41ef0a04dcd2c3ad",
 	"projectname": "chinagate",
 	"debugOptions": {
@@ -101,7 +101,7 @@
 					"id": 5,
 					"name": "产品中心",
 					"pathName": "pages/productCenter/productCenter",
-					"query": "id=1",
+					"query": "companyId=1",
 					"scene": null
 				},
 				{
@@ -228,6 +228,34 @@
 					"name": "裁切头像",
 					"pathName": "pages/cutFace/cutFace",
 					"query": "",
+					"scene": null
+				},
+				{
+					"id": 24,
+					"name": "一级企业的个人中心",
+					"pathName": "pages/personal4CompanyA/personal4CompanyA",
+					"query": "companyId=1",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "二级商家首页",
+					"pathName": "companyB/indexCompanyB/indexCompanyB",
+					"query": "companyId=1",
+					"scene": null
+				},
+				{
+					"id": 26,
+					"name": "二级商家个人中心",
+					"pathName": "companyB/personal4CompanyB/personal4CompanyB",
+					"query": "companyId=1",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "二级商家-产品中心",
+					"pathName": "companyB/productCenterB/productCenterB",
+					"query": "companyId=1",
 					"scene": null
 				}
 			]

@@ -1,0 +1,7 @@
+<import src ="../../templates/indexCompany/indexCompany.wxml"/>
+
+<view class="fk_page">
+  <template is="indexCompany" data="{{pageData, setting, config}}"></template>
+  <tab-bar class="fk_tabBar" type="company" style="background-color:{{pageData.companyInfo.themeColor}}" rollbackVisible="{{_commPageConfigData.rollbackVisible}}" companyInfo="{{pageData.companyInfo}}" companyType="2"></tab-bar>
+  <van-toast id="van-toast"  />
+</view>

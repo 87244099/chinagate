@@ -26,8 +26,19 @@
     "pages/reg/reg",
     "pages/login/login",
     "pages/cutFace/cutFace",
-    "templates/indexCompany/indexCompany",
-    "templates/card/card"
+    "templates/personal/personal",
+    "pages/personal4CompanyA/personal4CompanyA",
+    "templates/productCenter/productCenter"
+  ],
+  "subpackages": [
+    {
+      "root": "companyB",
+      "pages": [
+        "indexCompanyB/indexCompanyB",
+        "productCenterB/productCenterB",
+        "personal4CompanyB/personal4CompanyB"
+      ]
+    }
   ],
   "window": {
     "backgroundTextStyle": "light",

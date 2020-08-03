@@ -76,39 +76,25 @@ Page({
 
   },
   
-  onSubmitForm: function(){
-    wx.nextTick(()=>{
-      Toast.loading({
-        message: "加载中..."
-      });
+  onSubmitForm: Fai.delay(function(){
+    Ajax.requestWithToast(async()=>{
       let setting = this.data.setting;
-      Fai.request({
-        method:"POST",
+      let response = await Fai.promiseRequestPost({
         url:"/ajax/apply/applyForm?cmd=applyBuy",
         data: {
           customerName: setting.form.customerName,
           customerTel: setting.form.customerTel,
           address: setting.form.address,
           leaveMessage: setting.form.leaveMessage,
-        },
-        beforeConsume:Toast.clear,
-        success:(response)=>{
-          let result = response.data;
-          if(result.success){
-            Toast.success(result.msg);
-            this.setData({
-              "setting.form":{}
-            })
-          }else{
-            Toast.fail(result.msg || "网络繁忙、请稍后重试");
-          }
-        },
-        fail: ()=>{
-          Toast.fail("网络繁忙、请稍后重试");
         }
       });
+      console.log("suc", response);
+      this.setData({
+        "setting.form":{}
+      });
+      return Promise.resolve(response);
     })
-  },
+  }),
   onFieldBlur(event){
     let dataset = event.currentTarget.dataset;
     let field = dataset.field;

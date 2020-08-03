@@ -1,28 +1,27 @@
-// pages/repairSign/repairSign.js
-const Fai = require("../../utils/util");
+// pages/personal/personal.js
 const Ajax = require("../../ajax/index");
-import Toast from "../../miniprogram_npm/@vant/weapp/toast/toast";
-Page({
+
+module.exports = {
 
   /**
    * 页面的初始数据
    */
   data: {
-    setting:{
-      form:{
-        customerName: "",
-        customerTel:"",
-        address: "",
-        leaveMessage: ""
-      }
+    setting: {
+      companyId: -1,//当前名片所属公司
+      staffId: -1//当前名片所属员工
+    },
+    pageData:{
+      memberInfo: {},
+      staffInfo: {},
     }
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function () {
-    Ajax.setNormalTitle("repair");
+  onLoad: function (options) {
+    
   },
 
   /**
@@ -36,7 +35,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.loadPersonalData();
   },
 
   /**
@@ -73,27 +72,18 @@ Page({
   onShareAppMessage: function () {
 
   },
-  onFieldBlur(event){
-    let dataset = event.currentTarget.dataset;
-    let field = dataset.field;
-    let value = event.detail.value;
-    console.log(field, value);
-    this.setData({
-      [`setting.form.${field}`]:value
-    })
-  },
-  onSubmitForm:Fai.delay(function(){
+  async loadPersonalData(){
     Ajax.requestWithToast(async()=>{
-      let response = await Fai.promiseRequestPost({
-        url:"/ajax/apply/applyForm?cmd=applyRepair",
-        data:this.data.setting.form
-      });
-
+      
+      let response = await Ajax.getMemberInfo();
+      let memberInfo = response.data.data;
+      response = await Ajax.getCompanyAIndexPageData(memberInfo.merchantForLevelAID);
+      let companyPageData = response.data.data;
       this.setData({
-        "setting.form":{}
+        "pageData.memberInfo":memberInfo,
+        "pageData.companyPageData":companyPageData
       });
-
       return Promise.resolve(response);
-    }); 
-  })
-})
+    }, "加载中...");
+  }
+};

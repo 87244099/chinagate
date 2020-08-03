@@ -67,9 +67,21 @@ module.exports = {
 
   },
   loadIndexCompanyPageData: async function(){
+    this.loadIndexCompanyPageDataByType(1);
+  },
+  loadIndexCompanyBPageData: async function(){
+    this.loadIndexCompanyPageDataByType(2);
+  },
+  loadIndexCompanyPageDataByType: async function(type){
     Ajax.requestWithToast(async()=>{
+
+      let url = "/ajax/company/company?cmd=getCompanyAIndexPageData&id="+this.data.setting.companyId;
+      if(type == 2){
+        url = "/ajax/company/company?cmd=getCompanyBIndexPageData&id="+this.data.setting.companyId;
+      }
+
       let response = await Fai.promiseRequest({
-        url: "/ajax/company/company?cmd=getCompanyBIndexPageData&id="+this.data.setting.companyId
+        url: url
       });
   
       this.setData({
@@ -119,19 +131,6 @@ module.exports = {
       fail:()=>{
         Toast.fail('网络繁忙，请稍后重试');
       }
-    });
-  },
-  onCompanyCollect(){
-    Ajax.requestWithToast(async()=>{
-      let response = Fai.promiseRequestPost({
-        url:"/ajax/company/companyCollect?cmd=setCompanyCollect",
-        data:{
-          merchantForLevelAID: this.data.setting.companyId,
-          merchantForLevelBID: 0
-        }
-      });
-
-      return Promise.resolve(response);
     });
   }
 };

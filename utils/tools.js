@@ -41,7 +41,27 @@ function mixin(){
   return obj;
 }
 
+function getLocation(){
+  return new Promise((resolve, reject)=>{
+    wx.getLocation({
+      success:resolve,
+      fail: reject
+    })
+  });
+}
+
+function getSetting(){
+  return new Promise((resolve, reject)=>{
+    wx.getSetting({
+      success: resolve,
+      fail: reject
+    })
+  });
+}
+
 module.exports = {
   formatTime,
-  mixin
+  mixin,
+  getLocation,
+  getSetting
 };

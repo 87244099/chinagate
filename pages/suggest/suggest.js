@@ -77,35 +77,25 @@ Page({
       [`setting.${field}`]:value
     })
   },
-  submitSuggestForm: function(){
-    Toast.loading({
-      message: "加载中..."
-    });
-    let setting = this.data.setting;
-    Fai.request({
-      method:"POST",
-      header: {
-        'content-type': 'application/x-www-form-urlencoded'
-      },
-      url:"/ajax/apply/applyForm?cmd=applyAdvise",
-      data: {
-        customerName: setting.customerName,
-        customerTel: setting.customerTel,
-        email: setting.email,
-        leaveMessage: setting.leaveMessage,
-      },
-      beforeConsume:Toast.clear,
-      success:(response)=>{
-        let result = response.data;
-        if(result.success){
-          Toast.success(result.msg);
-        }else{
-          Toast.fail(result.msg || "网络繁忙、请稍后重试");
+  submitSuggestForm: Fai.delay(function(){
+    Ajax.requestWithToast(async()=>{
+      let setting = this.data.setting;
+      let response = await Fai.promiseRequestPost({
+        header: {
+          'content-type': 'application/x-www-form-urlencoded'
+        },
+        url:"/ajax/apply/applyForm?cmd=applyAdvise",
+        data: {
+          customerName: setting.customerName || "",
+          customerTel: setting.customerTel || "",
+          email: setting.email || "",
+          leaveMessage: setting.leaveMessage || "",
         }
-      },
-      fail: ()=>{
-        Toast.fail("网络繁忙、请稍后重试");
-      }
-    });
-  }
+      });
+      this.setData({
+        "setting": {}
+      });
+      return Promise.resolve(response);
+    })
+  })
 })

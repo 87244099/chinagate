@@ -2,7 +2,7 @@
   <view class="fk_login">
     <view class="fk_login_logo_wrap">
       <view class="fk_login_logo">
-        <image src="{{pageData.wxUserInfo.userInfo.avatarUrl}}" style="width:100%;height:100%;"></image>
+        <image src="{{config.staticDomain}}/Content/Images/logo.png" mode="aspectFit" style="width:100%;height:100%;"></image>
       </view>
       <view class="fk_login_name">{{pageData.wxUserInfo.userInfo.nickName}}</view>
     </view>
