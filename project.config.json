@@ -108,7 +108,7 @@
 					"id": 6,
 					"name": "产品搜索",
 					"pathName": "pages/productSearch/productSearch",
-					"query": "word=不锈钢",
+					"query": "companyId=1&word=不锈钢",
 					"scene": null
 				},
 				{
@@ -256,6 +256,27 @@
 					"name": "二级商家-产品中心",
 					"pathName": "companyB/productCenterB/productCenterB",
 					"query": "companyId=1",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "员工邀请",
+					"pathName": "pages/invitation4Staff/invitation4Staff",
+					"query": "companyId=1",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "vip升级",
+					"pathName": "pages/invitation4Vip/invitation4Vip",
+					"query": "companyId=1",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "创建企业",
+					"pathName": "pages/createComapny/createCompany",
+					"query": "companyId=1&word=不锈钢",
 					"scene": null
 				}
 			]

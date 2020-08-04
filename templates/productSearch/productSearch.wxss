@@ -1,0 +1,82 @@
+/* pages/productSearch/productSearch.wxss */
+
+
+.fk_productSearch .searchbar--weui-search-bar{
+  background-color: #0062d7;
+}
+.fk_productSearch .searchbar--weui-search-bar__cancel-btn{
+  color: #fff;
+}
+.fk_productSearch_word{
+  padding-left: 20rpx;
+    margin-top: 20rpx;
+    font-size: 24rpx;
+}
+.fk_productSearch_main{
+  padding: 20rpx;
+}
+
+.fk_productSearch_product_list{
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+.fk_productSearch_product_item{
+  float: left;
+  width: 50%;
+  padding-left: 10rpx;
+  padding-right: 10rpx;
+  padding-top: 40rpx;
+  overflow: hidden;
+  padding-bottom: 8rpx;
+  box-sizing: border-box;
+}
+.fk_productSearch_product_img{
+  height: 212rpx;
+  width: 100%;
+  background: #ccc;
+}
+.fk_productSearch_product_name{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: center;
+  font-size: 28rpx;
+  padding: 0 16rpx;
+  padding-top: 10rpx;
+  color: #333;
+  text-align: center;
+  font-size: 28rpx;
+  padding-top: 10rpx;
+  color: #333;
+  width: 100%;
+  box-sizing: border-box;
+}
+.fk_productSearch_product_priceInfo{
+  padding-top: 8rpx;
+  font-size: 26rpx;
+  color: #ff5000;
+  line-height: 1.2;
+  width: 100%;
+}
+.fk_productSearch_product_priceInfo_line{
+  display: flex;
+  align-items: center;
+}
+.fk_productSearch_product_priceInfo_label{
+  width: 172rpx;
+  text-align: right;
+}
+.fk_productSearch_product_priceInfo_value{
+  flex: 1;
+}
+
+.fk_productSearch{
+  padding-top: 48px;
+}
+.fk_productSearch_searchBar{
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+}

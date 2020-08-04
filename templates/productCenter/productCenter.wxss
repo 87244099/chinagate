@@ -39,7 +39,7 @@
 }
 
 .fk_productCenter_header .searchbar--weui-search-bar{
-  background-color: #0062d7;
+  background-color: inherit;
 }
 .fk_productCenter_header .searchbar--weui-search-bar__cancel-btn{
   color: #fff;
@@ -115,7 +115,7 @@
 }
 .fk_productCenter_group_main_content_product_img{
   background-color: #ccc;
-  width: 224rpx;
+  /* width: 224rpx; */
   height: 224rpx;
 }
 .fk_productCenter_group_main_content_product_name{

@@ -1,12 +1,12 @@
 <template name="productCenter">
   <view class="fk_productCenter">
     <view class="fk_productCenter_header">
-      <mp-searchbar bindselectresult="selectResult" bindblur="searchBlur" bindclear="searchClear" cancel="{{false}}"></mp-searchbar>
+      <mp-searchbar style="background-color:{{pageData.companyPageData.companyInfo.themeColor}}" bindselectresult="selectResult" bindblur="searchBlur" bindclear="searchClear" cancel="{{false}}"></mp-searchbar>
     </view>
 
     <view class="fk_productCenter_group">
       <view class="fk_productCenter_group_side">
-        <view class="fk_productCenter_group_side_title">
+        <view class="fk_productCenter_group_side_title" style="background-color:{{pageData.companyPageData.companyInfo.themeColor}}">
           产品分类
         </view>
         <scroll-view scroll-y="{{true}}" class="fk_productCenter_group_side_list">
@@ -17,7 +17,7 @@
           
       </view>
       <view class="fk_productCenter_group_main">
-        <view class="fk_productCenter_group_main_title">产品列表</view>
+        <view class="fk_productCenter_group_main_title" style="color:{{pageData.companyPageData.companyInfo.themeColor}}">产品列表</view>
         <scroll-view scroll-y class="fk_productCenter_group_main_content">
           <view style="padding:20rpx;">
             <navigator url="/pages/productDetail/productDetail?id={{item.productID}}&companyId={{setting.companyId}}" class="fk_productCenter_group_main_content_product"  wx:key="productID" wx:for="{{pageData.productGroupList[setting.tabIndex].productList}}">

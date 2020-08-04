@@ -35,7 +35,7 @@
           <van-button size="small" type="info" block>获取手机号</van-button>
         </button>
       </van-field>
-    </van-cell-group>
+    </van-cell-group> 
     <van-button type="info" block catchtap="onReg">确定</van-button>
     <van-toast id="van-toast" />
   </view>

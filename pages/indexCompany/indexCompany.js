@@ -1,5 +1,6 @@
 // pages/indexStaff/indexStaff.js
 const Fai = require("../../utils/util");
+const Ajax = require("../../ajax/index");
 import Toast from "../../miniprogram_npm/@vant/weapp/toast/toast";
 
 const IndexCompany = require("../../templates/indexCompany/indexCompany");

@@ -26,9 +26,10 @@
     "pages/reg/reg",
     "pages/login/login",
     "pages/cutFace/cutFace",
-    "templates/personal/personal",
     "pages/personal4CompanyA/personal4CompanyA",
-    "templates/productCenter/productCenter"
+    "pages/invitation4Staff/invitation4Staff",
+    "pages/invitation4Vip/invitation4Vip",
+    "pages/createComapny/createCompany"
   ],
   "subpackages": [
     {

@@ -13,7 +13,9 @@ Page({
     setting: {
       form: {
         name: "",
-        phone: ""
+        phone: "",
+        nickName: "",
+        avatarPhoto: ""
       }
     }
   },
@@ -74,6 +76,32 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  bindGetUserInfo(event){
+    let detail = event.detail;
+    if(detail.errMsg === "getUserInfo:fail auth deny"){
+      return;
+    }
+    Ajax.requestWithToast(async()=>{
+      let rawData = JSON.parse(detail.rawData);
+      let response = await Ajax.parseWxPhone({
+        iv: detail.iv,
+        encryptedData: detail.encryptedData,
+        code: this.data.setting.code
+      });
+      let phoneOption = {
+        "setting.form.nickName":rawData.nickName,
+        "setting.form.avatarUrl":rawData.avatarUrl,
+        "setting.form.phone": response.data.data.phoneNumber
+      };
+      console.log('phoneOption', phoneOption);
+      this.setData(phoneOption);
+      return Promise.resolve(response);
+    }).then(()=>{
+      this.setCode();
+    }).catch(()=>{
+      this.setCode();
+    });
   },
   onReg:async function(){
 

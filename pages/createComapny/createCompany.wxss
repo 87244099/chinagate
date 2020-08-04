@@ -1,45 +1,45 @@
-/* pages/setCard/setCard.wxss */
+/* pages/createCompany/createCompany.wxss */
 .fk_page{
   background: #ebebeb;
 }
-.fk_setCard_header{
+.fk_createCompany_header{
   font-size: 36rpx;
   background-color: #ebebeb;
   color: #8c8c8c;
   padding: 40rpx 30rpx;
 }
-.fk_setCard_header_title{
+.fk_createCompany_header_title{
   font-size: 36rpx;
 }
-.fk_setCard_header_subTitle{
+.fk_createCompany_header_subTitle{
   font-size: 26rpx;
 }
 
-.fk_setCard_headImg{
+.fk_createCompany_headImg{
   display: flex;
   padding: 20rpx 30rpx;
   background: #fff;
   align-items: center;
 }
-.fk_setCard_headImg_name{
+.fk_createCompany_headImg_name{
   flex: 1;
   font-size: 32rpx;
 }
-.fk_setCard_headImg_img_wrap{
+.fk_createCompany_headImg_img_wrap{
   width: 160rpx;
 }
-.fk_setCard_headImg_img_wrap_img{
+.fk_createCompany_headImg_img_wrap_img{
   width: 120rpx;
   height: 120rpx;
 }
-.fk_setCard .weui-cell{
+.fk_createCompany .weui-cell{
   font-size: 32rpx;
 }
-.fk_setCard .weui-label{
+.fk_createCompany .weui-label{
   width: 140rpx;
   margin-right: 32rpx;
 }
-.fk_setCard .weui-cells__title{
+.fk_createCompany .weui-cells__title{
   padding: 0 30rpx;
   font-size: 32rpx;
   height: 96rpx;
@@ -48,11 +48,11 @@
   color: #8c8c8c;
   margin: 0;
 }
-.fk_setCard .cell--weui-cell{
+.fk_createCompany .cell--weui-cell{
   padding: 20rpx 30rpx;
 }
 
-.fk_setCart_area{
+.fk_createCompany_area{
   position: fixed;
   left: 0;
   bottom: 0;

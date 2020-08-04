@@ -4,7 +4,7 @@
       <view class="fk_login_logo">
         <image src="{{config.staticDomain}}/Content/Images/logo.png" mode="aspectFit" style="width:100%;height:100%;"></image>
       </view>
-      <view class="fk_login_name">{{pageData.wxUserInfo.userInfo.nickName}}</view>
+      <view class="fk_login_name" wx:if="{{false}}">{{pageData.wxUserInfo.userInfo.nickName}}</view>
     </view>
     <!-- <button catchtap="onLogin">登录测试</button> -->
     <view style="width:660rpx;margin:0 auto;">

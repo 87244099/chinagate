@@ -1,0 +1,67 @@
+<wxs src="../../comm.wxs" module="comm" />
+<import src='/components/we-cropper/we-cropper'/>
+
+<view class="fk_page fk_createCompany">
+  <mp-form id="form">
+    <view class="fk_createCompany_header">
+      <view class="fk_createCompany_header_title">创建企业</view>
+      <view class="fk_createCompany_header_subTitle">请填写以下信息</view>
+    </view>
+    <mp-cells title="创建人基本信息">
+      <mp-cell show-error prop="idcard" title="您的姓名" ext-class="">
+          <input bindblur="onFieldBlur" value="{{setting.form.customerName}}" data-field="customerName" class="weui-input" placeholder="请输入您的姓名"/>
+      </mp-cell>
+      <mp-cell show-error prop="idcard" title="您的职位" ext-class="">
+          <input bindblur="onFieldBlur" value="{{setting.form.position}}" data-field="position" class="weui-input" placeholder="请输入职位名称"/>
+      </mp-cell>
+      <mp-cell show-error prop="idcard" title="您的手机" ext-class="">
+          <input bindblur="onFieldBlur" value="{{setting.form.customerTel}}" data-field="customerTel" class="weui-input" placeholder="请输入手机号"/>
+      </mp-cell>
+    </mp-cells>
+    <mp-cells title="企业基本信息（选填）">
+      <mp-cell show-error prop="idcard" title="企业名称" ext-class="">
+        <input bindblur="onFieldBlur" value="{{setting.form.companyName}}" data-field="companyName" class="weui-input" placeholder="请输入企业名称"/>
+      </mp-cell>
+      <mp-cell show-error prop="idcard" title="商铺类型" ext-class="">
+        <van-radio-group value="{{ setting.form.companyTypeID }}" bind:change="onFieldChange" data-field="companyTypeID" style="display:flex;align-items:center;">
+          <van-radio name="1" style="margin-right:10rpx">品牌直销</van-radio>
+          <van-radio name="2">综合批发</van-radio>
+        </van-radio-group>
+      </mp-cell>
+      <mp-cell show-error prop="idcard" title="地区" ext-class="">
+        <view style="display:flex;">
+          <view catchtap="onSelectProvince" style="max-width:33.33%;width:100%">
+            {{setting.provinceList[setting.provinceIndex].name || '请选择'}}
+          </view>
+          <view catchtap="onSelectCity" wx:if="{{setting.provinceIndex>=0}}" style="max-width:33.33%;width:100%">
+            {{setting.cityList[setting.cityIndex].name|| '请选择'}} </view>
+          <view catchtap="onSelectCountry" wx:if="{{setting.cityIndex>=0}}" style="max-width:33.33%;width:100%">
+            {{setting.countryList[setting.countryIndex].name || '请选择' }} </view>
+        </view>
+      </mp-cell>
+    </mp-cells>
+    <view class="weui-btn-area">
+        <!-- <button class="weui-btn" type="primary" bindtap="submitForm">确定</button> -->
+        <!-- <button class="weui-btn" bindtap="reback">返回</button> -->
+        <van-button type="primary" bindtap="onCardFormSubmit" block>确定</van-button>
+    </view>
+  </mp-form>
+
+  <van-popup 
+    show="{{ setting.areaPickerOpened }}"
+    position="bottom"
+    bind:close="onAreaPopupClose">
+    <van-picker
+      show-toolbar 
+      wx:if="{{setting.areaPickerOpened}}"
+      confirm="onAreaPickerConfirm"
+      columns="{{ comm.map(setting.currAreaList, 'name') }}" 
+      default-index="{{setting.areaDefaultIndex}}"
+
+      bind:confirm="onAreaPickerConfirm"
+      bind:cancel="onAreaPickerCancel"
+      bind:change="onAreaPickerChange"
+    />
+  </van-popup>
+  <van-toast id="van-toast" />
+</view>

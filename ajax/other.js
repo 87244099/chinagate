@@ -145,6 +145,13 @@ async function setUserCollectCancel4Staff(staffId, companyId){
   });
 }
 
+async function parseWxPhone(data){
+  return Fai.promiseRequestPost({
+    url:"/ajax/common/getCommData?cmd=parseWxPhone",
+    data: data
+  });
+}
+
 module.exports = {
   getQrCode,
   getGlobalData,
@@ -153,5 +160,6 @@ module.exports = {
   loadWithToast,
   setUserCollect,
   requestWithToast,
-  setUserCollectCancel4Staff
+  setUserCollectCancel4Staff,
+  parseWxPhone
 };

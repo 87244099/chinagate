@@ -3,7 +3,8 @@
     "mp-searchbar": "weui-miniprogram/searchbar/searchbar",
     "wxparser": "plugin://wxparserPlugin/wxparser",
     "mp-tabbar": "weui-miniprogram/tabbar/tabbar",
-    "tab-bar": "/components/tab-bar/tab-bar"
+    "tab-bar": "/components/tab-bar/tab-bar",
+    "van-toast": "@vant/weapp/toast/index"
   },
   "navigationBarTitleText": "产品搜索"
 }

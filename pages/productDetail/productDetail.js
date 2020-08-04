@@ -103,12 +103,16 @@ Page(Fai.mixin(Fai.commPageConfig, {
       wx.setNavigationBarTitle({
         title: `${productInfo.title}-${companyInfo.companyName}`,
       });
-
+      let serviceForm = this.data.setting.serviceForm;
+      serviceForm.name = memberInfo.memberName;
+      serviceForm.phone = memberInfo.memberPhone;
       this.setData({
         "pageData.memberInfo": memberInfo,
         "pageData.companyInfo": companyInfo,
-        "pageData.productInfo":productInfo
+        "pageData.productInfo":productInfo,
+        "setting.serviceForm":serviceForm
       });
+      
 
       return Promise.resolve(response);
     }, "加载中...");
