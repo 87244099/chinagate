@@ -13,17 +13,17 @@
         <view class="fk_tabBar_item_text">资讯</view>
       </navigator>
     </view>
-    <view class="fk_tabBar_item">
+    <view class="fk_tabBar_item" wx:if="{{false}}">
       <navigator open-type="redirect" url="/pages/shops/shops">
         <view class="iconfont icon-fujin fk_tabBar_item_icon"></view>
         <view class="fk_tabBar_item_text">附近商家</view>
       </navigator>
     </view>
     <view class="fk_tabBar_item">
-      <navigator open-type="redirect" url="/pages/personal/personal">
+      <button open-type="getUserInfo" class="fk_tabBar_item_button" bindgetuserinfo="onJumpToPersonal">
         <view class="iconfont icon-user fk_tabBar_item_icon"></view>
         <view class="fk_tabBar_item_text">个人中心</view>
-      </navigator>
+      </button>
     </view>
   </view>
 </block>

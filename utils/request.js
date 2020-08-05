@@ -89,6 +89,7 @@ function trans4AutoLogin(option){
     let result = response.data;
     if(!result.success){
       if(result.rt === -1){//未登录
+        getApp().globalData.isLogin=false;
         //跳转到登录页
         wx.redirectTo({
           url: '/pages/login/login',

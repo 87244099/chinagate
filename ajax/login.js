@@ -13,6 +13,7 @@ async function login(){
         if(result.success){
           Fai.MemoryCache.clearCache();//清空缓存
           resolve(response);
+          getApp().globalData.isLogin=true;
         }else{
           reject(response);
         }

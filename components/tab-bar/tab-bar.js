@@ -1,4 +1,6 @@
 // components/tab-bar.js
+const Ajax = require("../../ajax/index");
+import Toast from "../../miniprogram_npm/@vant/weapp/toast/toast";
 Component({
   /**
    * 组件的属性列表
@@ -53,6 +55,45 @@ Component({
       wx.makePhoneCall({
         phoneNumber: phone,
       });
+    },
+    onJumpToPersonal(event){
+      console.log("event", event);
+      if(event.detail.errMsg == "getUserInfo:ok"){
+        if(getApp().globalData.isLogin){
+          wx.redirectTo({
+            url: '/pages/personal/personal',
+          });
+        }else{
+          (async()=>{
+            let response;
+            try{
+              response = await Ajax.login();
+              wx.redirectTo({
+                url: '/pages/personal/personal',
+              });
+
+            }catch(response){
+              if(response){
+                console.log("response", response);
+                let result = response.data;
+                if(result.rt === 1){//不存在
+                  setTimeout(()=>{
+                    wx.redirectTo({
+                      url: '/pages/reg/reg',
+                    });
+                  }, 1500);
+                }
+                Toast.fail(response.data.msg);
+              }else{
+                Toast.fail("网络繁忙,请稍后重试");
+              }
+            }
+            return Promise.resolve(response);
+          })();
+        }
+      }
+
+      
     }
   }
 });
