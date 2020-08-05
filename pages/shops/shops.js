@@ -132,14 +132,8 @@ Page({
   },
   onJumpToCompany(event){
     let item = event.currentTarget.dataset.item;
-    if(item.typeID == 1){
-      wx.navigateTo({
-        url: "/pages/indexCompany/indexCompany?companyId="+item.merchantForLevelAID,
-      });
-    }else{
-      wx.navigateTo({
-        url: "/companyB/indexCompanyB/indexCompanyB?companyId="+item.merchantForLevelAID,
-      });
-    }
+    wx.navigateTo({
+      url: "/pages/indexCompany/indexCompany?companyAID="+item.merchantForLevelAID+"&companyBID="+item.merchantForLevelBID,
+    });
   }
 })

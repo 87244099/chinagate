@@ -25,6 +25,14 @@ Component({
     companyType: {
       type:Number,
       value: 1
+    },
+    companyAID: {
+      type:Number,
+      value:0
+    },
+    companyBID: {
+      type:Number,
+      value:0
     }
   },
   /**

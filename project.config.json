@@ -178,7 +178,7 @@
 					"id": 16,
 					"name": "企业首页",
 					"pathName": "pages/indexCompany/indexCompany",
-					"query": "companyId=1",
+					"query": "companyAID=1&companyBID=0",
 					"scene": null
 				},
 				{

@@ -8,7 +8,7 @@ Page(Fai.mixin(Fai.commPageConfig, {
    */
   data: {
     setting: {
-      companyId: -1,//当前名片所属公司
+      companyAID: -1,//当前名片所属公司
       staffId: -1//当前名片所属员工
     },
     pageData:{
@@ -22,7 +22,7 @@ Page(Fai.mixin(Fai.commPageConfig, {
    */
   onLoad: function (options) {
     this.setData({
-      "setting.companyId": options.companyId
+      "setting.companyAID": options.companyAID
     });
   },
 
@@ -79,7 +79,7 @@ Page(Fai.mixin(Fai.commPageConfig, {
       
       let response = await Ajax.getMemberInfo();
       let memberInfo = response.data.data;
-      response = await Ajax.getCompanyAIndexPageData(this.data.setting.companyId);//依赖页面传递参数
+      response = await Ajax.getCompanyAIndexPageData(this.data.setting.companyAID);//依赖页面传递参数
       let companyPageData = response.data.data;
       this.setData({
         "pageData.memberInfo":memberInfo,

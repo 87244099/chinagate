@@ -1,6 +1,6 @@
 <view>
   <view class="fk_shop_list">
-    <view url="/pages/indexCompany/indexCompany?id={{item.merchantForLevelAID}}" wx:key="id" class="fk_shops_item" wx:for="{{pageData.companyList}}"  data-item="{{item}}" catchtap="onJumpToCompany" >
+    <view wx:key="id" class="fk_shops_item" wx:for="{{pageData.companyList}}"  data-item="{{item}}" catchtap="onJumpToCompany" >
       <view class="fk_shops_item_left">
         <view class="fk_shops_item_img" style="overflow:hidden">
           <image style="width:100%;height:100%;" mode="aspectFill" src="{{config.staticDomain}}/{{item.companyLogoUrl}}"></image>

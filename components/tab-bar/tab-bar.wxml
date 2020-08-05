@@ -13,7 +13,7 @@
         <view class="fk_tabBar_item_text">资讯</view>
       </navigator>
     </view>
-    <view class="fk_tabBar_item" wx:if="{{false}}">
+    <view class="fk_tabBar_item" wx:if="{{true}}">
       <navigator open-type="redirect" url="/pages/shops/shops">
         <view class="iconfont icon-fujin fk_tabBar_item_icon"></view>
         <view class="fk_tabBar_item_text">附近商家</view>
@@ -44,62 +44,31 @@
   </view>
 </block>
 <block wx:elif="{{type=='company'}}">
-  <block wx:if="{{companyType==1}}">
-    <view class="fk_tabBar">
-      <view class="fk_tabBar_item">
-        <navigator open-type="redirect" url="/pages/indexCompany/indexCompany?companyId={{companyInfo.merchantForLevelAID}}">
-          <view class="iconfont icon-home fk_tabBar_item_icon"></view>
-          <view class="fk_tabBar_item_text">首页</view>
-        </navigator>
-      </view>
-      <view class="fk_tabBar_item">
-        <navigator open-type="redirect" url="/pages/productCenter/productCenter?companyId={{companyInfo.merchantForLevelAID}}">
-          <view class="iconfont icon-apply fk_tabBar_item_icon"></view>
-          <view class="fk_tabBar_item_text">产品中心</view>
-        </navigator>
-      </view>
-      <view class="fk_tabBar_item">
-        <view catchtap="callPhone" data-phone="{{companyInfo.companyPhone}}">
-          <view class="iconfont icon-fujin fk_tabBar_item_icon"></view>
-          <view class="fk_tabBar_item_text">联系电话</view>
-        </view>
-      </view>
-      <view class="fk_tabBar_item">
-        <navigator open-type="redirect" url="/pages/personal4CompanyA/personal4CompanyA?companyId={{companyInfo.merchantForLevelAID}}">
-          <view class="iconfont icon-user fk_tabBar_item_icon"></view>
-          <view class="fk_tabBar_item_text">个人中心</view>
-        </navigator>
+  <view class="fk_tabBar">
+    <view class="fk_tabBar_item">
+      <navigator open-type="redirect" url="/pages/indexCompany/indexCompany?companyAID={{companyAID}}&companyBID={{companyBID}}">
+        <view class="iconfont icon-home fk_tabBar_item_icon"></view>
+        <view class="fk_tabBar_item_text">首页</view>
+      </navigator>
+    </view>
+    <view class="fk_tabBar_item">
+      <navigator open-type="redirect" url="/pages/productCenter/productCenter?companyAID={{companyAID}}&companyBID={{companyBID}}">
+        <view class="iconfont icon-apply fk_tabBar_item_icon"></view>
+        <view class="fk_tabBar_item_text">产品中心</view>
+      </navigator>
+    </view>
+    <view class="fk_tabBar_item">
+      <view catchtap="callPhone" data-phone="{{companyInfo.companyPhone}}">
+        <view class="iconfont icon-fujin fk_tabBar_item_icon"></view>
+        <view class="fk_tabBar_item_text">联系电话</view>
       </view>
     </view>
-  </block>
-  <block wx:else>
-    <view class="fk_tabBar">
-      <view class="fk_tabBar_item">
-        <navigator open-type="redirect" url="/companyB/indexCompanyB/indexCompanyB?companyId={{companyInfo.merchantForLevelBID}}">
-          <view class="iconfont icon-home fk_tabBar_item_icon"></view>
-          <view class="fk_tabBar_item_text">首页</view>
-        </navigator>
-      </view>
-      <view class="fk_tabBar_item">
-        <navigator open-type="redirect" url="/companyB/productCenterB/productCenterB?companyId={{companyInfo.merchantForLevelBID}}">
-          <view class="iconfont icon-apply fk_tabBar_item_icon"></view>
-          <view class="fk_tabBar_item_text">产品中心</view>
-        </navigator>
-      </view>
-      <view class="fk_tabBar_item">
-        <view catchtap="callPhone" data-phone="{{companyInfo.companyPhone}}">
-          <view class="iconfont icon-fujin fk_tabBar_item_icon"></view>
-          <view class="fk_tabBar_item_text">联系电话</view>
-        </view>
-      </view>
-      <view class="fk_tabBar_item">
-        <navigator open-type="redirect" url="/companyB/personal4CompanyB/personal4CompanyB?companyId={{companyInfo.merchantForLevelBID}}">
-          <view class="iconfont icon-user fk_tabBar_item_icon"></view>
-          <view class="fk_tabBar_item_text">个人中心</view>
-        </navigator>
-      </view>
+    <view class="fk_tabBar_item">
+      <navigator open-type="redirect" url="/pages/personal4Company/personal4Company?companyAID={{companyAID}}&companyBID={{companyBID}}}}">
+        <view class="iconfont icon-user fk_tabBar_item_icon"></view>
+        <view class="fk_tabBar_item_text">个人中心</view>
+      </navigator>
     </view>
-
-  </block>
+  </view>
   
 </block>

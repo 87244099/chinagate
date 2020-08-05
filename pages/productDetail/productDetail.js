@@ -17,8 +17,8 @@ Page(Fai.mixin(Fai.commPageConfig, {
         name:"",
         phone:"",
         content:"",
-        merchantForLevelAID:-1,
-        merchantForLevelBID:-1,
+        companyAID:-1,
+        companyBID:-1,
         staffID:-1
       }
     },
@@ -34,7 +34,8 @@ Page(Fai.mixin(Fai.commPageConfig, {
       "setting.productId": parseInt(options.id) || -1
     });
     this.setData({
-      "setting.merchantForLevelAID": parseInt(options.companyId) || -1
+      "setting.companyAID": parseInt(options.companyAID) || 0,
+      "setting.companyBID": parseInt(options.companyBID) || 0
     });
     this.loadPageData();
   },
@@ -97,7 +98,11 @@ Page(Fai.mixin(Fai.commPageConfig, {
       });
       let productInfo =  response.data.data.productInfo;
 
-      response = await Ajax.getCompanyAIndexPageData(this.data.setting.merchantForLevelAID);
+      if(this.data.setting.companyBID>0){
+        response = await Ajax.getCompanyBIndexPageData(this.data.setting.companyBID);
+      }else{
+        response = await Ajax.getCompanyAIndexPageData(this.data.setting.companyAID);
+      }
       let companyInfo = response.data.data.companyInfo;
 
       wx.setNavigationBarTitle({
@@ -119,13 +124,12 @@ Page(Fai.mixin(Fai.commPageConfig, {
   },
   setProductCollect: function(){
     Ajax.requestWithToast(async()=>{
-      return await Fai.promiseRequest({
+      return await Fai.promiseRequestPost({
         url:"/ajax/product/productCollection?cmd=setProductCollect",
-        method:"POST",
         data:{
           productId: this.data.setting.productId,
-          merchantForLevelAID: this.data.setting.merchantForLevelAID,
-          merchantForLevelBID: 0,
+          merchantForLevelAID: this.data.setting.companyAID,
+          merchantForLevelBID: this.data.setting.companyBID,
           staffId: this.data.pageData.memberInfo.staffID
         }
       });
@@ -133,8 +137,8 @@ Page(Fai.mixin(Fai.commPageConfig, {
   },
   onServiceFormSubmit(){
     let data = this.data.setting.serviceForm;
-    data.merchantForLevelAID = this.data.pageData.companyInfo.merchantForLevelAID;
-    data.merchantForLevelBID = 0;
+    data.merchantForLevelAID = this.data.setting.companyAID;
+    data.merchantForLevelBID = this.data.setting.companyBID
     data.staffID = this.data.pageData.memberInfo.staffID;
     Ajax.requestWithToast(async()=>{
       let response = await Fai.promiseRequestPost({
