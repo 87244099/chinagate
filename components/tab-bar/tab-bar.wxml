@@ -64,7 +64,7 @@
       </view>
     </view>
     <view class="fk_tabBar_item">
-      <navigator open-type="redirect" url="/pages/personal4Company/personal4Company?companyAID={{companyAID}}&companyBID={{companyBID}}}}">
+      <navigator open-type="redirect" url="/pages/personal4Company/personal4Company?companyAID={{companyAID}}&companyBID={{companyBID}}">
         <view class="iconfont icon-user fk_tabBar_item_icon"></view>
         <view class="fk_tabBar_item_text">个人中心</view>
       </navigator>

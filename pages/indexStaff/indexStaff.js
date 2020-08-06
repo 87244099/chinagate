@@ -22,7 +22,8 @@ Page(Fai.mixin(Fai.commPageConfig, {
   onLoad: function (options) {
     
     this.setData({
-      "setting.companyId": parseInt(options.companyId) || -1,
+      "setting.companyAID": parseInt(options.companyAID) || 0,
+      "setting.companyBID": parseInt(options.companyBID) || 0,
       "setting.staffID": parseInt(options.staffID) || -1,
     });
 
@@ -34,7 +35,7 @@ Page(Fai.mixin(Fai.commPageConfig, {
     Fai.request({
       url:"/ajax/user/userInfo?cmd=getInfo4Staff",
       data: {
-        companyId: this.data.setting.companyId,
+        companyId: this.data.setting.companyAID,
         id: this.data.setting.staffID//大小写问题
       },
       success:(response)=>{
@@ -53,7 +54,7 @@ Page(Fai.mixin(Fai.commPageConfig, {
     });
 
     Fai.request({
-      url: "/ajax/company/company?cmd=getCompanyAIndexPageData&id="+this.data.setting.companyId,
+      url: "/ajax/company/company?cmd=getCompanyAIndexPageData&id="+this.data.setting.companyAID,
       beforeConsume:Toast.clear,
       success:(response)=>{
         let result = response.data;
@@ -144,6 +145,7 @@ Page(Fai.mixin(Fai.commPageConfig, {
     Fai.requestPost({
       url:"/ajax/user/userCollection?cmd=setUserCollect4Staff",
       data:{
+        id: this.data.pageData.staffInfo.memberID,
         staffId: this.data.pageData.staffInfo.staffID
       },
       beforeConsume:Toast.clear,
@@ -160,5 +162,5 @@ Page(Fai.mixin(Fai.commPageConfig, {
       }
 
     })
-  }
+  },
 }));
