@@ -12,7 +12,7 @@
           <view class="fk_indexStaff_func_item_icon iconfont icon-dianhua" catchtap="callPhone"></view>
           <view class="fk_indexStaff_func_item_text">呼叫</view>
         </view>
-        <view class="fk_indexStaff_func_item">
+        <view class="fk_indexStaff_func_item" catchtap="onWantShare">
           <view class="fk_indexStaff_func_item_icon iconfont icon-zhuanfa"></view>
           <view class="fk_indexStaff_func_item_text">转发</view>
         </view>
@@ -20,7 +20,7 @@
           <view class="fk_indexStaff_func_item_icon iconfont icon-start" catchtap="setUserCollect4Staff"></view>
           <view class="fk_indexStaff_func_item_text">收藏</view>
         </view>
-        <view class="fk_indexStaff_func_item">
+        <view class="fk_indexStaff_func_item" wx:if="{{false}}">
           <view class="fk_indexStaff_func_item_icon iconfont icon-liaotian"></view>
           <view class="fk_indexStaff_func_item_text">聊天</view>
         </view>

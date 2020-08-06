@@ -14,6 +14,7 @@ Page(Fai.mixin(Fai.commPageConfig, {
       pageNo: 0,
       pageSize:8,
       totalSize: -1,
+      cancelCollectIndex: -1,
       productList: []
     },
     pageData:{
@@ -141,9 +142,10 @@ Page(Fai.mixin(Fai.commPageConfig, {
       }
     });
   },
-  async onCancelProductCollect(event){
-    let item = event.currentTarget.dataset.item;
-    let index = event.currentTarget.dataset.index;
+  onConfirmCancelCollect(){
+    let index = this.data.setting.cancelCollectIndex;
+    let item = this.data.setting.productList[ index ];
+
     Ajax.requestWithToast(async()=>{
       let response = Fai.promiseRequestPost({
         url:"/ajax/product/productCollection?cmd=setProductCollectCancel",
@@ -156,9 +158,21 @@ Page(Fai.mixin(Fai.commPageConfig, {
       });
       this.data.setting.productList.splice(index, 1);
       this.setData({
-        "setting.productList": this.data.setting.productList
+        "setting.productList": this.data.setting.productList,
+        "setting.cancelCollectIndex": -1
       })
       return Promise.resolve(response);
+    });
+  },
+  async onCancelProductCollect(event){
+    let index = event.currentTarget.dataset.index;
+    this.setData({
+      "setting.cancelCollectIndex": index
+    });
+  },
+  onBlurCancelMask(){
+    this.setData({
+      "setting.cancelCollectIndex": -1
     });
   }
 }));

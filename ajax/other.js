@@ -94,16 +94,29 @@ async function setUserCollect(memberId){
 
 import Toast from "../miniprogram_npm/@vant/weapp/toast/toast";
 async function requestWithToast(requestHandler, message){
-  if(message){
+
+  let isMsgObj = message instanceof Object;
+  let messageCfg = isMsgObj ? message : {
+    message
+  };
+
+  console.log(messageCfg);
+
+  if(messageCfg.message){ 
+    console.log("exec", messageCfg.message);
     Toast.loading({
-      message:message,
+      message: messageCfg.message,
       duration: 0
     });
   }
 
   try{
     let response = await requestHandler();
-    Toast.success(response.data.msg);
+    if(messageCfg.tip4Success){
+      Toast.success(response.data.msg);
+    }else{
+      Toast.clear();
+    }
   }catch(errorOrResponse){
     if(errorOrResponse instanceof Error){
       console.log("errorOrResponse err", errorOrResponse);
@@ -115,6 +128,7 @@ async function requestWithToast(requestHandler, message){
     }
   }
 }
+
 
 async function loadWithToast(requestHandler){
   return requestWithToast(requestHandler, "加载中...");
@@ -152,6 +166,41 @@ async function parseWxPhone(data){
   });
 }
 
+async function reportTrace(data){
+  const  {
+    typeID,
+    merchantForLevelAID,
+    merchantForLevelBID,
+    staffID
+  } = data;
+  return Fai.promiseRequestPost({
+    url:"/ajax/common/getCommData?cmd=reportTrace",
+    data: {
+      typeID,
+      merchantForLevelAID,
+      merchantForLevelBID,
+      staffID
+    }
+  });
+}
+async function getTrace(data){
+  const  {
+    typeID,
+    merchantForLevelAID,
+    merchantForLevelBID,
+    staffID
+  } = data;
+  return Fai.promiseRequest({
+    url:"/ajax/common/getCommData?cmd=getTrace",
+    data: {
+      typeID,
+      merchantForLevelAID,
+      merchantForLevelBID,
+      staffID
+    }
+  });
+}
+
 module.exports = {
   getQrCode,
   getGlobalData,
@@ -161,5 +210,7 @@ module.exports = {
   setUserCollect,
   requestWithToast,
   setUserCollectCancel4Staff,
-  parseWxPhone
+  parseWxPhone,
+  reportTrace,
+  getTrace
 };

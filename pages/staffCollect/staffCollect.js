@@ -163,11 +163,11 @@ Page({
     console.log("item", item);
     if(item.collectSubTypeID == 1){//个人名片
       wx.navigateTo({
-        url: '/pages/card/card',
+        url: '/pages/sharedCard/sharedCard?id='+item.id,
       });
     }else{//企业员工名片
       wx.navigateTo({
-        url: '/pages/indexStaff/indexStaff?companyId='+item.merchantForLevelAID+"&staffID="+item.id,
+        url: '/pages/indexStaff/indexStaff?companyAID='+item.merchantForLevelAID+"&companyBID="+item.merchantForLevelBID+"&staffID="+item.id,
       });
     }
   }

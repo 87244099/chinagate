@@ -56,11 +56,7 @@
       </view>
     </view> -->
     <view class="fk_indexCompany_productIntro">
-      <view class="fk_indexCompany_productIntro_bigTitle">
-        <view class="fk_indexCompany_productIntro_bigTitle_text" style="color:{{pageData.companyInfo.themeColor}}">产品展示</view>
-        <view class="fk_indexCompany_productIntro_bigTitle_desc">PRODUCT</view>
-      </view>
-
+      <template is="bigTitle" data="{{cn:'产品展示', en:'PRODUCT', pageData}}"></template>
       <view class="fk_indexCompany_productIntro_group" wx:for-item="group" wx:for="{{pageData.productGroupList}}">
         <view class="fk_indexCompany_productIntro_group_title">
           <view class="fk_indexCompany_productIntro_group_title_text" style="border-color:{{pageData.companyInfo.themeColor}}">{{group.productTypeName}}</view>
@@ -87,24 +83,15 @@
           </view>
         </view>
       </view>
-
-      
-      
     </view>
     <view class="fk_indexCompany_about">
-      <view class="fk_indexCompany_productIntro_bigTitle">
-        <view class="fk_indexCompany_productIntro_bigTitle_text" style="color:{{pageData.companyInfo.themeColor}}">关于我们</view>
-        <view class="fk_indexCompany_productIntro_bigTitle_desc">ABOUT</view>
-      </view>
+      <template is="bigTitle" data="{{cn:'关于我们', en:'ABOUT', pageData}}"></template>
       <view>
         <wxparser rich-text="{{pageData.companyInfo.companyIntroduction}}"/>
       </view>
     </view>
     <view class="fk_indexCompany_contact">
-      <view class="fk_indexCompany_productIntro_bigTitle">
-        <view class="fk_indexCompany_productIntro_bigTitle_text" style="color:{{pageData.companyInfo.themeColor}}">联系我们</view>
-        <view class="fk_indexCompany_productIntro_bigTitle_desc">CONTACT</view>
-      </view>
+      <template is="bigTitle" data="{{cn:'联系我们', en:'CONTACT', pageData}}"></template>
       <view class="fk_indexCompany_contact_message">
         <view class="fk_indexCompany_contact_message_line">
           企业：{{pageData.companyInfo.companyName}}
@@ -121,3 +108,14 @@
   <tab-bar class="fk_tabBar" type="company" style="background-color:{{pageData.companyInfo.themeColor}}" rollbackVisible="{{_commPageConfigData.rollbackVisible}}" companyInfo="{{pageData.companyInfo}}" companyAID="{{setting.companyAID}}" companyBID="{{setting.companyBID}}"></tab-bar>
   <van-toast id="van-toast" />
 </view>
+
+<template name="bigTitle">
+  <view class="fk_indexCompany_productIntro_bigTitle">
+      <view class="fk_indexCompany_productIntro_bigTitle_text" style="color:{{pageData.companyInfo.themeColor}};">
+        <view class="fk_indexCompany_productIntro_bigTitle_text_before" style="background-color:{{pageData.companyInfo.themeColor}};"></view>
+        {{cn}}
+        <view class="fk_indexCompany_productIntro_bigTitle_text_after" style="background-color:{{pageData.companyInfo.themeColor}};"></view>
+      </view>
+      <view class="fk_indexCompany_productIntro_bigTitle_desc">{{en}}</view>
+    </view>
+</template>

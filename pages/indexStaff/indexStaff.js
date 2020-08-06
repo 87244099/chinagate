@@ -163,4 +163,7 @@ Page(Fai.mixin(Fai.commPageConfig, {
 
     })
   },
+  onWantShare: function(){
+    Toast('点击右上角...进行转发');
+  }
 }));

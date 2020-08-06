@@ -67,20 +67,21 @@
   display: inline-block;
 }
 
-.fk_indexCompany_productIntro_bigTitle_text::before,
-.fk_indexCompany_productIntro_bigTitle_text::after
+.fk_indexCompany_productIntro_bigTitle_text_before,
+.fk_indexCompany_productIntro_bigTitle_text_after
 {
   content: "";
   display: block;
   top: 50%;
   height: 4rpx;
   margin-top: -2rpx;
+  /* border-top: solid 4px inherit; */
   background-color: #0062d7;
   width: 68rpx;
   position: absolute;
   margin-left: -132rpx;
 }
-.fk_indexCompany_productIntro_bigTitle_text::after{
+.fk_indexCompany_productIntro_bigTitle_text_after{
   left: auto;
   margin-left: unset;
   right: 0;

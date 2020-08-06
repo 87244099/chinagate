@@ -28,7 +28,7 @@ Page(Fai.mixin(Fai.commPageConfig, {
       this.setData({
         "setting.companyAID": parseInt(options.companyAID) || 0,
         "setting.companyBID": parseInt(options.companyBID) || 0,
-        "setting.inputWord": options.word
+        "setting.word": options.word
       });
 
       Ajax.requestWithToast(async()=>{

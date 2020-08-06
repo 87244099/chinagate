@@ -23,4 +23,19 @@ Page(Fai.mixin(Fai.commPageConfig, Card, {
     },
     config
   },
+  onLoad(){
+    Ajax.requestWithToast(async()=>{
+      let response = await Ajax.getMemberInfo();
+
+      let memberInfo = response.data.data;
+      this.setData({
+        "pageData.memberInfo": memberInfo,
+        "setting.memberId":memberInfo.memberID
+      });
+
+      this.loadData();
+
+      return Promise.resolve(response);
+    });
+  },
 }));

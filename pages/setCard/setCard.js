@@ -65,23 +65,23 @@ Page({
    */
   onShow: function () {
     Ajax.requestWithToast(async()=>{
-      let response = await Ajax.getMemberInfo();
+      let response;
+      response = await Ajax.getMemberInfo();
       let memberInfo = response.data.data;
       response = await Ajax.getUserCollectInfo(memberInfo.memberID);
       let cardInfo = response.data.data.userInfo;
-
       let provinceList = [];
       let cityList = [];
       let countryList = [];
-      if(cardInfo.addrInfo.provinceCode>-1){
+      if(cardInfo.addrInfo.provinceCode>0){
         response = await this.loadProvince();
         provinceList = response.data.data.provinceList;
       }
-      if(cardInfo.addrInfo.cityCode>-1){
+      if(cardInfo.addrInfo.cityCode>0){
         response = await this.loadCity(cardInfo.addrInfo.provinceCode);
         cityList = response.data.data.cityList;
       }
-      if(cardInfo.addrInfo.countryCode>-1){
+      if(cardInfo.addrInfo.countryCode>0){
         response = await this.loadCountry(cardInfo.addrInfo.cityCode);
         countryList = response.data.data.countryList;
       }
@@ -105,14 +105,12 @@ Page({
           setting.countryIndex = index;
         }
       });
-      
-      
       this.setData({
         "pageData.cardInfo":cardInfo,
         "setting": setting
       });
       return Promise.resolve(response);
-    }, "加载中...");
+    }, "加载中...")
   },
 
   /**

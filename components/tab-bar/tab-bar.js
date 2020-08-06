@@ -1,5 +1,6 @@
 // components/tab-bar.js
 const Ajax = require("../../ajax/index");
+const Fai = require("../../utils/util");
 import Toast from "../../miniprogram_npm/@vant/weapp/toast/toast";
 Component({
   /**
@@ -65,13 +66,13 @@ Component({
       });
     },
     onJumpToPersonal(event){
-      console.log("event", event);
       if(event.detail.errMsg == "getUserInfo:ok"){
         if(getApp().globalData.isLogin){
           wx.redirectTo({
             url: '/pages/personal/personal',
           });
         }else{
+          let detail = event.detail;
           (async()=>{
             let response;
             try{
@@ -82,14 +83,16 @@ Component({
 
             }catch(response){
               if(response){
-                console.log("response", response);
                 let result = response.data;
                 if(result.rt === 1){//不存在
-                  setTimeout(()=>{
+                  
+                    //走注册流程
+                    let code = await Fai.getLoginCodeNullIsEmpty();
+                    response = await Ajax.reg(code, detail.userInfo.nickName, detail.userInfo.avatarUrl);
+                    response = await Ajax.login();
                     wx.redirectTo({
-                      url: '/pages/reg/reg',
+                      url: '/pages/personal/personal',
                     });
-                  }, 1500);
                 }
                 Toast.fail(response.data.msg);
               }else{

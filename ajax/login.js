@@ -66,10 +66,22 @@ async function getMemberInfoById(id){
   });
 }
 
+async function reg(code, nickName, avatarPhoto){
+  return Fai.promiseRequestPost({
+    url:"/ajax/logAction/action?cmd=reg",
+    data:{
+      code,
+      nickName,
+      avatarPhoto
+    }
+  });
+}
+
 
 
 module.exports = {
   login,
   getMemberInfo,
-  getMemberInfoById
+  getMemberInfoById,
+  reg
 };
