@@ -4,7 +4,6 @@ const config = require("../../utils/config");
 const Ajax = require("../../ajax/index");
 import Toast from "../../miniprogram_npm/@vant/weapp/toast/toast";
 
-const IndexCompany = require("../../templates/indexCompany/indexCompany");
 
 Page(Fai.mixin(Fai.commPageConfig, {
 
@@ -25,6 +24,9 @@ Page(Fai.mixin(Fai.commPageConfig, {
       "setting.companyAID": parseInt(options.companyAID) || 0,
       "setting.companyBID": parseInt(options.companyBID) || 0
     })
+
+    
+
     this.loadIndexCompanyPageData();
   },
   
@@ -37,8 +39,9 @@ Page(Fai.mixin(Fai.commPageConfig, {
           merchantForLevelBID: this.data.setting.companyBID
         }
       });
-
       return Promise.resolve(response);
+    },{
+      tip4Success:true
     });
   },
 
@@ -99,11 +102,11 @@ Page(Fai.mixin(Fai.commPageConfig, {
       }else{
         response = await Ajax.getCompanyAIndexPageData(this.data.setting.companyAID);
       }
+      
 
       this.setData({
         "pageData":response.data.data
       });
-      
       wx.setNavigationBarTitle({
         title: this.data.pageData.companyInfo.companyName,
       });

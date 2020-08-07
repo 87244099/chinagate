@@ -103,7 +103,11 @@
         <view class="fk_indexCompany_contact_message_line" catchtap="callMap">地址：{{pageData.companyInfo.addrInfo.address}}（<text class="">点击导航</text><text class="iconfont icon-map" style="color: #34aaef;font-size:32rpx"></text>）
         </view>
       </view>
+
+      <!-- <trace companyAID="{{setting.companyAID}}" companyBID="{{setting.companyBID}}" staffID="0" typeID="1"></trace> -->
     </view>
+
+    
   </view>
   <tab-bar class="fk_tabBar" type="company" style="background-color:{{pageData.companyInfo.themeColor}}" rollbackVisible="{{_commPageConfigData.rollbackVisible}}" companyInfo="{{pageData.companyInfo}}" companyAID="{{setting.companyAID}}" companyBID="{{setting.companyBID}}"></tab-bar>
   <van-toast id="van-toast" />

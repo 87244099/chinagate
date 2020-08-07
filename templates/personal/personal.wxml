@@ -6,7 +6,7 @@
           <image style="width:100%;height:100%" src="{{pageData.memberInfo.avatarPhoto}}"></image>
         </view>
         <view class="fk_personal_header_info">
-          <view class="fk_personal_header_info_name">{{pageData.memberInfo.memberName}}</view>
+          <view class="fk_personal_header_info_name">{{pageData.memberInfo.nickName}}</view>
           <view class="fk_personal_header_info_wxAcct">微信号：{{pageData.memberInfo.weChat || ''}}</view>
         </view>
       </view>

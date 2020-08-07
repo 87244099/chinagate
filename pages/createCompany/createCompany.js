@@ -92,18 +92,18 @@ Page({
       let provinceList = [];
       let cityList = [];
       let countryList = [];
-      // if(cardInfo.addrInfo.provinceCode>-1){
+      if(cardInfo.addrInfo.provinceCode>0){
         response = await this.loadProvince();
         provinceList = response.data.data.provinceList;
-      // }
-      // if(cardInfo.addrInfo.cityCode>-1){
+      }
+      if(cardInfo.addrInfo.cityCode>0){
         response = await this.loadCity(cardInfo.addrInfo.provinceCode);
         cityList = response.data.data.cityList;
-      // }
-      // if(cardInfo.addrInfo.countryCode>-1){
+      }
+      if(cardInfo.addrInfo.countryCode>0){
         response = await this.loadCountry(cardInfo.addrInfo.cityCode);
         countryList = response.data.data.countryList;
-      // }
+      }
 
       let setting = this.data.setting;
       setting.provinceList = provinceList;

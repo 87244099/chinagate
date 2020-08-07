@@ -85,7 +85,7 @@ Component({
               if(response){
                 let result = response.data;
                 if(result.rt === 1){//不存在
-                  
+                  Toast.loading("跳转中...");
                     //走注册流程
                     let code = await Fai.getLoginCodeNullIsEmpty();
                     response = await Ajax.reg(code, detail.userInfo.nickName, detail.userInfo.avatarUrl);
@@ -93,6 +93,8 @@ Component({
                     wx.redirectTo({
                       url: '/pages/personal/personal',
                     });
+                    Toast.clear();
+                    return;
                 }
                 Toast.fail(response.data.msg);
               }else{
@@ -105,6 +107,12 @@ Component({
       }
 
       
-    }
+    },
+    
+  jump4Personal(){
+    wx.redirectTo({
+      url: '/pages/personal/personal',
+    })
   }
+  },
 });

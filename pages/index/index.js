@@ -107,7 +107,45 @@ Page(Fai.mixin(Fai.commPageConfig, {
     wx.makePhoneCall({
       phoneNumber: this.data.globalData.hotline,
     })
-  }
+  },
+  onJumpToCompany(){
+    Toast.loading({
+      message: "跳转中",
+      duration: 0
+    });
+  },
+  async onJumpToMyCompany(){
+    
+  },
+  async jump4MyCompany(){
+    console.log(111111);
+    let response;
+    try{
+      response = await Ajax.login();
+      response = await Ajax.getMemberInfo();
+      let memberInfo = response.data.data;
+      if(memberInfo.staffID==0){
+        wx.navigateTo({
+          "url": "/pages/createCompany/createCompany"
+        });
+      }else{
+        wx.navigateTo({
+          "url": "/pages/myCompany/myCompany"
+        });
+      }
+      
+
+    }catch(response){
+      if(response){
+        let result = response.data;
+        if(result.rt === 1){//不存在
+          wx.navigateTo({
+            "url": "/pages/createCompany/createCompany"
+          });
+        }
+      }
+    }
+  },
 }));
 
 

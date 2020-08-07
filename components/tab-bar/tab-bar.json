@@ -1,4 +1,6 @@
 {
   "component": true,
-  "usingComponents": {}
+  "usingComponents": {
+    "auto-login-reg": "/components/auto-login-reg/auto-login-reg"
+  }
 }

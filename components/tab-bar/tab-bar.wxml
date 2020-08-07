@@ -20,10 +20,10 @@
       </navigator>
     </view>
     <view class="fk_tabBar_item">
-      <button open-type="getUserInfo" class="fk_tabBar_item_button" bindgetuserinfo="onJumpToPersonal">
+      <auto-login-reg bindjump="jump4Personal">
         <view class="iconfont icon-user fk_tabBar_item_icon"></view>
         <view class="fk_tabBar_item_text">个人中心</view>
-      </button>
+      </auto-login-reg>
     </view>
   </view>
 </block>

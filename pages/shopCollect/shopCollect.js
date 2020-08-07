@@ -1,6 +1,8 @@
 const Fai = require("../../utils/util");
 const Ajax = require("../../ajax/index");
 const config = require("../../utils/config");
+
+import Toast from "../../miniprogram_npm/@vant/weapp/toast/toast";
 Page({
 
   /**
@@ -12,7 +14,8 @@ Page({
       pageSize: 10,
       companyList: []
     },
-    staticDomain: config.staticDomain
+    staticDomain: config.staticDomain,
+    config: config
   },
 
   /**
@@ -123,7 +126,7 @@ Page({
         url: "/ajax/company/companyCollect?cmd=setCompanyCollectCancel",
         data:data
       });
-
+      Toast.success("取消成功");
       this.data.setting.companyList.splice(index,1);
       this.setData({
         "setting.companyList": this.data.setting.companyList

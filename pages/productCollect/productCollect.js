@@ -162,6 +162,8 @@ Page(Fai.mixin(Fai.commPageConfig, {
         "setting.cancelCollectIndex": -1
       })
       return Promise.resolve(response);
+    }, {
+      tip4Success:true
     });
   },
   async onCancelProductCollect(event){

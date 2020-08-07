@@ -4,7 +4,7 @@
       <navigator class="fk_shopCollect_item"  url="/pages/indexCompany/indexCompany?companyAID={{item.merchantForLevelAID}}&companyBID={{item.merchantForLevelBID}}" wx:for="{{setting.companyList}}">
         <view class="fk_shopCollect_item_left">
           <view class="fk_shopCollect_item_img">
-            <image style="width:100%;height:100%;" mode="aspectFill" src="{{staticDomain}}/{{item.companyLogoUrl}}"></image>
+            <image style="width:100%;height:100%;" mode="aspectFill" src="{{config.wwwwStaticDomain}}/{{item.companyLogoUrl}}"></image>
           </view>
           <view class="fk_shopCollect_item_info">
             <view class="fk_shopCollect_item_info_name">{{item.companyName}}</view>

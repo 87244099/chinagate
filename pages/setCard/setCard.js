@@ -70,6 +70,7 @@ Page({
       let memberInfo = response.data.data;
       response = await Ajax.getUserCollectInfo(memberInfo.memberID);
       let cardInfo = response.data.data.userInfo;
+      cardInfo.memberName = memberInfo.nickName;
       let provinceList = [];
       let cityList = [];
       let countryList = [];
@@ -105,12 +106,21 @@ Page({
           setting.countryIndex = index;
         }
       });
+
       this.setData({
         "pageData.cardInfo":cardInfo,
         "setting": setting
       });
+      await this.setCode();
+
       return Promise.resolve(response);
     }, "加载中...")
+  },
+  async setCode(){
+    let code = await Fai.getLoginCodeNullIsEmpty();
+    this.setData({
+      "setting.code": code
+    });
   },
 
   /**
@@ -313,7 +323,9 @@ Page({
         method: "POST",
         data: data
       });
-    })
+    }, {
+      tip4Success:true
+    });
 
     
   },
@@ -322,5 +334,35 @@ Page({
       url: '/pages/cutFace/cutFace',
     });
     
+  },
+  getphonenumber(event){
+    let detail = event.detail;
+    console.log("event", event);
+    if(detail.errMsg == "getPhoneNumber:fail user deny"){
+      return;
+    };
+
+    let data = detail;
+    data.code = this.data.setting.code;
+
+    Fai.requestPost({
+      url:"/ajax/common/getCommData?cmd=parseWxPhone",
+      data: data,
+      afterConsume:this.setCode,
+      success:(response)=>{
+        let result = response.data;
+        if(result.success){
+          this.setData({
+            "pageData.cardInfo.memberPhone": result.data.phoneNumber
+          });
+          Toast.success(result.msg);
+        }else{
+          Toast.fail(result.msg);
+        }
+      },
+      fail(){
+        Toast.fail("网络繁忙，请稍后重试");
+      }
+    })
   }
 })

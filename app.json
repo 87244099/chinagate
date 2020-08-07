@@ -29,7 +29,7 @@
     "pages/personal4Company/personal4Company",
     "pages/invitation4Staff/invitation4Staff",
     "pages/invitation4Vip/invitation4Vip",
-    "pages/createComapny/createCompany"
+    "pages/createCompany/createCompany"
   ],
   "subpackages": [
     {

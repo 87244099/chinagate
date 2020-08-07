@@ -19,8 +19,14 @@
       <mp-cell show-error prop="idcard" title="姓名" ext-class="">
           <input bindblur="onFieldBlur" value="{{pageData.cardInfo.memberName}}" data-field="memberName" class="weui-input" placeholder="请输入您的姓名"/>
       </mp-cell>
-      <mp-cell show-error prop="idcard" title="手机" ext-class="">
-          <input disabled="true" value="{{pageData.cardInfo.memberPhone}}" class="weui-input" placeholder="请输入您的手机号"/>
+      <mp-cell show-error prop="idcard" title="手机" ext-class="" >
+        <view style="display:flex;">
+          <input style="flex:1" disabled="true" value="{{pageData.cardInfo.memberPhone}}" class="weui-input" placeholder="请输入您的手机号"/>
+          <van-button size="mini" type="info" open-type="getPhoneNumber" bindgetphonenumber="getphonenumber">
+            <view style="padding:0 16rpx;width:auto;" >获取手机号</view>
+          </van-button>
+        </view>
+          
       </mp-cell>
     </mp-cells>
     <mp-cells title="更多信息（选填）">

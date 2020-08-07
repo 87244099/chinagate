@@ -42,7 +42,6 @@ Page({
               longitude
             }
           });
-          return;
         }else if(authSetting["scope.userLocation"] === false){
           response = await Dialog.confirm({
             // title: '标题',
@@ -79,7 +78,7 @@ Page({
       });
 
       return Promise.resolve(response);
-    })
+    }, "加载中...");
   },
 
   /**

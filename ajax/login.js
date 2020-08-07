@@ -25,6 +25,31 @@ async function login(){
 
   });
 }
+// 检查用户是否存在
+async function checkUserExist(){
+  await login();//自动登录
+  return new Promise((resolve, reject)=>{
+    Fai.request({
+      url: "/ajax/logAction/action?cmd=getMemberInfo",
+      success:(response)=>{
+        let result = response.data;
+        if(result.success){
+          resolve(true);
+        }else{
+          if(result.rt == 1){
+
+          }else{
+            reject(response);
+          }
+        }
+      },
+      fail:()=>{
+        reject();
+      }
+    });
+  });
+
+}
 
 async function getMemberInfo(){
   return new Promise((resolve, reject)=>{

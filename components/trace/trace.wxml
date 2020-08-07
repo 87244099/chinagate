@@ -1,0 +1,15 @@
+<view class="fk_trace">
+  <view class="fk_trace_top" style="font-size:36rpx;color:rgb(119,119,119)">
+    浏览用户记录：
+  </view>
+  <view class="fk_trace_bottom">
+    <view class="fk_trace_list">
+      <view class="fk_trace_item" wx:for="{{traceData.imgList}}">
+        <view style="width:100%;height:100%;">
+          <image class="fk_trace_item_img" src="{{item}}" style="width:100%;height:100%;background:#ccc;border-radius:50%;"></image>
+        </view>
+      </view>
+    </view>
+    <view class="fk_trace_num">共{{traceData.totalSize}}人</view>
+  </view>
+</view>

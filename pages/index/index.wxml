@@ -17,10 +17,12 @@
         <view class="iconfont icon-mingpian  fk_main_func_item_icon" style="color:#3f51b5"></view>
         <view class="fk_main_func_item_text">我的名片</view>
       </navigator>
-      <navigator class="fk_main_func_item" url="/pages/myCompany/myCompany"  open-type="redirect">
-        <view class="iconfont icon-qiye  fk_main_func_item_icon" style="color:#795548"></view>
-        <view class="fk_main_func_item_text">我的企业</view>
-      </navigator>
+      <view class="fk_main_func_item">
+        <auto-login-reg bindjump="jump4MyCompany">
+          <view class="iconfont icon-qiye  fk_main_func_item_icon" style="color:#795548"></view>
+          <view class="fk_main_func_item_text">我的企业</view>
+        </auto-login-reg>
+      </view>
       <navigator class="fk_main_func_item" open-type="redirect" url="/pages/newList/newList">
         <view class="iconfont icon-liebiaodaohang_zixun  fk_main_func_item_icon" style="color:#17abe3"></view>
         <view class="fk_main_func_item_text">行业资讯</view>

@@ -43,6 +43,6 @@ Page(Fai.mixin(Fai.commPageConfig, Card, {
     
   },
   onWantShare(){
-    Toast("点击右上角...进行转发");
+    Toast("点击右上角...进行转发")
   }
 }));

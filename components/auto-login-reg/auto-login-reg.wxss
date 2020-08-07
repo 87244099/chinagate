@@ -1,0 +1,15 @@
+.fk_tabBar_item_button{
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  background: inherit;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: inherit;
+}
+.fk_tabBar_item_button::after{
+  display: none;
+}

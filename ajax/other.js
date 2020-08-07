@@ -100,10 +100,7 @@ async function requestWithToast(requestHandler, message){
     message
   };
 
-  console.log(messageCfg);
-
   if(messageCfg.message){ 
-    console.log("exec", messageCfg.message);
     Toast.loading({
       message: messageCfg.message,
       duration: 0

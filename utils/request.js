@@ -55,10 +55,11 @@ function assignOption(option){
     header: {},
     beforeConsume: noop,//在响应被消费之前触发
     afterConsume: noop,//在响应被消费之后触发
-    retryCount: 3,//请求重试机制（断网、服务器错误、超时)
+    retryCount: 4,//请求重试机制（断网、服务器错误、超时)
     complete: noop,
     success: noop,
-    fail: noop
+    fail: noop,
+    authCheck: true//默认检查各类权限
   };
 
   defaultOption.retryCount = Math.max(option.retryCount || 0, defaultOption.retryCount);//3-10之间
@@ -88,13 +89,15 @@ function trans4AutoLogin(option){
   option.success = function(response){
     let result = response.data;
     if(!result.success){
-      if(result.rt === -1){//未登录
-        getApp().globalData.isLogin=false;
-        //跳转到登录页
-        wx.redirectTo({
-          url: '/pages/login/login',
-        });
-        return;
+      if(option.authCheck){
+        if(result.rt === -1){//未登录
+          getApp().globalData.isLogin=false;
+          //跳转到登录页
+          wx.redirectTo({
+            url: '/pages/login/login',
+          });
+          return;
+        }
       }
     }
     oldSuccess(response);

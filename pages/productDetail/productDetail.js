@@ -133,6 +133,8 @@ Page(Fai.mixin(Fai.commPageConfig, {
           staffId: this.data.pageData.memberInfo.staffID
         }
       });
+    }, {
+      tip4Success:true
     });
   },
   onServiceFormSubmit(){

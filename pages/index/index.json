@@ -2,6 +2,7 @@
   "usingComponents": {
     "mp-tabbar": "weui-miniprogram/tabbar/tabbar",
     "tab-bar": "/components/tab-bar/tab-bar",
+    "auto-login-reg": "/components/auto-login-reg/auto-login-reg",
     "van-toast": "@vant/weapp/toast/index"
   },
   "navigationBarTitleText": "首页"

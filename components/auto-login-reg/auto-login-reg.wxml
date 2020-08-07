@@ -1,0 +1,3 @@
+<button open-type="getUserInfo" class="fk_tabBar_item_button" bindgetuserinfo="autoLoginReg">
+  <slot></slot>
+</button>
