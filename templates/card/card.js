@@ -14,10 +14,11 @@ module.exports = {
       let cardInfo = response.data.data.userInfo;
       
       this.setData({
-        "pageData.cardInfo": cardInfo
+        "pageData.cardInfo": cardInfo,
+        "setting.title": this.data.pageData.cardInfo.memberName
       });
       wx.setNavigationBarTitle({
-        title: this.data.pageData.cardInfo.memberName,
+        title: this.data.setting.title,
       })
       return Promise.resolve(response);
     })
@@ -71,7 +72,6 @@ module.exports = {
       title: this.data.pageData.cardInfo.memberName,
       path: "pages/sharedCard/sharedCard?id="+ this.data.pageData.cardInfo.memberID,
     };
-    console.log("data", data);
     return data;
   },
   onShareMaskClick: function(){

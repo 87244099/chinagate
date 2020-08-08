@@ -1,0 +1,199 @@
+/* pages/indexCompany/indexCompany.wxss */
+@import "/icons.wxss";
+
+.fk_indexCompany{
+  background-color: #f0f0f0;
+}
+.fk_indexCompany_header{
+  padding: 30rpx;
+  background-color: #fff;
+}
+.fk_indexCompany_header_name{
+  display: block;
+    font-size: 48rpx;
+    font-weight: bold;
+}
+.fk_indexCompany_header_job{
+  display: block;
+  font-size: 34rpx;
+  color: #8f8f8f;
+  margin-top: 10rpx;
+}
+
+.fk_indexCompany_func_list{
+  background-color: #fff;
+  display: flex;
+  justify-content: space-around;
+  font-size: 32rpx;
+  padding: 26rpx 40rpx;
+  margin-top: 8rpx;
+}
+
+.fk_indexCompany_message{
+  background-color: #fff;
+  padding: 30rpx 20rpx;
+  margin-top: 8rpx;
+}
+.fk_indexCompany_message_line{
+  display: flex;
+  align-items: center;
+  font-size: 32rpx;
+  color: #8f8f8f;
+  line-height: 64rpx;
+
+}
+.fk_indexCompany_message_label{
+  width: 120rpx;
+  text-align: right;
+}
+
+.fk_indexCompany_banner{
+  height: 352rpx;
+  background-color: #ccc;
+  text-align: center;
+}
+
+.fk_indexCompany_productIntro{
+  overflow: hidden;
+  padding: 20rpx;
+}
+
+.fk_indexCompany_productIntro_bigTitle{
+  text-align: center;
+}
+.fk_indexCompany_productIntro_bigTitle_text{
+  font-size: 50rpx;
+  position: relative;
+  display: inline-block;
+}
+
+.fk_indexCompany_productIntro_bigTitle_text_before,
+.fk_indexCompany_productIntro_bigTitle_text_after
+{
+  content: "";
+  display: block;
+  top: 50%;
+  height: 4rpx;
+  margin-top: -2rpx;
+  /* border-top: solid 4px inherit; */
+  background-color: #0062d7;
+  width: 68rpx;
+  position: absolute;
+  margin-left: -132rpx;
+}
+.fk_indexCompany_productIntro_bigTitle_text_after{
+  left: auto;
+  margin-left: unset;
+  right: 0;
+  margin-right: -132rpx;
+}
+
+.fk_indexCompany_productIntro_bigTitle_desc{
+  font-size: 52rpx;
+  color: #8a8a8a;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-weight: bolder;
+}
+
+.fk_indexCompany_productIntro_group_title{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-top: 10px;
+  margin-bottom: 30rpx;
+  color: #333333;
+}
+.fk_indexCompany_productIntro_group_title_text{
+  border-left: 8rpx solid #0062d7;
+  padding-left: 10rpx;
+  font-size: 40rpx;
+  line-height: 1;
+}
+
+.fk_indexCompany_productIntro_group_title_arrow{
+  color: #b8b8b8;
+  font-size: 24rpx;
+  display: block;
+  width: auto;
+  
+}
+.fk_indexCompany_productIntro_group_main_product_list{
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+.fk_indexCompany_productIntro_group_main_product_item{
+  width: 50%;
+  padding-left: 10rpx;
+  padding-right: 10rpx;
+  margin-top: 40rpx;
+  overflow: hidden;
+  padding-bottom: 8rpx;
+  box-sizing: border-box;
+  min-width: 50%;
+}
+.fk_indexCompany_productIntro_group_main_product_item_img{
+  height: 106px;
+  background-color: #ccc;
+  width: 100%;
+}
+
+.fk_indexCompany_productIntro_group_main_product_item_name{
+  text-align: center;
+  font-size: 28rpx;
+  padding-top: 10rpx;
+  color: #333;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+}
+.fk_indexCompany_productIntro_group_main_product_priceInfo{
+  width: 100%;
+}
+.fk_indexCompany_productIntro_group_main_product_priceInfo_line{
+  font-size: 26rpx;
+  color: #ff5000;
+  display: flex;
+}
+
+.fk_indexCompany_contact_message_line{
+  font-size: 32rpx;
+  color: #8f8f8f;
+  line-height: 64rpx;
+}
+
+.fk_indexCompany_about, 
+.fk_indexCompany_contact{
+  overflow: hidden;
+  padding: 20rpx;
+  background-color: #fff;
+  margin-top: 10rpx;
+}
+
+.fk_indexCompany_func_item{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.fk_indexCompany_func_item_icon{
+  display: block;
+  width: 84rpx;
+  height: 84rpx;
+  font-size: 51rpx;
+  line-height: 84rpx;
+  text-align: center;
+  background-color: #0062d7;
+  box-sizing: content-box;
+  border-radius: 50%;
+  color: #ececec;
+}
+.fk_indexCompany_func_item_text{
+  display: block;
+    color: #8f8f8f;
+    text-align: center;
+    font-style: normal;
+    margin-top: 10rpx;
+    line-height: 32rpx;
+}

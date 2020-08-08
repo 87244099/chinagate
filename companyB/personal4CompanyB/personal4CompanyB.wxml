@@ -1,6 +1,0 @@
-<import src="../../templates/personal/personal.wxml"/>
-<view class="fk_page">
-  <template is="personal" data="{{setting, pageData, config}}"></template>
-  <tab-bar class="fk_tabBar" rollbackVisible="{{_commPageConfigData.rollbackVisible}}" type="company" companyInfo="{{pageData.companyPageData.companyInfo}}" companyType="2"></tab-bar>
-  <van-toast id="van-toast" />
-</view>

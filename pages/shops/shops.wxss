@@ -1,6 +1,8 @@
 /* pages/shops/shops.wxss */
 @import "/icons.wxss";
-
+.fk_shop_list{
+  padding-bottom: 100rpx;
+}
 .fk_shops_item{
   display: flex;
   padding: 50rpx 30rpx;

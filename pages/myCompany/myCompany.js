@@ -26,13 +26,32 @@ Page(Fai.mixin(Fai.commPageConfig, IndexCompany, {
       this.setData({
         "pageData":response.data.data,
         "setting.companyId": memberInfo.merchantForLevelAID,
+        "setting.companyAID": memberInfo.merchantForLevelAID,
         "setting.memberInfo": memberInfo
       });
-      wx.setNavigationBarTitle({
-        title: this.data.pageData.companyInfo.companyName,
-      });
+
+      if(this.data.pageData.companyInfo.companyName){
+        wx.setNavigationBarTitle({
+          title: this.data.pageData.companyInfo.companyName,
+        });
+      }
+      
 
       return Promise.resolve(response);
+    });
+  },
+  onCompanyCollect(){
+    Ajax.requestWithToast(async()=>{
+      let response = Fai.promiseRequestPost({
+        url:"/ajax/company/companyCollect?cmd=setCompanyCollect",
+        data:{
+          merchantForLevelAID: this.data.setting.companyAID,
+          merchantForLevelBID: 0
+        }
+      });
+      return Promise.resolve(response);
+    },{
+      tip4Success:true
     });
   },
 }));

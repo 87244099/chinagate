@@ -4,7 +4,7 @@
       <navigator class="fk_staffCollect_item" wx:for="{{setting.companyList}}" data-item="{{item}}" catchtap="onJumpCard">
         <view class="fk_staffCollect_item_left">
           <view class="fk_staffCollect_item_img">
-            <image style="width:100%;height:100%;" mode="aspectFill" src="{{config.domain}}/{{item.avatarPhoto}}"></image>
+            <image style="width:100%;height:100%;" mode="aspectFill" src="{{item.avatarPhoto}}"></image>
           </view>
           <view class="fk_staffCollect_item_info">
             <view class="fk_staffCollect_item_info_name">名片收藏：{{item.name}}</view>

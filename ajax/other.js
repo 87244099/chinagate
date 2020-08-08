@@ -168,7 +168,8 @@ async function reportTrace(data){
     typeID,
     merchantForLevelAID,
     merchantForLevelBID,
-    staffID
+    staffID,
+    subID
   } = data;
   return Fai.promiseRequestPost({
     url:"/ajax/common/getCommData?cmd=reportTrace",
@@ -176,7 +177,8 @@ async function reportTrace(data){
       typeID,
       merchantForLevelAID,
       merchantForLevelBID,
-      staffID
+      staffID,
+      subID
     }
   });
 }
@@ -185,7 +187,8 @@ async function getTrace(data){
     typeID,
     merchantForLevelAID,
     merchantForLevelBID,
-    staffID
+    staffID,
+    subID
   } = data;
   return Fai.promiseRequest({
     url:"/ajax/common/getCommData?cmd=getTrace",
@@ -193,7 +196,8 @@ async function getTrace(data){
       typeID,
       merchantForLevelAID,
       merchantForLevelBID,
-      staffID
+      staffID,
+      subID
     }
   });
 }

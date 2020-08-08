@@ -20,6 +20,10 @@ Component({
       type:Number,
       value: 0
     },
+    subID: {
+      type:Number,
+      value: 0
+    }
   },
 
   /**
@@ -41,14 +45,14 @@ Component({
         merchantForLevelAID: this.data.companyAID,
         merchantForLevelBID: this.data.companyBID,
         typeID: this.data.typeID,
-        staffID: this.data.staffID
+        staffID: this.data.staffID,
+        subID: this.data.subID
       }
-      // Ajax.reportTrace(traceParam);
-
-      // response = await Ajax.getTrace(traceParam);
-      // this.setData({
-      //   "traceData": response.data.data
-      // });
+      await Ajax.reportTrace(traceParam);//直接上报，不管数据
+      let response = await Ajax.getTrace(traceParam);
+      this.setData({
+        "traceData": response.data.data
+      });
     }
   }
 })

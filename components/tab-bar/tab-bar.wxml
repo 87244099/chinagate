@@ -64,10 +64,14 @@
       </view>
     </view>
     <view class="fk_tabBar_item">
-      <navigator open-type="redirect" url="/pages/personal4Company/personal4Company?companyAID={{companyAID}}&companyBID={{companyBID}}">
+      <auto-login-reg bindjump="jump4CompanyPersonal">
         <view class="iconfont icon-user fk_tabBar_item_icon"></view>
         <view class="fk_tabBar_item_text">个人中心</view>
-      </navigator>
+      </auto-login-reg>
+      <!-- <navigator open-type="redirect" url="/pages/personal4Company/personal4Company?companyAID={{companyAID}}&companyBID={{companyBID}}">
+        <view class="iconfont icon-user fk_tabBar_item_icon"></view>
+        <view class="fk_tabBar_item_text">个人中心</view>
+      </navigator> -->
     </view>
   </view>
   

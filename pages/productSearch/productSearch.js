@@ -32,12 +32,11 @@ Page(Fai.mixin(Fai.commPageConfig, {
       });
 
       Ajax.requestWithToast(async()=>{
-        let companyAID = this.data.setting.companyAID;
         let response = {};
         if(this.data.setting.companyBID>0){
-          response = await Ajax.getCompanyAIndexPageData(companyAID);
+          response = await Ajax.getCompanyBIndexPageData(this.data.setting.companyBID);
         }else{
-          response = await Ajax.getCompanyAIndexPageData(companyAID);
+          response = await Ajax.getCompanyAIndexPageData(this.data.setting.companyAID);
         }
         this.setData({
           "pageData.companyPageData": response.data.data

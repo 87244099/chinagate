@@ -1,7 +1,7 @@
 <view class="fk_page">
   
   <view class="fk_productCenter">
-    <view class="fk_productCenter_header">
+    <view class="fk_productCenter_header" catchtap="noop">
       <mp-searchbar style="background-color:{{pageData.companyPageData.companyInfo.themeColor}}" bindselectresult="selectResult" bindblur="searchBlur" bindclear="searchClear" cancel="{{false}}"></mp-searchbar>
     </view>
 
@@ -34,6 +34,6 @@
     </view>
   </view>
 
-  <tab-bar class="fk_tabBar" type="company" companyInfo="{{pageData.companyPageData.companyInfo}}" companyAID="{{setting.companyAID}}" companyBID="{{setting.companyBID}}"></tab-bar>
+  <tab-bar class="fk_tabBar" type="company" companyInfo="{{pageData.companyPageData.companyInfo}}" companyAID="{{setting.companyAID}}" companyBID="{{setting.companyBID}}" style="background-color:{{pageData.companyPageData.companyInfo.themeColor}}"></tab-bar>
   <van-toast id="van-toast" />
 </view>

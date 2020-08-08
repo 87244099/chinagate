@@ -21,3 +21,7 @@ text-align: center;
   max-width: 100%;
   font-size: 24rpx;
 }
+
+.fk_artile_wxparse .wxparser--wxParser-p text {
+  color: #444;
+}

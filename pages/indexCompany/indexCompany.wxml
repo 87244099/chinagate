@@ -8,7 +8,12 @@
         autoplay="true" interval="3000" duration="500" circular="true">
         <block wx:for="{{pageData.carouselList}}" wx:key="*this">
           <swiper-item>
-            <image style="width:100%;height:100%" mode="aspectFill" src="{{config.staticDomain}}/{{item}}"/>
+            <block wx:if="{{setting.companyBID>0}}">
+              <image style="width:100%;height:100%" mode="aspectFill" src="{{config.wwwwStaticDomain}}/{{item}}"/>
+            </block>
+            <block wx:else>
+              <image style="width:100%;height:100%" mode="aspectFill" src="{{config.staticDomain}}/{{item}}"/>
+            </block>
           </swiper-item>
         </block>
       </swiper>
@@ -60,7 +65,7 @@
       <view class="fk_indexCompany_productIntro_group" wx:for-item="group" wx:for="{{pageData.productGroupList}}">
         <view class="fk_indexCompany_productIntro_group_title">
           <view class="fk_indexCompany_productIntro_group_title_text" style="border-color:{{pageData.companyInfo.themeColor}}">{{group.productTypeName}}</view>
-          <navigator url="/pages/productCenter/productCenter?companyId={{setting.companyId}}" open-type="redirect" class="fk_indexCompany_productIntro_group_title_arrow">更多></navigator>
+          <navigator url="/pages/productCenter/productCenter?companyAID={{setting.companyAID}}&companyBID={{setting.companyBID}}" open-type="redirect" class="fk_indexCompany_productIntro_group_title_arrow">更多></navigator>
         </view>
         <view class="fk_indexCompany_productIntro_group_main">
           <view class="fk_indexCompany_productIntro_group_main_product_list">
@@ -87,7 +92,7 @@
     <view class="fk_indexCompany_about">
       <template is="bigTitle" data="{{cn:'关于我们', en:'ABOUT', pageData}}"></template>
       <view>
-        <wxparser rich-text="{{pageData.companyInfo.companyIntroduction}}"/>
+        <wxparser class="fk_artile_wxparse" rich-text="{{pageData.companyInfo.companyIntroduction}}"/>
       </view>
     </view>
     <view class="fk_indexCompany_contact">
@@ -104,7 +109,7 @@
         </view>
       </view>
 
-      <!-- <trace companyAID="{{setting.companyAID}}" companyBID="{{setting.companyBID}}" staffID="0" typeID="1"></trace> -->
+      <trace wx:if="{{setting.companyAID>0 || setting.companyBID>0}}" companyAID="{{setting.companyAID}}" companyBID="{{setting.companyBID}}" staffID="0" typeID="{{setting.companyBID>0?2:1}}"></trace>
     </view>
 
     

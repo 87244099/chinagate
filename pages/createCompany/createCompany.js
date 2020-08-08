@@ -325,6 +325,8 @@ Page({
         method: "POST",
         data: form
       });
+    },{
+      tip4Success:true
     });
 
   },

@@ -4,8 +4,7 @@ const app = getApp();
 const Fai = require("../../utils/util");
 const Ajax = require("../../ajax/index");
 const config = require("../../utils/config");
-const ProductCenter = require("../../templates/productCenter/productCenter");
-Page(Fai.mixin(ProductCenter, {
+Page(Fai.mixin(Fai.commPageConfig, {
 
   /**
    * 页面的初始数据
@@ -17,7 +16,7 @@ Page(Fai.mixin(ProductCenter, {
       companyAID: -1,
       companyBID: -1,
     },
-    config
+    config,
   },
 
   /**
@@ -26,15 +25,15 @@ Page(Fai.mixin(ProductCenter, {
   onLoad: function (options) {
     this.setData({
       "setting.companyAID":parseInt(options.companyAID) || 0,
-      "setting.companyBID":parseInt(options.companyBID) || 0,
+      "setting.companyBID":parseInt(options.companyBID) || 0
     });
 
     Ajax.requestWithToast(async()=>{
       let response = {};
       if(this.data.setting.companyBID>0){
-        response = await Ajax.getCompanyAIndexPageData(this.data.setting.companyBID);
+        response = await Ajax.getCompanyBIndexPageData(this.data.setting.companyBID);
       }else{
-        response = await Ajax.getCompanyBIndexPageData(this.data.setting.companyAID);
+        response = await Ajax.getCompanyAIndexPageData(this.data.setting.companyAID);
       }
       let companyPageData = response.data.data;
       response = await Fai.promiseRequest({
@@ -55,6 +54,7 @@ Page(Fai.mixin(ProductCenter, {
   onReady: function () {
 
   },
+  noop:function(){},
 
 
   async loadCompanyBPageData(companyId){
@@ -96,16 +96,27 @@ Page(Fai.mixin(ProductCenter, {
     this.dealSearch(event);
   },
   dealSearch: Fai.delay(function(event){
+    console.log(Math.random());
+    console.log(Fai.commPageConfig);
     if(event.type == "blur"){
       let value = event.detail.value || '';
       value = value.trim();
       if(value.length > 0){
         wx.navigateTo({
           url: '/pages/productSearch/productSearch?word='+value+"&companyAID="+this.data.setting.companyAID+"&companyBID="+this.data.setting.companyBID,
+          complete(){
+            console.log(2, Math.random());
+          },
+          success(){
+            console.log(3, Math.random());
+          },
+          fail(){
+            console.log(4, Math.random());
+          }
         });
       }else{
       }
     }
-  })
+  }, 800)
 
 }));

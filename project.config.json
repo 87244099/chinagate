@@ -13,7 +13,7 @@
 		"newFeature": true,
 		"coverView": true,
 		"nodeModules": true,
-		"autoAudits": false,
+		"autoAudits": true,
 		"showShadowRootInWxmlPanel": true,
 		"scopeDataCheck": false,
 		"checkInvalidKey": true,
@@ -26,7 +26,8 @@
 		},
 		"bundle": true,
 		"useCompilerModule": true,
-		"userConfirmedUseCompilerModuleSwitch": false
+		"userConfirmedUseCompilerModuleSwitch": false,
+		"uglifyFileName": true
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.8.1",
@@ -94,14 +95,14 @@
 					"id": 4,
 					"name": "产品详情页",
 					"pathName": "pages/productDetail/productDetail",
-					"query": "companyId=1&id=33",
+					"query": "companyAID=1&companyBID=0&id=34",
 					"scene": null
 				},
 				{
 					"id": 5,
 					"name": "产品中心",
 					"pathName": "pages/productCenter/productCenter",
-					"query": "companyId=1",
+					"query": "companyAID=1&companyBID=0",
 					"scene": null
 				},
 				{
@@ -277,6 +278,27 @@
 					"name": "创建企业",
 					"pathName": "pages/createComapny/createCompany",
 					"query": "companyId=1&word=不锈钢",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "员工名片",
+					"pathName": "pages/indexStaff/indexStaff",
+					"query": "companyAID=1&companyBID=0&staffID=5",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "一级商家产品中心（搜索问题）",
+					"pathName": "pages/productCenter/productCenter",
+					"query": "companyAID=1&companyBID=0&id=34",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "企业首页测试换行符",
+					"pathName": "pages/indexCompany/indexCompany",
+					"query": "companyAID=1&companyBID=0",
 					"scene": null
 				}
 			]

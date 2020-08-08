@@ -12,8 +12,8 @@
           <view class="fk_indexStaff_func_item_icon iconfont icon-dianhua" catchtap="callPhone"></view>
           <view class="fk_indexStaff_func_item_text">呼叫</view>
         </view>
-        <view class="fk_indexStaff_func_item" catchtap="onWantShare">
-          <view class="fk_indexStaff_func_item_icon iconfont icon-zhuanfa"></view>
+        <view class="fk_indexStaff_func_item">
+          <button class="fk_indexStaff_func_item_icon iconfont icon-zhuanfa" open-type="share"></button>
           <view class="fk_indexStaff_func_item_text">转发</view>
         </view>
         <view class="fk_indexStaff_func_item">
@@ -124,6 +124,8 @@
         <view class="fk_indexStaff_contact_message_line" >地址：{{pageData.companyPageData.companyInfo.addrInfo.address}}<text catchtap="callMap">(<text>点击导航</text><text class="iconfont icon-map" style="color: #34aaef;font-size:32rpx"></text>)</text>
         </view>
       </view>
+      
+      <trace wx:if="{{(setting.companyAID>0 || setting.companyBID>0) && pageData.staffInfo.staffID>0}}" companyAID="{{setting.companyAID}}" companyBID="{{setting.companyBID}}" staffID="{{pageData.staffInfo.staffID}}" typeID="3"></trace>
     </view>
   </view>
   <tab-bar class="fk_tabBar" type="company" rollbackVisible="{{_commPageConfigData.rollbackVisible}}" companyAID="{{setting.companyAID}}" companyBID="{{setting.companyBID}}"></tab-bar>

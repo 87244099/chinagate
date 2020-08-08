@@ -4,7 +4,7 @@ const Fai = require("../../utils/util");
 const config = require("../../utils/config");
 import Dialog from '../../miniprogram_npm/@vant/weapp/dialog/dialog';
 
-Page({
+Page(Fai.mixin(Fai.commPageConfig, {
 
   /**
    * 页面的初始数据
@@ -135,4 +135,4 @@ Page({
       url: "/pages/indexCompany/indexCompany?companyAID="+item.merchantForLevelAID+"&companyBID="+item.merchantForLevelBID,
     });
   }
-})
+}));

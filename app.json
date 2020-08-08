@@ -31,16 +31,6 @@
     "pages/invitation4Vip/invitation4Vip",
     "pages/createCompany/createCompany"
   ],
-  "subpackages": [
-    {
-      "root": "companyB",
-      "pages": [
-        "indexCompanyB/indexCompanyB",
-        "productCenterB/productCenterB",
-        "personal4CompanyB/personal4CompanyB"
-      ]
-    }
-  ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",

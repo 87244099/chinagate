@@ -16,6 +16,9 @@
       </view>
     </view>
     <mp-cells title="基本信息">
+      <mp-cell show-error prop="idcard" title="昵称" ext-class="">
+          <input disabled="true" value="{{pageData.memberInfo.nickName}}" data-field="memberName" class="weui-input" placeholder="请输入您的姓名"/>
+      </mp-cell>
       <mp-cell show-error prop="idcard" title="姓名" ext-class="">
           <input bindblur="onFieldBlur" value="{{pageData.cardInfo.memberName}}" data-field="memberName" class="weui-input" placeholder="请输入您的姓名"/>
       </mp-cell>

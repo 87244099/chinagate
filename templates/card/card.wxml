@@ -8,7 +8,7 @@
           <image style="width:100%;height:100%" src="{{pageData.cardInfo.avatarPhoto}}"></image>
         </view>
       </view>
-      <view class="fk_sharedCard_main_name">{{pageData.cardInfo.memberName}}</view>
+      <view class="fk_sharedCard_main_name" wx:if="{{pageData.cardInfo.memberName}}">{{pageData.cardInfo.memberName}}</view>
     </view>
     <view class="fk_sharedCard_func"></view>
     <view class="fk_sharedCard_func_list">
@@ -16,9 +16,15 @@
         <view catchtap="onCallPhone" class="fk_sharedCard_func_item_icon iconfont icon-dianhua" style="background-color: #fa5251;"></view>
         <view class="fk_sharedCard_func_item_text">呼叫</view>
       </view>
-      <view class="fk_sharedCard_func_item" >
-        <view catchtap="onWantShare" class="fk_sharedCard_func_item_icon iconfont icon-zhuanfa1" style="background-color: #1dabff;"></view>
-        <view class="fk_sharedCard_func_item_text">转发</view>
+      <view class="fk_sharedCard_func_item">
+        <block wx:if="{{setting.shared}}">
+          <button class="fk_sharedCard_func_item_icon iconfont icon-zhuanfa1" style="background-color: #1dabff;" open-type="share"></button>
+          <view class="fk_sharedCard_func_item_text">转发</view>
+        </block>
+        <block wx:else>
+          <view class="fk_sharedCard_func_item_icon iconfont icon-zhuanfa1" catchtap="onWantShare" style="background-color: #1dabff;"></view>
+          <view class="fk_sharedCard_func_item_text">转发</view>
+        </block>
       </view>
       <view class="fk_sharedCard_func_item" wx:if="{{setting.shared}}">
         <view catchtap="onCollect" class="fk_sharedCard_func_item_icon iconfont icon-start" style="background-color: #ffc500;"></view>
@@ -47,9 +53,9 @@
         <view class="fk_sharedCard_func_info_label">邮箱：</view>
         <view class="fk_sharedCard_func_info_value">{{pageData.cardInfo.memberEmail}}</view>
       </view>
-      <view class="fk_sharedCard_func_info_line">
+      <view class="fk_sharedCard_func_info_line" wx:if="{{comm.parseAddr(pageData.cardInfo.addrInfo.provinceName,pageData.cardInfo.addrInfo.cityName,pageData.cardInfo.addrInfo.countryName)}}">
         <view class="fk_sharedCard_func_info_label">地区：</view>
-        <view class="fk_sharedCard_func_info_value">{{comm.parseAddr(
+        <view class="fk_sharedCard_func_info_value" >{{comm.parseAddr(
           pageData.cardInfo.addrInfo.provinceName,
           pageData.cardInfo.addrInfo.cityName,
           pageData.cardInfo.addrInfo.countryName

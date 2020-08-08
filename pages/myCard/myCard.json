@@ -3,5 +3,6 @@
     "mp-tabbar": "weui-miniprogram/tabbar/tabbar",
     "tab-bar": "/components/tab-bar/tab-bar",
     "van-toast": "@vant/weapp/toast/index"
-  }
+  },
+  "navigationBarTitleText": ""
 }

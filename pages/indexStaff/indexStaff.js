@@ -44,6 +44,9 @@ Page(Fai.mixin(Fai.commPageConfig, {
           this.setData({
             "pageData.staffInfo":result.data
           });
+          wx.setNavigationBarTitle({
+            title: this.data.pageData.staffInfo.staffName,
+          })
         }else{
           Toast.fail(result.msg || "网络繁忙，请稍后重试");
         }
@@ -120,7 +123,10 @@ Page(Fai.mixin(Fai.commPageConfig, {
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
+    return {
+      title: 111,
+      path: Fai.getCurrAbsPath()
+    };
   },
   callPhone(){
     wx.makePhoneCall({

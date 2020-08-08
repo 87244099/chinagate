@@ -70,7 +70,7 @@ Page({
       let memberInfo = response.data.data;
       response = await Ajax.getUserCollectInfo(memberInfo.memberID);
       let cardInfo = response.data.data.userInfo;
-      cardInfo.memberName = memberInfo.nickName;
+      // cardInfo.memberName = memberInfo.nickName;
       let provinceList = [];
       let cityList = [];
       let countryList = [];
@@ -109,6 +109,7 @@ Page({
 
       this.setData({
         "pageData.cardInfo":cardInfo,
+        "pageData.memberInfo": memberInfo,
         "setting": setting
       });
       await this.setCode();
@@ -316,6 +317,7 @@ Page({
       memberEmail: cardInfo.memberEmail,
       qq: cardInfo.qq,
       personalIntroduction: cardInfo.personalIntroduction,
+      memberPhone: cardInfo.memberPhone 
     };
     Ajax.requestWithToast(async()=>{
       return Fai.promiseRequest({

@@ -108,11 +108,15 @@ Component({
 
       
     },
-    
-  jump4Personal(){
-    wx.redirectTo({
-      url: '/pages/personal/personal',
-    })
-  }
+    jump4Personal(){
+      wx.redirectTo({
+        url: '/pages/personal/personal',
+      })
+    },
+    jump4CompanyPersonal(){
+      wx.redirectTo({
+        url: '/pages/personal4Company/personal4Company?companyAID='+ this.data.companyAID +'&companyBID='+this.data.companyBID,
+      })
+    }
   },
 });

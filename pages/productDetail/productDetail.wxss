@@ -117,3 +117,6 @@ textarea{
 .fk_page{
   padding-bottom: 200rpx;
 }
+.fk_artile_wxparse .wxparser--wxParser-p text {
+  color: #444;
+}

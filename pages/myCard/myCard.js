@@ -28,6 +28,12 @@ Page(Fai.mixin(Fai.commPageConfig, Card, {
       let response = await Ajax.getMemberInfo();
 
       let memberInfo = response.data.data;
+
+      Object.keys(memberInfo).forEach(key=>{
+        let value = memberInfo[key] === null;
+        memberInfo[key] = "";
+      })
+
       this.setData({
         "pageData.memberInfo": memberInfo,
         "setting.memberId":memberInfo.memberID

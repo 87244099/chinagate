@@ -23,11 +23,12 @@ function map(list, field){
   return finalList;
 }
 
-module.exports = {
-  map: map
-};
+function isNullStr(str){
+  return str == null || str.toLocaleUpperCase() == "NULL";
+}
 
 module.exports = {
   parseAddr : parseAddr,
-  map: map
+  map: map,
+  isNullStr:isNullStr
 }

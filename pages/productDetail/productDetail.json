@@ -2,6 +2,7 @@
   "usingComponents": {
     "wxparser": "plugin://wxparserPlugin/wxparser",
     "mp-tabbar": "weui-miniprogram/tabbar/tabbar",
+    "trace": "/components/trace/trace",
     "tab-bar": "/components/tab-bar/tab-bar",
     "van-toast": "@vant/weapp/toast/index"
   }

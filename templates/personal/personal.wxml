@@ -7,7 +7,7 @@
         </view>
         <view class="fk_personal_header_info">
           <view class="fk_personal_header_info_name">{{pageData.memberInfo.nickName}}</view>
-          <view class="fk_personal_header_info_wxAcct">微信号：{{pageData.memberInfo.weChat || ''}}</view>
+          <view class="fk_personal_header_info_wxAcct" wx:if="{{pageData.memberInfo.weChat}}">微信号：{{pageData.memberInfo.weChat || ''}}</view>
         </view>
       </view>
       <view class="fk_personal_header_right">

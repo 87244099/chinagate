@@ -193,6 +193,7 @@
   box-sizing: content-box;
   border-radius: 50%;
   color: #ececec;
+  padding: 0;
 }
 .fk_indexStaff_func_item_text{
   display: block;

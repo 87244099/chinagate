@@ -1,8 +1,0 @@
-<import src="../../templates/productCenter/productCenter.wxml"/>
-<view class="fk_page">
-  
-  <template is="productCenter" data="{{setting, pageData, config}}"></template>
-
-  <tab-bar class="fk_tabBar" type="company" companyInfo="{{pageData.companyPageData.companyInfo}}" companyType="2"></tab-bar>
-  <van-toast id="van-toast" />
-</view>

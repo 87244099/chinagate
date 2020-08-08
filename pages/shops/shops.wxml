@@ -14,7 +14,7 @@
       </view>
     </view>
   </view>
-  <tab-bar class="fk_tabBar"></tab-bar>
+  <tab-bar class="fk_tabBar" rollbackVisible="{{_commPageConfigData.rollbackVisible}}"></tab-bar>
   <van-dialog id="van-dialog" />
   <van-toast id="van-toast" />
 </view>

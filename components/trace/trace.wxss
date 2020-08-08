@@ -1,6 +1,7 @@
 
 .fk_trace{
-  padding: 50rpx;
+  padding-bottom: 150rpx;
+  padding-top: 30rpx;
 }
 .fk_trace_bottom{
   display: flex;
@@ -26,4 +27,7 @@
   overflow: hidden;
   margin-left: -36rpx;
   background: #fff;
+}
+.fk_trace_top{
+  line-height: 1;
 }
