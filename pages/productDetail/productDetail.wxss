@@ -58,8 +58,8 @@
 .fk_productDetail_info_priceInfo_vip
 {
   width: 320rpx;
-  font-size: 44rpx;
-    color: #FF0036;
+  font-size: 30rpx;
+  color: #FF0036;
 }
 
 .fk_productDetail_main{
@@ -115,8 +115,12 @@ textarea{
   font-size: 30rpx;
 }
 .fk_page{
-  padding-bottom: 200rpx;
+  /* padding-bottom: 200rpx; */
 }
 .fk_artile_wxparse .wxparser--wxParser-p text {
   color: #444;
+}
+
+.fk_productDetail_intro_content{
+  padding-top: 16rpx;
 }

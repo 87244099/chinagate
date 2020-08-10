@@ -33,7 +33,7 @@
           <view class="fk_indexCompany_func_item_text">收藏</view>
         </view>
         <view class="fk_indexCompany_func_item">
-          <view class="fk_indexCompany_func_item_icon iconfont icon-erweima" style="background-color:{{pageData.companyInfo.themeColor}}"></view>
+          <view class="fk_indexCompany_func_item_icon iconfont icon-erweima" style="background-color:{{pageData.companyInfo.themeColor}}" catchtap="onShowQrCode"></view>
           <view class="fk_indexCompany_func_item_text">企业码</view>
         </view>
       </view>
@@ -109,7 +109,7 @@
         </view>
       </view>
 
-      <trace wx:if="{{setting.companyAID>0 || setting.companyBID>0}}" companyAID="{{setting.companyAID}}" companyBID="{{setting.companyBID}}" staffID="0" typeID="{{setting.companyBID>0?2:1}}"></trace>
+      <trace wx:if="{{setting.companyAID>0 || setting.companyBID>0}}" companyAID="{{setting.companyAID}}" companyBID="{{setting.companyBID}}" staffID="0" typeID="{{setting.companyBID>0?2:1}}" fixRollback="{{false}}"></trace>
     </view>
 
     

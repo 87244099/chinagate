@@ -82,9 +82,68 @@ async function getInfo4CompanyB(id){
   });
 }
 
+async function getBrandCompanyList(pageNo, pageSize){
+  return new Promise((resolve, reject)=>{
+    Fai.request({
+      url:"/ajax/Company/Company?cmd=getBrandCompanyList",
+      data:{
+        pageNo,
+        pageSize
+      },
+      success(response){
+        let result = response.data;
+        if(result.success){
+          resolve(response);
+        }else{
+          reject(response);
+        }
+      },
+      fail(){
+        reject();
+      }
+    });
+  });
+
+}
+async function getBrandCompanyListByName(pageNo, pageSize, word){
+  return new Promise((resolve, reject)=>{
+    Fai.request({
+      url:"/ajax/Company/Company?cmd=getBrandCompanyList",
+      data:{
+        pageNo,
+        pageSize,
+        word
+      },
+      success(response){
+        let result = response.data;
+        if(result.success){
+          resolve(response);
+        }else{
+          reject(response);
+        }
+      },
+      fail(){
+        reject();
+      }
+    });
+  });
+
+}
+
+async function getInfo4Staff(id, companyId){
+  return Fai.promiseRequest({
+    url: "/ajax/user/userInfo?cmd=getInfo4Staff",
+    data: {
+      id,
+      companyId
+    }
+  });
+}
+
 module.exports = {
   getCompanyAIndexPageData,
   getInfo4CompanyA,
   getInfo4CompanyB,
-  getCompanyBIndexPageData
+  getCompanyBIndexPageData,
+  getBrandCompanyList
 };

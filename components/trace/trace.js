@@ -8,6 +8,10 @@ Component({
       type:Number,
       value: 0
     },
+    fixRollback:{
+      type: Boolean,
+      value: true
+    },
     companyBID:{
       type:Number,
       value: 0

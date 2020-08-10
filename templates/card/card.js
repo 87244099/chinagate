@@ -95,7 +95,7 @@ module.exports = {
     })
   },
   onShowWxAppCode: function(){
-    
+    Ajax.previewQrCode("/pages/sharedCard/sharedCard", "id="+this.data.setting.memberId);
   },
   onCollect: async function(){
     Ajax.requestWithToast(async()=>{

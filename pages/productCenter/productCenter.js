@@ -4,7 +4,7 @@ const app = getApp();
 const Fai = require("../../utils/util");
 const Ajax = require("../../ajax/index");
 const config = require("../../utils/config");
-Page(Fai.mixin(Fai.commPageConfig, {
+Page(Fai.mixin({
 
   /**
    * 页面的初始数据

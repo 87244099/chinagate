@@ -5,7 +5,7 @@ const Ajax = require("../../ajax/index");
 import Toast from "../../miniprogram_npm/@vant/weapp/toast/toast";
 
 
-Page(Fai.mixin(Fai.commPageConfig, {
+Page(Fai.mixin({
 
   /**
    * 页面的初始数据
@@ -158,5 +158,10 @@ Page(Fai.mixin(Fai.commPageConfig, {
         Toast.fail('网络繁忙，请稍后重试');
       }
     });
+  },
+  onShowQrCode(){
+    let url = Fai.getCurrAbsPath();
+    let urlArr = url.split("?");
+    Ajax.previewQrCode(urlArr[0], urlArr[1]);
   }
 }));

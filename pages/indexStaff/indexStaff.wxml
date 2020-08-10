@@ -70,7 +70,7 @@
         <view class="fk_indexStaff_productIntro_group_title">
           <view class="fk_indexStaff_productIntro_group_title_text">{{productGroup.productTypeName}}</view>
           <view class="fk_indexStaff_productIntro_group_title_arrow">
-            <navigator url="/pages/productCenter/productCenter?companyAID={{setting.companyAID}}&companyBID={{setting.companyBID}}"></navigator>
+            <navigator url="/pages/productCenter/productCenter?companyAID={{setting.companyAID}}&companyBID={{setting.companyBID}}">更多></navigator>
           </view>
         </view>
         <view class="fk_indexStaff_productIntro_group_main">
@@ -128,6 +128,6 @@
       <trace wx:if="{{(setting.companyAID>0 || setting.companyBID>0) && pageData.staffInfo.staffID>0}}" companyAID="{{setting.companyAID}}" companyBID="{{setting.companyBID}}" staffID="{{pageData.staffInfo.staffID}}" typeID="3"></trace>
     </view>
   </view>
-  <tab-bar class="fk_tabBar" type="company" rollbackVisible="{{_commPageConfigData.rollbackVisible}}" companyAID="{{setting.companyAID}}" companyBID="{{setting.companyBID}}"></tab-bar>
+  <tab-bar class="fk_tabBar" type="company" companyInfo="{{pageData.companyPageData.companyInfo}}" rollbackVisible="{{_commPageConfigData.rollbackVisible}}" companyAID="{{setting.companyAID}}" companyBID="{{setting.companyBID}}" staffID="{{pageData.staffInfo.staffID}}" staffInfo="{{pageData.staffInfo}}"></tab-bar>
   <van-toast id="van-toast" />
 </view>

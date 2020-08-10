@@ -74,7 +74,7 @@
 
 .fk_productCenter_group_side_item{
   padding: 12rpx 0;
-  height: 86rpx;
+  /* height: 86rpx; */
   line-height: 86rpx;
   border-bottom: solid rgb(235, 235, 235) 1rpx;
 }
@@ -82,8 +82,8 @@
   padding-left: 26rpx;
   border-left: 4rpx solid transparent;  
   overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  /* text-overflow: ellipsis; */
+  /* white-space: nowrap; */
   box-sizing: border-box;
   padding-right: 26rpx;
 }

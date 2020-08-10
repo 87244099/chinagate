@@ -38,10 +38,9 @@
 }
 .fk_shops_item_info_name{
   font-size: 36rpx;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
   width: 410rpx;
+  word-break: break-all;
+
 }
 .fk_shops_item_info_opt{
   display: flex;

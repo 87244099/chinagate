@@ -34,6 +34,14 @@ Component({
     companyBID: {
       type:Number,
       value:0
+    },
+    staffID: {
+      type:Number,
+      value: 0
+    },
+    staffInfo:{
+      type:Object,
+      value:null
     }
   },
   /**
@@ -60,7 +68,11 @@ Component({
       }
     },
     callPhone(event){
-      let phone = event.currentTarget.dataset.phone;
+      let phone = this.data.companyInfo.companyPhone;
+      if(this.data.staffID>0){
+        phone = this.data.staffInfo.phone;
+      }
+
       wx.makePhoneCall({
         phoneNumber: phone,
       });

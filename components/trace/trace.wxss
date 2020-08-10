@@ -1,8 +1,12 @@
 
 .fk_trace{
-  padding-bottom: 150rpx;
+  padding-bottom: 30rpx;
   padding-top: 30rpx;
 }
+.fk_trace[data-fixRollback="true"]{
+  padding-bottom: 150rpx;
+}
+
 .fk_trace_bottom{
   display: flex;
   padding-top: 34rpx;

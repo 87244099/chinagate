@@ -5,8 +5,8 @@ async function getQrCode(page, scene){
     Fai.request({
       url: "/ajax/common/getCommData?cmd=getQrCode",
       data:{
-        page,
-        scene
+        page:encodeURIComponent(page),
+        scene:encodeURIComponent(scene)
       },
       success(response){
         let result = response.data;
@@ -20,6 +20,36 @@ async function getQrCode(page, scene){
         reject();
       }
     });
+  });
+}
+
+function previewQrCode(page, scene){
+
+  if(page.startsWith("/")){
+    page = page.slice(1);
+  }
+
+  let url = page+"?"+scene;
+  let imgData = Fai.MemoryCache.getCache(url);
+  if(imgData){
+    wx.previewImage({
+      urls: ['data:image/jpeg;base64,'+imgData],
+    })
+    return;
+  }
+
+  requestWithToast(async()=>{
+    let response = await getQrCode(page, scene);
+    imgData = response.data.imgData;
+    Fai.MemoryCache.setCache(url, imgData);
+    
+    wx.previewImage({
+      urls: ['data:image/jpeg;base64,'+imgData],
+    })
+
+    return Promise.resolve(response);
+  }, {
+    message:"加载中..."
   });
 }
 
@@ -204,6 +234,7 @@ async function getTrace(data){
 
 module.exports = {
   getQrCode,
+  previewQrCode,
   getGlobalData,
   setNormalTitle,
   getUserCollectInfo,
