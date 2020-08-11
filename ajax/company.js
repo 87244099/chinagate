@@ -130,12 +130,21 @@ async function getBrandCompanyListByName(pageNo, pageSize, word){
 
 }
 
-async function getInfo4Staff(id, companyId){
-  return Fai.promiseRequest({
-    url: "/ajax/user/userInfo?cmd=getInfo4Staff",
+async function memberUpToStaff(staffID, memberPhone){
+  return Fai.promiseRequestPost({
+    url: "/logAction/action?cmd=memberUpToStaff",
     data: {
-      id,
-      companyId
+      staffID,
+      memberPhone
+    }
+  });
+}
+async function memberUpToVip(vipCustomerInvitationID, memberPhone){
+  return Fai.promiseRequestPost({
+    url: "/logAction/action?cmd=memberUpToVip",
+    data: {
+      vipCustomerInvitationID,
+      memberPhone
     }
   });
 }
@@ -145,5 +154,7 @@ module.exports = {
   getInfo4CompanyA,
   getInfo4CompanyB,
   getCompanyBIndexPageData,
-  getBrandCompanyList
+  getBrandCompanyList,
+  memberUpToStaff,
+  memberUpToVip
 };
