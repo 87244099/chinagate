@@ -8,7 +8,7 @@
     </view>
     <!-- <button catchtap="oninvitation4Staff">登录测试</button> -->
     <view style="width:660rpx;margin:0 auto;">
-      <van-button wx:if="{{false}}" type="info" block catchtap="oninvitation4Staff">成为员工</van-button>
+      <van-button wx:if="{{setting.memberInfo.memberPhone}}" type="info" block catchtap="oninvitation4Staff">成为员工</van-button>
       <van-button wx:else type="info" block open-type="getPhoneNumber" bindgetphonenumber="oninvitation4StaffWhenPhoneEmpty">成为员工</van-button>
     </view>
   </view>

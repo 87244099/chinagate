@@ -1,7 +1,7 @@
 
 .fk_trace{
-  padding-bottom: 30rpx;
-  padding-top: 30rpx;
+  padding-bottom: 112rpx;
+  padding-top: 62rpx;
 }
 .fk_trace[data-fixRollback="true"]{
   padding-bottom: 150rpx;

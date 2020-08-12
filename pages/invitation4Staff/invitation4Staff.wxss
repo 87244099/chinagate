@@ -6,6 +6,7 @@
   margin: 120rpx auto 60rpx auto;
   border: 1rpx solid #eee;
   border-radius: 30rpx;
+  visibility: hidden;
 }
 .fk_invitation4Staff_logo_wrap{
   width: 100%;

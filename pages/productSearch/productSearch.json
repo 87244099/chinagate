@@ -2,6 +2,7 @@
   "usingComponents": {
     "mp-searchbar": "weui-miniprogram/searchbar/searchbar",
     "wxparser": "plugin://wxparserPlugin/wxparser",
+    "product": "/components/product/product",
     "mp-tabbar": "weui-miniprogram/tabbar/tabbar",
     "tab-bar": "/components/tab-bar/tab-bar",
     "van-toast": "@vant/weapp/toast/index"

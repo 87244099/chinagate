@@ -100,9 +100,11 @@ Page({
         let response = await Ajax.parseWxPhone(data);
         let memberPhone = response.data.data.phoneNumber;
 
-        response = await Ajax.memberUpToStaff(5, memberPhone);
+        response = await Ajax.memberUpToStaff(this.data.setting.staffID, memberPhone);
         this.setCode();
         return Promise.resolve(response);
+      }, {
+        tip4Success:true
       }).catch(()=>{
         this.setCode();
       });
@@ -114,6 +116,8 @@ Page({
       let response = Ajax.memberUpToStaff(this.data.setting.staffID, this.data.setting.memberInfo.memberPhone);
 
       return Promise.resolve(response);
+    }, {
+      tip4Success:true
     });
   },
   

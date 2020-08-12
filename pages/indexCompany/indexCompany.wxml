@@ -69,22 +69,7 @@
         </view>
         <view class="fk_indexCompany_productIntro_group_main">
           <view class="fk_indexCompany_productIntro_group_main_product_list">
-            <navigator url="/pages/productDetail/productDetail?companyAID={{setting.companyAID}}&companyBID={{setting.companyBID}}&id={{product.productID}}" class="fk_indexCompany_productIntro_group_main_product_item" data-id="{{product.productID}}"  wx:for-item="product" wx:for="{{group.productList}}">
-              <view class="fk_indexCompany_productIntro_group_main_product_item_img">
-                <image style="width:100%;height:100%" src="{{config.staticDomain}}/{{product.smallImgPath}}"></image>
-              </view>
-              <view class="fk_indexCompany_productIntro_group_main_product_item_name">{{product.title}}</view>
-              <view class="fk_indexCompany_productIntro_group_main_product_priceInfo">
-                <view class="fk_indexCompany_productIntro_group_main_product_priceInfo_line">
-                  <view class="fk_indexCompany_productIntro_group_main_product_priceInfo_label">普通批发价：￥</view>
-                  <view class="fk_indexCompany_productIntro_group_main_product_priceInfo_value">{{product.ordinaryWholesalePrice}}</view>
-                </view>
-                <view class="fk_indexCompany_productIntro_group_main_product_priceInfo_line">
-                  <view class="fk_indexCompany_productIntro_group_main_product_priceInfo_label">vip批发价：￥</view>
-                  <view class="fk_indexCompany_productIntro_group_main_product_priceInfo_value">{{product.vipWholesalePrice}}</view>
-                </view>
-              </view>
-            </navigator>
+            <product class="fk_indexCompany_productIntro_group_main_product_item" setting="{{setting}}" config="{{config}}" product="{{product}}" data-id="{{product.productID}}"  wx:for-item="product" wx:for="{{group.productList}}"></product>
           </view>
         </view>
       </view>

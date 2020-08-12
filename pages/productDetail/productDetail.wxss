@@ -66,7 +66,6 @@
   margin-top: 20rpx;
   padding: 20rpx;
   background-color: #fff;
-  padding-bottom: 72rpx;
 }
 
 .fk_productDetail_intro_title{

@@ -11,6 +11,7 @@
       </block>
     </swiper><!--  -->
   </view>
+  <official-account></official-account>
   <view class="fk_main">
     <view class="fk_main_func_list">
       <navigator class="fk_main_func_item" url="/pages/myCard/myCard">
@@ -23,10 +24,6 @@
           <view class="fk_main_func_item_text">我的企业</view>
         </auto-login-reg>
       </view>
-      <navigator class="fk_main_func_item" open-type="redirect" url="/pages/newList/newList">
-        <view class="iconfont icon-liebiaodaohang_zixun  fk_main_func_item_icon" style="color:#17abe3"></view>
-        <view class="fk_main_func_item_text">行业资讯</view>
-      </navigator>
       <navigator url="/pages/buy/buy" class="fk_main_func_item" open-type="redirect">
         <view class="iconfont icon-goumai  fk_main_func_item_icon" style="color:#cfcf00"></view>
         <view class="fk_main_func_item_text">我要购买</view>
@@ -39,17 +36,33 @@
         <view class="iconfont icon-fujin  fk_main_func_item_icon" style="color:red"></view>
         <view class="fk_main_func_item_text">附近商家</view>
       </navigator>
-      <navigator url="/pages/suggest/suggest" class="fk_main_func_item" open-type="redirect">
-        <view class="iconfont icon-tousu  fk_main_func_item_icon" style="color:#760000"></view>
-        <view class="fk_main_func_item_text">投诉建议</view>
+      <navigator url="/pages/shops/shops" class="fk_main_func_item" open-type="redirect">
+        <view class="iconfont icon-cailiaochangjia  fk_main_func_item_icon" style="color:#000"></view>
+        <view class="fk_main_func_item_text">品牌厂商</view>
       </navigator>
-      <view class="fk_main_func_item" open-type="redirect" catchtap="callPhone" data-phone="15816195453">
-        <view class="iconfont icon-dianhua  fk_main_func_item_icon" style="color:#e37429"></view>
-        <view class="fk_main_func_item_text">人工咨询</view>
-      </view>
+      <navigator class="fk_main_func_item" open-type="redirect" url="/pages/newList/newList">
+        <view class="iconfont icon-liebiaodaohang_zixun  fk_main_func_item_icon" style="color:#17abe3"></view>
+        <view class="fk_main_func_item_text">行业资讯</view>
+      </navigator>
       <navigator url="/pages/h5/h5" class="fk_main_func_item">
         <view class="iconfont icon-weiguanwang  fk_main_func_item_icon" style="color:#5b5bff"></view>
         <view class="fk_main_func_item_text">中出网官网</view>
+      </navigator>
+      <navigator url="/pages/h5/h5" class="fk_main_func_item">
+        <view class="iconfont icon-xiaochengxu  fk_main_func_item_icon" style="color:#47c047"></view>
+        <view class="fk_main_func_item_text">收藏小程序</view>
+      </navigator>
+      <button open-type="share" url="/pages/h5/h5" class="fk_main_func_item">
+        <view class="iconfont icon-zhuanfa  fk_main_func_item_icon" style="color:#0062d7"></view>
+        <view class="fk_main_func_item_text">分享好友</view>
+      </button>
+      <navigator url="/pages/h5/h5" class="fk_main_func_item">
+        <view class="iconfont icon-weixingongzhonghao  fk_main_func_item_icon" style="color:#043649"></view>
+        <view class="fk_main_func_item_text">关注公众号</view>
+      </navigator>
+      <navigator url="/pages/suggest/suggest" class="fk_main_func_item" open-type="redirect">
+        <view class="iconfont icon-tousu  fk_main_func_item_icon" style="color:#760000"></view>
+        <view class="fk_main_func_item_text">投诉建议</view>
       </navigator>
     </view>
     <view class="fk_main_article_list">

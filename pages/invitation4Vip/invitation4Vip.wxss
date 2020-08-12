@@ -1,1 +1,17 @@
-/* pages/invitation4Vip/invitation4Vip.wxss */
+/* pages/invitation4Staff/invitation4Staff.wxss */
+.fk_invitation4Staff_logo{
+  width: 200rpx;
+  height: 200rpx;
+  overflow: hidden;
+  margin: 120rpx auto 60rpx auto;
+  border: 1rpx solid #eee;
+  border-radius: 30rpx;
+  visibility: hidden;
+}
+.fk_invitation4Staff_logo_wrap{
+  width: 100%;
+  height: 535rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

@@ -146,6 +146,12 @@ Page(Fai.mixin(Fai.commPageConfig, {
       }
     }
   },
+  onShareAppMessage: function () {
+    return {
+      path: "/pages/index/index",
+      title: this.data.globalData.titleData.platformIndex
+    }
+  },
 }));
 
 

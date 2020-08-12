@@ -260,10 +260,10 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 28,
 					"name": "员工邀请",
 					"pathName": "pages/invitation4Staff/invitation4Staff",
-					"query": "companyId=1",
+					"query": "staffID=5",
 					"scene": null
 				},
 				{
@@ -299,6 +299,13 @@
 					"name": "企业首页测试换行符",
 					"pathName": "pages/indexCompany/indexCompany",
 					"query": "companyAID=1&companyBID=0",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/invitation4Staff/invitation4Staff",
+					"pathName": "pages/invitation4Staff/invitation4Staff",
+					"query": "companyAID=1&staffID=5",
 					"scene": null
 				}
 			]

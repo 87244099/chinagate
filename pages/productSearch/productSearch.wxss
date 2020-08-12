@@ -24,8 +24,6 @@
 .fk_productSearch_product_item{
   float: left;
   width: 50%;
-  padding-left: 10rpx;
-  padding-right: 10rpx;
   padding-top: 40rpx;
   overflow: hidden;
   padding-bottom: 8rpx;

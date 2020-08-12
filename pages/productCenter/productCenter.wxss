@@ -73,9 +73,8 @@
 
 
 .fk_productCenter_group_side_item{
-  padding: 12rpx 0;
-  /* height: 86rpx; */
-  line-height: 86rpx;
+  padding: 20rpx 0;
+  line-height: normal;
   border-bottom: solid rgb(235, 235, 235) 1rpx;
 }
 .fk_productCenter_group_side_item_text{
