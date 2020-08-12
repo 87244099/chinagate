@@ -1,4 +1,6 @@
 <view class="fk_page">
+  <view>currUrl：{{setting.currUrl}}</view>
+  <view>scene：{{setting.scene}}</view>
   <view class="fk_invitation4Staff">
     <view class="fk_invitation4Staff_logo_wrap">
       <view class="fk_invitation4Staff_logo">

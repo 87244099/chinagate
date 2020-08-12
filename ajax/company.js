@@ -139,9 +139,9 @@ async function memberUpToStaff(staffID, memberPhone){
     }
   });
 }
-async function memberUpToVip(vipCustomerInvitationID, memberPhone){
+async function memberUpToVipA(vipCustomerInvitationID, memberPhone){
   return Fai.promiseRequestPost({
-    url: "/logAction/action?cmd=memberUpToVip",
+    url: "/logAction/action?cmd=memberUpToVipA",
     data: {
       vipCustomerInvitationID,
       memberPhone
@@ -156,5 +156,5 @@ module.exports = {
   getCompanyBIndexPageData,
   getBrandCompanyList,
   memberUpToStaff,
-  memberUpToVip
+  memberUpToVipA
 };

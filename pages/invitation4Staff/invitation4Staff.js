@@ -20,7 +20,9 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      "setting.staffID":parseInt(options.staffID || 0)
+      "setting.staffID":parseInt(options.staffID || 0),
+      "setting.currUrl": Fai.getCurrAbsPath(),
+      "setting.scene": options.scene
     });
     this.setCode();
     Ajax.requestWithToast(this.loadPageData);

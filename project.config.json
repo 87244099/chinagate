@@ -267,10 +267,10 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 29,
 					"name": "vip升级",
 					"pathName": "pages/invitation4Vip/invitation4Vip",
-					"query": "companyId=1",
+					"query": "vipCustomerInvitationID=2&scene=666",
 					"scene": null
 				},
 				{

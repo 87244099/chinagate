@@ -20,7 +20,9 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      "setting.vipCustomerInvitationID":parseInt(options.vipCustomerInvitationID || 0)
+      "setting.vipCustomerInvitationID":parseInt(options.vipCustomerInvitationID || 0),
+      "setting.currUrl": Fai.getCurrAbsPath(),
+      "setting.scene": options.scene
     });
     this.setCode();
     Ajax.requestWithToast(this.loadPageData, {
@@ -115,7 +117,7 @@ Page({
   },
   oninvitation4Vip: async function(){
     Ajax.requestWithToast(async()=>{
-      let response = Ajax.memberUpToVip(this.data.setting.vipCustomerInvitationID, this.data.setting.memberInfo.memberPhone);
+      let response = Ajax.memberUpToVipA(this.data.setting.vipCustomerInvitationID, this.data.setting.memberInfo.memberPhone);
 
       return Promise.resolve(response);
     }, {
