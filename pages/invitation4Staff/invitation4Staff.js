@@ -19,8 +19,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+
+    let sharedOption = Fai.parseSharedOption(options);
+
     this.setData({
-      "setting.staffID":parseInt(options.staffID || 0),
+      "setting.staffID":parseInt(sharedOption.staffID || 0),
       "setting.currUrl": Fai.getCurrAbsPath(),
       "setting.scene": options.scene
     });

@@ -20,6 +20,8 @@ Page(Fai.mixin({
   },
 
   onLoad(options){
+    options = Object.assign(options, Fai.parseSharedOption(options));
+
     this.setData({
       "setting.companyAID": parseInt(options.companyAID) || 0,
       "setting.companyBID": parseInt(options.companyBID) || 0

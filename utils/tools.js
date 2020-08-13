@@ -59,9 +59,25 @@ function getSetting(){
   });
 }
 
+function parseSharedOption(option){
+  
+  if(option.scene){
+    let value = decodeURIComponent(option.scene);
+    let sharedOption = {};
+    value.split("&").forEach(kv=>{
+      let kvArr = kv.split("=");
+      sharedOption[kvArr[0]] = kvArr[1];
+    });
+    return sharedOption;
+  }
+
+  return;
+}
+
 module.exports = {
   formatTime,
   mixin,
   getLocation,
-  getSetting
+  getSetting,
+  parseSharedOption
 };

@@ -218,8 +218,8 @@
 					"scene": null
 				},
 				{
-					"id": -1,
-					"name": "分享状态的名片",
+					"id": 22,
+					"name": "访客状态的名片",
 					"pathName": "pages/sharedCard/sharedCard",
 					"query": "id=3228",
 					"scene": null
@@ -263,14 +263,14 @@
 					"id": 28,
 					"name": "员工邀请",
 					"pathName": "pages/invitation4Staff/invitation4Staff",
-					"query": "staffID=5",
+					"query": "scene=staffID%3D5",
 					"scene": null
 				},
 				{
 					"id": 29,
 					"name": "vip升级",
 					"pathName": "pages/invitation4Vip/invitation4Vip",
-					"query": "vipCustomerInvitationID=2&scene=666",
+					"query": "scene=vipCustomerInvitationID%3D2",
 					"scene": null
 				},
 				{
@@ -306,6 +306,34 @@
 					"name": "pages/invitation4Staff/invitation4Staff",
 					"pathName": "pages/invitation4Staff/invitation4Staff",
 					"query": "companyAID=1&staffID=5",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "分享出来的企业首页",
+					"pathName": "pages/indexCompany/indexCompany",
+					"query": "scene=companyAID%3D1%26companyBID%3D0",
+					"scene": null
+				},
+				{
+					"id": 36,
+					"name": "被分享的产品详情页",
+					"pathName": "pages/productDetail/productDetail",
+					"query": "scene=companyAID%3D1%26companyBID%3D0%26id%3D34",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "分享出来的访客状态名片",
+					"pathName": "pages/sharedCard/sharedCard",
+					"query": "scene=id%3D3228",
+					"scene": null
+				},
+				{
+					"id": 38,
+					"name": "分享出来的-我的公司名片",
+					"pathName": "pages/indexStaff/indexStaff",
+					"query": "companyAID=1&companyBID=0&staffID=5",
 					"scene": null
 				}
 			]

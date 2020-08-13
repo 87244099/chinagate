@@ -30,6 +30,7 @@ Page(Fai.mixin({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    options = Object.assign(options, Fai.parseSharedOption(options));
     this.setData({
       "setting.productId": parseInt(options.id) || -1
     });

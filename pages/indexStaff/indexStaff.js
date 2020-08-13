@@ -20,7 +20,7 @@ Page(Fai.mixin(Fai.commPageConfig, {
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    options = Object.assign(options, Fai.parseSharedOption(options));
     this.setData({
       "setting.companyAID": parseInt(options.companyAID) || 0,
       "setting.companyBID": parseInt(options.companyBID) || 0,
