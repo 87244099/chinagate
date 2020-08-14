@@ -3,6 +3,7 @@
     "mp-tabbar": "weui-miniprogram/tabbar/tabbar",
     "tab-bar": "/components/tab-bar/tab-bar",
     "trace": "/components/trace/trace",
+    "product": "/components/product/product",
     "van-toast": "@vant/weapp/toast/index",
     "wxparser": "plugin://wxparserPlugin/wxparser"
   },

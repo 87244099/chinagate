@@ -36,7 +36,7 @@
         <view class="iconfont icon-fujin  fk_main_func_item_icon" style="color:red"></view>
         <view class="fk_main_func_item_text">附近商家</view>
       </navigator>
-      <navigator url="/pages/shops/shops" class="fk_main_func_item" open-type="redirect">
+      <navigator url="/pages/brandShops/brandShops" class="fk_main_func_item" open-type="redirect" wx:if="{{true}}">
         <view class="iconfont icon-cailiaochangjia  fk_main_func_item_icon" style="color:#000"></view>
         <view class="fk_main_func_item_text">品牌厂商</view>
       </navigator>

@@ -335,6 +335,20 @@
 					"pathName": "pages/indexStaff/indexStaff",
 					"query": "companyAID=1&companyBID=0&staffID=5",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "品牌厂商",
+					"pathName": "pages/brandShops/brandShops",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 40,
+					"name": "品牌厂商搜索",
+					"pathName": "pages/brandShopsSearch/brandShopsSearch",
+					"query": "word=%E5%9C%A3%E7%94%B0",
+					"scene": null
 				}
 			]
 		}

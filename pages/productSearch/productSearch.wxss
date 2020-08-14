@@ -11,7 +11,7 @@
   padding-left: 20rpx;
     margin-top: 20rpx;
     font-size: 24rpx;
-}
+} 
 .fk_productSearch_main{
   padding: 20rpx;
 }

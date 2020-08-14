@@ -114,5 +114,9 @@ Page({
       // getApp().globalData.isLogin=true;
     // }
   },
-  
+  jump4Personal(){
+    wx.navigateTo({
+      url: '/pages/personal/personal',
+    });
+  }
 })

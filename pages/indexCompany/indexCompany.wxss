@@ -104,7 +104,7 @@
   justify-content: space-between;
   align-items: flex-end;
   margin-top: 10px;
-  margin-bottom: 30rpx;
+  /* margin-bottom: 30rpx; */
   color: #333333;
 }
 .fk_indexCompany_productIntro_group_title_text{
@@ -189,4 +189,8 @@
 
 .fk_indexCompany_productIntro_group:first-child, .fk_indexCompany_productIntro_group_title{
   margin-top: 0;
+}
+
+.fk_indexCompany_productIntro_group{
+  padding-top: 20rpx;
 }

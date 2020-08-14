@@ -40,7 +40,7 @@
   font-size: 36rpx;
   width: 410rpx;
   word-break: break-all;
- 
+
 }
 .fk_shops_item_info_opt{
   display: flex;
@@ -66,3 +66,22 @@
   text-align: center;
   /* margin-right: 10px; */
 }
+.fk_productCenter_header{
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+}
+.fk_shop_list{
+  padding-top: 100rpx;
+}
+
+.fk_productCenter_header .searchbar--weui-search-bar{
+  background-color: inherit;
+}
+
+.fk_productSearch_word{
+  padding-left: 20rpx;
+    margin-top: 20rpx;
+    font-size: 24rpx;
+} 

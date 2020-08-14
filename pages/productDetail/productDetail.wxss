@@ -52,12 +52,12 @@
 .fk_productDetail_info_priceInfo{
   display: flex;
   font-size: 34rpx;
-
+  align-items: center;
 }
 .fk_productDetail_info_priceInfo_normal,
 .fk_productDetail_info_priceInfo_vip
 {
-  width: 320rpx;
+  width: 33.3%;
   font-size: 30rpx;
   color: #FF0036;
 }

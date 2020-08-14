@@ -1,4 +1,7 @@
-<view>
+<view class="fk_page">
+  <view class="fk_productCenter_header">
+    <mp-searchbar style="background-color:#0062d7" bindblur="searchBlur" bindclear="searchClear" cancel="{{false}}"></mp-searchbar>
+  </view>
   <view class="fk_shop_list">
     <view wx:key="id" class="fk_shops_item" wx:for="{{pageData.companyList}}"  data-item="{{item}}" catchtap="onJumpToCompany" >
       <view class="fk_shops_item_left">

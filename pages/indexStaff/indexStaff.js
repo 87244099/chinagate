@@ -13,6 +13,7 @@ Page(Fai.mixin(Fai.commPageConfig, {
       staffInfo:{},
       companyPageData:{}
     },
+    config: config,
     staticDomain:config.staticDomain
   },
 

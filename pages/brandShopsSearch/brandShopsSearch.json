@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "mp-tabbar": "weui-miniprogram/tabbar/tabbar",
+    "mp-searchbar": "weui-miniprogram/searchbar/searchbar",
+    "tab-bar": "/components/tab-bar/tab-bar",
+    "van-dialog": "@vant/weapp/dialog/index",
+    "van-toast": "@vant/weapp/toast/index"
+  },
+  "navigationBarTitleText": "品牌厂商"
+}

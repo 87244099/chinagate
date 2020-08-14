@@ -68,6 +68,7 @@ Component({
       }
     },
     callPhone(event){
+      console.log(this.data);
       let phone = this.data.companyInfo.companyPhone;
       if(this.data.staffID>0){
         phone = this.data.staffInfo.phone;

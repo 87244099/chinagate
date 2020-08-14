@@ -29,7 +29,9 @@
     "pages/personal4Company/personal4Company",
     "pages/invitation4Staff/invitation4Staff",
     "pages/invitation4Vip/invitation4Vip",
-    "pages/createCompany/createCompany"
+    "pages/createCompany/createCompany",
+    "pages/brandShopsSearch/brandShopsSearch",
+    "pages/brandShops/brandShops"
   ],
   "window": {
     "backgroundTextStyle": "light",

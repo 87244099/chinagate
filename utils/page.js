@@ -48,9 +48,25 @@ let commPageConfig = {
     Timer.SecondTimer.remove(taskList);//回收各个页面注入的定时任务
   }
 };
+function isPaginationEndBySetting(setting){
+  const {
+    pageNo,
+    pageSize,
+    totalSize
+  } = setting;
+  return isPaginationEnd(pageNo, pageSize, totalSize);
+}
+function isPaginationEnd(pageNo, pageSize, totalSize){
+  if(totalSize<0){
+    return false;
+  }
+  return pageNo*pageSize>=totalSize;
+}
 
 module.exports = {
   commPageConfig,
   getCurrAbsPath,
-  getCurrPage
+  getCurrPage,
+  isPaginationEnd,
+  isPaginationEndBySetting
 };

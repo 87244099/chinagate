@@ -13,6 +13,8 @@ Page(Fai.mixin({
   data: {
     setting: {
       productId: -1,
+      companyAID: -1,
+      companyBID: -1,
       serviceForm:{
         name:"",
         phone:"",
@@ -32,11 +34,10 @@ Page(Fai.mixin({
   onLoad: function (options) {
     options = Object.assign(options, Fai.parseSharedOption(options));
     this.setData({
-      "setting.productId": parseInt(options.id) || -1
-    });
-    this.setData({
+      "setting.productId": parseInt(options.id) || 0,
       "setting.companyAID": parseInt(options.companyAID) || 0,
-      "setting.companyBID": parseInt(options.companyBID) || 0
+      "setting.companyBID": parseInt(options.companyBID) || 0,
+      "setting.staffID": parseInt(options.staffID) || 0
     });
     this.loadPageData();
   },
@@ -106,6 +107,12 @@ Page(Fai.mixin({
       }
       let companyInfo = response.data.data.companyInfo;
 
+      let staffInfo = {};
+      if(this.data.setting.staffID > 0){
+        response = await Ajax.getInfo4Staff(this.data.setting.companyAID, this.data.setting.staffID);
+        staffInfo = response.data.data;
+      }
+
       wx.setNavigationBarTitle({
         title: `${productInfo.title}-${companyInfo.companyName}`,
       });
@@ -116,6 +123,7 @@ Page(Fai.mixin({
         "pageData.memberInfo": memberInfo,
         "pageData.companyInfo": companyInfo,
         "pageData.productInfo":productInfo,
+        "pageData.staffInfo": staffInfo,
         "setting.serviceForm":serviceForm
       });
       
@@ -138,7 +146,7 @@ Page(Fai.mixin({
       tip4Success:true
     });
   },
-  onServiceFormSubmit(){
+  onServiceFormSubmit: Fai.delay(function(){
     let data = this.data.setting.serviceForm;
     data.merchantForLevelAID = this.data.setting.companyAID;
     data.merchantForLevelBID = this.data.setting.companyBID
@@ -154,8 +162,10 @@ Page(Fai.mixin({
       });
 
       return Promise.resolve(response);
+    }, {
+      tip4Success:true
     });
-  },
+  }),
   onFieldBlur(event){
     let dataset = event.currentTarget.dataset;
     let field = dataset.field;
@@ -168,5 +178,20 @@ Page(Fai.mixin({
     wx.makePhoneCall({
       phoneNumber: this.data.pageData.companyInfo.companyPhone,
     });
+  },
+  previewQrCode(){
+    let setting = this.data.setting;
+    let companyAID = setting.companyAID;
+    let companyBID = setting.companyBID;
+    let id = setting.productId;
+    let params = {
+      companyAID,
+      companyBID,
+      id,
+    };
+    let scene = Object.keys(params).map(key=>{
+      return key + "=" + params[key];
+    }).join("&");
+    Ajax.previewQrCode("/pages/productDetail/productDetail", scene);
   }
 }));

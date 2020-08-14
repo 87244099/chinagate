@@ -106,28 +106,14 @@ async function getBrandCompanyList(pageNo, pageSize){
 
 }
 async function getBrandCompanyListByName(pageNo, pageSize, word){
-  return new Promise((resolve, reject)=>{
-    Fai.request({
-      url:"/ajax/Company/Company?cmd=getBrandCompanyList",
-      data:{
-        pageNo,
-        pageSize,
-        word
-      },
-      success(response){
-        let result = response.data;
-        if(result.success){
-          resolve(response);
-        }else{
-          reject(response);
-        }
-      },
-      fail(){
-        reject();
-      }
-    });
+  return Fai.promiseRequest({
+    url:"/ajax/Company/Company?cmd=getBrandCompanyListByName",
+    data:{
+      pageNo,
+      pageSize,
+      word
+    }
   });
-
 }
 
 async function memberUpToStaff(staffID, memberPhone){
@@ -149,6 +135,16 @@ async function memberUpToVipA(vipCustomerInvitationID, memberPhone){
   });
 }
 
+function getInfo4Staff(companyAID, id){
+  return Fai.promiseRequest({
+    url:"/ajax/user/userInfo?cmd=getInfo4Staff",
+    data: {
+      companyAID,
+      id
+    }
+  });
+}
+
 module.exports = {
   getCompanyAIndexPageData,
   getInfo4CompanyA,
@@ -156,5 +152,7 @@ module.exports = {
   getCompanyBIndexPageData,
   getBrandCompanyList,
   memberUpToStaff,
-  memberUpToVipA
+  memberUpToVipA,
+  getBrandCompanyListByName,
+  getInfo4Staff
 };

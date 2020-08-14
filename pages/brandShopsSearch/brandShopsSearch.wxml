@@ -1,5 +1,9 @@
-<view>
+<view class="fk_page">
+  <view class="fk_productCenter_header" catchtap="noop">
+    <mp-searchbar style="background-color:#0062d7" bindselectresult="selectResult" bindblur="searchBlur" bindclear="searchClear" cancel="{{false}}"></mp-searchbar>
+  </view>
   <view class="fk_shop_list">
+    <view class="fk_productSearch_word">当前搜索词：{{setting.word}}</view>
     <view wx:key="id" class="fk_shops_item" wx:for="{{pageData.companyList}}"  data-item="{{item}}" catchtap="onJumpToCompany" >
       <view class="fk_shops_item_left">
         <view class="fk_shops_item_img" style="overflow:hidden">

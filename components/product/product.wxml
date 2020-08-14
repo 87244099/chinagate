@@ -1,16 +1,20 @@
-<view data-url="/pages/productDetail/productDetail?companyAID={{setting.companyAID}}&companyBID={{setting.companyBID}}&id={{product.productID}}" class="fk_indexCompany_productIntro_group_main_product_item" data-id="{{product.productID}}" catchtap="jump">
+<view data-url="/pages/productDetail/productDetail?companyAID={{setting.companyAID}}&companyBID={{setting.companyBID}}&id={{product.productID}}&staffID={{setting.staffID||0}}" class="fk_indexCompany_productIntro_group_main_product_item" data-id="{{product.productID}}" catchtap="jump">
   <view class="fk_indexCompany_productIntro_group_main_product_item_img">
     <image style="width:100%;height:100%" src="{{config.staticDomain}}/{{product.smallImgPath}}"></image>
   </view>
   <view class="fk_indexCompany_productIntro_group_main_product_item_name">{{product.title}}</view>
   <view class="fk_indexCompany_productIntro_group_main_product_priceInfo">
-    <view class="fk_indexCompany_productIntro_group_main_product_priceInfo_line">
+    <view class="fk_indexCompany_productIntro_group_main_product_priceInfo_line" wx:if="{{product.showOrdinaryWholesalePriceFlag}}">
       <view class="fk_indexCompany_productIntro_group_main_product_priceInfo_label">普通批发价：￥</view>
       <view class="fk_indexCompany_productIntro_group_main_product_priceInfo_value">{{product.ordinaryWholesalePrice}}</view>
     </view>
-    <view class="fk_indexCompany_productIntro_group_main_product_priceInfo_line">
+    <view class="fk_indexCompany_productIntro_group_main_product_priceInfo_line" wx:if="{{product.showVipWholesalePriceFlag}}">
       <view class="fk_indexCompany_productIntro_group_main_product_priceInfo_label">vip批发价：￥</view>
       <view class="fk_indexCompany_productIntro_group_main_product_priceInfo_value">{{product.vipWholesalePrice}}</view>
+    </view>
+    <view class="fk_indexCompany_productIntro_group_main_product_priceInfo_line" wx:if="{{product.showRetailPriceFlag}}">
+      <view class="fk_indexCompany_productIntro_group_main_product_priceInfo_label">零售价：￥</view>
+      <view class="fk_indexCompany_productIntro_group_main_product_priceInfo_value">{{product.retailPrice}}</view>
     </view>
   </view>
 </view>
