@@ -14,6 +14,7 @@ Page(Fai.mixin({
     setting: {
       companyAID: 0,//一级商家
       companyBID: 0,//二级商家
+      staffID: 0,//员工
     },
     pageData: {},
     config: config
@@ -24,7 +25,8 @@ Page(Fai.mixin({
 
     this.setData({
       "setting.companyAID": parseInt(options.companyAID) || 0,
-      "setting.companyBID": parseInt(options.companyBID) || 0
+      "setting.companyBID": parseInt(options.companyBID) || 0,
+      "setting.staffID": parseInt(options.staffID) || 0
     })
 
     

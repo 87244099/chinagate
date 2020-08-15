@@ -15,6 +15,7 @@ Page(Fai.mixin({
       tabIndex: 0,
       companyAID: -1,
       companyBID: -1,
+      staffID: -1
     },
     config,
   },
@@ -25,7 +26,8 @@ Page(Fai.mixin({
   onLoad: function (options) {
     this.setData({
       "setting.companyAID":parseInt(options.companyAID) || 0,
-      "setting.companyBID":parseInt(options.companyBID) || 0
+      "setting.companyBID":parseInt(options.companyBID) || 0,
+      "setting.staffID":parseInt(options.staffID) || 0
     });
 
     Ajax.requestWithToast(async()=>{

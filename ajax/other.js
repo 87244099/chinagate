@@ -23,6 +23,44 @@ async function getQrCode(page, scene){
   });
 }
 
+// 产品详情页那边的参数太长了，只能使用这种处理方式
+// 从页面的setting里面把参数简化
+function parseQrCodeArg(options){
+  options = Object.assign(options, Fai.parseSharedOption(options));
+  let qr = options.qr || '';
+
+  let arr = qr.split(",");//数据格式1,2,3,4
+  let companyAID = arr[0] || -1;//一级商家
+  let companyBID = arr[1] || -1;//二级商家
+  let staffID = arr[2] || -1;//员工id
+  let id = arr[3] || -1;//产品id
+  
+  let data = {};
+  companyAID>=0 && (data["companyAID"] = companyAID);
+  companyBID>=0 && (data["companyBID"] = companyBID);
+  staffID>=0 && (data["staffID"] = staffID);
+  id>=0 && (data["id"] = id);
+
+  options = Object.assign(options, data);
+  return options;
+}
+
+function stringifyQrCodeArg(setting){
+  const {
+    companyAID,
+    companyBID,
+    staffID,
+    id
+  } = setting;
+
+  let qr = [];
+  companyAID!=undefined && qr.push(companyAID);
+  companyBID!=undefined && qr.push(companyBID);
+  staffID!=undefined && qr.push(staffID);
+  id!=undefined && qr.push(id);
+  return qr.join(",");
+};
+
 function previewQrCode(page, scene){
 
   if(page.startsWith("/")){
@@ -244,5 +282,7 @@ module.exports = {
   setUserCollectCancel4Staff,
   parseWxPhone,
   reportTrace,
-  getTrace
+  getTrace,
+  parseQrCodeArg,
+  stringifyQrCodeArg
 };

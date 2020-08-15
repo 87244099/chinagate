@@ -106,6 +106,7 @@
   margin-top: 10px;
   /* margin-bottom: 30rpx; */
   color: #333333;
+  padding-bottom: 18px;
 }
 .fk_indexCompany_productIntro_group_title_text{
   border-left: 8rpx solid #0062d7;
@@ -130,6 +131,10 @@
   width: 50%;
   margin-top: 40rpx;
   box-sizing: border-box;
+}
+.fk_indexCompany_productIntro_group_main_product_item:nth-child(2),
+.fk_indexCompany_productIntro_group_main_product_item:nth-child(1){
+  margin-top: 0;
 }
 
 .fk_indexCompany_contact_message_line{
@@ -192,5 +197,5 @@
 }
 
 .fk_indexCompany_productIntro_group{
-  padding-top: 20rpx;
+  padding-top: 30rpx;
 }

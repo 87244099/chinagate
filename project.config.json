@@ -162,13 +162,6 @@
 					"scene": null
 				},
 				{
-					"id": 14,
-					"name": "员工名片首页",
-					"pathName": "pages/indexStaff/indexStaff",
-					"query": "companyId=1&staffID=5",
-					"scene": null
-				},
-				{
 					"id": -1,
 					"name": "名片收藏",
 					"pathName": "pages/staffCollect/staffCollect",
@@ -348,6 +341,13 @@
 					"name": "品牌厂商搜索",
 					"pathName": "pages/brandShopsSearch/brandShopsSearch",
 					"query": "word=%E5%9C%A3%E7%94%B0",
+					"scene": null
+				},
+				{
+					"id": 40,
+					"name": "分享出去的产品详情（缩减参数）",
+					"pathName": "pages/productDetail/productDetail",
+					"query": "scene=qr%3D1%2C0%2C5%2C34",
 					"scene": null
 				}
 			]

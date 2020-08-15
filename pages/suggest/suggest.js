@@ -1,7 +1,6 @@
 // pages/suggest/suggest.js
 const Fai = require("../../utils/util");
 const Ajax = require("../../ajax/index");
-import Toast from "../../miniprogram_npm/@vant/weapp/toast/toast";
 Page({
 
   /**
@@ -74,7 +73,7 @@ Page({
     let value = event.detail.value;
     console.log(field, value);
     this.setData({
-      [`setting.${field}`]:value
+      [`setting.form.${field}`]:value
     })
   },
   submitSuggestForm: Fai.delay(function(){
@@ -86,16 +85,18 @@ Page({
         },
         url:"/ajax/apply/applyForm?cmd=applyAdvise",
         data: {
-          customerName: setting.customerName || "",
-          customerTel: setting.customerTel || "",
-          email: setting.email || "",
-          leaveMessage: setting.leaveMessage || "",
+          customerName: setting.form.customerName || "",
+          customerTel: setting.form.customerTel || "",
+          email: setting.form.email || "",
+          leaveMessage: setting.form.leaveMessage || "",
         }
       });
       this.setData({
-        "setting": {}
+        "setting.form": {}
       });
       return Promise.resolve(response);
-    })
+    }, {
+      tip4Success:true
+    });
   })
 })

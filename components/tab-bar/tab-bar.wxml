@@ -46,13 +46,13 @@
 <block wx:elif="{{type=='company'}}">
   <view class="fk_tabBar">
     <view class="fk_tabBar_item">
-      <navigator open-type="redirect" url="/pages/indexCompany/indexCompany?companyAID={{companyAID}}&companyBID={{companyBID}}">
+      <navigator open-type="redirect" url="/pages/indexCompany/indexCompany?companyAID={{companyAID}}&companyBID={{companyBID}}&staffID={{staffID}}">
         <view class="iconfont icon-home fk_tabBar_item_icon"></view>
         <view class="fk_tabBar_item_text">首页</view>
       </navigator>
     </view>
     <view class="fk_tabBar_item">
-      <navigator open-type="redirect" url="/pages/productCenter/productCenter?companyAID={{companyAID}}&companyBID={{companyBID}}">
+      <navigator open-type="redirect" url="/pages/productCenter/productCenter?companyAID={{companyAID}}&companyBID={{companyBID}}&staffID={{staffID}}">
         <view class="iconfont icon-apply fk_tabBar_item_icon"></view>
         <view class="fk_tabBar_item_text">产品中心</view>
       </navigator>
@@ -68,10 +68,6 @@
         <view class="iconfont icon-user fk_tabBar_item_icon"></view>
         <view class="fk_tabBar_item_text">个人中心</view>
       </auto-login-reg>
-      <!-- <navigator open-type="redirect" url="/pages/personal4Company/personal4Company?companyAID={{companyAID}}&companyBID={{companyBID}}">
-        <view class="iconfont icon-user fk_tabBar_item_icon"></view>
-        <view class="fk_tabBar_item_text">个人中心</view>
-      </navigator> -->
     </view>
   </view>
   

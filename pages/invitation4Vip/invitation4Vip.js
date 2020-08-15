@@ -95,7 +95,7 @@ Page({
 
   },
   //如果手机号为空，则连同手机号一并获取
-  oninvitation4Vip(event){
+  oninvitation4VipWhenPhoneEmpty(event){
     let detail = event.detail;
     if(detail.errMsg == "getPhoneNumber:ok"){
       Ajax.requestWithToast(async()=>{
@@ -107,6 +107,10 @@ Page({
 
         response = await Ajax.memberUpToStaff(this.data.setting.staffID, memberPhone);
         this.setCode();
+        
+      wx.navigateTo({
+        url: '/pages/personal/personal',
+      });
         return Promise.resolve(response);
       }, {
         tip4Success:true
@@ -119,7 +123,9 @@ Page({
   oninvitation4Vip: async function(){
     Ajax.requestWithToast(async()=>{
       let response = Ajax.memberUpToVipA(this.data.setting.vipCustomerInvitationID, this.data.setting.memberInfo.memberPhone);
-
+      wx.navigateTo({
+        url: '/pages/personal/personal',
+      });
       return Promise.resolve(response);
     }, {
       tip4Success:true

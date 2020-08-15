@@ -67,16 +67,27 @@ Component({
         });
       }
     },
-    callPhone(event){
-      console.log(this.data);
+    //只有企业才会有号码呼叫
+    callPhone(res){
       let phone = this.data.companyInfo.companyPhone;
-      if(this.data.staffID>0){
-        phone = this.data.staffInfo.phone;
+      if(this.data.staffID>0){//如果是员工呼叫
+        
+        Ajax.requestWithToast(async()=>{
+          let response = await Ajax.getInfo4Staff(this.data.companyAID, this.data.staffID);
+          let staffInfo = response.data.data;
+          wx.makePhoneCall({
+            phoneNumber: staffInfo.phone,
+          });
+          return Promise.resolve(response);
+        });
+
+      }else{
+        wx.makePhoneCall({
+          phoneNumber: phone,
+        });
       }
 
-      wx.makePhoneCall({
-        phoneNumber: phone,
-      });
+      
     },
     onJumpToPersonal(event){
       if(event.detail.errMsg == "getUserInfo:ok"){
@@ -128,7 +139,7 @@ Component({
     },
     jump4CompanyPersonal(){
       wx.redirectTo({
-        url: '/pages/personal4Company/personal4Company?companyAID='+ this.data.companyAID +'&companyBID='+this.data.companyBID,
+        url: '/pages/personal4Company/personal4Company?companyAID='+ this.data.companyAID +'&companyBID='+this.data.companyBID+"&staffID="+this.data.staffID,
       })
     }
   },

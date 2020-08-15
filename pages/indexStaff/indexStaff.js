@@ -1,5 +1,6 @@
 // pages/indexStaff/indexStaff.js
 const Fai = require("../../utils/util");
+const Ajax = require("../../ajax/index");
 const config = require("../../utils/config");
 import Toast from "../../miniprogram_npm/@vant/weapp/toast/toast";
 Page(Fai.mixin(Fai.commPageConfig, {
@@ -21,7 +22,8 @@ Page(Fai.mixin(Fai.commPageConfig, {
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    options = Object.assign(options, Fai.parseSharedOption(options));
+    // Ajax.parse 
+    options = Ajax.parseQrCodeArg(options);
     this.setData({
       "setting.companyAID": parseInt(options.companyAID) || 0,
       "setting.companyBID": parseInt(options.companyBID) || 0,
@@ -172,5 +174,11 @@ Page(Fai.mixin(Fai.commPageConfig, {
   },
   onWantShare: function(){
     Toast('点击右上角...进行转发');
-  }
+  },
+  previewQrCode(){
+    let url = Fai.getCurrAbsPath();
+    let urlArr = url.split("?");
+    let qr = Ajax.stringifyQrCodeArg(this.data.setting);
+    Ajax.previewQrCode(urlArr[0], "qr="+qr);
+  } 
 }));

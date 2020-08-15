@@ -22,8 +22,9 @@ Page(Fai.mixin(Fai.commPageConfig, {
    */
   onLoad: function (options) {
     this.setData({
-      "setting.companyAID": options.companyAID,
-      "setting.companyBID": options.companyBID,
+      "setting.companyAID": parseInt(options.companyAID) || 0,
+      "setting.companyBID": parseInt(options.companyBID) || 0,
+      "setting.staffID": parseInt(options.staffID) || 0
     });
   },
 

@@ -48,9 +48,11 @@
   padding: 20rpx;
   margin-top: 20rpx;
   background-color: #fff;
+  font-size: 32rpx;
+  padding-left: 27rpx;
 }
 .fk_productDetail_info_priceInfo{
-  display: flex;
+  /* display: flex; */
   font-size: 34rpx;
   align-items: center;
 }
@@ -122,4 +124,17 @@ textarea{
 
 .fk_productDetail_intro_content{
   padding-top: 16rpx;
+}
+
+.fk_productDetail_info_name{
+  font-size: 32rpx;padding: 8px 0;
+  padding-top: 0;
+}
+
+.fk_productDetail_info_priceInfo_price{
+  font-size: 48rpx;
+}
+.fk_productDetail_info_priceInfo_line{
+  line-height: 1;
+  padding-bottom: 32rpx;
 }

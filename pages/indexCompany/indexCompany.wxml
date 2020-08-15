@@ -65,7 +65,7 @@
       <view class="fk_indexCompany_productIntro_group" wx:for-item="group" wx:for="{{pageData.productGroupList}}">
         <view class="fk_indexCompany_productIntro_group_title">
           <view class="fk_indexCompany_productIntro_group_title_text" style="border-color:{{pageData.companyInfo.themeColor}}">{{group.productTypeName}}</view>
-          <navigator url="/pages/productCenter/productCenter?companyAID={{setting.companyAID}}&companyBID={{setting.companyBID}}" open-type="redirect" class="fk_indexCompany_productIntro_group_title_arrow">更多></navigator>
+          <navigator url="/pages/productCenter/productCenter?companyAID={{setting.companyAID}}&companyBID={{setting.companyBID}}&staffID={{setting.staffID}}" open-type="redirect" class="fk_indexCompany_productIntro_group_title_arrow">更多></navigator>
         </view>
         <view class="fk_indexCompany_productIntro_group_main">
           <view class="fk_indexCompany_productIntro_group_main_product_list">
@@ -76,9 +76,9 @@
     </view>
     <view class="fk_indexCompany_about">
       <template is="bigTitle" data="{{cn:'关于我们', en:'ABOUT', pageData}}"></template>
-      <view>
+      <scroll-view style="max-height:348rpx;padding-bottom: 20rpx" scroll-y>
         <wxparser class="fk_artile_wxparse" rich-text="{{pageData.companyInfo.companyIntroduction}}"/>
-      </view>
+      </scroll-view>
     </view>
     <view class="fk_indexCompany_contact">
       <template is="bigTitle" data="{{cn:'联系我们', en:'CONTACT', pageData}}"></template>
@@ -99,7 +99,7 @@
 
     
   </view>
-  <tab-bar class="fk_tabBar" type="company" style="background-color:{{pageData.companyInfo.themeColor}}" rollbackVisible="{{_commPageConfigData.rollbackVisible}}" companyInfo="{{pageData.companyInfo}}" companyAID="{{setting.companyAID}}" companyBID="{{setting.companyBID}}"></tab-bar>
+  <tab-bar class="fk_tabBar" type="company" style="background-color:{{pageData.companyInfo.themeColor}}" rollbackVisible="{{_commPageConfigData.rollbackVisible}}" companyInfo="{{pageData.companyInfo}}" companyAID="{{setting.companyAID}}" companyBID="{{setting.companyBID}}"  staffID="{{setting.staffID}}"></tab-bar>
   <van-toast id="van-toast" />
 </view>
 

@@ -26,13 +26,14 @@ Page(Fai.mixin(Fai.commPageConfig, Card, {
   onLoad(){
     Ajax.requestWithToast(async()=>{
       let response = await Ajax.getMemberInfo();
-
+      console.log(response);
       let memberInfo = response.data.data;
 
       Object.keys(memberInfo).forEach(key=>{
-        let value = memberInfo[key] === null;
-        memberInfo[key] = "";
-      })
+        if(memberInfo[key] === null){
+          memberInfo[key] = "";
+        }
+      });
 
       this.setData({
         "pageData.memberInfo": memberInfo,

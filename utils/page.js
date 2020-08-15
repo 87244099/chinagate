@@ -1,6 +1,7 @@
 const Typer = require("./typer");
 const Timer = require("./timer");
 
+
 function getCurrAbsPath(){
   let page = getCurrentPages()[getCurrentPages().length-1];
   let queryObject = page.options;

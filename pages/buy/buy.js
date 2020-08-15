@@ -93,6 +93,8 @@ Page({
         "setting.form":{}
       });
       return Promise.resolve(response);
+    }, {
+      tip4Success:true
     })
   }),
   onFieldBlur(event){

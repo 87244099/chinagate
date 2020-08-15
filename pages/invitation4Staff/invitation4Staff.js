@@ -107,6 +107,9 @@ Page({
 
         response = await Ajax.memberUpToStaff(this.data.setting.staffID, memberPhone);
         this.setCode();
+        wx.navigateTo({
+          url: '/pages/personal/personal',
+        })
         return Promise.resolve(response);
       }, {
         tip4Success:true
@@ -119,7 +122,9 @@ Page({
   oninvitation4Staff: async function(){
     Ajax.requestWithToast(async()=>{
       let response = Ajax.memberUpToStaff(this.data.setting.staffID, this.data.setting.memberInfo.memberPhone);
-
+      wx.navigateTo({
+        url: '/pages/personal/personal',
+      })
       return Promise.resolve(response);
     }, {
       tip4Success:true
