@@ -6,6 +6,7 @@ module.exports = {
   ...require("./cache"),
   ...require("./login"),
   ...require("./page"),
-  ...require("./timer")
+  ...require("./timer"),
+  ...require("./upng")
 };
 

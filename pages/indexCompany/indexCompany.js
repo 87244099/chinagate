@@ -28,9 +28,6 @@ Page(Fai.mixin({
       "setting.companyBID": parseInt(options.companyBID) || 0,
       "setting.staffID": parseInt(options.staffID) || 0
     })
-
-    
-
     this.loadIndexCompanyPageData();
   },
   
@@ -166,6 +163,6 @@ Page(Fai.mixin({
   onShowQrCode(){
     let url = Fai.getCurrAbsPath();
     let urlArr = url.split("?");
-    Ajax.previewQrCode(urlArr[0], urlArr[1]);
+    Ajax.previewQrCode(urlArr[0], urlArr[1], this.data.config.wwwwStaticDomain + "/" + this.data.pageData.companyInfo.companyLogoUrl);
   }
 }));

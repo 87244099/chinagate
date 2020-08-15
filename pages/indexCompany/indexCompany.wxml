@@ -1,5 +1,5 @@
 <wxs src="../../comm.wxs" module="comm" />
-
+<canvas canvas-id="myCanvas" style="width:430px;height:430px;"></canvas>
 <view class="fk_page">
     <view class="fk_indexCompany">
     <view class="fk_indexCompany_banner">

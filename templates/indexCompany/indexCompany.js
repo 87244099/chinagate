@@ -132,5 +132,8 @@ module.exports = {
         Toast.fail('网络繁忙，请稍后重试');
       }
     });
+  },
+  preivewQrCode(){
+    Ajax.preivewQrCode();
   }
 };
