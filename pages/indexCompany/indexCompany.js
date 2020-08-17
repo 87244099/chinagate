@@ -21,12 +21,14 @@ Page(Fai.mixin({
   },
 
   onLoad(options){
-    options = Object.assign(options, Fai.parseSharedOption(options));
+    options = Ajax.parseQrCodeArg(options);
 
     this.setData({
       "setting.companyAID": parseInt(options.companyAID) || 0,
       "setting.companyBID": parseInt(options.companyBID) || 0,
-      "setting.staffID": parseInt(options.staffID) || 0
+      "setting.staffID": parseInt(options.staffID) || 0,
+      "options":JSON.stringify(options),
+      "currPath": Fai.getCurrAbsPath()
     })
     this.loadIndexCompanyPageData();
   },
@@ -163,6 +165,9 @@ Page(Fai.mixin({
   onShowQrCode(){
     let url = Fai.getCurrAbsPath();
     let urlArr = url.split("?");
-    Ajax.previewQrCode(urlArr[0], urlArr[1], this.data.config.wwwwStaticDomain + "/" + this.data.pageData.companyInfo.companyLogoUrl);
+    let qr = Ajax.stringifyQrCodeArg(this.data.setting);
+    console.log("qr",qr);
+    let companyLogoUrl = this.data.config.wwwwStaticDomain + "/" + this.data.pageData.companyInfo.companyLogoUrl;
+    Ajax.previewQrCode(urlArr[0], "qr="+qr, companyLogoUrl);
   }
 }));

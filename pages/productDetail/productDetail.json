@@ -3,6 +3,7 @@
     "wxparser": "plugin://wxparserPlugin/wxparser",
     "mp-tabbar": "weui-miniprogram/tabbar/tabbar",
     "trace": "/components/trace/trace",
+    "qrcode-preview": "/components/qrcode-preview/qrcode-preview",
     "tab-bar": "/components/tab-bar/tab-bar",
     "van-toast": "@vant/weapp/toast/index"
   }

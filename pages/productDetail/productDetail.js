@@ -25,6 +25,7 @@ Page(Fai.mixin({
       }
     },
     pageData: {},
+    config:config,
     staticDomain: config.staticDomain
   },
 
@@ -32,8 +33,7 @@ Page(Fai.mixin({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    options = this.parseQrCodeArg(options);
-    console.log("options", options);
+    options = Ajax.parseQrCodeArg(options);
     this.setData({
       "setting.productId": parseInt(options.id) || 0,
       "setting.companyAID": parseInt(options.companyAID) || 0,
@@ -203,50 +203,4 @@ Page(Fai.mixin({
     }
     
   },
-
-  // 产品详情页那边的参数太长了，只能使用这种处理方式
-  // 从页面的setting里面把参数简化
-  parseQrCodeArg(options){
-    options = Object.assign(options, Fai.parseSharedOption(options));
-    let qr = options.qr || '';
-
-    let arr = qr.split(",");//数据格式1,2,3,4
-    let companyAID = arr[0] || -1;//一级商家
-    let companyBID = arr[1] || -1;//二级商家
-    let staffID = arr[2] || -1;//员工id
-    let id = arr[3] || -1;//产品id
-    
-    let data = {};
-    companyAID>=0 && (data["companyAID"] = companyAID);
-    companyBID>=0 && (data["companyBID"] = companyBID);
-    staffID>=0 && (data["staffID"] = staffID);
-    id>=0 && (data["id"] = id);
-
-    options = Object.assign(options, data);
-    return options;
-  },
-  
-  stringifyQrCodeArg(setting){
-    const {
-      companyAID,
-      companyBID,
-      staffID,
-      id
-    } = setting;
-  
-    let qr = [];
-    companyAID!=undefined && qr.push(companyAID);
-    companyBID!=undefined && qr.push(companyBID);
-    staffID!=undefined && qr.push(staffID);
-    id!=undefined && qr.push(id);
-    return qr.join(",");
-  },
-
-  previewQrCode(){
-    let url = Fai.getCurrAbsPath();
-    let urlArr = url.split("?");
-    let qr = this.stringifyQrCodeArg(this.data.setting);
-    console.log("qr", qr);
-    Ajax.previewQrCode(urlArr[0], "qr="+qr);
-  }
 }));

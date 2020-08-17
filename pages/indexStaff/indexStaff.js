@@ -179,6 +179,6 @@ Page(Fai.mixin(Fai.commPageConfig, {
     let url = Fai.getCurrAbsPath();
     let urlArr = url.split("?");
     let qr = Ajax.stringifyQrCodeArg(this.data.setting);
-    Ajax.previewQrCode(urlArr[0], "qr="+qr);
+    Ajax.previewQrCode(urlArr[0], "qr="+qr, this.data.config.wwwwStaticDomain+"/"+this.data.pageData.companyPageData.companyInfo.companyLogoUrl);
   } 
 }));

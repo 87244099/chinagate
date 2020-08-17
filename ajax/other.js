@@ -68,9 +68,12 @@ async function removeSavedFile(option){
       filePath: option.filePath,
       data: option.data,
       encoding: option.encoding,
-      success: resolve,
+      success(){
+        resolve(...arguments)
+      },
       fail: function(res){
-        if(res.errMsg == "fail file not exist"){
+        console.log(res, option);
+        if(res.errMsg == "removeSavedFile:fail file not exist"){
           resolve();
         }else{
           reject();
@@ -95,28 +98,7 @@ async function writeFile(option){
   })
 }
 
-async function getImageInfo(filePath){
-  return new Promise((resolve, reject)=>{
-    wx.getImageInfo({
-      src: filePath,
-      success:resolve,
-      fail:reject
-    });
-  });
-}
 
-async function drawBase64ToImgPath(base64){
-  let filePath = `${wx.env.USER_DATA_PATH}/tmp_base64src2`;
-  var showImgData = base64;
-  // showImgData = showImgData.replace(/\ +/g, ""); //去掉空格方法
-  // showImgData = showImgData.replace(/[\r\n]/g, "");
-  const buffer = wx.base64ToArrayBuffer(showImgData);
-  let rt = wx.getFileSystemManager().writeFileSync( filePath, buffer, 'binary');
-  let imgInfo = await getImageInfo(filePath);
-  return imgInfo.path;
-  console.log("rt", rt);
-  return filePath;
-}
 
 function previewQrCode(page, scene, logoUrl){
 
@@ -267,6 +249,7 @@ async function requestWithToast(requestHandler, message){
       console.log("errorOrResponse err", errorOrResponse);
       Toast.fail("网络繁忙，请稍后重试");
     }else if(errorOrResponse){
+      console.log(errorOrResponse);
       Toast.fail(errorOrResponse.data.msg);
     }else{
       Toast.fail("网络繁忙，请稍后重试");
@@ -349,8 +332,26 @@ async function getTrace(data){
     }
   });
 }
+
+async function getImageInfo(url){
+  return new Promise((resolve, reject)=>{
+    wx.getImageInfo({
+      src: url,
+      success:(result)=>{
+        resolve(result.path);
+      },
+      fail: reject
+    })
+  });
+}
+
 async function genCompanyQrCodeBase64(imgBase64, companyLogoUrl){
   let filePath = `${wx.env.USER_DATA_PATH}/tmp_base64src`; 
+
+  console.log("companyLogoUrl", companyLogoUrl);
+  let loadedCompanyLogoUrl = await getImageInfo(companyLogoUrl);
+  
+
   return new Promise((resolve, reject)=>{
     wx.getFileSystemManager().writeFile({
       filePath: filePath,
@@ -361,19 +362,24 @@ async function genCompanyQrCodeBase64(imgBase64, companyLogoUrl){
           src: filePath,
           success:(res)=>{
             var ctx = wx.createCanvasContext('myCanvas');
+            console.log("ctx", ctx);
             const sysInfo = wx.getSystemInfoSync();
             let windowWidth = sysInfo.windowWidth;
             let ratio = windowWidth/750;
             let width = 430;
             let height = 430;
+            ctx.save();
             // let width = 430*ratio;
             ctx.drawImage(res.path, 0, 0, 430, 430, 0, 0, width, height);
-            console.log("companyLogoUrl", companyLogoUrl);
+            console.log("loadedCompanyLogoUrl", loadedCompanyLogoUrl);
             ctx.beginPath()
             ctx.arc(215,215, 100, 0, 2*Math.PI);
             ctx.clip();
+            ctx.setFillStyle("#fff");
+            ctx.fillRect(0, 0, width, height);
             // ctx.drawImage("./company.jpg", 115, 115, 200, 200);
-            ctx.drawImage(companyLogoUrl, 115, 115, 200, 200);
+            ctx.drawImage(loadedCompanyLogoUrl, 115, 115, 200, 200);
+            ctx.restore();
             ctx.draw(false, ()=>{
               wx.canvasToTempFilePath({ //获取生成的临时图片
                 canvasId: 'myCanvas',
@@ -388,6 +394,11 @@ async function genCompanyQrCodeBase64(imgBase64, companyLogoUrl){
                     },
                     fail:reject
                   })
+                },
+                async complete(){
+                  await removeSavedFile({
+                    filePath: loadedCompanyLogoUrl
+                  });
                 }
               })
               // wx.canvasGetImageData({

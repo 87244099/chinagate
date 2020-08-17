@@ -363,6 +363,20 @@
 					"pathName": "pages/sharedCard/sharedCard",
 					"query": "scene=id%3D1",
 					"scene": null
+				},
+				{
+					"id": 43,
+					"name": "小程序码进来-第三方企业",
+					"pathName": "pages/indexCompany/indexCompany",
+					"query": "scene=qr%3D2%2C0%2C0",
+					"scene": null
+				},
+				{
+					"id": 44,
+					"name": "小程序码进来-第三方产品详情",
+					"pathName": "pages/productDetail/productDetail",
+					"query": "scene=qr%3D2%2C0%2C0%2C246",
+					"scene": null
 				}
 			]
 		}
