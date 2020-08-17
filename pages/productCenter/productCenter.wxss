@@ -142,3 +142,7 @@
   display: inline-block;
   height: auto;
 }
+
+.fk_page .van-search--withaction{
+  background: inherit !important;
+}

@@ -94,9 +94,8 @@ Page(Fai.mixin({
   loadPageData: async function(){
       
     Ajax.requestWithToast(async()=>{
-      let response = await Ajax.getMemberInfo();
-      let memberInfo = response.data.data;
-      response = await Fai.promiseRequest({
+      
+      let response = await Fai.promiseRequest({
         url:"/ajax/product/product?cmd=getProductDetailPageData&productId="+this.data.setting.productId
       });
       let productInfo =  response.data.data.productInfo;
@@ -117,11 +116,28 @@ Page(Fai.mixin({
       wx.setNavigationBarTitle({
         title: `${productInfo.title}-${companyInfo.companyName}`,
       });
+
       let serviceForm = this.data.setting.serviceForm;
-      serviceForm.name = memberInfo.memberName;
-      serviceForm.phone = memberInfo.memberPhone;
+      if(getApp().globalData.isLogin){
+        response = await Ajax.getMemberInfo();
+        let memberInfo = response.data.data;
+        serviceForm.name = memberInfo.memberName;
+        serviceForm.phone = memberInfo.memberPhone;
+        this.setData({
+          "pageData.memberInfo": memberInfo,
+        });
+      }else{
+        let memberInfo = {
+          memberName:"",
+          memberPhone: "",
+          staffID: 0
+        };
+        this.setData({
+          "pageData.memberInfo": memberInfo,
+        });
+      }
+      
       this.setData({
-        "pageData.memberInfo": memberInfo,
         "pageData.companyInfo": companyInfo,
         "pageData.productInfo":productInfo,
         "pageData.staffInfo": staffInfo,

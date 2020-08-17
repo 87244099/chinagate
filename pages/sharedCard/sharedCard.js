@@ -35,13 +35,14 @@ Page(Fai.mixin(Fai.commPageConfig, Card, {
       this.setData({
         "setting.memberId":parseInt(options.id)||-1
       });
-      let response = await Ajax.getMemberInfo(this.data.setting.memberId);
+      // let meminfoRes = await Ajax.getMemberInfo();
+      let response = await Ajax.getMemberInfoById(this.data.setting.memberId);
       this.setData({
         "pageData.memberInfo": response.data.data
       });
-      this.loadData();
+      response = await this.asyncLoadData();
       return Promise.resolve(response);
-    })
+    });
     
   },
   onWantShare(){

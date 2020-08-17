@@ -92,6 +92,7 @@ Page(Fai.mixin({
     });
   },
   searchBlur: function(event){
+    console.log("event", event);
     this.dealSearch(event);
   },
   searchClear: function(event){

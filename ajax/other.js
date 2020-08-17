@@ -136,9 +136,10 @@ function previewQrCode(page, scene, logoUrl){
   requestWithToast(async()=>{
     let response = await getQrCode(page, scene);
     let imgData = response.data.imgData;
-
-    let base64 = await genCompanyQrCodeBase64(imgData, logoUrl);
-    Fai.MemoryCache.setCache(url, base64);
+    if(logoUrl){
+      imgData = await genCompanyQrCodeBase64(imgData, logoUrl);
+    }
+    Fai.MemoryCache.setCache(url, imgData);
     wx.previewImage({
       urls: ['data:image/jpeg;base64,'+imgData],
     })
@@ -183,10 +184,29 @@ async function setNormalTitle(key){
   });
 }
 
-async function getUserCollectInfo(memberId){
+async function getUserCollectInfo(){
   return new Promise((resolve, reject)=>{
     Fai.request({
-      url:"/ajax/user/userCollection?cmd=getUserCollectInfo&id="+memberId,
+      url:"/ajax/user/userCollection?cmd=getUserCollectInfo",
+      success:(response)=>{
+        let result = response.data;
+        if(result.success){
+          resolve(response);
+        }else{
+          reject(response);
+        }
+      },
+      fail:reject
+    });
+  });
+}
+async function getUserCollectInfoById(id){
+  return new Promise((resolve, reject)=>{
+    Fai.request({
+      url:"/ajax/user/userCollection?cmd=getUserCollectInfoById",
+      data:{
+        id
+      },
       success:(response)=>{
         let result = response.data;
         if(result.success){
@@ -358,6 +378,7 @@ async function genCompanyQrCodeBase64(imgBase64, companyLogoUrl){
               wx.canvasToTempFilePath({ //获取生成的临时图片
                 canvasId: 'myCanvas',
                 success: function (res) {
+                  console.log("res", res.tempFilePath);
                   wx.getFileSystemManager().readFile({   // 文件管理系统按照base64方式读取生成的图片
                     filePath: res.tempFilePath, //选择图片返回的相对路径
                     encoding: 'base64', //编码格式
@@ -406,5 +427,6 @@ module.exports = {
   reportTrace,
   getTrace,
   parseQrCodeArg,
-  stringifyQrCodeArg
+  stringifyQrCodeArg,
+  getUserCollectInfoById
 };

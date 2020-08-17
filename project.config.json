@@ -316,10 +316,10 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 36,
 					"name": "分享出来的访客状态名片",
 					"pathName": "pages/sharedCard/sharedCard",
-					"query": "scene=id%3D3228",
+					"query": "scene=id%3D3242",
 					"scene": null
 				},
 				{
@@ -348,6 +348,20 @@
 					"name": "分享出去的产品详情（缩减参数）",
 					"pathName": "pages/productDetail/productDetail",
 					"query": "scene=qr%3D1%2C0%2C5%2C34",
+					"scene": null
+				},
+				{
+					"id": 41,
+					"name": "被分享-第三方企业首页",
+					"pathName": "pages/indexCompany/indexCompany",
+					"query": "companyAID=2&companyBID=0",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "分享出来的个人名片-小罗",
+					"pathName": "pages/sharedCard/sharedCard",
+					"query": "scene=id%3D1",
 					"scene": null
 				}
 			]

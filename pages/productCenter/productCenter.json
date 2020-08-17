@@ -4,7 +4,8 @@
     "wxparser": "plugin://wxparserPlugin/wxparser",
     "mp-tabbar": "weui-miniprogram/tabbar/tabbar",
     "tab-bar": "/components/tab-bar/tab-bar",
-    "van-toast": "@vant/weapp/toast/index"
+    "van-toast": "@vant/weapp/toast/index",
+    "van-search": "@vant/weapp/search/index"
   },
   "navigationBarTitleText": "产品中心"
 }

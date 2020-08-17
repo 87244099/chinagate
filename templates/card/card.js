@@ -6,11 +6,11 @@ const config = require("../../utils/config");
 
 // pages/card/card.js
 module.exports = {
-
   loadData: async function(){
-
-    Ajax.loadWithToast(async()=>{
-      let response = await Ajax.getUserCollectInfo(this.data.setting.memberId);
+    Ajax.loadWithToast(this.asyncLoadData);
+  },
+  async asyncLoadData(){
+      let response = await Ajax.getUserCollectInfoById(this.data.setting.memberId);
       let cardInfo = response.data.data.userInfo;
       
       this.setData({
@@ -21,7 +21,6 @@ module.exports = {
         title: this.data.setting.title,
       })
       return Promise.resolve(response);
-    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

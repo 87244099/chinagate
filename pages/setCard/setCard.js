@@ -65,10 +65,9 @@ Page({
    */
   onShow: function () {
     Ajax.requestWithToast(async()=>{
-      let response;
-      response = await Ajax.getMemberInfo();
+      let response = await Ajax.getMemberInfo();
       let memberInfo = response.data.data;
-      response = await Ajax.getUserCollectInfo(memberInfo.memberID);
+      response = await Ajax.getUserCollectInfoById(memberInfo.memberID);
       let cardInfo = response.data.data.userInfo;
       // cardInfo.memberName = memberInfo.nickName;
       let provinceList = [];
@@ -320,11 +319,17 @@ Page({
       memberPhone: cardInfo.memberPhone 
     };
     Ajax.requestWithToast(async()=>{
-      return Fai.promiseRequest({
+      let response = await Fai.promiseRequest({
         url: "/ajax/user/userCollection?cmd=setUserCollectInfo",
         method: "POST",
         data: data
       });
+
+      wx.redirectTo({
+        url: '/pages/myCard/myCard',
+      })
+
+      return Promise.resolve(response);
     }, {
       tip4Success:true
     });

@@ -10,6 +10,6 @@
       </view>
     </view>
   </view>
-  <tab-bar class="fk_tabBar" type="company" rollbackVisible="{{_commPageConfigData.rollbackVisible}}" companyInfo="{{pageData.companyPageData.companyInfo}}"></tab-bar>
+  <tab-bar class="fk_tabBar" type="company" rollbackVisible="{{_commPageConfigData.rollbackVisible}}" companyInfo="{{pageData.companyPageData.companyInfo}}" companyAID="{{setting.companyAID}}" companyBID="{{setting.companyBID}}" staffID="{{setting.staffID}}"></tab-bar>
   <van-toast id="van-toast"/>
 </view>
