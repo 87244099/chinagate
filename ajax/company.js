@@ -116,6 +116,23 @@ async function getBrandCompanyListByName(pageNo, pageSize, word){
   });
 }
 
+async function getInvitationStaffPageData(staffID){
+  return Fai.promiseRequest({
+    url:"/ajax/company/companyInfo?cmd=getInvitationStaffPageData",
+    data:{
+      staffID
+    }
+  });
+}
+async function getInvitationVipPageData(vipCustomerInvitationID){
+  return Fai.promiseRequest({
+    url:"/ajax/company/companyInfo?cmd=getInvitationVipPageData",
+    data:{
+      vipCustomerInvitationID
+    }
+  });
+}
+
 async function memberUpToStaff(staffID, memberPhone){
   return Fai.promiseRequestPost({
     url: "/logAction/action?cmd=memberUpToStaff",
@@ -154,5 +171,7 @@ module.exports = {
   memberUpToStaff,
   memberUpToVipA,
   getBrandCompanyListByName,
-  getInfo4Staff
+  getInfo4Staff,
+  getInvitationStaffPageData,
+  getInvitationVipPageData
 };

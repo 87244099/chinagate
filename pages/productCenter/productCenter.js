@@ -92,33 +92,40 @@ Page(Fai.mixin({
     });
   },
   searchBlur: function(event){
+    
+    let value = event.detail.value || '';
+    this.setData({
+      "setting.word": value
+    });
     console.log("event", event);
-    this.dealSearch(event);
+    // this.dealSearch(event);
   },
   searchClear: function(event){
     this.dealSearch(event);
+  },
+  doSearch(){
+    let value = this.data.setting.word;
+    value = value.trim();
+    if(value.length > 0){
+      wx.navigateTo({
+        url: '/pages/productSearch/productSearch?word='+value+"&companyAID="+this.data.setting.companyAID+"&companyBID="+this.data.setting.companyBID,
+        complete(){
+          console.log(2, Math.random());
+        },
+        success(){
+          console.log(3, Math.random());
+        },
+        fail(){
+          console.log(4, Math.random());
+        }
+      });
+    }
   },
   dealSearch: Fai.delay(function(event){
     console.log(Math.random());
     console.log(Fai.commPageConfig);
     if(event.type == "blur"){
-      let value = event.detail.value || '';
-      value = value.trim();
-      if(value.length > 0){
-        wx.navigateTo({
-          url: '/pages/productSearch/productSearch?word='+value+"&companyAID="+this.data.setting.companyAID+"&companyBID="+this.data.setting.companyBID,
-          complete(){
-            console.log(2, Math.random());
-          },
-          success(){
-            console.log(3, Math.random());
-          },
-          fail(){
-            console.log(4, Math.random());
-          }
-        });
-      }else{
-      }
+      this.doSearch();
     }
   }, 800)
 

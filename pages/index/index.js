@@ -20,10 +20,12 @@ Page(Fai.mixin(Fai.commPageConfig, {
       badge: 'New'
     }],
     setting: {
+      publicAcctVisible: false,
       pageNo: 1,
       pageSize: 10,
       totalSize: null,
-      articleList:[]
+      articleList:[],
+      shareMaskVisible: false
     },
     staticDomain: config.staticDomain,
     bannerList: [
@@ -39,6 +41,10 @@ Page(Fai.mixin(Fai.commPageConfig, {
     })
   },
   onLoad: function () {
+
+    this.setData({
+      "setting.isPublicAcctVisible": [1047, 1124, 1089, 1038].includes(app.globalData.launchOptions.scene),
+    })
 
     this.loadNextArticles();
 
@@ -152,6 +158,21 @@ Page(Fai.mixin(Fai.commPageConfig, {
       title: this.data.globalData.titleData.platformIndex
     }
   },
+  callShareMask(){
+    this.setData({
+      "setting.shareMaskVisible": true
+    })
+  },
+  onShareMaskClick(){
+    this.setData({
+      "setting.shareMaskVisible": false
+    })
+  },
+  noticePublicAcct(){
+    this.setData({
+      "setting.publicAcctVisible": !this.data.setting.publicAcctVisible
+    })
+  }
 }));
 
 

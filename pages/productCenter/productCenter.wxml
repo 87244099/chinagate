@@ -3,13 +3,14 @@
   <view class="fk_productCenter">
     <view class="fk_productCenter_header" catchtap="noop">
       <van-search
-        value="{{ value }}"
+        style="background-color:{{pageData.companyPageData.companyInfo.themeColor}}"
+        value="{{ setting.word }}"
         placeholder="请输入搜索关键词"
         bind:search="searchBlur"
         bind:blur="searchBlur"
         use-action-slot
       >
-        <view slot="action" bind:tap="searchBlur">搜索</view>
+        <view slot="action" bind:tap="doSearch" style="color:#fff">搜索</view>
       </van-search>
       <!-- <mp-searchbar style="background-color:{{pageData.companyPageData.companyInfo.themeColor}}" bindselectresult="selectResult" bindblur="searchBlur" bindclear="searchClear" cancel="{{false}}"></mp-searchbar> -->
     </view>

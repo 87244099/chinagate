@@ -29,10 +29,19 @@ Page(Fai.mixin(Fai.commPageConfig, {
     this.search4Init(this.data.setting.word);
   },
   searchBlur: function(event){
-    this.dealSearch(event);
+    this.setData({
+      "setting.word": event.detail.value
+    });
   },
   searchClear: function(event){
     this.dealSearch(event);
+  },
+  doSearch(event){
+    let value = this.data.setting.word;
+    value = value.trim();
+    if(value.length > 0){
+      this.search4Init(value);
+    }
   },
   dealSearch: Fai.delay(function(event){
     if(event.type == "blur"){

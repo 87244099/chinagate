@@ -15,7 +15,7 @@ module.exports = {
       
       this.setData({
         "pageData.cardInfo": cardInfo,
-        "setting.title": this.data.pageData.cardInfo.memberName
+        "setting.title": cardInfo.memberName
       });
       wx.setNavigationBarTitle({
         title: this.data.setting.title,

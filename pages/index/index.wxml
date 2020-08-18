@@ -1,5 +1,8 @@
 <!--index.wxml-->
 <view class="fk_page">
+  <view wx:if="{{setting.publicAcctVisible}}" style="height:84px;position:fixed;left:0;top:0;width:100%;z-index:99">
+    <official-account></official-account>
+  </view>
   <view class="fk_banner">
     <swiper style="height:100%;" indicator-dots="true"
       indicator-active-color="#0062d7"
@@ -11,7 +14,6 @@
       </block>
     </swiper><!--  -->
   </view>
-  <official-account></official-account>
   <view class="fk_main">
     <view class="fk_main_func_list">
       <navigator class="fk_main_func_item" url="/pages/myCard/myCard">
@@ -36,7 +38,7 @@
         <view class="iconfont icon-fujin  fk_main_func_item_icon" style="color:red"></view>
         <view class="fk_main_func_item_text">附近商家</view>
       </navigator>
-      <navigator url="/pages/brandShops/brandShops" class="fk_main_func_item" open-type="redirect" wx:if="{{false}}">
+      <navigator url="/pages/brandShops/brandShops" class="fk_main_func_item" open-type="redirect">
         <view class="iconfont icon-cailiaochangjia  fk_main_func_item_icon" style="color:#000"></view>
         <view class="fk_main_func_item_text">品牌厂商</view>
       </navigator>
@@ -48,18 +50,18 @@
         <view class="iconfont icon-weiguanwang  fk_main_func_item_icon" style="color:#5b5bff"></view>
         <view class="fk_main_func_item_text">中出网官网</view>
       </navigator>
-      <navigator url="/pages/h5/h5" class="fk_main_func_item" wx:if="{{false}}">
+      <navigator url="/pages/h5/h5" class="fk_main_func_item" catchtap="callShareMask">
         <view class="iconfont icon-xiaochengxu  fk_main_func_item_icon" style="color:#47c047"></view>
         <view class="fk_main_func_item_text">收藏小程序</view>
       </navigator>
-      <button open-type="share" url="/pages/h5/h5" class="fk_main_func_item"  wx:if="{{false}}">
+      <button open-type="share" url="/pages/h5/h5" class="fk_main_func_item" >
         <view class="iconfont icon-zhuanfa  fk_main_func_item_icon" style="color:#0062d7"></view>
         <view class="fk_main_func_item_text">分享好友</view>
       </button>
-      <navigator url="/pages/h5/h5" class="fk_main_func_item"  wx:if="{{false}}">
+      <view catchtap="noticePublicAcct" class="fk_main_func_item" wx:if="{{setting.isPublicAcctVisible}}">
         <view class="iconfont icon-weixingongzhonghao  fk_main_func_item_icon" style="color:#043649"></view>
         <view class="fk_main_func_item_text">关注公众号</view>
-      </navigator>
+      </view>
       <navigator url="/pages/suggest/suggest" class="fk_main_func_item" open-type="redirect">
         <view class="iconfont icon-tousu  fk_main_func_item_icon" style="color:#760000"></view>
         <view class="fk_main_func_item_text">投诉建议</view>
@@ -86,3 +88,5 @@
   <tab-bar class="fk_tabBar" rollbackVisible="{{_commPageConfigData.rollbackVisible}}"></tab-bar>
   <van-toast id="van-toast" />
 </view>
+
+<view class="fk_sharedCard_share" wx:if="{{setting.shareMaskVisible}}" catchtap="onShareMaskClick"></view>

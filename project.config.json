@@ -377,6 +377,13 @@
 					"pathName": "pages/productDetail/productDetail",
 					"query": "scene=qr%3D2%2C0%2C0%2C246",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "扫码进入小程序",
+					"pathName": "pages/index/index",
+					"query": "",
+					"scene": 1047
 				}
 			]
 		}

@@ -2,7 +2,19 @@
 <import src="../../templates/productSearch/productSearch.wxml"/>
 <view class="fk_page">
   <view class="fk_productSearch">
-    <mp-searchbar class="fk_productSearch_searchBar" placeholder="搜索产品" bindselectresult="selectResult" value="{{setting.inputWord}}" bindblur="searchBlur" bindclear="searchClear" cancel="{{false}}"></mp-searchbar>
+    <van-search
+      class="fk_productSearch_searchBar"
+      style="background-color:{{pageData.companyPageData.companyInfo.themeColor}}"
+      value="{{ setting.word }}"
+      placeholder="请输入搜索关键词"
+      bind:search="searchBlur"
+      bind:blur="searchBlur"
+      use-action-slot
+
+      style="background-color:{{pageData.companyPageData.companyInfo.themeColor}}"
+    >
+      <view slot="action" bind:tap="doSearch" style="color:#fff">搜索</view>
+    </van-search>
     <view class="fk_productSearch_word">当前搜索词：{{setting.word}}</view>
     <view class="fk_productSearch_main">
       <view class="fk_productSearch_product_list">
@@ -10,6 +22,6 @@
       </view>
     </view>
   </view>
-  <tab-bar class="fk_tabBar" type="company" rollbackVisible="{{_commPageConfigData.rollbackVisible}}" companyInfo="{{pageData.companyPageData.companyInfo}}" companyAID="{{setting.companyAID}}" companyBID="{{setting.companyBID}}" staffID="{{setting.staffID}}"></tab-bar>
+  <tab-bar style="background-color:{{pageData.companyPageData.companyInfo.themeColor}}" class="fk_tabBar" type="company" rollbackVisible="{{_commPageConfigData.rollbackVisible}}" companyInfo="{{pageData.companyPageData.companyInfo}}" companyAID="{{setting.companyAID}}" companyBID="{{setting.companyBID}}" staffID="{{setting.staffID}}"></tab-bar>
   <van-toast id="van-toast"/>
 </view>

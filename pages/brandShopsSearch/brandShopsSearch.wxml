@@ -1,6 +1,14 @@
 <view class="fk_page">
   <view class="fk_productCenter_header" catchtap="noop">
-    <mp-searchbar style="background-color:#0062d7" bindselectresult="selectResult" bindblur="searchBlur" bindclear="searchClear" cancel="{{false}}"></mp-searchbar>
+      <van-search
+        style="background-color:#0062d7"
+        value="{{ setting.word }}"
+        placeholder="请输入搜索关键词"
+        bind:blur="searchBlur"
+        use-action-slot
+      >
+        <view slot="action" bind:tap="doSearch" style="color:#fff">搜索</view>
+      </van-search>
   </view>
   <view class="fk_shop_list">
     <view class="fk_productSearch_word">当前搜索词：{{setting.word}}</view>

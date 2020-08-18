@@ -98,14 +98,33 @@ Page(Fai.mixin(Fai.commPageConfig, {
     });
   },
   searchBlur: function(event){
+    this.setData({
+      "setting.word": event.detail.value
+    });
+  },
+  Clear: function(event){
     this.dealSearch(event);
   },
-Clear: function(event){
-    this.dealSearch(event);
+  doSearch(){
+    let value = this.data.setting.word;
+    value = value.trim();
+      if(value.length > 0){
+        wx.navigateTo({
+          url: '/pages/brandShopsSearch/brandShopsSearch?word='+value,
+          complete(){
+            console.log(2, Math.random());
+          },
+          success(){
+            console.log(3, Math.random());
+          },
+          fail(){
+            console.log(4, Math.random());
+          }
+        });
+      }else{
+      }
   },
   dealSearch: Fai.delay(function(event){
-    console.log(Math.random());
-    console.log(Fai.commPageConfig);
     if(event.type == "blur"){
       let value = event.detail.value || '';
       value = value.trim();

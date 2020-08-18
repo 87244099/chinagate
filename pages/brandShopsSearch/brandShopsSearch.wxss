@@ -73,7 +73,7 @@
   width: 100%;
 }
 .fk_shop_list{
-  padding-top: 100rpx;
+  padding-top: 50px;
 }
 
 .fk_productCenter_header .searchbar--weui-search-bar{

@@ -4,7 +4,8 @@
     "mp-searchbar": "weui-miniprogram/searchbar/searchbar",
     "tab-bar": "/components/tab-bar/tab-bar",
     "van-dialog": "@vant/weapp/dialog/index",
-    "van-toast": "@vant/weapp/toast/index"
+    "van-toast": "@vant/weapp/toast/index",
+    "van-search": "@vant/weapp/search/index"
   },
   "navigationBarTitleText": "品牌厂商"
 }

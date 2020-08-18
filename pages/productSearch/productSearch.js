@@ -109,10 +109,15 @@ Page(Fai.mixin(Fai.commPageConfig, {
       return Promise.resolve(response);
     },
     searchBlur: function(event){
-      this.dealSearch(event);
+      this.setData({
+        "setting.word": event.detail.value
+      });
     },
     searchClear: function(event){
       this.dealSearch(event);
+    },
+    doSearch(){
+      this.searchProduct4Init(this.data.word);
     },
     dealSearch: Fai.delay(function(event){
       if(event.type == "blur"){

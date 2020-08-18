@@ -45,3 +45,23 @@ van-toast{
 .fk_artile_wxparse .wxparser--wxParser-p text{
   color: #8f8f8f;
 }
+
+
+.fk_page .van-search--withaction{
+  background: inherit !important;
+
+}
+.fk_page .van-search__action--hover{background: inherit;color: #fff;}
+
+
+.fk_sharedCard_share{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(0,0,0,.6) url(https://pf.86crk.com/Content/Images/shareBg.png) no-repeat center 0;
+  background-size: 660rpx 456rpx;
+  /* background-color: rgba(0,0,0, 0.6); */
+  z-index: 23;
+}
