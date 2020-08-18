@@ -50,10 +50,10 @@
         <view class="iconfont icon-weiguanwang  fk_main_func_item_icon" style="color:#5b5bff"></view>
         <view class="fk_main_func_item_text">中出网官网</view>
       </navigator>
-      <navigator url="/pages/h5/h5" class="fk_main_func_item" catchtap="callShareMask">
+      <view class="fk_main_func_item" catchtap="callShareMask">
         <view class="iconfont icon-xiaochengxu  fk_main_func_item_icon" style="color:#47c047"></view>
         <view class="fk_main_func_item_text">收藏小程序</view>
-      </navigator>
+      </view>
       <button open-type="share" url="/pages/h5/h5" class="fk_main_func_item" >
         <view class="iconfont icon-zhuanfa  fk_main_func_item_icon" style="color:#0062d7"></view>
         <view class="fk_main_func_item_text">分享好友</view>
