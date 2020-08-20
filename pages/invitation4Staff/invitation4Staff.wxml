@@ -2,9 +2,9 @@
   <view class="fk_invitation4Staff">
     <view class="fk_invitation4Staff_logo_wrap">
       <view class="fk_invitation4Staff_logo">
-        <image src="{{config.staticDomain}}/Content/Images/logo.png" mode="aspectFit" style="width:100%;height:100%;"></image>
+        <image src="{{config.wwwwStaticDomain}}/{{pageData.companyInfo.companyLogoUrl}}" mode="aspectFit" style="width:100%;height:100%;"></image>
       </view>
-      <view class="fk_invitation4Staff_name" wx:if="{{false}}">{{pageData.wxUserInfo.userInfo.nickName}}</view>
+      <view class="fk_invitation4Staff_name">{{pageData.companyInfo.companyName}}</view>
     </view>
     <!-- <button catchtap="oninvitation4Staff">登录测试</button> -->
     <view style="width:660rpx;margin:0 auto;">

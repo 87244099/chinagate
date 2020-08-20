@@ -61,6 +61,7 @@
 
 .fk_indexCompany_productIntro_bigTitle{
   text-align: center;
+  padding: 25rpx 0;
 }
 .fk_indexCompany_productIntro_bigTitle_text{
   font-size: 50rpx;

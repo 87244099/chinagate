@@ -13,6 +13,7 @@
 }
 .fk_trace_num{
   font-size: 36rpx;
+  line-height: 90rpx;
 }
 
 .fk_trace_list{

@@ -38,8 +38,12 @@ Page({
   },
   async loadPageData(){
     let response = await Ajax.getMemberInfo();
+
+    let memberInfo = response.data.data;
+    response = await Ajax.getInvitationVipPageData(this.data.setting.vipCustomerInvitationID);
     this.setData({
-      "setting.memberInfo": response.data.data
+      "setting.memberInfo": memberInfo,
+      "pageData.companyInfo":response.data.data.companyInfo
     });
 
     return Promise.resolve(response);

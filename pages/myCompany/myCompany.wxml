@@ -3,6 +3,6 @@
 
 <view class="fk_page">
   <template is="indexCompany" data="{{setting, pageData, config}}"></template>
-  <tab-bar class="fk_tabBar" type="company" rollbackVisible="{{_commPageConfigData.rollbackVisible}}" companyInfo="{{pageData.companyInfo}}" companyAID="{{setting.companyId}}" companyBID="0"></tab-bar>
+    <tab-bar class="fk_tabBar" type="company" style="background-color:{{pageData.companyInfo.themeColor}}" rollbackVisible="{{_commPageConfigData.rollbackVisible}}" companyInfo="{{pageData.companyInfo}}" companyAID="{{setting.companyAID}}" companyBID="{{setting.companyBID}}"  staffID="{{setting.staffID}}"></tab-bar>
   <van-toast id="van-toast" />
 </view>

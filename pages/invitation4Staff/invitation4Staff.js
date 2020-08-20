@@ -38,8 +38,12 @@ Page({
   },
   async loadPageData(){
     let response = await Ajax.getMemberInfo();
+    let memberInfo = response.data.data;
+    response = await Ajax.getInvitationStaffPageData(this.data.setting.staffID);
+    let companyInfo = response.data.data.companyInfo;
     this.setData({
-      "setting.memberInfo": response.data.data
+      "setting.memberInfo": memberInfo,
+      "pageData.companyInfo": companyInfo
     });
 
     return Promise.resolve(response);

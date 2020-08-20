@@ -56,10 +56,12 @@ Page(Fai.mixin(Fai.commPageConfig, IndexCompany, {
       tip4Success:true
     });
   },
-  previewQrCode(){
-    //这里是因为去了其他页面，所以就不需要在 onload对参数解析了
+  onShowQrCode(){
+    let url = Fai.getCurrAbsPath();
+    let urlArr = url.split("?");
     let qr = Ajax.stringifyQrCodeArg(this.data.setting);
-    console.log(qr);
-    Ajax.previewQrCode("/pages/indexCompany/indexCompany", "qr="+qr);
+    console.log("qr",qr);
+    let companyLogoUrl = this.data.config.wwwwStaticDomain + "/" + this.data.pageData.companyInfo.companyLogoUrl;
+    Ajax.previewQrCode(urlArr[0], "qr="+qr, companyLogoUrl);
   }
 }));

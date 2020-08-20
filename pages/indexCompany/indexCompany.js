@@ -5,7 +5,7 @@ const Ajax = require("../../ajax/index");
 import Toast from "../../miniprogram_npm/@vant/weapp/toast/toast";
 
 
-Page(Fai.mixin({
+Page(Fai.mixin(Fai.commPageConfig, {
 
   /**
    * 页面的初始数据
