@@ -89,4 +89,4 @@
   <van-toast id="van-toast" />
 </view>
 
-<view class="fk_sharedCard_share" wx:if="{{setting.shareMaskVisible}}" catchtap="onShareMaskClick"></view>
+<view class="fk_wxapp_collect" wx:if="{{setting.shareMaskVisible}}" catchtap="onShareMaskClick"></view>

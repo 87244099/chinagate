@@ -108,7 +108,7 @@ Page(Fai.mixin({
     value = value.trim();
     if(value.length > 0){
       wx.navigateTo({
-        url: '/pages/productSearch/productSearch?word='+value+"&companyAID="+this.data.setting.companyAID+"&companyBID="+this.data.setting.companyBID,
+        url: '/pages/productSearch/productSearch?word='+value+"&companyAID="+this.data.setting.companyAID+"&companyBID="+this.data.setting.companyBID+"&staffID="+this.data.setting.staffID,
         complete(){
           console.log(2, Math.random());
         },

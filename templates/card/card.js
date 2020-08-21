@@ -10,17 +10,21 @@ module.exports = {
     Ajax.loadWithToast(this.asyncLoadData);
   },
   async asyncLoadData(){
-      let response = await Ajax.getUserCollectInfoById(this.data.setting.memberId);
-      let cardInfo = response.data.data.userInfo;
-      
-      this.setData({
-        "pageData.cardInfo": cardInfo,
-        "setting.title": cardInfo.memberName
-      });
+    let response = await Ajax.getUserCollectInfoById(this.data.setting.memberId);
+    let cardInfo = response.data.data.userInfo;
+    
+    this.setData({
+      "pageData.cardInfo": cardInfo,
+      "setting.title": cardInfo.memberName
+    });
+
+    if(this.data.setting.title){
       wx.setNavigationBarTitle({
         title: this.data.setting.title,
-      })
-      return Promise.resolve(response);
+      });
+    }
+    
+    return Promise.resolve(response);
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
