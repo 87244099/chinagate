@@ -9,8 +9,13 @@
 }
 .fk_invitation4Staff_logo_wrap{
   width: 100%;
-  height: 535rpx;
+  /* height: 535rpx; */
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-bottom: 50rpx;
+}
+.fk_invitation4Staff_name,
+.fk_btn_wrap{
+  width:660rpx;margin:0 auto;
 }

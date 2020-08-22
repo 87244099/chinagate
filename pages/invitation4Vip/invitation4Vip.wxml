@@ -4,11 +4,11 @@
       <view class="fk_invitation4Staff_logo">
         <image src="{{config.wwwwStaticDomain}}/{{pageData.companyInfo.companyLogoUrl}}" mode="aspectFit" style="width:100%;height:100%;"></image>
       </view>
-      <view class="fk_invitation4Staff_name">{{pageData.companyInfo.companyName}}</view>
+      <view class="fk_invitation4Staff_name">你即将成为{{pageData.companyInfo.companyName}}vip会员</view>
     </view>
-    <view style="width:660rpx;margin:0 auto;">
-      <van-button wx:if="{{setting.memberInfo.memberPhone}}" type="info" block catchtap="oninvitation4Vip">成为vip</van-button>
-      <van-button wx:else type="info" block open-type="getPhoneNumber" bindgetphonenumber="oninvitation4VipWhenPhoneEmpty">成为vip</van-button>
+    <view class="fk_btn_warp" style="">
+      <van-button wx:if="{{setting.memberInfo.memberPhone}}" type="info" block catchtap="oninvitation4Vip">确定</van-button>
+      <van-button wx:else type="info" block open-type="getPhoneNumber" bindgetphonenumber="oninvitation4VipWhenPhoneEmpty">确定</van-button>
     </view>
   </view>
   <van-toast id="van-toast" />
