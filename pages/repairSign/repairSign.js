@@ -94,6 +94,8 @@ Page({
       });
 
       return Promise.resolve(response);
+    }, {
+      tip4Success: "提交成功"
     }); 
   })
 })

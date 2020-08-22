@@ -71,7 +71,7 @@ van-toast{
   height: 100%;
   top: 0;
   left: 0;
-  background: rgba(0,0,0,.6) url(https://pf.86crk.com/Content/Images/shareBg2.png) no-repeat center 0;
+  background: rgba(0,0,0,.6) url(https://pf.86crk.com/Content/Images/shareBg-2.png) no-repeat center 0;
   background-size: 660rpx 456rpx;
   /* background-color: rgba(0,0,0, 0.6); */
   z-index: 23;

@@ -14,6 +14,7 @@
   box-sizing: border-box;
   justify-content: center;
   flex-direction: row;
+  margin-top: 20rpx;
 }
 .fk_shops_item_right{
   width: 30rpx;
@@ -72,8 +73,15 @@
   top: 0;
   width: 100%;
 }
+.fk_page{
+  background: rgb(235, 235, 235);
+}
 .fk_shop_list{
-  padding-top: 100rpx;
+  padding-top: 54px;
+  background: rgb(235, 235, 235);
+  overflow: hidden;
+  box-sizing: border-box;
+  /* min-height: 100vh; */
 }
 
 .fk_productCenter_header .searchbar--weui-search-bar{
