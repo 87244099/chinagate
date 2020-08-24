@@ -66,7 +66,8 @@ Page(Fai.mixin(Fai.commPageConfig, {
         let result = response.data;
         if(result.success){
           this.setData({
-            "pageData.companyPageData":result.data
+            "pageData.companyPageData":result.data,
+            "setting.inited": true
           });
         }else{
           Toast.fail(result.msg || "网络繁忙，请稍后重试");

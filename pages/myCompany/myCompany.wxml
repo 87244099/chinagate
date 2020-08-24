@@ -1,8 +1,8 @@
 <wxs src="./myCompany.wxs" module="myCompany" />
 <import src ="../../templates/indexCompany/indexCompany.wxml"/>
 
-<view class="fk_page">
+<view class="fk_page" wx:if="{{setting.inited}}">
   <template is="indexCompany" data="{{setting, pageData, config}}"></template>
     <tab-bar class="fk_tabBar" type="company" style="background-color:{{pageData.companyInfo.themeColor}}" rollbackVisible="{{_commPageConfigData.rollbackVisible}}" companyInfo="{{pageData.companyInfo}}" companyAID="{{setting.companyAID}}" companyBID="{{setting.companyBID}}"  staffID="{{setting.staffID}}"></tab-bar>
-  <van-toast id="van-toast" />
 </view>
+<van-toast id="van-toast" />

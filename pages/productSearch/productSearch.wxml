@@ -1,6 +1,6 @@
 <!--pages/productSearch/productSearch.wxml-->
 <import src="../../templates/productSearch/productSearch.wxml"/>
-<view class="fk_page">
+<view class="fk_page" wx:if="{{setting.inited}}">
   <view class="fk_productSearch">
     <van-search
       class="fk_productSearch_searchBar"
@@ -23,5 +23,5 @@
     </view>
   </view>
   <tab-bar style="background-color:{{pageData.companyPageData.companyInfo.themeColor}}" class="fk_tabBar" type="company" rollbackVisible="{{_commPageConfigData.rollbackVisible}}" companyInfo="{{pageData.companyPageData.companyInfo}}" companyAID="{{setting.companyAID}}" companyBID="{{setting.companyBID}}" staffID="{{setting.staffID}}"></tab-bar>
-  <van-toast id="van-toast"/>
 </view>
+  <van-toast id="van-toast"/>

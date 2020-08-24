@@ -1,6 +1,6 @@
 <wxs src="../../comm.wxs" module="comm" />
 <canvas canvas-id="myCanvas" style="width:430px;height:430px;position:absolute;left:-200%;top:0%"></canvas>
-<view class="fk_page">
+<view class="fk_page" wx:if="{{setting.inited}}">
   <view class="fk_indexStaff">
     <view class="fk_indexStaff_header">
       <view class="fk_indexStaff_header_name">{{pageData.staffInfo.staffName}}</view>
@@ -118,5 +118,5 @@
     </view>
   </view>
   <tab-bar class="fk_tabBar" type="company" companyInfo="{{pageData.companyPageData.companyInfo}}" rollbackVisible="{{_commPageConfigData.rollbackVisible}}" companyAID="{{setting.companyAID}}" companyBID="{{setting.companyBID}}" staffID="{{pageData.staffInfo.staffID}}" staffInfo="{{pageData.staffInfo}}"></tab-bar>
-  <van-toast id="van-toast" />
 </view>
+  <van-toast id="van-toast" />

@@ -1,6 +1,6 @@
 <!--index.wxml-->
 <view class="fk_page">
-  <view wx:if="{{setting.publicAcctVisible}}" style="height:84px;position:fixed;left:0;top:0;width:100%;z-index:99">
+  <view style="height:84px;position:fixed;left:0;top:0;width:100%;z-index:99; {{setting.publicAcctVisible?'display:block':'display:none'}}">
     <official-account></official-account>
   </view>
   <view class="fk_banner">

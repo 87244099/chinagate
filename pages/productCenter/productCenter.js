@@ -46,8 +46,15 @@ Page(Fai.mixin({
         "pageData.productGroupList": response.data.data.productGroupList,
         "pageData.companyPageData": companyPageData
       });
+      this.setData({
+        "setting.inited":true
+      })
       return Promise.resolve(response);
-    }, "加载中...");
+    }, "加载中...").catch(()=>{
+      this.setData({
+        "setting.inited":true
+      })
+    });
   },
 
   /**

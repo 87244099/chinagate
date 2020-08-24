@@ -124,11 +124,8 @@
 }
 .fk_indexStaff_productIntro_group_main_product_item{
   width: 50%;
-  padding-left: 10rpx;
-  padding-right: 10rpx;
   margin-top: 40rpx;
   overflow: hidden;
-  padding-bottom: 8rpx;
   box-sizing: border-box;
 }
 .fk_indexStaff_productIntro_group_main_product_item_img{

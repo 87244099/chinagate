@@ -10,9 +10,10 @@
   width: 100%;
 }
 .fk_indexCompany_productIntro_group_main_product_item_img{
-  height: 106px;
   background-color: #ccc;
-  width: 100%;
+  /* 300x185 */
+  width: 334rpx;/*167*/
+  height: 206rpx;
 }
 
 .fk_indexCompany_productIntro_group_main_product_item_name{

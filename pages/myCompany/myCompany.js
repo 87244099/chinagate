@@ -37,9 +37,16 @@ Page(Fai.mixin(Fai.commPageConfig, IndexCompany, {
           title: this.data.pageData.companyInfo.companyName,
         });
       }
-      
+      this.setData({
+        "setting.inited":true
+      });
 
       return Promise.resolve(response);
+    }).catch(()=>{
+      
+      this.setData({
+        "setting.inited":true
+      });
     });
   },
   onCompanyCollect(){

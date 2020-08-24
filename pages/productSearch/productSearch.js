@@ -43,8 +43,15 @@ Page(Fai.mixin(Fai.commPageConfig, {
           "pageData.companyPageData": response.data.data
         }); 
         this.searchProduct4Init(this.data.setting.word);
+        this.setData({
+          "setting.inited": true
+        });
         return Promise.resolve(response);
-      },"加载中...");
+      },"加载中...").catch(()=>{
+        this.setData({
+          "setting.inited": true
+        });
+      });
     },
   
     /**
@@ -109,6 +116,7 @@ Page(Fai.mixin(Fai.commPageConfig, {
       return Promise.resolve(response);
     },
     searchBlur: function(event){
+      console.log("event", event);
       this.setData({
         "setting.word": event.detail.value
       });
@@ -117,7 +125,7 @@ Page(Fai.mixin(Fai.commPageConfig, {
       this.dealSearch(event);
     },
     doSearch(){
-      this.searchProduct4Init(this.data.word);
+      this.searchProduct4Init(this.data.setting.word);
     },
     dealSearch: Fai.delay(function(event){
       if(event.type == "blur"){

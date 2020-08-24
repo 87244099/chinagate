@@ -141,7 +141,8 @@ Page(Fai.mixin({
         "pageData.companyInfo": companyInfo,
         "pageData.productInfo":productInfo,
         "pageData.staffInfo": staffInfo,
-        "setting.serviceForm":serviceForm
+        "setting.serviceForm":serviceForm,
+        "setting.inited": true
       });
       
 

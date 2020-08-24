@@ -114,8 +114,10 @@
 }
 .fk_productCenter_group_main_content_product_img{
   background-color: #ccc;
-  /* width: 224rpx; */
-  height: 224rpx;
+  width: 226rpx;
+  height: 139rpx;
+  /* 600*370 */
+  /* 300x185 */
 }
 .fk_productCenter_group_main_content_product_name{
     display: block;

@@ -113,8 +113,14 @@ Page(Fai.mixin(Fai.commPageConfig, {
       wx.setNavigationBarTitle({
         title: this.data.pageData.companyInfo.companyName,
       });
+      this.setData({
+        "setting.inited":true
+      });
       return Promise.resolve(response);
     }, "加载中...").catch((err)=>{
+      this.setData({
+        "setting.inited":true
+      });
       console.log(err);
     });
   },

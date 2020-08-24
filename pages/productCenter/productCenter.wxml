@@ -1,4 +1,4 @@
-<view class="fk_page">
+<view class="fk_page" wx:if="{{setting.inited}}">
   
   <view class="fk_productCenter">
     <view class="fk_productCenter_header" catchtap="noop">
@@ -45,5 +45,5 @@
   </view>
 
   <tab-bar class="fk_tabBar" type="company" companyInfo="{{pageData.companyPageData.companyInfo}}" companyAID="{{setting.companyAID}}" companyBID="{{setting.companyBID}}" staffID="{{setting.staffID}}" style="background-color:{{pageData.companyPageData.companyInfo.themeColor}}"></tab-bar>
-  <van-toast id="van-toast" />
 </view>
+  <van-toast id="van-toast" />
