@@ -100,15 +100,22 @@ Page(Fai.mixin(Fai.commPageConfig, {
     Ajax.requestWithToast(async()=>{
 
       let response = {};
+      let companyAPageData = {};
+      let companyBPageData = {};
+      let companyPageData = {};
       if(this.data.setting.companyBID >0){
         response = await Ajax.getCompanyBIndexPageData(this.data.setting.companyBID);
+        companyPageData = companyBPageData = response.data.data;
       }else{
         response = await Ajax.getCompanyAIndexPageData(this.data.setting.companyAID);
+        companyPageData = companyAPageData = response.data.data;
       }
       
 
       this.setData({
-        "pageData":response.data.data
+        "pageData":companyPageData,
+        "pageData.companyAInfo": companyAPageData.companyInfo,
+        "pageData.companyBInfo": companyBPageData.companyInfo
       });
       wx.setNavigationBarTitle({
         title: this.data.pageData.companyInfo.companyName,

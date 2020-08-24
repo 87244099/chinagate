@@ -48,10 +48,6 @@ Page(Fai.mixin(Fai.commPageConfig, {
 
     this.loadNextArticles();
 
-    // Fai.getQrCode("pages/index/index", scene);
-
-    // Fai.login();
-
     (async()=>{
       let globalData = await Ajax.getGlobalData();
       this.setData({
@@ -123,34 +119,20 @@ Page(Fai.mixin(Fai.commPageConfig, {
   async onJumpToMyCompany(){
     
   },
-  async jump4MyCompany(){
-    console.log(111111);
-    let response;
-    try{
-      response = await Ajax.login();
-      response = await Ajax.getMemberInfo();
-      let memberInfo = response.data.data;
-      if(memberInfo.staffID==0){
-        wx.navigateTo({
-          "url": "/pages/createCompany/createCompany"
-        });
-      }else{
-        wx.navigateTo({
-          "url": "/pages/myCompany/myCompany"
-        });
-      }
+  async jump4MyCompany(){//能走到这说明是注册过的。
+    let response = await Ajax.getMemberInfo();
+    let memberInfo = response.data.data;
+    if(memberInfo.staffID==0){
+      wx.navigateTo({
+        "url": "/pages/createCompany/createCompany"
+      });
+    }else{
+      wx.navigateTo({
+        "url": "/pages/myCompany/myCompany"
+      });
+    }
       
 
-    }catch(response){
-      if(response){
-        let result = response.data;
-        if(result.rt === 1){//不存在
-          wx.navigateTo({
-            "url": "/pages/createCompany/createCompany"
-          });
-        }
-      }
-    }
   },
   onShareAppMessage: function () {
     return {

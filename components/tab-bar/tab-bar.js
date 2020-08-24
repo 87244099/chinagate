@@ -89,49 +89,6 @@ Component({
 
       
     },
-    onJumpToPersonal(event){
-      if(event.detail.errMsg == "getUserInfo:ok"){
-        if(getApp().globalData.isLogin){
-          wx.redirectTo({
-            url: '/pages/personal/personal',
-          });
-        }else{
-          let detail = event.detail;
-          (async()=>{
-            let response;
-            try{
-              response = await Ajax.login();
-              wx.redirectTo({
-                url: '/pages/personal/personal',
-              });
-
-            }catch(response){
-              if(response){
-                let result = response.data;
-                if(result.rt === 1){//不存在
-                  Toast.loading("跳转中...");
-                    //走注册流程
-                    let code = await Fai.getLoginCodeNullIsEmpty();
-                    response = await Ajax.reg(code, detail.userInfo.nickName, detail.userInfo.avatarUrl);
-                    response = await Ajax.login();
-                    wx.redirectTo({
-                      url: '/pages/personal/personal',
-                    });
-                    Toast.clear();
-                    return;
-                }
-                Toast.fail(response.data.msg);
-              }else{
-                Toast.fail("网络繁忙,请稍后重试");
-              }
-            }
-            return Promise.resolve(response);
-          })();
-        }
-      }
-
-      
-    },
     jump4Personal(){
       wx.redirectTo({
         url: '/pages/personal/personal',

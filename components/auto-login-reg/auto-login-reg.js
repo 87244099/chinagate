@@ -35,7 +35,7 @@ Component({
           let detail = event.detail;
             let response;
             try{
-              response = await Ajax.login();
+              response = await Ajax.login(detail);
               this.triggerEvent("jump");
   
             }catch(response){
@@ -46,8 +46,8 @@ Component({
                   Toast.loading("跳转中...");
                     //走注册流程
                     let code = await Fai.getLoginCodeNullIsEmpty();
-                    response = await Ajax.reg(code, detail.userInfo.nickName, detail.userInfo.avatarUrl);
-                    response = await Ajax.login();
+                    response = await Ajax.reg(code, detail.userInfo.nickName, detail.userInfo.avatarUrl, detail);
+                    response = await Ajax.login(detail);
                     this.triggerEvent("jump");
                     Toast.clear();
                     return;

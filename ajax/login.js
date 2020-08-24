@@ -1,12 +1,17 @@
 const Fai = require("../utils/util");
 //登录后自动去个人中心
-async function login(){
+async function login(userDetail){
+  const {
+    encryptedData, iv
+  } = userDetail;
   let code = await Fai.getLoginCodeNullIsEmpty();
   return new Promise((resolve, reject)=>{
-    Fai.request({
+    Fai.requestPost({
       url:"/ajax/logAction/action?cmd=login",
       data: {
-        code: code
+        code: code,
+        encryptedData, 
+        iv
       },
       success(response){
         let result = response.data;
@@ -25,32 +30,6 @@ async function login(){
 
   });
 }
-// 检查用户是否存在
-async function checkUserExist(){
-  await login();//自动登录
-  return new Promise((resolve, reject)=>{
-    Fai.request({
-      url: "/ajax/logAction/action?cmd=getMemberInfo",
-      success:(response)=>{
-        let result = response.data;
-        if(result.success){
-          resolve(true);
-        }else{
-          if(result.rt == 1){
-
-          }else{
-            reject(response);
-          }
-        }
-      },
-      fail:()=>{
-        reject();
-      }
-    });
-  });
-
-}
-
 async function getMemberInfo(){
   return new Promise((resolve, reject)=>{
     Fai.request({
@@ -91,13 +70,19 @@ async function getMemberInfoById(id){
   });
 }
 
-async function reg(code, nickName, avatarPhoto){
+async function reg(code, nickName, avatarPhoto, userDetail){
+  const {
+    encryptedData, 
+    iv,
+  } = userDetail;
   return Fai.promiseRequestPost({
     url:"/ajax/logAction/action?cmd=reg",
     data:{
       code,
       nickName,
-      avatarPhoto
+      avatarPhoto,
+      encryptedData, 
+      iv
     }
   });
 }
