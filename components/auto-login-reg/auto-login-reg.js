@@ -29,35 +29,33 @@ Component({
     async autoLoginReg(event){
       let url = this.data.url;
       if(event.detail.errMsg == "getUserInfo:ok"){
-        if(getApp().globalData.isLogin){
-          this.triggerEvent("jump");
-        }else{
+        // if(getApp().globalData.isLogin){
+        //   this.triggerEvent("jump");
+        // }else{
           let detail = event.detail;
             let response;
             try{
               response = await Ajax.login(detail);
               this.triggerEvent("jump");
-  
             }catch(response){
-              console.log("response", response);
               if(response){
                 let result = response.data;
                 if(result.rt === 1){//不存在
                   Toast.loading("跳转中...");
-                    //走注册流程
-                    let code = await Fai.getLoginCodeNullIsEmpty();
-                    response = await Ajax.reg(code, detail.userInfo.nickName, detail.userInfo.avatarUrl, detail);
-                    response = await Ajax.login(detail);
-                    this.triggerEvent("jump");
-                    Toast.clear();
-                    return;
+                  //走注册流程
+                  let code = await Fai.getLoginCodeNullIsEmpty();
+                  response = await Ajax.reg(code, detail.userInfo.nickName, detail.userInfo.avatarUrl, detail);
+                  response = await Ajax.login(detail);
+                  this.triggerEvent("jump");
+                  Toast.clear();
+                  return;
                 }
                 Toast.fail(response.data.msg);
               }else{
                 Toast.fail("网络繁忙,请稍后重试");
               }
             }
-        }
+        // }
       }
     }
   }
