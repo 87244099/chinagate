@@ -115,7 +115,8 @@ async function loginWithAutoReg(data){
       iv,
       encryptedData
     }
-  })  
+  }).then(()=>{ 
+    getApp().globalData.isLogin=true; });
 }
 
 module.exports = {

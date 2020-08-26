@@ -92,9 +92,13 @@ function trans4AutoLogin(option){
       if(option.authCheck){
         if(result.rt === -1){//未登录
           getApp().globalData.isLogin=false;
+          let loginUrl = '/pages/login/login';
+          if(option.authCheckBackUrl){
+            loginUrl = '/pages/login/login?backUrl='+encodeURIComponent(option.authCheckBackUrl);
+          }
           //跳转到登录页
           wx.redirectTo({
-            url: '/pages/login/login',
+            url: loginUrl,
           });
           return;
         }

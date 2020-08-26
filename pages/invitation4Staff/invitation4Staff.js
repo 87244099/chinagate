@@ -20,6 +20,8 @@ Page({
    */
   onLoad: function (options) {
 
+    Ajax.checkLoginWithRedirect();
+
     let sharedOption = Fai.parseSharedOption(options);
 
     this.setData({

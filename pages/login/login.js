@@ -8,6 +8,9 @@ Page({
    * 页面的初始数据
    */
   data: {
+    setting: {
+      backUrl: ""
+    },
     pageData:{
       wxUserInfo:{}
     },
@@ -17,7 +20,10 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function () {
+  onLoad: function (option) {
+    this.setData({
+      "setting.backUrl": decodeURIComponent(option.backUrl)
+    });
     wx.getUserInfo({
       success:(response)=>{
         if(response.errMsg == "getUserInfo:ok"){
@@ -80,14 +86,16 @@ Page({
   onShareAppMessage: function () {
 
   },
-  onLogin: async function(){
-    wx.redirectTo({
-      url: '/pages/personal/personal',
-    });
-  },
   jump4Personal(){
-    wx.navigateTo({
-      url: '/pages/personal/personal',
-    });
+    if(this.data.setting.backUrl){
+      wx.navigateTo({
+        url: this.data.setting.backUrl,
+      });
+    }else{
+      wx.navigateTo({
+        url: '/pages/personal/personal',
+      });
+    }
+   
   }
 })
