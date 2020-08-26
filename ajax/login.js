@@ -87,11 +87,42 @@ async function reg(code, nickName, avatarPhoto, userDetail){
   });
 }
 
+async function checkUserExist(){
+  let code = await Fai.getLoginCodeNullIsEmpty();
+  console.log("code", code);
+  return Fai.promiseRequest({
+    url: "/ajax/logAction/action?cmd=checkUserExist",
+    data: {
+      code: code
+    }
+  });
+}
 
+async function loginWithAutoReg(data){
+  const { 
+    code,
+    nickName,
+    avatarPhoto,
+    iv,
+    encryptedData
+  } = data;
+  return Fai.promiseRequestPost({
+    url: "/ajax/logAction/action?cmd=loginWithAutoReg",
+    data: {
+      code,
+      nickName,
+      avatarPhoto,
+      iv,
+      encryptedData
+    }
+  })  
+}
 
 module.exports = {
   login,
   getMemberInfo,
   getMemberInfoById,
-  reg
+  reg,
+  checkUserExist,
+  loginWithAutoReg
 };

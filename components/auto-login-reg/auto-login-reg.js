@@ -33,23 +33,17 @@ Component({
         //   this.triggerEvent("jump");
         // }else{
           let detail = event.detail;
-            let response;
             try{
-              response = await Ajax.login(detail);
+              await Ajax.loginWithAutoReg({
+                code: await Fai.getLoginCodeNullIsEmpty(),
+                nickName: detail.userInfo.nickName,
+                avatarPhoto: detail.userInfo.avatarUrl,
+                iv:detail.iv,
+                encryptedData: detail.encryptedData
+              });
               this.triggerEvent("jump");
             }catch(response){
               if(response){
-                let result = response.data;
-                if(result.rt === 1){//不存在
-                  Toast.loading("跳转中...");
-                  //走注册流程
-                  let code = await Fai.getLoginCodeNullIsEmpty();
-                  response = await Ajax.reg(code, detail.userInfo.nickName, detail.userInfo.avatarUrl, detail);
-                  response = await Ajax.login(detail);
-                  this.triggerEvent("jump");
-                  Toast.clear();
-                  return;
-                }
                 Toast.fail(response.data.msg);
               }else{
                 Toast.fail("网络繁忙,请稍后重试");
