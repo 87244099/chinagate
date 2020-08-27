@@ -1,4 +1,4 @@
-// pages/login/login.js
+
 const Ajax = require("../../ajax/index");
 const Fai = require("../../utils/util");
 const config = require("../../utils/config");

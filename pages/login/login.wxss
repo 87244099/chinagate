@@ -1,4 +1,4 @@
-/* pages/login/login.wxss */
+
 .fk_login_logo{
   width: 200rpx;
   height: 200rpx;

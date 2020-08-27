@@ -427,6 +427,7 @@ async function genCompanyQrCodeBase64(imgBase64, companyLogoUrl){
 function checkLoginWithRedirect(url){
   url = url || Fai.getCurrAbsPath();
   if(!getApp().globalData.isLogin){
+    
     wx.navigateTo({
       url: '/pages/login/login?backUrl='+encodeURIComponent(url),
     })

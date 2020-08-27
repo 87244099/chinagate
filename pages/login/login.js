@@ -1,7 +1,6 @@
-// pages/login/login.js
+
 const Ajax = require("../../ajax/index");
 const config = require("../../utils/config");
-import Toast from "../../miniprogram_npm/@vant/weapp/toast/toast";
 Page({
 
   /**
@@ -21,8 +20,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (option) {
+    console.log("backUrl",option.backUrl);
+    console.log("decode", decodeURIComponent(option.backUrl));
     this.setData({
-      "setting.backUrl": decodeURIComponent(option.backUrl)
+      "setting.backUrl": option.backUrl ? decodeURIComponent(option.backUrl) : ""
     });
     wx.getUserInfo({
       success:(response)=>{
