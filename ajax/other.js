@@ -423,16 +423,6 @@ async function genCompanyQrCodeBase64(imgBase64, companyLogoUrl){
     });
   })
 }
-//检查是否登录，没有登录则直接跳转登录页，带着回退链接
-function checkLoginWithRedirect(url){
-  url = url || Fai.getCurrAbsPath();
-  if(!getApp().globalData.isLogin){
-    
-    wx.navigateTo({
-      url: '/pages/login/login?backUrl='+encodeURIComponent(url),
-    })
-  }
-}
 
 module.exports = {
   getQrCode,
@@ -449,6 +439,5 @@ module.exports = {
   getTrace,
   parseQrCodeArg,
   stringifyQrCodeArg,
-  getUserCollectInfoById,
-  checkLoginWithRedirect
+  getUserCollectInfoById
 };

@@ -18,19 +18,19 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  async onLoad (options) {
 
-    Ajax.checkLoginWithRedirect();
-
-    let sharedOption = Fai.parseSharedOption(options);
-
-    this.setData({
-      "setting.staffID":parseInt(sharedOption.staffID || 0),
-      "setting.currUrl": Fai.getCurrAbsPath(),
-      "setting.scene": options.scene
-    });
-    this.setCode();
-    Ajax.requestWithToast(this.loadPageData);
+    let isLogin = await Ajax.checkLoginWithRedirect();
+    if(isLogin){
+      let sharedOption = Fai.parseSharedOption(options);
+      this.setData({
+        "setting.staffID":parseInt(sharedOption.staffID || 0),
+        "setting.currUrl": Fai.getCurrAbsPath(),
+        "setting.scene": options.scene
+      });
+      this.setCode();
+      Ajax.requestWithToast(this.loadPageData);
+    }
   },
   async setCode(){
     let code = await Fai.getLoginCodeNullIsEmpty();

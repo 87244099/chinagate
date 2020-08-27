@@ -119,11 +119,33 @@ async function loginWithAutoReg(data){
     getApp().globalData.isLogin=true; });
 }
 
+async function checkLogin(){
+  return Fai.promiseRequest({
+    url:"/ajax/logAction/action?cmd=checkLogin",
+  });
+}
+
+
+//检查是否登录，没有登录则直接跳转登录页，带着回退链接
+async function checkLoginWithRedirect(url){
+  url = url || Fai.getCurrAbsPath();
+  let response = await checkLogin();
+  if(!response.data.data.isLogin){
+    wx.navigateTo({
+      url: '/pages/login/login?backUrl='+encodeURIComponent(url),
+    })
+  }
+
+  return response.data.data.isLogin;
+}
+
 module.exports = {
   login,
   getMemberInfo,
   getMemberInfoById,
   reg,
   checkUserExist,
-  loginWithAutoReg
+  loginWithAutoReg,
+  checkLogin,
+  checkLoginWithRedirect
 };
