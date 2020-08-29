@@ -30,7 +30,7 @@
 		"uglifyFileName": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.8.1",
+	"libVersion": "2.11.3",
 	"appid": "wx41ef0a04dcd2c3ad",
 	"projectname": "chinagate",
 	"debugOptions": {

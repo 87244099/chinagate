@@ -67,13 +67,50 @@ module.exports = {
 
   },
 
+  onLoad(){
+    wx.showShareMenu({
+      withShareTicket:true,
+      menus:['shareAppMessage','shareTimeline']
+    })
+  },
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function() {
+  onShareAppMessage: function(res) {
+    console.log("share", res);
+    let that = this;
     let data = {
       title: this.data.pageData.cardInfo.memberName,
       path: "pages/sharedCard/sharedCard?id="+ this.data.pageData.cardInfo.memberID,
+      success: function (res) {
+        if (res.errMsg == 'shareAppMessage:ok') {
+          if (res.hasOwnProperty('shareTickets')) {
+            console.log(res.shareTickets[0]);
+            //分享到群
+            that.data.qunshare = 1;
+            that.data.geshare = 1;
+          } else {
+            // 分享到个人
+            that.data.geshare = 1;
+          }
+          wx.showToast({
+            title: '分享成功',
+            icon: 'success',
+            duration: 500
+          });
+          console.log("shareAppMessage:ok"+ "qun"+ that.data.qunshare +"geren"+ that.data.geshare)
+        }
+      },
+      fail: function (res) {
+        if (res.errMsg == 'shareAppMessage:fail cancel') {
+          wx.showToast({
+            title: '分享失败',
+            icon: 'loading',
+            duration: 500
+          })
+        }
+        console.log("shareAppMessage:err")
+      }
     };
     return data;
   },

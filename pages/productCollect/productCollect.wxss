@@ -54,7 +54,7 @@
   align-items: center;
 }
 .fk_productSearch_product_priceInfo_label{
-  width: 172rpx;
+  width: 185rpx;
   text-align: right;
 }
 .fk_productSearch_product_priceInfo_value{

@@ -10,5 +10,8 @@ App({
     this.globalData.launchOptions = options;
     Ajax.checkUserExist();
     
+  },
+  onShow(options){
+    console.log("show share", JSON.stringify(options));
   }
 });
