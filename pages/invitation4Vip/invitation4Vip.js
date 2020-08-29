@@ -19,15 +19,16 @@ Page({
    * 生命周期函数--监听页面加载
    */
   async onLoad (options) {
+    
+    let sharedOption = Fai.parseSharedOption(options);
+    this.setData({
+      "setting.vipCustomerInvitationID":parseInt(sharedOption.vipCustomerInvitationID || 0),
+      "setting.currUrl": Fai.getCurrAbsPath(),
+      "setting.scene": options.scene
+    });
+    this.setCode();
     let isLogin = await Ajax.checkLoginWithRedirect();
     if(isLogin){
-      let sharedOption = Fai.parseSharedOption(options);
-      this.setData({
-        "setting.vipCustomerInvitationID":parseInt(sharedOption.vipCustomerInvitationID || 0),
-        "setting.currUrl": Fai.getCurrAbsPath(),
-        "setting.scene": options.scene
-      });
-      this.setCode();
       Ajax.requestWithToast(this.loadPageData, {
         message: "加载中..."
       });
@@ -129,7 +130,7 @@ Page({
   },
   oninvitation4Vip: async function(){
     Ajax.requestWithToast(async()=>{
-      let response = Ajax.memberUpToVipA(this.data.setting.vipCustomerInvitationID, this.data.setting.memberInfo.memberPhone);
+      let response = await Ajax.memberUpToVipA(this.data.setting.vipCustomerInvitationID, this.data.setting.memberInfo.memberPhone);
       wx.navigateTo({
         url: '/pages/personal/personal',
       });

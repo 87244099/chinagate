@@ -19,16 +19,16 @@ Page({
    * 生命周期函数--监听页面加载
    */
   async onLoad (options) {
+    let sharedOption = Fai.parseSharedOption(options);
+    this.setData({
+      "setting.staffID":parseInt(sharedOption.staffID || 0),
+      "setting.currUrl": Fai.getCurrAbsPath(),
+      "setting.scene": options.scene
+    });
+    this.setCode();
 
     let isLogin = await Ajax.checkLoginWithRedirect();
     if(isLogin){
-      let sharedOption = Fai.parseSharedOption(options);
-      this.setData({
-        "setting.staffID":parseInt(sharedOption.staffID || 0),
-        "setting.currUrl": Fai.getCurrAbsPath(),
-        "setting.scene": options.scene
-      });
-      this.setCode();
       Ajax.requestWithToast(this.loadPageData);
     }
   },
@@ -127,7 +127,7 @@ Page({
   },
   oninvitation4Staff: async function(){
     Ajax.requestWithToast(async()=>{
-      let response = Ajax.memberUpToStaff(this.data.setting.staffID, this.data.setting.memberInfo.memberPhone);
+      let response = await Ajax.memberUpToStaff(this.data.setting.staffID, this.data.setting.memberInfo.memberPhone);
       wx.navigateTo({
         url: '/pages/personal/personal',
       })
