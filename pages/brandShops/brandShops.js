@@ -111,15 +111,7 @@ Page(Fai.mixin(Fai.commPageConfig, {
       if(value.length > 0){
         wx.navigateTo({
           url: '/pages/brandShopsSearch/brandShopsSearch?word='+value,
-          complete(){
-            console.log(2, Math.random());
-          },
-          success(){
-            console.log(3, Math.random());
-          },
-          fail(){
-            console.log(4, Math.random());
-          }
+          
         });
       }else{
       }
@@ -131,15 +123,7 @@ Page(Fai.mixin(Fai.commPageConfig, {
       if(value.length > 0){
         wx.navigateTo({
           url: '/pages/brandShopsSearch/brandShopsSearch?word='+value,
-          complete(){
-            console.log(2, Math.random());
-          },
-          success(){
-            console.log(3, Math.random());
-          },
-          fail(){
-            console.log(4, Math.random());
-          }
+          
         });
       }else{
       }

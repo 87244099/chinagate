@@ -93,7 +93,6 @@ Page({
       success:(response)=>{
         let result = response.data;
         if(result.success){
-          console.log("result", result);
           setting.companyList.push(...result.data.companyList)
           this.setData({
             "setting.pageNo": setting.pageNo+1,
@@ -160,7 +159,6 @@ Page({
   //跳转到对应的名片
   onJumpCard(event){
     let item = event.currentTarget.dataset.item;
-    console.log("item", item);
     if(item.collectSubTypeID == 1){//个人名片
       wx.navigateTo({
         url: '/pages/sharedCard/sharedCard?id='+item.id,

@@ -27,7 +27,19 @@ Page(Fai.mixin(Fai.commPageConfig, {
     this.setData({
       "setting.companyAID": parseInt(options.companyAID) || 0,
       "setting.companyBID": parseInt(options.companyBID) || 0,
+      "setting.sharedOpenId": options.sharedOpenId,
       "setting.staffID": parseInt(options.staffID) || -1,
+    });
+    console.log(this.data.setting);
+    
+    Fai.Waiter.then("onOpenIdLoaded", ()=>{
+      Ajax.reportVisit4Share({
+        typeID: 3,
+        xcxOpenID:this.data.setting.sharedOpenId,
+        merchantForLevelAID:this.data.setting.companyAID,
+        merchantForLevelBID:this.data.setting.companyBID,
+        staffID:this.data.setting.staffID,
+      });
     });
 
     Toast.loading({
@@ -127,10 +139,20 @@ Page(Fai.mixin(Fai.commPageConfig, {
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
+    let currUrl = Fai.getCurrAbsPath();
+    let sharedOpenId = getApp().globalData.openId;
+    currUrl = Fai.addPageQuery(currUrl, "sharedOpenId", sharedOpenId);
+    
+    Ajax.reportShare({
+      typeID : 3,//员工
+      merchantForLevelAID: this.data.setting.companyAID,
+      merchantForLevelBID: this.data.setting.companyBID,
+      staffID: this.data.setting.staffID
+    });
+
     return {
-      title: 111,
-      path: Fai.getCurrAbsPath()
-    };
+      path : currUrl,
+    }
   },
   callPhone(){
     wx.makePhoneCall({

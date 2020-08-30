@@ -63,7 +63,6 @@ Page({
     let field = dataset.field;
     let value = event.detail.value;
 
-    console.log(field, value, event);
     this.setData({
       [`setting.form.${field}`]:value
     });
@@ -72,7 +71,6 @@ Page({
     let dataset = event.currentTarget.dataset;
     let field = dataset.field;
     let value = event.detail.value;
-    console.log();
     this.setData({
       [`setting.form.${field}`]: event.detail
     });
@@ -198,7 +196,6 @@ Page({
     let provinceList = setting.provinceList;
     if(provinceList.length<=0){
       let response = await this.loadProvince();
-      console.log("response", response);
       provinceList = response.data.data.provinceList;
       this.setData({
         "setting.provinceList": provinceList
@@ -217,7 +214,6 @@ Page({
     let cityList = setting.cityList || [];
     if(cityList.length<=0){
       let response = await this.loadCity(setting.provinceList[setting.provinceIndex].id);
-      console.log("response", response);
       cityList = response.data.data.cityList;
       this.setData({
         "setting.cityList": cityList

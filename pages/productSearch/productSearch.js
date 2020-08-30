@@ -116,7 +116,6 @@ Page(Fai.mixin(Fai.commPageConfig, {
       return Promise.resolve(response);
     },
     searchBlur: function(event){
-      console.log("event", event);
       this.setData({
         "setting.word": event.detail.value
       });

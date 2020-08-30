@@ -77,7 +77,6 @@ module.exports = {
    * 用户点击右上角分享
    */
   onShareAppMessage: function(res) {
-    console.log("share", res);
     let that = this;
     let data = {
       title: this.data.pageData.cardInfo.memberName,

@@ -1,6 +1,7 @@
 const Fai = require("../utils/util");
 
 
+
 async function getQrCode(page, scene){
   return new Promise((resolve,reject)=>{
     Fai.request({
@@ -362,7 +363,6 @@ async function genCompanyQrCodeBase64(imgBase64, companyLogoUrl){
           src: filePath,
           success:(res)=>{
             var ctx = wx.createCanvasContext('myCanvas');
-            console.log("ctx", ctx);
             const sysInfo = wx.getSystemInfoSync();
             let windowWidth = sysInfo.windowWidth;
             let ratio = windowWidth/750;
@@ -389,7 +389,6 @@ async function genCompanyQrCodeBase64(imgBase64, companyLogoUrl){
                     filePath: res.tempFilePath, //选择图片返回的相对路径
                     encoding: 'base64', //编码格式
                     success: res => { //成功的回调
-                      // console.log('data:image/png;base64,' + res.data);
                       resolve(res.data);
                     },
                     fail:reject
@@ -423,6 +422,91 @@ async function genCompanyQrCodeBase64(imgBase64, companyLogoUrl){
     });
   })
 }
+//分享行为上报
+async function reportShare(data){
+  const app = getApp();
+  data = data || {};
+  const {
+    typeID,
+    merchantForLevelAID,
+    merchantForLevelBID,
+    staffID,
+    subID
+  } = data;
+
+  return Fai.promiseRequestPost({
+    url: "/ajax/common/getCommData?cmd=reportShare",
+    data: {
+      typeID: typeID||0,
+      merchantForLevelAID: merchantForLevelAID||0,
+      merchantForLevelBID: merchantForLevelBID||0,
+      staffID: staffID||0,
+      xcxOpenID: app.globalData.openId||"",
+      subID: subID||0
+    }
+  });
+}
+
+//分享行为上报
+async function reportVisit4Share(data){
+  const app = getApp();
+
+  data = data || {};
+  const {
+    xcxOpenID,
+    typeID,
+    merchantForLevelAID,
+    merchantForLevelBID,
+    staffID,
+    subID
+  } = data;
+  /*
+    分享到单人是1007
+    分享到群是：1044
+    去掉shareTicket 后分享到群：1008
+  */
+  // //进入只统计这2种渠道的流量
+  // if(![1044, 1007, 1008].includes(app.globalData.showOptions.scene)){
+  //   return Promise.resolve();
+  // }
+  // // 如果没有当前的访问入口的分享者openId，则不上报
+  // if(!xcxOpenID){
+  //   return Promise.resolve();
+  // }
+
+  let sourceTypeID = 1;
+  if([1044, 1008].includes(app.globalData.showOptions.scene)){
+    sourceTypeID = 2;
+  }
+  return Fai.promiseRequestPost({
+    url: "/ajax/common/getCommData?cmd=reportVisit4Share",
+    data: {
+      sourceTypeID:sourceTypeID||0,
+      xcxAccessOpenID:app.globalData.openId,//访问者openid
+      typeID:typeID||0,
+      merchantForLevelAID:merchantForLevelAID||0,
+      merchantForLevelBID:merchantForLevelBID||0,
+      staffID:staffID||0,
+      xcxOpenID:xcxOpenID,//分享者openid
+      subID:subID||0
+    }
+  });
+}
+
+async function getOpenIdByCode(code){
+  return Fai.promiseRequestPost({
+    url:"/ajax/common/getCommData?cmd=getOpenIdByCode",
+    data: {
+      code
+    }
+  })
+}
+
+async function getShareRank(){
+  return Fai.promiseRequestPost({
+    url: "/ajax/common/getCommData?cmd=getShareRank"
+  });
+}
 
 module.exports = {
   getQrCode,
@@ -439,5 +523,9 @@ module.exports = {
   getTrace,
   parseQrCodeArg,
   stringifyQrCodeArg,
-  getUserCollectInfoById
+  getUserCollectInfoById,
+  reportShare,
+  reportVisit4Share,
+  getOpenIdByCode,
+  getShareRank
 };

@@ -77,7 +77,6 @@ Page({
     let dataset = event.currentTarget.dataset;
     let field = dataset.field;
     let value = event.detail.value;
-    console.log(field, value);
     this.setData({
       [`setting.form.${field}`]:value
     })

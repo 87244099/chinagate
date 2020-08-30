@@ -41,7 +41,6 @@ Page({
       
       let cropperOpt = this.data.cropperOpt;
       cropperOpt.src = memberInfo.avatarPhoto;
-      console.log(cropperOpt.src);
       if (cropperOpt.src) {
         this.cropper = new WeCropper(cropperOpt)
           .on('ready', (ctx) => {

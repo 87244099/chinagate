@@ -29,6 +29,9 @@ Page(Fai.mixin(Fai.commPageConfig, {
   onLoad: function () {
     this.loadPageData();
 
+    Ajax.reportShare();
+    
+
     Ajax.setNormalTitle("productCollect");
   },
 
@@ -87,6 +90,9 @@ Page(Fai.mixin(Fai.commPageConfig, {
     Ajax.requestWithToast(async()=>{
       let response = await Ajax.getMemberInfo();
       let memberInfo = response.data.data;
+
+      let code = await Fai.getLoginCodeNullIsEmpty();
+      response = Ajax.getOpenIdByCode(code);
 
       response = await this.loadCollectedProducts(
         memberInfo.memberID,

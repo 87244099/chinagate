@@ -64,10 +64,20 @@ function isPaginationEnd(pageNo, pageSize, totalSize){
   return pageNo*pageSize>=totalSize;
 }
 
+function addPageQuery(url, name, value){
+  let urlArr = url.split("?");
+  if(urlArr.length===1){
+    return urlArr[0] + "?" + (name+"="+value);
+  }else{
+    return url + "&" + (name+"="+value);
+  }
+}
+
 module.exports = {
   commPageConfig,
   getCurrAbsPath,
   getCurrPage,
   isPaginationEnd,
-  isPaginationEndBySetting
+  isPaginationEndBySetting,
+  addPageQuery
 };

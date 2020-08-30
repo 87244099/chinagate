@@ -38,7 +38,19 @@ Page(Fai.mixin({
       "setting.productId": parseInt(options.id) || 0,
       "setting.companyAID": parseInt(options.companyAID) || 0,
       "setting.companyBID": parseInt(options.companyBID) || 0,
+      "setting.sharedOpenId": options.sharedOpenId,
       "setting.staffID": parseInt(options.staffID) || 0
+    });
+
+    
+    Fai.Waiter.then("onOpenIdLoaded", ()=>{
+      Ajax.reportVisit4Share({
+        typeID: 4,//一级商家、二级商家,
+        merchantForLevelAID: this.data.setting.companyAID,
+        merchantForLevelBID: this.data.setting.companyBID,
+        xcxOpenID: this.data.setting.sharedOpenId,
+        subID: this.data.setting.productId
+      });
     });
     this.loadPageData();
   },
@@ -89,7 +101,21 @@ Page(Fai.mixin({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
+    console.log(11111111);
+    let currUrl = Fai.getCurrAbsPath();
+    let sharedOpenId = getApp().globalData.openId;
+    currUrl = Fai.addPageQuery(currUrl, "sharedOpenId", sharedOpenId);
+    
+    let reportData = {
+      typeID : 4,//产品详情
+      merchantForLevelAID: this.data.setting.companyAID,
+      merchantForLevelBID: this.data.setting.companyBID,
+      subID: this.data.setting.productId
+    };
+    Ajax.reportShare(reportData);
+    return {
+      path : currUrl,
+    }
   },
   loadPageData: async function(){
       

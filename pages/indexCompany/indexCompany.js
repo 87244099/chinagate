@@ -2,6 +2,7 @@
 const Fai = require("../../utils/util");
 const config = require("../../utils/config");
 const Ajax = require("../../ajax/index");
+const app = getApp();
 import Toast from "../../miniprogram_npm/@vant/weapp/toast/toast";
 
 
@@ -27,9 +28,21 @@ Page(Fai.mixin(Fai.commPageConfig, {
       "setting.companyAID": parseInt(options.companyAID) || 0,
       "setting.companyBID": parseInt(options.companyBID) || 0,
       "setting.staffID": parseInt(options.staffID) || 0,
+      "setting.sharedOpenId": options.sharedOpenId,
       "options":JSON.stringify(options),
       "currPath": Fai.getCurrAbsPath()
     })
+    // 分享行为会触发onShow，只能放onload了，避免重复统计
+    Fai.Waiter.then("onOpenIdLoaded", ()=>{
+      Ajax.reportVisit4Share({
+        typeID: this.data.setting.companyBID>0 ? 2 : 1,//一级商家、二级商家,
+        merchantForLevelAID: this.data.setting.companyAID,
+        merchantForLevelBID: this.data.setting.companyBID,
+        xcxOpenID: this.data.setting.sharedOpenId
+      });
+    });
+
+
     this.loadIndexCompanyPageData();
   },
   
@@ -59,7 +72,6 @@ Page(Fai.mixin(Fai.commPageConfig, {
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
   },
 
   /**
@@ -94,7 +106,19 @@ Page(Fai.mixin(Fai.commPageConfig, {
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
+    let currUrl = Fai.getCurrAbsPath();
+    let sharedOpenId = app.globalData.openId;
+    currUrl = Fai.addPageQuery(currUrl, "sharedOpenId", sharedOpenId);
+    
+    let reportData = {
+      typeID : this.data.setting.companyBID>0 ? 2 : 1,//一级商家、二级商家
+      merchantForLevelAID: this.data.setting.companyAID,
+      merchantForLevelBID: this.data.setting.companyBID
+    };
+    Ajax.reportShare(reportData);
+    return {
+      path : currUrl,
+    }
   },
   loadIndexCompanyPageData: async function(){
     Ajax.requestWithToast(async()=>{

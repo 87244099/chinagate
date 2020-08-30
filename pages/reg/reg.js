@@ -94,7 +94,6 @@ Page({
         "setting.form.avatarUrl":rawData.avatarUrl,
         "setting.form.phone": response.data.data.phoneNumber
       };
-      console.log('phoneOption', phoneOption);
       this.setData(phoneOption);
       return Promise.resolve(response);
     }).then(()=>{

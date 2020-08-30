@@ -88,7 +88,6 @@ Page({
           leaveMessage: setting.form.leaveMessage,
         }
       });
-      console.log("suc", response);
       this.setData({
         "setting.form":{}
       });

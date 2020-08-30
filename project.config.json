@@ -232,13 +232,6 @@
 					"scene": null
 				},
 				{
-					"id": -1,
-					"name": "二级商家首页",
-					"pathName": "companyB/indexCompanyB/indexCompanyB",
-					"query": "companyId=1",
-					"scene": null
-				},
-				{
 					"id": 26,
 					"name": "二级商家个人中心",
 					"pathName": "companyB/personal4CompanyB/personal4CompanyB",
@@ -384,6 +377,41 @@
 					"pathName": "pages/index/index",
 					"query": "",
 					"scene": 1047
+				},
+				{
+					"id": -1,
+					"name": "二级商家首页",
+					"pathName": "pages/indexCompany/indexCompany",
+					"query": "companyAID=1&companyBID=1",
+					"scene": null
+				},
+				{
+					"id": 46,
+					"name": "转发出去-产品详情",
+					"pathName": "pages/productDetail/productDetail",
+					"query": "companyAID=1&companyBID=0&id=34&sharedOpenId=ojqCb5Wr3jak74TlGzP4ECcd4PzM",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "转发-企业首页",
+					"pathName": "pages/indexCompany/indexCompany",
+					"query": "companyAID=1&companyBID=0&sharedOpenId=ojqCb5Wr3jak74TlGzP4ECcd4PzM",
+					"scene": null
+				},
+				{
+					"id": 48,
+					"name": "转发-二级企业首页",
+					"pathName": "pages/indexCompany/indexCompany",
+					"query": "companyAID=1&companyBID=1&sharedOpenId=ojqCb5Wr3jak74TlGzP4ECcd4PzM",
+					"scene": null
+				},
+				{
+					"id": 49,
+					"name": "转发-个人名片",
+					"pathName": "pages/indexStaff/indexStaff",
+					"query": "companyAID=1&companyBID=0&staffID=5&sharedOpenId=ojqCb5Wr3jak74TlGzP4ECcd4PzM",
+					"scene": null
 				}
 			]
 		}
