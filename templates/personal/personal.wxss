@@ -1,6 +1,8 @@
 /* pages/personal/personal.wxss */
 @import "/icons.wxss";
-
+.fk_personal{
+  padding-bottom: 100rpx;
+}
 .fk_personal_header{
   position: relative;
   display: block;
@@ -94,4 +96,46 @@
   flex-direction: row;
   justify-content: flex-start;
 
+}
+
+
+.fk_rank{
+  width: 649rpx;
+  padding: 46rpx 30rpx;
+  border-radius: 10rpx;
+  border: solid #ccc 1rpx;
+  margin: 40rpx auto;
+  background-color: #fff;
+  padding-bottom: 0;
+
+}
+.fk_rank_header{
+  border: solid #ccc 1rpx;
+  border-radius: 10rpx;
+  color: rgb(4,135, 253);
+  padding: 24rpx 0;
+  font-weight: bold;
+}
+.fk_rank_table_head{
+  padding-top: 72rpx;
+}
+.fk_rank_table_row{
+  display: flex;
+  align-items: center;
+}
+.fk_rank_table_row > view{
+  flex: 1;
+  text-align: center;
+  font-size: 32rpx;
+}
+.fk_rank_table_head{
+  font-weight: bold;
+  color: rgb(4,135, 253);
+}
+.fk_rank_table_body .fk_rank_table_row:first-child{
+  border-top: none;
+}
+.fk_rank_table_body .fk_rank_table_row{
+    padding-top: 63rpx;padding-bottom: 31rpx;
+    border-top: solid #ccc 1rpx;
 }

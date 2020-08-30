@@ -1,1 +1,5 @@
 @import "../../templates/personal/personal.wxss";
+
+.fk_page{
+  padding-bottom: 100rpx;
+}
