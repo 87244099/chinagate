@@ -175,20 +175,24 @@ Page(Fai.mixin({
       return Promise.resolve(response);
     }, "加载中...");
   },
-  setProductCollect: function(){
-    Ajax.requestWithToast(async()=>{
-      return await Fai.promiseRequestPost({
-        url:"/ajax/product/productCollection?cmd=setProductCollect",
-        data:{
-          productId: this.data.setting.productId,
-          merchantForLevelAID: this.data.setting.companyAID,
-          merchantForLevelBID: this.data.setting.companyBID,
-          staffId: this.data.pageData.memberInfo.staffID
-        }
+  async setProductCollect(){
+    let isLogin = await Ajax.checkLoginWithRedirect(Fai.getCurrAbsPath(), "setProductCollect");
+    if(isLogin){
+      Ajax.requestWithToast(async()=>{
+        return await Fai.promiseRequestPost({
+          url:"/ajax/product/productCollection?cmd=setProductCollect",
+          data:{
+            productId: this.data.setting.productId,
+            merchantForLevelAID: this.data.setting.companyAID,
+            merchantForLevelBID: this.data.setting.companyBID,
+            staffId: this.data.pageData.memberInfo.staffID
+          }
+        });
+      }, {
+        tip4Success:true
       });
-    }, {
-      tip4Success:true
-    });
+    }
+    
   },
   onServiceFormSubmit: Fai.delay(function(){
     let data = this.data.setting.serviceForm;

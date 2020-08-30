@@ -127,12 +127,12 @@ async function checkLogin(){
 
 
 //检查是否登录，没有登录则直接跳转登录页，带着回退链接
-async function checkLoginWithRedirect(url){
+async function checkLoginWithRedirect(url, methodName){
   url = url || Fai.getCurrAbsPath();
   let response = await checkLogin();
   if(!response.data.data.isLogin){
     wx.navigateTo({
-      url: '/pages/login/login?backUrl='+encodeURIComponent(url),
+      url: '/pages/login/login?backUrl='+encodeURIComponent(url)+"&methodName="+methodName,
     })
   }
 

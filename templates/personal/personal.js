@@ -79,6 +79,7 @@ module.exports = {
       let memberInfo = response.data.data;
       response = await Ajax.getCompanyAIndexPageData(memberInfo.merchantForLevelAID);
       let companyPageData = response.data.data;
+      response = await Ajax.getRandk
       this.setData({
         "pageData.memberInfo":memberInfo,
         "pageData.companyPageData":companyPageData

@@ -169,31 +169,34 @@ Page(Fai.mixin(Fai.commPageConfig, {
     };
     wx.openLocation(locData);
   },
-  setUserCollect4Staff(){
-    Toast.loading({
-      message:"收藏中...",
-      duration: 0
-    })
-    Fai.requestPost({
-      url:"/ajax/user/userCollection?cmd=setUserCollect4Staff",
-      data:{
-        id: this.data.pageData.staffInfo.memberID,
-        staffId: this.data.pageData.staffInfo.staffID
-      },
-      beforeConsume:Toast.clear,
-      success: (response)=>{
-        let result = response.data;
-        if(result.success){
-          Toast.success(result.msg);
-        }else{
-          Toast.fail(result.msg || "网络繁忙,请稍后重试");
+  async setUserCollect4Staff(){
+    let isLogin = await Ajax.checkLoginWithRedirect(Fai.getCurrAbsPath(), "setUserCollect4Staff");
+    if(isLogin){
+      Toast.loading({
+        message:"收藏中...",
+        duration: 0
+      })
+      Fai.requestPost({
+        url:"/ajax/user/userCollection?cmd=setUserCollect4Staff",
+        data:{
+          id: this.data.pageData.staffInfo.memberID,
+          staffId: this.data.pageData.staffInfo.staffID
+        },
+        beforeConsume:Toast.clear,
+        success: (response)=>{
+          let result = response.data;
+          if(result.success){
+            Toast.success(result.msg);
+          }else{
+            Toast.fail(result.msg || "网络繁忙,请稍后重试");
+          }
+        },
+        fail(){
+          Toast.fail("网络繁忙,请稍后重试");
         }
-      },
-      fail(){
-        Toast.fail("网络繁忙,请稍后重试");
-      }
 
-    })
+      })
+    }
   },
   onWantShare: function(){
     Toast('点击右上角...进行转发');

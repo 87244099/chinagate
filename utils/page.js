@@ -73,11 +73,20 @@ function addPageQuery(url, name, value){
   }
 }
 
+function getPrevPage(){
+  let pages = getCurrentPages();
+  if(pages.length>1){
+    return pages[getCurrentPages().length - 2];
+  }
+  return;
+}
+
 module.exports = {
   commPageConfig,
   getCurrAbsPath,
   getCurrPage,
   isPaginationEnd,
   isPaginationEndBySetting,
-  addPageQuery
+  addPageQuery,
+  getPrevPage
 };

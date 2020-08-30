@@ -45,20 +45,23 @@ Page(Fai.mixin(Fai.commPageConfig, {
 
     this.loadIndexCompanyPageData();
   },
-  
-  onCompanyCollect(){
-    Ajax.requestWithToast(async()=>{
-      let response = Fai.promiseRequestPost({
-        url:"/ajax/company/companyCollect?cmd=setCompanyCollect",
-        data:{
-          merchantForLevelAID: this.data.setting.companyAID,
-          merchantForLevelBID: this.data.setting.companyBID
-        }
+  async onCompanyCollect(){
+    let isLogin = await Ajax.checkLoginWithRedirect(Fai.getCurrAbsPath(), "onCompanyCollect");
+    if(isLogin){
+      Ajax.requestWithToast(async()=>{
+        let response = Fai.promiseRequestPost({
+          url:"/ajax/company/companyCollect?cmd=setCompanyCollect",
+          data:{
+            merchantForLevelAID: this.data.setting.companyAID,
+            merchantForLevelBID: this.data.setting.companyBID
+          }
+        });
+        return Promise.resolve(response);
+      },{
+        tip4Success:true
       });
-      return Promise.resolve(response);
-    },{
-      tip4Success:true
-    });
+    }
+    
   },
 
   /**
@@ -176,28 +179,32 @@ Page(Fai.mixin(Fai.commPageConfig, {
     };
     wx.openLocation(locData);
   },
-  setProductCollectCancel:()=>{
-    Toast.loading({
-      message: "加载中...",
-      duration: 0
-    });
-    Fai.request({
-      url: "/ajax/company/company?cmd=getCompanyBIndexPageData&id=1",
-      beforeConsume:Toast.clear,
-      success:(response)=>{
-        let result = response.data;
-        if(result.success){
-          this.setData({
-            "pageData":result.data
-          });
-        }else{
-          Toast.fail(result.msg || '网络繁忙，请稍后重试');
+  async setProductCollectCancel(){
+    let isLogin = await Ajax.checkLoginWithRedirect(Fai.getCurrAbsPath(), "setProductCollectCancel");
+    if(isLogin){
+      Toast.loading({
+        message: "加载中...",
+        duration: 0
+      });
+      Fai.request({
+        url: "/ajax/company/company?cmd=getCompanyBIndexPageData&id=1",
+        beforeConsume:Toast.clear,
+        success:(response)=>{
+          let result = response.data;
+          if(result.success){
+            this.setData({
+              "pageData":result.data
+            });
+          }else{
+            Toast.fail(result.msg || '网络繁忙，请稍后重试');
+          }
+        },
+        fail:()=>{
+          Toast.fail('网络繁忙，请稍后重试');
         }
-      },
-      fail:()=>{
-        Toast.fail('网络繁忙，请稍后重试');
-      }
-    });
+      });
+    }
+    
   },
   onShowQrCode(){
     let url = Fai.getCurrAbsPath();

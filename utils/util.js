@@ -7,6 +7,7 @@ module.exports = {
   ...require("./login"),
   ...require("./page"),
   ...require("./timer"),
+  ...require("./typer"),
   ...require("./event")
 };
 
