@@ -412,6 +412,13 @@
 					"pathName": "pages/indexStaff/indexStaff",
 					"query": "companyAID=1&companyBID=0&staffID=5&sharedOpenId=ojqCb5Wr3jak74TlGzP4ECcd4PzM",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "分享排行",
+					"pathName": "pages/shareRank/shareRank",
+					"query": "",
+					"scene": null
 				}
 			]
 		}

@@ -73,43 +73,5 @@
 
   </view>
 
-  <view class="fk_rank">
-    <view class="fk_rank_header">
-      <view class="fk_rank_table_row">
-        <view class="fk_rank_table_row_num" style="line-height:1">
-          <view>我的</view>
-          <view>成绩</view>
-        </view>
-        <view class="fk_rank_table_row_count">55</view>
-        <view class="fk_rank_table_row_name">小罗</view>
-      </view>
-    </view>
-    <view class="fk_rank_table">
-      <view class="fk_rank_table_head">
-        <view class="fk_rank_table_row">
-          <view class="fk_rank_table_row_num">排名</view>
-          <view class="fk_rank_table_row_count">分享次数</view>
-          <view class="fk_rank_table_row_name">名称</view>
-        </view>
-      </view>
-      <view class="fk_rank_table_body">
-        <view class="fk_rank_table_row">
-          <view class="fk_rank_table_row_num">1</view>
-          <view class="fk_rank_table_row_count">153</view>
-          <view class="fk_rank_table_row_name">小罗</view>
-        </view>
-        <view class="fk_rank_table_row">
-          <view class="fk_rank_table_row_num">1</view>
-          <view class="fk_rank_table_row_count">153</view>
-          <view class="fk_rank_table_row_name">小罗</view>
-        </view>
-        <view class="fk_rank_table_row">
-          <view class="fk_rank_table_row_num">1</view>
-          <view class="fk_rank_table_row_count">153</view>
-          <view class="fk_rank_table_row_name">小罗</view>
-        </view>
-      </view>
-    </view>
-  </view>
 
 </template>

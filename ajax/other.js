@@ -502,9 +502,13 @@ async function getOpenIdByCode(code){
   })
 }
 
-async function getShareRank(){
-  return Fai.promiseRequestPost({
-    url: "/ajax/common/getCommData?cmd=getShareRank"
+async function getShareRank(type){
+  type = type===undefined ? 1 : 0;//默认为当月
+  return Fai.promiseRequest({
+    url: "/ajax/common/getCommData?cmd=getShareRank",
+    data: {
+      type
+    }
   });
 }
 

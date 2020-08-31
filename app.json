@@ -31,7 +31,8 @@
     "pages/invitation4Vip/invitation4Vip",
     "pages/createCompany/createCompany",
     "pages/brandShopsSearch/brandShopsSearch",
-    "pages/brandShops/brandShops"
+    "pages/brandShops/brandShops",
+    "pages/shareRank/shareRank"
   ],
   "window": {
     "backgroundTextStyle": "light",
