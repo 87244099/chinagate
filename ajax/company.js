@@ -152,11 +152,10 @@ async function memberUpToVipA(vipCustomerInvitationID, memberPhone){
   });
 }
 
-function getInfo4Staff(companyAID, id){
+function getInfo4Staff(id){
   return Fai.promiseRequest({
     url:"/ajax/user/userInfo?cmd=getInfo4Staff",
     data: {
-      companyAID,
       id
     }
   });

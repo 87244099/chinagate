@@ -135,7 +135,7 @@ Page(Fai.mixin({
 
       let staffInfo = {};
       if(this.data.setting.staffID > 0){
-        response = await Ajax.getInfo4Staff(this.data.setting.companyAID, this.data.setting.staffID);
+        response = await Ajax.getInfo4Staff(this.data.setting.staffID);
         staffInfo = response.data.data;
       }
 

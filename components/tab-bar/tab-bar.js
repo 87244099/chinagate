@@ -73,7 +73,7 @@ Component({
       if(this.data.staffID>0){//如果是员工呼叫
         
         Ajax.requestWithToast(async()=>{
-          let response = await Ajax.getInfo4Staff(this.data.companyAID, this.data.staffID);
+          let response = await Ajax.getInfo4Staff(this.data.staffID);
           let staffInfo = response.data.data;
           wx.makePhoneCall({
             phoneNumber: staffInfo.phone,

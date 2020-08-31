@@ -42,7 +42,7 @@ Page(Fai.mixin(Fai.commPageConfig, {
     });
 
     Ajax.requestWithToast(async()=>{
-      let response = await Ajax.getInfo4Staff(this.data.setting.companyAID, this.data.setting.staffID);
+      let response = await Ajax.getInfo4Staff(this.data.setting.staffID);
       let staffInfo = response.data.data;
       if(staffInfo.merchantForLevelBID>0){
         response = await Ajax.getCompanyBIndexPageData(staffInfo.merchantForLevelBID);

@@ -83,7 +83,7 @@ module.exports = {
       let companyPageData = response.data.data;
       // Ajax.getInfo4Staff()
       // response = await Ajax.getRandk
-      response = await Ajax.getInfo4Staff(memberInfo.merchantForLevelAID, memberInfo.staffID);
+      response = await Ajax.getInfo4Staff(memberInfo.staffID);
       console.log(response);
       this.setData({
         "pageData.memberInfo":memberInfo,

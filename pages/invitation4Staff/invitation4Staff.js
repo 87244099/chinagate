@@ -29,7 +29,7 @@ Page({
 
     let isLogin = await Ajax.checkLoginWithRedirect();
     if(isLogin){
-      Ajax.requestWithToast(this.loadPageData);
+      Ajax.requestWithToast(this.loadPageData, "加载中...");
     }
   },
   async setCode(){
@@ -41,11 +41,20 @@ Page({
   async loadPageData(){
     let response = await Ajax.getMemberInfo();
     let memberInfo = response.data.data;
-    response = await Ajax.getInvitationStaffPageData(this.data.setting.staffID);
-    let companyInfo = response.data.data.companyInfo;
+    response = await Ajax.getInfo4Staff(this.data.setting.staffID);
+    let staffInfo = response.data.data;
+    let companyInfo= {};
+    if(staffInfo.merchantForLevelBID){
+      response = await Ajax.getInfo4CompanyB(staffInfo.merchantForLevelBID);
+      companyInfo = response.data.data;
+    }else{
+      response = await Ajax.getInfo4CompanyA(staffInfo.merchantForLevelAID);
+      companyInfo = response.data.data;
+    }
     this.setData({
       "setting.memberInfo": memberInfo,
-      "pageData.companyInfo": companyInfo
+      "pageData.companyInfo": companyInfo,
+      "pageData.staffInfo": staffInfo
     });
 
     return Promise.resolve(response);
