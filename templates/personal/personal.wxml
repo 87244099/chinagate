@@ -36,15 +36,6 @@
           <view class="iconfont icon-right"></view> 
         </view>
       </navigator>
-      <navigator class="fk_personal_section_item" url="/pages/shareRank/shareRank" wx:if="{{pageData.companyAInfo.openRankFlag}}">
-        <view class="fk_personal_section_item_left">
-          <view class="fk_personal_section_item_icon iconfont icon-paihangbang" style="color: #e37429;"></view>
-          <view class="fk_personal_section_item_text">排行榜</view>
-        </view>
-        <view class="fk_personal_section_item_right">
-          <view class="iconfont icon-right"></view> 
-        </view>
-      </navigator>
     </view>
   </view>
   <!-- 只有员工才能看到企业信息 -->
@@ -64,6 +55,15 @@
         <view class="fk_personal_section_item_left">
           <view class="fk_personal_section_item_icon iconfont icon-yonghu1-copy" style="color: #daa520;"></view>
           <view class="fk_personal_section_item_text">我的公司</view>
+        </view>
+        <view class="fk_personal_section_item_right">
+          <view class="iconfont icon-right"></view> 
+        </view>
+      </navigator>
+      <navigator class="fk_personal_section_item" url="/pages/shareRank/shareRank" wx:if="{{pageData.companyAInfo.openRankFlag}}">
+        <view class="fk_personal_section_item_left">
+          <view class="fk_personal_section_item_icon iconfont icon-paihangbang" style="color: #e37429;"></view>
+          <view class="fk_personal_section_item_text">排行榜</view>
         </view>
         <view class="fk_personal_section_item_right">
           <view class="iconfont icon-right"></view> 
