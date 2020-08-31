@@ -36,10 +36,10 @@
           <view class="iconfont icon-right"></view> 
         </view>
       </navigator>
-      <navigator class="fk_personal_section_item">
+      <navigator class="fk_personal_section_item" url="/pages/shareRank/shareRank" wx:if="{{pageData.companyAInfo.openRankFlag}}">
         <view class="fk_personal_section_item_left">
-          <view class="fk_personal_section_item_icon iconfont icon-tongjifenxi" style="color: #e37429;"></view>
-          <view class="fk_personal_section_item_text">我的咨询</view>
+          <view class="fk_personal_section_item_icon iconfont icon-paihangbang" style="color: #e37429;"></view>
+          <view class="fk_personal_section_item_text">排行榜</view>
         </view>
         <view class="fk_personal_section_item_right">
           <view class="iconfont icon-right"></view> 
@@ -51,7 +51,7 @@
   <view class="fk_personal_section"  wx:if="{{pageData.memberInfo.staffID>0 && pageData.memberInfo.merchantForLevelAID>0}}">
     <view class="fk_personal_section_title">企业</view>
     <view class="fk_personal_section_list">
-      <navigator class="fk_personal_section_item" url="/pages/indexStaff/indexStaff?companyAID={{pageData.memberInfo.merchantForLevelAID}}&companyBID=0&staffID={{pageData.memberInfo.staffID>0 ? pageData.memberInfo.staffID : -1}}">
+      <navigator class="fk_personal_section_item" url="/pages/indexStaff/indexStaff?companyAID={{pageData.memberInfo.merchantForLevelAID}}&companyBID={{pageData.staffInfo.merchantForLevelBID?pageData.staffInfo.merchantForLevelBID:0}}&staffID={{pageData.memberInfo.staffID>0 ? pageData.memberInfo.staffID : -1}}">
         <view class="fk_personal_section_item_left">
           <view class="fk_personal_section_item_icon iconfont icon-mingpian" style="color: #3cceff;"></view>
           <view class="fk_personal_section_item_text">我的公司名片</view>
@@ -60,7 +60,7 @@
           <view class="iconfont icon-right"></view> 
         </view>
       </navigator>
-      <navigator class="fk_personal_section_item" url="/pages/indexCompany/indexCompany?companyAID={{pageData.memberInfo.merchantForLevelAID}}&companyBID=0">
+      <navigator class="fk_personal_section_item" url="/pages/indexCompany/indexCompany?companyAID={{pageData.memberInfo.merchantForLevelAID}}&companyBID={{pageData.staffInfo.merchantForLevelBID?pageData.staffInfo.merchantForLevelBID:0}}">
         <view class="fk_personal_section_item_left">
           <view class="fk_personal_section_item_icon iconfont icon-yonghu1-copy" style="color: #daa520;"></view>
           <view class="fk_personal_section_item_text">我的公司</view>

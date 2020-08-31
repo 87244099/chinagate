@@ -22,8 +22,11 @@ Page(Fai.mixin(Fai.commPageConfig, IndexCompany, {
         });
         return;
       }
-      //如果拿不到，说明自己不是企业的员工
-      response = await Ajax.getCompanyAIndexPageData(memberInfo.merchantForLevelAID);
+      if(memberInfo.merchantForLevelBID>0){
+        response = await Ajax.getCompanyBIndexPageData(memberInfo.merchantForLevelBID);
+      }else{
+        response = await Ajax.getCompanyAIndexPageData(memberInfo.merchantForLevelAID);
+      }
       this.setData({
         "pageData":response.data.data,
         "setting.companyId": memberInfo.merchantForLevelAID,

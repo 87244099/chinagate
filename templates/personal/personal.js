@@ -35,6 +35,8 @@ module.exports = {
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    console.log(11111111);
+
     this.loadPersonalData();
   },
 
@@ -79,7 +81,10 @@ module.exports = {
       let memberInfo = response.data.data;
       response = await Ajax.getCompanyAIndexPageData(memberInfo.merchantForLevelAID);
       let companyPageData = response.data.data;
-      response = await Ajax.getRandk
+      // Ajax.getInfo4Staff()
+      // response = await Ajax.getRandk
+      response = await Ajax.getInfo4Staff(memberInfo.merchantForLevelAID, memberInfo.staffID);
+      console.log(response);
       this.setData({
         "pageData.memberInfo":memberInfo,
         "pageData.companyPageData":companyPageData

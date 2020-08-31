@@ -30,7 +30,6 @@ Page(Fai.mixin(Fai.commPageConfig, {
       "setting.sharedOpenId": options.sharedOpenId,
       "setting.staffID": parseInt(options.staffID) || -1,
     });
-    console.log(this.data.setting);
     
     Fai.Waiter.then("onOpenIdLoaded", ()=>{
       Ajax.reportVisit4Share({
@@ -42,55 +41,26 @@ Page(Fai.mixin(Fai.commPageConfig, {
       });
     });
 
-    Toast.loading({
-      message:"加载中...",
-      duration: 0,
-    });
-
-    Fai.request({
-      url:"/ajax/user/userInfo?cmd=getInfo4Staff",
-      data: {
-        companyId: this.data.setting.companyAID,
-        id: this.data.setting.staffID//大小写问题
-      },
-      success:(response)=>{
-        let result = response.data;
-        if(result.success){
-          this.setData({
-            "pageData.staffInfo":result.data
-          });
-          wx.setNavigationBarTitle({
-            title: this.data.pageData.staffInfo.staffName,
-          })
-        }else{
-          Toast.fail(result.msg || "网络繁忙，请稍后重试");
-        }
-      },
-      fail(){
-        Toast.fail("网络繁忙，请稍后重试");
+    Ajax.requestWithToast(async()=>{
+      let response = await Ajax.getInfo4Staff(this.data.setting.companyAID, this.data.setting.staffID);
+      let staffInfo = response.data.data;
+      if(staffInfo.merchantForLevelBID>0){
+        response = await Ajax.getCompanyBIndexPageData(staffInfo.merchantForLevelBID);
+      }else{
+        response = await Ajax.getCompanyAIndexPageData(staffInfo.merchantForLevelAID);
       }
-    });
+      let companyPageData = response.data.data;
+      this.setData({
+        "pageData.companyPageData": companyPageData,
+        "pageData.staffInfo":staffInfo,
+        "setting.inited": true
+      });
+      wx.setNavigationBarTitle({
+        title: this.data.pageData.staffInfo.staffName,
+      });
 
-    Fai.request({
-      url: "/ajax/company/company?cmd=getCompanyAIndexPageData&id="+this.data.setting.companyAID,
-      beforeConsume:Toast.clear,
-      success:(response)=>{
-        let result = response.data;
-        if(result.success){
-          this.setData({
-            "pageData.companyPageData":result.data,
-            "setting.inited": true
-          });
-        }else{
-          Toast.fail(result.msg || "网络繁忙，请稍后重试");
-        }
-      },
-      fail(){
-        Toast.fail("网络繁忙，请稍后重试");
-      }
-    });
-    
-
+      return Promise.resolve(response);
+    }, "加载中...");
   },
 
   /**

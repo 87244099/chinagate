@@ -74,11 +74,16 @@ Page(Fai.mixin(Fai.commPageConfig, {
   },
   async loadPersonalData(){
     Ajax.requestWithToast(async()=>{
-      
       let response = await Ajax.getMemberInfo();
       let memberInfo = response.data.data;
+      response = await Ajax.getInfo4Staff(memberInfo.companyAID, memberInfo.staffID);
+      let staffInfo = response.data.data;
+      response = await Ajax.getInfo4CompanyA(staffInfo.merchantForLevelAID);
+      let companyAInfo = response.data.data;
       this.setData({
-        "pageData.memberInfo":memberInfo
+        "pageData.memberInfo":memberInfo,
+        "pageData.staffInfo":staffInfo,
+        "pageData.companyAInfo": companyAInfo
       });
       return Promise.resolve(response);
     }, "加载中...");
