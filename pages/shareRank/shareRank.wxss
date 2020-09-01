@@ -19,8 +19,13 @@
   background: #FFFFFF;
   border-radius: 15rpx;
   margin: 0 auto;
-  padding: 43rpx 32rpx;
+  /* padding: 0 32rpx; */
   box-sizing: border-box;
+  overflow: hidden;
+  min-height: 550rpx;
+}
+.fk_rank_content{
+  padding: 43rpx 32rpx;
   padding-bottom: 0;
 }
 .fk_rank_header{

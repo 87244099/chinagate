@@ -17,18 +17,23 @@ Page({
   async onLoad (options) {
     let isLogin = await Ajax.checkLoginWithRedirect(Fai.getCurrAbsPath());
     if(isLogin){
-      Ajax.requestWithToast(async()=>{
-
-        let response = await Ajax.getShareRank();
-        console.log(response);
-
-        this.setData({
-          "pageData.myRank": response.data.data.myRank,
-          "pageData.rankList": response.data.data.rankList
-        })
-      }, "加载中...");
-    }
+      this.loadRank(1);
+    } 
     
+  },
+  onTabChange(event){
+    let name = event.detail.name;
+    this.loadRank(name);
+  },
+  loadRank(type){
+    Ajax.requestWithToast(async()=>{
+
+      let response = await Ajax.getShareRank(type);
+      this.setData({
+        "pageData.myRank": response.data.data.myRank,
+        "pageData.rankList": response.data.data.rankList
+      })
+    }, "加载中...");
   },
 
   /**

@@ -2,8 +2,24 @@
   <view class="fk_rank_banner">
     <text style="font-size:98rpx;padding-left:56rpx;padding-top:92rpx;display:block;line-height:1;font-weight:bolder;color:#fff;">分享</text>
   </view>
-  <view class="fk_rank_tip" wx:if="{{pageData.myRank && pageData.myRank.rank!=1}}">距离NO.1，你还差一丢丢的努力！</view>
+  <view class="fk_rank_tip" style="{{pageData.myRank && pageData.myRank.rank!=1? 'visibility:visible;' : 'visibility:hidden;'}}">距离NO.1，你还差一丢丢的努力！</view>
   <view class="fk_rank">
+    <van-tabs active="{{ 1 }}" bind:change="onTabChange"  color="#0488FC">
+      <van-tab title="月排行" name="{{1}}">
+        <template is="rankList" data="{{pageData}}"></template>
+      </van-tab>
+      <van-tab title="总排行" name="{{0}}">
+        <template is="rankList" data="{{pageData}}"></template>
+      </van-tab>
+    </van-tabs>
+    
+  </view>
+
+  <van-toast id="van-toast"/>
+</view>
+
+<template name="rankList">
+  <view class="fk_rank_content">
     <view class="fk_rank_header" wx:if="{{pageData.myRank}}">
       <view class="fk_rank_table_row">
         <view class="fk_rank_table_row_num" style="line-height:1">
@@ -23,16 +39,20 @@
         </view>
       </view>
       <view class="fk_rank_table_body">
-        <view class="fk_rank_table_row" wx:for="{{pageData.rankList}}">
-          <view class="fk_rank_table_row_num">
-            <view class="fk_rank_table_row_num_text">{{item.rank}}</view>
+        <block wx:if="{{pageData.rankList.length>0}}">
+          <view class="fk_rank_table_row" wx:for="{{pageData.rankList}}">
+            <view class="fk_rank_table_row_num">
+              <view class="fk_rank_table_row_num_text">{{item.rank}}</view>
+            </view>
+            <view class="fk_rank_table_row_count">{{item.count}}</view>
+            <view class="fk_rank_table_row_name">{{item.staffName}}</view>
           </view>
-          <view class="fk_rank_table_row_count">{{item.count}}</view>
-          <view class="fk_rank_table_row_name">{{item.staffName}}</view>
-        </view>
+        </block>
+        <block wx:else>
+          <view style="padding-bottom: 43rpx;">暂无数据</view>
+        </block>
       </view>
     </view>
   </view>
-
-  <van-toast id="van-toast"/>
-</view>
+  
+</template>

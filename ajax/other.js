@@ -503,7 +503,8 @@ async function getOpenIdByCode(code){
 }
 
 async function getShareRank(type){
-  type = type===undefined ? 1 : 0;//默认为当月
+  type = (type===undefined ? 1 : type);//默认为当月
+  console.log("type2", type);
   return Fai.promiseRequest({
     url: "/ajax/common/getCommData?cmd=getShareRank",
     data: {

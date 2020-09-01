@@ -60,7 +60,7 @@ function getSetting(){
 }
 
 function parseSharedOption(option){
-  
+  console.log(option.scene);
   if(option.scene){
     let value = decodeURIComponent(option.scene);
     let sharedOption = {};
