@@ -23,7 +23,7 @@ Page(Fai.mixin(Fai.commPageConfig, {
 
   onLoad(options){
     options = Ajax.parseQrCodeArg(options);
-
+    console.log("options", options);
     this.setData({
       "setting.companyAID": parseInt(options.companyAID) || 0,
       "setting.companyBID": parseInt(options.companyBID) || 0,
@@ -31,7 +31,10 @@ Page(Fai.mixin(Fai.commPageConfig, {
       "setting.sharedOpenId": options.sharedOpenId,
       "options":JSON.stringify(options),
       "currPath": Fai.getCurrAbsPath()
-    })
+    });
+    this.setData({
+      "settingStr": JSON.stringify(this.data.setting)
+    });
     // 分享行为会触发onShow，只能放onload了，避免重复统计
     Fai.Waiter.then("onOpenIdLoaded", ()=>{
       Ajax.reportVisit4Share({
@@ -213,5 +216,10 @@ Page(Fai.mixin(Fai.commPageConfig, {
     console.log("qr",qr);
     let companyLogoUrl = this.data.config.wwwwStaticDomain + "/" + this.data.pageData.companyInfo.companyLogoUrl;
     Ajax.previewQrCode(urlArr[0], "qr="+qr, companyLogoUrl);
+  },
+  openArg(){
+    this.setData({
+      "setting.visibleArg":!this.data.setting.visibleArg
+    })
   }
 }));

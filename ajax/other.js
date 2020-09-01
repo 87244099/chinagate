@@ -108,6 +108,9 @@ function previewQrCode(page, scene, logoUrl){
   }
 
   let url = page+"?"+scene;
+
+  console.log("url", url);
+
   let imgData = Fai.MemoryCache.getCache(url);
   if(imgData){
     wx.previewImage({

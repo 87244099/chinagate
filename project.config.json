@@ -426,6 +426,13 @@
 					"pathName": "pages/indexCompany/indexCompany",
 					"query": "companyAID=1&companyBID=1",
 					"scene": null
+				},
+				{
+					"id": 52,
+					"name": "测试分享",
+					"pathName": "pages/indexCompany/indexCompany",
+					"query": "scene=qr%3D2%2C0%2C0",
+					"scene": null
 				}
 			]
 		}
