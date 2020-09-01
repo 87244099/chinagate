@@ -6,7 +6,14 @@ let CacheFactory = (cache, lifeCycle)=>{
     },
     getCache(key){
       this.clearExpire();
-      return (this.cache[key] || {}).value;
+      if(this.cache[key]){
+        console.log("hit cache", key);
+        return this.cache[key].value;
+      }else{
+        console.log("init ");
+        return ({}).value;
+      }
+      // return (this.cache[key] || {}).value;
     },
     setCache(key, value){
       this.clearExpire();
@@ -17,6 +24,7 @@ let CacheFactory = (cache, lifeCycle)=>{
       };
     },
     clearCache(){
+      console.log("clear");
       Object.keys(this.cache).forEach(key=>{
         delete this.cache[key];
       });

@@ -49,7 +49,7 @@
           </view>
         </block>
         <block wx:else>
-          <view style="padding-bottom: 43rpx;">暂无数据</view>
+          <view style="padding-bottom: 43rpx;padding-top: 43rpx;text-align:center;color:#999">暂无数据</view>
         </block>
       </view>
     </view>

@@ -52,7 +52,10 @@ Component({
         staffID: this.data.staffID,
         subID: this.data.subID
       }
-      await Ajax.reportTrace(traceParam);//直接上报，不管数据
+      try{//可能需要登录权限
+        await Ajax.reportTrace(traceParam);//直接上报，不管数据
+      }catch(e){}
+      
       let response = await Ajax.getTrace(traceParam);
       this.setData({
         "traceData": response.data.data

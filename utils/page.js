@@ -1,5 +1,6 @@
 const Typer = require("./typer");
 const Timer = require("./timer");
+const Cacher = require("./cache");
 
 
 function getCurrAbsPath(){
@@ -43,7 +44,14 @@ let commPageConfig = {
   onReady(){
     Timer.SecondTimer.clear();
   },
+  onHide(){
+  },
   onUnload(){
+    // 避免缓存泄漏
+    Cacher.MemoryCache.clearCache();
+    
+    // 清除掉内存缓存
+
     let page = getCurrPage();
     let taskList = Object.keys(page).filter(key=>Typer.isFunction(page[key])).map(key=>page[key]);
     Timer.SecondTimer.remove(taskList);//回收各个页面注入的定时任务

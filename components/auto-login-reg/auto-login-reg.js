@@ -6,10 +6,28 @@ import Toast from "../../miniprogram_npm/@vant/weapp/toast/toast";
 Component({
   lifetimes:{
     async attached(){
-      //初始化code
-      this.setData({
-        code: await Fai.getLoginCodeNullIsEmpty()
-      });
+      console.log(111111);
+
+      let response = await Ajax.checkLogin();
+      if(response.data.data.isLogin){//已经登录
+        console.log(2222);
+      Fai.Waiter.then("onOpenIdLoaded", ()=>{
+        console.log(333);
+          (async()=>{
+            // 初始化code
+            this.setData({
+              code: await Fai.getLoginCodeNullIsEmpty()
+            });
+          })();
+        });
+      }else{
+        console.log(444);
+        this.setData({
+          code: await Fai.getLoginCodeNullIsEmpty()
+        });
+      }
+
+      
     }
   },
   /**

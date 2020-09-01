@@ -8,12 +8,20 @@ App({
   },
   onLaunch: async function (options) {//微信小程序没有同步请求，只能用异步获取openid
     this.globalData.launchOptions = options;
+    let openId = Fai.DiskCache.getCache("openId");
+    
     Fai.Waiter.wait("onOpenIdLoaded", (resolve)=>{
       (async()=>{
-        let code = await Fai.getLoginCodeNullIsEmpty();
-        let response = await Ajax.getOpenIdByCode(code);
-        this.globalData.openId = response.data.data.openId;
-        resolve(this.globalData.openId);
+        if(openId){
+          this.globalData.openId = openId;
+          resolve(openId);
+        }else{
+          let code = await Fai.getLoginCodeNullIsEmpty();
+          let response = await Ajax.getOpenIdByCode(code);
+          this.globalData.openId = response.data.data.openId;
+          Fai.DiskCache.setCache("openId",  this.globalData.openId);
+          resolve(this.globalData.openId);
+        }
       })();
     })
   },
