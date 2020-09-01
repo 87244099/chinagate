@@ -30,6 +30,34 @@ async function login(userDetail){
 
   });
 }
+
+
+//登录后自动去个人中心
+async function loginByOpenId(openId){
+  return new Promise((resolve, reject)=>{
+    Fai.requestPost({
+      url:"/ajax/logAction/action?cmd=loginByOpenId",
+      data: {
+        openId
+      },
+      success(response){
+        let result = response.data;
+        if(result.success){
+          Fai.MemoryCache.clearCache();//清空缓存
+          resolve(response);
+          getApp().globalData.isLogin=true;
+        }else{
+          reject(response);
+        }
+      },
+      fail(){
+        reject();
+      }
+    });
+
+  });
+}
+
 async function getMemberInfo(){
   return new Promise((resolve, reject)=>{
     Fai.request({
@@ -147,5 +175,6 @@ module.exports = {
   checkUserExist,
   loginWithAutoReg,
   checkLogin,
-  checkLoginWithRedirect
+  checkLoginWithRedirect,
+  loginByOpenId
 };
