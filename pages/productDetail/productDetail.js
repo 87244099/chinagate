@@ -144,7 +144,8 @@ Page(Fai.mixin({
       });
 
       let serviceForm = this.data.setting.serviceForm;
-      if(getApp().globalData.isLogin){
+      response = await Ajax.checkLogin();
+      if(response.data.data.isLogin){
         response = await Ajax.getMemberInfo();
         let memberInfo = response.data.data;
         serviceForm.name = memberInfo.memberName;
