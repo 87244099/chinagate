@@ -30,10 +30,13 @@ Page(Fai.mixin(Fai.commPageConfig, {
     let response;
     try{
       response = await Fai.getSetting();
+      console.log(response);
       if(response.errMsg == "getSetting:ok"){
         let authSetting = response.authSetting;
         if(authSetting["scope.userLocation"] === undefined){//未验证过
           response = await Fai.getLocation();
+          console.log("response2", response);
+
           let latitude = response.latitude;
           let longitude = response.longitude;
           this.setData({
@@ -43,6 +46,8 @@ Page(Fai.mixin(Fai.commPageConfig, {
             }
           });
         }else if(authSetting["scope.userLocation"] === false){
+          console.log("response3", response);
+
           response = await Dialog.confirm({
             // title: '标题',
             message: '请打开地理位置',
@@ -52,6 +57,8 @@ Page(Fai.mixin(Fai.commPageConfig, {
           return;
         }else{
           response = await Fai.getLocation();
+          console.log("response4", response);
+
           let latitude = response.latitude;
           let longitude = response.longitude;
           this.setData({
@@ -63,6 +70,7 @@ Page(Fai.mixin(Fai.commPageConfig, {
         }
       }
     }catch(errResponse){
+      console.log("errResponse", errResponse);
       wx.redirectTo({
         url: '/pages/index/index',
       });

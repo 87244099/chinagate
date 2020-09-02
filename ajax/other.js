@@ -63,6 +63,17 @@ function stringifyQrCodeArg(setting){
   return qr.join(",");
 };
 
+async function removeSavedFileNullIsEmpty(option){
+  try{
+    console.log("option", option);
+    await removeSavedFile(option);
+  }catch(e){
+    console.log("option err", e);
+  }
+
+  return Promise.resolve();
+}
+
 async function removeSavedFile(option){
   return new Promise((resolve, reject)=>{
     wx.getFileSystemManager().removeSavedFile({
@@ -350,17 +361,14 @@ async function getImageInfo(url){
 }
 
 async function genCompanyQrCodeBase64(imgBase64, companyLogoUrl){
-  let filePath = `${wx.env.USER_DATA_PATH}/tmp_base64src`; 
+  let filePath = `${wx.env.USER_DATA_PATH}/tmp_base64src`+Math.random(); 
 
   console.log("companyLogoUrl", companyLogoUrl);
   let loadedCompanyLogoUrl = await getImageInfo(companyLogoUrl);
-  try{
-    await removeSavedFile({
-      filePath: filePath
-    });
-  }catch(e){
-    console.log(e);
-  }
+  
+  await removeSavedFileNullIsEmpty({
+    filePath: filePath
+  });
 
 
   return new Promise((resolve, reject)=>{
@@ -369,9 +377,15 @@ async function genCompanyQrCodeBase64(imgBase64, companyLogoUrl){
       data: wx.base64ToArrayBuffer(imgBase64),
       encoding: 'binary',
       success: (res) => { 
+        console.log("res base64", res);
         wx.getImageInfo({
           src: filePath,
-          success:(res)=>{
+          success:async (res)=>{
+            await removeSavedFileNullIsEmpty({
+              filePath: filePath
+            });
+            
+
             var ctx = wx.createCanvasContext('myCanvas');
             const sysInfo = wx.getSystemInfoSync();
             let windowWidth = sysInfo.windowWidth;
@@ -381,7 +395,7 @@ async function genCompanyQrCodeBase64(imgBase64, companyLogoUrl){
             ctx.save();
             // let width = 430*ratio;
             ctx.drawImage(res.path, 0, 0, 430, 430, 0, 0, width, height);
-            console.log("loadedCompanyLogoUrl", loadedCompanyLogoUrl);
+            // console.log("loadedCompanyLogoUrl", loadedCompanyLogoUrl);
             ctx.beginPath()
             ctx.arc(215,215, 100, 0, 2*Math.PI);
             ctx.clip();
@@ -394,18 +408,28 @@ async function genCompanyQrCodeBase64(imgBase64, companyLogoUrl){
               wx.canvasToTempFilePath({ //获取生成的临时图片
                 canvasId: 'myCanvas',
                 success: function (res) {
+                  let tempFilePath = res.tempFilePath;
                   console.log("res", res.tempFilePath);
                   wx.getFileSystemManager().readFile({   // 文件管理系统按照base64方式读取生成的图片
-                    filePath: res.tempFilePath, //选择图片返回的相对路径
+                    filePath: tempFilePath, //选择图片返回的相对路径
                     encoding: 'base64', //编码格式
                     success: res => { //成功的回调
-                      resolve(res.data);
+
+                      (async()=>{
+                        await removeSavedFileNullIsEmpty({
+                          filePath: tempFilePath
+                        });
+
+                        resolve(res.data);
+
+                      })();
+
                     },
                     fail:reject
                   })
                 },
                 async complete(){
-                  await removeSavedFile({
+                  await removeSavedFileNullIsEmpty({
                     filePath: loadedCompanyLogoUrl
                   });
                 }
