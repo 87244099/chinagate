@@ -81,6 +81,7 @@ Component({
 
 async function report(that){
   let traceParam = that.data.traceParam;
+  traceParam.openId = getApp().globalData.openId;
   try{//可能需要登录权限
     await Ajax.reportTrace(traceParam);//直接上报，不管数据
   }catch(e){
