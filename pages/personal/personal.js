@@ -76,10 +76,15 @@ Page(Fai.mixin(Fai.commPageConfig, {
     Ajax.requestWithToast(async()=>{
       let response = await Ajax.getMemberInfo();
       let memberInfo = response.data.data;
-      response = await Ajax.getInfo4Staff(memberInfo.staffID);
-      let staffInfo = response.data.data;
-      response = await Ajax.getInfo4CompanyA(staffInfo.merchantForLevelAID);
-      let companyAInfo = response.data.data;
+      let companyAInfo = {};
+      let staffInfo = {};
+      console.log("response", response);
+      if(memberInfo.staffID){
+        response = await Ajax.getInfo4Staff(memberInfo.staffID);
+        staffInfo = response.data.data;
+        response = await Ajax.getInfo4CompanyA(staffInfo.merchantForLevelAID);
+        companyAInfo = response.data.data;
+      }
       this.setData({
         "pageData.memberInfo":memberInfo,
         "pageData.staffInfo":staffInfo,
