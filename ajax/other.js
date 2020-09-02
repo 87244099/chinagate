@@ -354,7 +354,14 @@ async function genCompanyQrCodeBase64(imgBase64, companyLogoUrl){
 
   console.log("companyLogoUrl", companyLogoUrl);
   let loadedCompanyLogoUrl = await getImageInfo(companyLogoUrl);
-  
+  try{
+    await removeSavedFile({
+      filePath: filePath
+    });
+  }catch(e){
+    console.log(e);
+  }
+
 
   return new Promise((resolve, reject)=>{
     wx.getFileSystemManager().writeFile({

@@ -48,7 +48,6 @@ Component({
     attached(){
       let that = this;
       (async()=>{
-        debugger;
         let traceParam = {
           merchantForLevelAID: this.data.companyAID,
           merchantForLevelBID: this.data.companyBID,
@@ -81,7 +80,6 @@ Component({
 
 
 async function report(that){
-  debugger;
   let traceParam = that.data.traceParam;
   try{//可能需要登录权限
     await Ajax.reportTrace(traceParam);//直接上报，不管数据
