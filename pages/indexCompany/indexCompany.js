@@ -123,6 +123,7 @@ Page(Fai.mixin(Fai.commPageConfig, {
     };
     Ajax.reportShare(reportData);
     return {
+      title: this.data.setting.title,
       path : currUrl,
     }
   },
@@ -140,16 +141,18 @@ Page(Fai.mixin(Fai.commPageConfig, {
         response = await Ajax.getCompanyAIndexPageData(this.data.setting.companyAID);
         companyPageData = companyAPageData = response.data.data;
       }
-      
 
       this.setData({
         "pageData":companyPageData,
         "pageData.companyAInfo": companyAPageData.companyInfo,
-        "pageData.companyBInfo": companyBPageData.companyInfo
+        "pageData.companyBInfo": companyBPageData.companyInfo,
+        "setting.title":companyPageData.companyInfo.companyName || ''
       });
+      
       wx.setNavigationBarTitle({
-        title: this.data.pageData.companyInfo.companyName,
+        title: this.data.setting.title
       });
+
       this.setData({
         "setting.inited":true
       });

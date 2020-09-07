@@ -26,7 +26,7 @@
           <view>我的</view>
           <view>成绩</view>
         </view>
-        <view class="fk_rank_table_row_count">{{pageData.myRank.count}}</view>
+        <view class="fk_rank_table_row_count">{{pageData.myRank.rank}}</view>
         <view class="fk_rank_table_row_name">{{pageData.myRank.staffName}}</view>
       </view>
     </view>

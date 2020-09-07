@@ -93,3 +93,12 @@ navigator{
 .fk_tabBar_item_button::after{
   display: none;
 }
+.fk_tabBar_item button{
+  background-color: inherit;
+  line-height: unset;
+  color: inherit;
+  box-shadow: none;
+}
+.fk_tabBar_item button::after{
+  border: none;
+}

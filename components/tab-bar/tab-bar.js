@@ -42,6 +42,10 @@ Component({
     staffInfo:{
       type:Object,
       value:null
+    },
+    shared:{
+      type: Boolean,
+      value: false
     }
   },
   /**
@@ -69,7 +73,7 @@ Component({
     },
     //只有企业才会有号码呼叫
     callPhone(res){
-      let phone = this.data.companyInfo.companyPhone;
+      let phone = this.data.pageData.companyInfo.companyPhone;
       if(this.data.staffID>0){//如果是员工呼叫
         
         Ajax.requestWithToast(async()=>{

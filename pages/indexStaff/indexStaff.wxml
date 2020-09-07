@@ -5,6 +5,9 @@
     <view class="fk_indexStaff_header">
       <view class="fk_indexStaff_header_name">{{pageData.staffInfo.staffName}}</view>
       <view class="fk_indexStaff_header_job">{{pageData.staffInfo.position}}</view>
+      <view class="fk_indexStaff_header_img">
+        <image style="width:100%;height:100%;" src="{{pageData.staffInfo.avatarPhoto}}"></image>
+      </view>
     </view>
     <view class="fk_indexStaff_func">
       <view class="fk_indexStaff_func_list">
@@ -12,7 +15,7 @@
           <view class="fk_indexStaff_func_item_icon iconfont icon-dianhua" catchtap="callPhone"></view>
           <view class="fk_indexStaff_func_item_text">呼叫</view>
         </view>
-        <view class="fk_indexStaff_func_item">
+        <view class="fk_indexStaff_func_item" wx:if="{{false}}">
           <button class="fk_indexStaff_func_item_icon iconfont icon-zhuanfa" open-type="share"></button>
           <view class="fk_indexStaff_func_item_text">转发</view>
         </view>
@@ -117,6 +120,6 @@
       <trace wx:if="{{(setting.companyAID>0 || setting.companyBID>0) && pageData.staffInfo.staffID>0}}" companyAID="{{setting.companyAID}}" companyBID="{{setting.companyBID}}" staffID="{{pageData.staffInfo.staffID}}" typeID="3"></trace>
     </view>
   </view>
-  <tab-bar class="fk_tabBar" type="company" companyInfo="{{pageData.companyPageData.companyInfo}}" rollbackVisible="{{_commPageConfigData.rollbackVisible}}" companyAID="{{setting.companyAID}}" companyBID="{{setting.companyBID}}" staffID="{{pageData.staffInfo.staffID}}" staffInfo="{{pageData.staffInfo}}"></tab-bar>
+  <tab-bar shared class="fk_tabBar" type="company" companyInfo="{{pageData.companyPageData.companyInfo}}" rollbackVisible="{{_commPageConfigData.rollbackVisible}}" companyAID="{{setting.companyAID}}" companyBID="{{setting.companyBID}}" staffID="{{pageData.staffInfo.staffID}}" staffInfo="{{pageData.staffInfo}}"></tab-bar>
 </view>
   <van-toast id="van-toast" />

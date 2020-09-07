@@ -16,7 +16,7 @@
         <view catchtap="onCallPhone" class="fk_sharedCard_func_item_icon iconfont icon-dianhua" style="background-color: #fa5251;"></view>
         <view class="fk_sharedCard_func_item_text">呼叫</view>
       </view>
-      <view class="fk_sharedCard_func_item">
+      <view class="fk_sharedCard_func_item" wx:if="{{!isShared}}">
         <block wx:if="{{setting.shared}}">
           <button class="fk_sharedCard_func_item_icon iconfont icon-zhuanfa1" style="background-color: #1dabff;" open-type="share"></button>
           <view class="fk_sharedCard_func_item_text">转发</view>
