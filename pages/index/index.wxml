@@ -70,7 +70,7 @@
     <view class="fk_main_article_list">
       <view class="fk_main_article_list_header">
         <view class="fk_main_article_list_header_dot"></view>
-        <view class="fk_main_article_list_header_text">文章列表</view>
+        <view class="fk_main_article_list_header_text">行业资讯</view>
       </view>
       <view class="fk_main_article_list_content">
         <navigator url="/pages/newsDetail/newsDetail?id={{item.newsID}}" class="fk_main_article_item" wx:for="{{setting.articleList}}" wx:key="newsID">

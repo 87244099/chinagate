@@ -13,7 +13,13 @@
         <view class="fk_tabBar_item_text">资讯</view>
       </navigator>
     </view>
-    <view class="fk_tabBar_item" wx:if="{{true}}">
+    <view class="fk_tabBar_item" wx:if="{{shared}}">
+      <button open-type="share">
+        <view class="iconfont icon-zhuanfa1 fk_tabBar_item_icon"></view>
+        <view class="fk_tabBar_item_text">转发</view>
+      </button>
+    </view>
+    <view class="fk_tabBar_item">
       <navigator open-type="redirect" url="/pages/shops/shops">
         <view class="iconfont icon-fujin fk_tabBar_item_icon"></view>
         <view class="fk_tabBar_item_text">附近商家</view>
@@ -56,6 +62,12 @@
         <view class="iconfont icon-apply fk_tabBar_item_icon"></view>
         <view class="fk_tabBar_item_text">产品中心</view>
       </navigator>
+    </view>
+    <view class="fk_tabBar_item" wx:if="{{shared}}">
+      <button open-type="share">
+        <view class="iconfont icon-zhuanfa1 fk_tabBar_item_icon"></view>
+        <view class="fk_tabBar_item_text">转发</view>
+      </button>
     </view>
     <view class="fk_tabBar_item">
       <view catchtap="callPhone" data-phone="{{companyInfo.companyPhone}}">

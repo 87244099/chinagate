@@ -114,6 +114,7 @@ Page(Fai.mixin({
     };
     Ajax.reportShare(reportData);
     return {
+      title: this.data.setting.title,
       path : currUrl,
     }
   },
@@ -138,9 +139,12 @@ Page(Fai.mixin({
         response = await Ajax.getInfo4Staff(this.data.setting.staffID);
         staffInfo = response.data.data;
       }
+      this.setData({
+        "setting.title":`${productInfo.title}-${companyInfo.companyName}`
+      });
 
       wx.setNavigationBarTitle({
-        title: `${productInfo.title}-${companyInfo.companyName}`,
+        title: this.data.setting.title,
       });
 
       let serviceForm = this.data.setting.serviceForm;
