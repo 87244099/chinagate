@@ -41,9 +41,6 @@
 }
 .fk_shopCollect_item_info_name{
   font-size: 36rpx;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
   width: 400rpx;
 }
 .fk_shopCollect_item_info_opt{
