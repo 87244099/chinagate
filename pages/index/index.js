@@ -56,6 +56,13 @@ Page(Fai.mixin(Fai.commPageConfig, {
       });
       Ajax.setNormalTitle("platformIndex");
     })();
+    Fai.Waiter.then("onOpenIdLoaded", (openId)=>{
+      
+      Ajax.reportTrace({
+        typeID:5,
+        openId
+      });
+    });
   },
   getUserInfo: function(e) {
     app.globalData.userInfo = e.detail.userInfo

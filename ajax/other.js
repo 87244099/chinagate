@@ -304,18 +304,17 @@ async function reportTrace(data){
     merchantForLevelAID,
     merchantForLevelBID,
     staffID,
-    subID,
-    openId
+    subID
   } = data;
   return Fai.promiseRequestPost({
     url:"/ajax/common/getCommData?cmd=reportTrace",
     data: {
-      typeID,
-      merchantForLevelAID,
-      merchantForLevelBID,
-      staffID,
-      subID,
-      openId
+      typeID: typeID||0,
+      merchantForLevelAID:merchantForLevelAID||0,
+      merchantForLevelBID:merchantForLevelBID||0,
+      staffID:staffID||0,
+      subID: subID||0,
+      openId: getApp().globalData.openId
     }
   });
 }
