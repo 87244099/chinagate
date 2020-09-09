@@ -54,7 +54,7 @@ Page(Fai.mixin(Fai.commPageConfig, {
         "pageData.companyPageData": companyPageData,
         "pageData.staffInfo":staffInfo,
         "setting.inited": true,
-        "setting.title":staffInfo.staffName || ''
+        "setting.title":companyPageData.companyInfo.companyName || '' //标题用公司名称
       });
       wx.setNavigationBarTitle({
         title: this.data.setting.title,
