@@ -29,6 +29,7 @@ Page(Fai.mixin(Fai.commPageConfig, {
         "setting.companyAID": parseInt(options.companyAID) || 0,
         "setting.companyBID": parseInt(options.companyBID) || 0,
         "setting.staffID": parseInt(options.staffID) || 0,
+        "setting.inputWord": options.word,
         "setting.word": options.word
       });
 
@@ -71,16 +72,17 @@ Page(Fai.mixin(Fai.commPageConfig, {
     onShareAppMessage: function () {
   
     },
-    searchProduct4Init: function(word){
-      Ajax.requestWithToast(async()=>{
+    async searchProduct4Init(word){
+      return Ajax.requestWithToast(async()=>{
         this.setData({
           "setting.word": word,
           "setting.pageNo":0,
           "setting.pageSize":10,
-          "setting.inputWord": "",
+          "setting.inputWord": word,
           "setting.productList": []
         });
-        let response = this.loadNextProduct4Word();
+
+        let response = await this.loadNextProduct4Word();
         return Promise.resolve(response);
       }, "加载中...");
     },
@@ -113,11 +115,11 @@ Page(Fai.mixin(Fai.commPageConfig, {
         "setting.totalPdSize": result.data.totalPdSize,
         "setting.productList": setting.productList
       });
-      return Promise.resolve(response);
+      return response;
     },
-    searchBlur: function(event){
+    searchChange: function(event){
       this.setData({
-        "setting.word": event.detail.value
+        "setting.word": event.detail
       });
     },
     searchClear: function(event){

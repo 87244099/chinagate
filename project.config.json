@@ -433,6 +433,13 @@
 					"pathName": "pages/indexCompany/indexCompany",
 					"query": "scene=qr%3D2%2C0%2C0",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "首页上来上报",
+					"pathName": "pages/index/index",
+					"query": "scene=id%3D1",
+					"scene": 1026
 				}
 			]
 		}

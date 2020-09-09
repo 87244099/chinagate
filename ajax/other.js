@@ -489,6 +489,7 @@ async function reportVisit4Share(data){
   if([1044, 1008].includes(app.globalData.showOptions.scene)){
     sourceTypeID = 2;
   }
+  console.log("xcxOpenID", xcxOpenID);
   return Fai.promiseRequestPost({
     url: "/ajax/common/getCommData?cmd=reportVisit4Share",
     data: {
