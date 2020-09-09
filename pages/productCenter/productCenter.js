@@ -98,11 +98,10 @@ Page(Fai.mixin({
       "setting.tabIndex": index
     });
   },
-  searchBlur: function(event){
+  searchChange: function(event){
     
-    let value = event.detail.value || '';
     this.setData({
-      "setting.word": value
+      "setting.word": event.detail
     });
     // this.dealSearch(event);
   },
@@ -115,7 +114,6 @@ Page(Fai.mixin({
     if(value.length > 0){
       wx.navigateTo({
         url: '/pages/productSearch/productSearch?word='+value+"&companyAID="+this.data.setting.companyAID+"&companyBID="+this.data.setting.companyBID+"&staffID="+this.data.setting.staffID,
-        
       });
     }
   },

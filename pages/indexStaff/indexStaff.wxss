@@ -200,3 +200,13 @@
     margin-top: 10rpx;
     line-height: 32rpx;
 }
+.fk_indexStaff_header{
+  position: relative;
+}
+.fk_indexStaff_header_img{
+  width: 100rpx;
+  height: 100rpx;
+  position: absolute;
+  right: 30rpx;
+  top: 45rpx;
+}

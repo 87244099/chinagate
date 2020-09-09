@@ -3,7 +3,7 @@
 <import src="../../templates/card/card.wxml"/>
 
 <view class="fk_page ">
-  <template is="card" data="{{setting, pageData, config}}"></template>
-  <tab-bar class="fk_tabBar"></tab-bar>
+  <template is="card" data="{{setting, pageData, config, isShared:true}}"></template>
+  <tab-bar class="fk_tabBar" shared></tab-bar>
   <van-toast id="van-toast" />
 </view>

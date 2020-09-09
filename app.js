@@ -22,6 +22,11 @@ App({
           Fai.DiskCache.setCache("openId",  this.globalData.openId);
           resolve(this.globalData.openId);
         }
+
+        // 跳转到对应页面
+        let response = await Ajax.getLastLocus(openId);
+        console.log("response", response);
+
       })();
     })
   },

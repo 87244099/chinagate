@@ -4,10 +4,8 @@
     <view class="fk_productCenter_header" catchtap="noop">
       <van-search
         style="background-color:{{pageData.companyPageData.companyInfo.themeColor}}"
-        value="{{ setting.word }}"
         placeholder="请输入搜索关键词"
-        bind:search="searchBlur"
-        bind:blur="searchBlur"
+        bind:change="searchChange"
         use-action-slot
       >
         <view slot="action" bind:tap="doSearch" style="color:#fff">搜索</view>

@@ -53,10 +53,11 @@ Page(Fai.mixin(Fai.commPageConfig, {
       this.setData({
         "pageData.companyPageData": companyPageData,
         "pageData.staffInfo":staffInfo,
-        "setting.inited": true
+        "setting.inited": true,
+        "setting.title":companyPageData.companyInfo.companyName || '' //标题用公司名称
       });
       wx.setNavigationBarTitle({
-        title: this.data.pageData.staffInfo.staffName,
+        title: this.data.setting.title,
       });
 
       return Promise.resolve(response);
@@ -120,7 +121,9 @@ Page(Fai.mixin(Fai.commPageConfig, {
       staffID: this.data.setting.staffID
     });
 
+    console.log("this.data.setting.title", this.data.setting.title);
     return {
+      title: this.data.setting.title,
       path : currUrl,
     }
   },

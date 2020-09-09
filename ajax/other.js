@@ -524,6 +524,15 @@ async function getShareRank(type){
   });
 }
 
+async function getLastLocus(openId){
+  return Fai.promiseRequest({
+    url: "/ajax/common/getCommData?cmd=getLastLocus",
+    data: {
+      openId
+    }
+  });
+}
+
 module.exports = {
   getQrCode,
   previewQrCode,
@@ -543,5 +552,6 @@ module.exports = {
   reportShare,
   reportVisit4Share,
   getOpenIdByCode,
-  getShareRank
+  getShareRank,
+  getLastLocus
 };
