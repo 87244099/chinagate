@@ -23,12 +23,41 @@ App({
           resolve(this.globalData.openId);
         }
 
-        // 跳转到对应页面
-        let response = await Ajax.getLastLocus(openId);
-        console.log("response", response);
+        this.redirectToByHistory();
 
       })();
     })
+  },
+  async redirectToByHistory(){
+    let sceneList = [1026, 1005, 1006];
+    let launchOptions = this.globalData.launchOptions;
+    if(sceneList.includes(launchOptions.scene)){
+      // 跳转到对应页面
+      let response = await Ajax.getLastLocus(this.globalData.openId);
+      let data = response.data.data;
+      const {
+        typeID,
+        merchantForLevelAID,
+        merchantForLevelBID,
+        staffID,
+        subID
+      } = data;
+      let urlMap = {
+        "1": "/pages/indexCompany/indexCompany",
+        "2": "/pages/indexCompany/indexCompany",
+        "3": "/pages/indexStaff/indexStaff",
+        "4": "/pages/productDetail/productDetail",
+        "5": "/pages/index/index"
+      }
+      let url = urlMap[typeID];
+      if(url){
+        url = url + `?companyAID=${merchantForLevelAID}&companyBID=${merchantForLevelBID}&staffID=${staffID}&productID=${subID}`;
+        wx.navigateTo({
+          url: url,
+        });
+      }
+    }
+    
   },
   onShow(options){
     this.globalData.showOptions = options;

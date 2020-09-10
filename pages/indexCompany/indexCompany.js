@@ -37,12 +37,14 @@ Page(Fai.mixin(Fai.commPageConfig, {
     });
     // 分享行为会触发onShow，只能放onload了，避免重复统计
     Fai.Waiter.then("onOpenIdLoaded", ()=>{
-      Ajax.reportVisit4Share({
-        typeID: this.data.setting.companyBID>0 ? 2 : 1,//一级商家、二级商家,
-        merchantForLevelAID: this.data.setting.companyAID,
-        merchantForLevelBID: this.data.setting.companyBID,
-        xcxOpenID: this.data.setting.sharedOpenId
-      });
+      if(this.data.setting.sharedOpenId){
+        Ajax.reportVisit4Share({
+          typeID: this.data.setting.companyBID>0 ? 2 : 1,//一级商家、二级商家,
+          merchantForLevelAID: this.data.setting.companyAID,
+          merchantForLevelBID: this.data.setting.companyBID,
+          xcxOpenID: this.data.setting.sharedOpenId
+        });
+      }
     });
 
 
@@ -115,7 +117,7 @@ Page(Fai.mixin(Fai.commPageConfig, {
     let currUrl = Fai.getCurrAbsPath();
     let sharedOpenId = app.globalData.openId;
     currUrl = Fai.addPageQuery(currUrl, "sharedOpenId", sharedOpenId);
-    
+    console.log("currUrl", currUrl);
     let reportData = {
       typeID : this.data.setting.companyBID>0 ? 2 : 1,//一级商家、二级商家
       merchantForLevelAID: this.data.setting.companyAID,

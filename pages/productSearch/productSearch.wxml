@@ -7,15 +7,14 @@
       style="background-color:{{pageData.companyPageData.companyInfo.themeColor}}"
       value="{{ setting.word }}"
       placeholder="请输入搜索关键词"
-      bind:search="searchBlur"
-      bind:blur="searchBlur"
+      bind:change="searchChange"
       use-action-slot
 
       style="background-color:{{pageData.companyPageData.companyInfo.themeColor}}"
     >
       <view slot="action" bind:tap="doSearch" style="color:#fff">搜索</view>
     </van-search>
-    <view class="fk_productSearch_word">当前搜索词：{{setting.word}}</view>
+    <view class="fk_productSearch_word">当前搜索词：{{setting.inputWord}}</view>
     <view class="fk_productSearch_main">
       <view class="fk_productSearch_product_list">
         <product class="fk_productSearch_product_item" wx:key="productID" wx:for="{{setting.productList}}" config="{{config}}" product="{{item}}" setting="{{setting}}"></product>
