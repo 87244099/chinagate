@@ -22,6 +22,6 @@
       </navigator>
     </view>
   </view>
-  <!-- <tab-bar class="fk_tabBar"></tab-bar>
-  <van-toast id="van-toast" /> -->
+  <!-- <tab-bar class="fk_tabBar"></tab-bar>-->
+  <van-toast id="van-toast" /> 
 </view> 

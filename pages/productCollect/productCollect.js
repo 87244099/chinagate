@@ -3,6 +3,8 @@
 const Fai = require("../../utils/util");
 const Ajax = require("../../ajax/index");
 const config = require("../../utils/config");
+
+
 Component({
 
   /**

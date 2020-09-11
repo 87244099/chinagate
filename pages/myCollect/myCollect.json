@@ -4,6 +4,7 @@
     "tab-bar": "/components/tab-bar/tab-bar",
     "van-tab": "@vant/weapp/tab/index",
     "van-tabs": "@vant/weapp/tabs/index",
+    "van-toast": "@vant/weapp/toast/index",
     "shopCollect": "../shopCollect/shopCollect",
     "productCollect": "../productCollect/productCollect",
     "staffCollect": "../staffCollect/staffCollect"

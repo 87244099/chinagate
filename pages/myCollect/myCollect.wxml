@@ -29,3 +29,4 @@
   </van-tabs>
   <tab-bar class="fk_tabBar"></tab-bar>
 </view>
+<van-toast id="van-toast" />
