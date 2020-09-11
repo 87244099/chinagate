@@ -10,14 +10,16 @@
 }
 .fk_indexStaff_header_name{
   display: block;
-    font-size: 48rpx;
-    font-weight: bold;
+  font-size: 48rpx;
+  font-weight: bold;
+  padding-right: 120rpx;
 }
 .fk_indexStaff_header_job{
   display: block;
   font-size: 34rpx;
   color: #8f8f8f;
   margin-top: 10rpx;
+  padding-right: 120rpx;
 }
 
 .fk_indexStaff_func_list{
@@ -209,4 +211,15 @@
   position: absolute;
   right: 30rpx;
   top: 45rpx;
+}
+
+.fk_indexStaff_header_desc{
+  overflow : hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  font-size: 28rpx;
+  padding-top: 10rpx;
+  color: #8f8f8f;
 }

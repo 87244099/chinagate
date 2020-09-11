@@ -1,6 +1,11 @@
 {
   "usingComponents": {
     "mp-tabbar": "weui-miniprogram/tabbar/tabbar",
-    "tab-bar": "/components/tab-bar/tab-bar"
+    "tab-bar": "/components/tab-bar/tab-bar",
+    "van-tab": "@vant/weapp/tab/index",
+    "van-tabs": "@vant/weapp/tabs/index",
+    "shopCollect": "../shopCollect/shopCollect",
+    "productCollect": "../productCollect/productCollect",
+    "staffCollect": "../staffCollect/staffCollect"
   }
 }
