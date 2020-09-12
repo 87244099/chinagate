@@ -524,6 +524,47 @@ async function getShareRank(type){
     }
   });
 }
+// 检查商家状态是否正常,如果异常,进行提示,并跳转
+async function checkAuth4CompanyStatusErrorIsRedirectWithToast(companyAInfo, companyBInfo, staffInfo){
+  // 一级商家的时间
+  if(companyAInfo){
+    let now = new Date().getTime();
+    let startTime = new Date(companyAInfo.startTime).getTime();
+    let endTime = new Date(companyAInfo.endTime).getTime();
+    if((now>=startTime && now<=endTime) == true){
+      return ToastFailWithRedirect("商家已关闭");
+    }
+  }
+  // 各级商家 员工的状态
+  //statusForA
+  //statusForB
+  //statusForStaff
+  console.log(companyAInfo , !Fai.isEmptyObj(companyAInfo) , companyAInfo.statusForA);
+  if(companyAInfo && !Fai.isEmptyObj(companyAInfo) && companyAInfo.statusForA!==1){
+    return ToastFailWithRedirect("商家状态异常");
+  }
+  if(companyBInfo && !Fai.isEmptyObj(companyBInfo) && companyBInfo.statusForB!==1){
+    return ToastFailWithRedirect("商家状态异常");
+  }
+
+  if(staffInfo && !Fai.isEmptyObj(staffInfo) && staffInfo.statusForStaff!==1){
+    return ToastFailWithRedirect("员工状态异常");
+  }
+
+  return true;
+
+  function ToastFailWithRedirect(options){
+    Toast.fail(options);
+    delayNavigateTo({
+      url: '/pages/index/index',
+    });
+
+    return false;
+  }
+}
+const delayNavigateTo = Fai.delay((option)=>{
+  wx.navigateTo(option);
+}, 2500);
 
 async function getLastLocus(openId){
   return Fai.promiseRequest({
@@ -554,5 +595,6 @@ module.exports = {
   reportVisit4Share,
   getOpenIdByCode,
   getShareRank,
-  getLastLocus
+  getLastLocus,
+  checkAuth4CompanyStatusErrorIsRedirectWithToast
 };

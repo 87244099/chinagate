@@ -116,14 +116,17 @@ async function reg(code, nickName, avatarPhoto, userDetail){
 }
 
 async function checkUserExist(){
-  let code = await Fai.getLoginCodeNullIsEmpty();
-  console.log("code", code);
   return Fai.promiseRequest({
     url: "/ajax/logAction/action?cmd=checkUserExist",
     data: {
-      code: code
+      openId: getApp().globalData.openId
     }
   });
+}
+
+async function checkUserExistBoolean(){
+  let response = await checkUserExist();
+  return response.data.data.exist;
 }
 
 async function loginWithAutoReg(data){
@@ -146,11 +149,16 @@ async function loginWithAutoReg(data){
   }).then(()=>{ 
     getApp().globalData.isLogin=true; });
 }
-
+// 检查当前是否处于登录状态
 async function checkLogin(){
   return Fai.promiseRequest({
     url:"/ajax/logAction/action?cmd=checkLogin",
   });
+}
+// 检查当前是否处于登录状态, 并且返回布尔值
+async function checkLoginBoolean(){
+  let response = await checkLogin();
+  return response.data.data.isLogin;
 }
 
 
@@ -166,6 +174,37 @@ async function checkLoginWithRedirect(url, methodName){
 
   return response.data.data.isLogin;
 }
+//自动授权登录
+async function autoEmpowerLogin(setting){
+  setting = setting ||{};
+  return new Promise(async(resolve, reject)=>{
+    let isLogin = await checkLoginBoolean();//检查有没有会话
+    if(isLogin){//有会话
+      resolve();
+    }else{//没有会话
+      let exist = await checkUserExistBoolean();
+      if(exist){//如果用户存在, 走静默登录
+        await loginByOpenId(getApp().globalData.openId);//不可能不成功
+        resolve();
+      }else{
+        let backUrl = Fai.getCurrAbsPath();
+        console.log("setting", setting);
+        let queryArr = Object.keys(setting).map(key=>{
+          return key + '=' + setting[key];
+        });
+        queryArr.push("backUrl="+encodeURIComponent(backUrl));
+        let queryString = queryArr.join("&");
+        console.log("queryString", queryString);
+        let url = `/pages/login4Empower/login4Empower?${queryString}`;
+        console.log("url", url);
+        wx.navigateTo({
+          url: url,
+        });
+        reject();
+      }
+    }
+  });
+}
 
 module.exports = {
   login,
@@ -175,6 +214,9 @@ module.exports = {
   checkUserExist,
   loginWithAutoReg,
   checkLogin,
+  checkLoginBoolean,
   checkLoginWithRedirect,
-  loginByOpenId
+  loginByOpenId,
+  checkUserExistBoolean,
+  autoEmpowerLogin
 };

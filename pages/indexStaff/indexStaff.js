@@ -44,14 +44,22 @@ Page(Fai.mixin(Fai.commPageConfig, {
     Ajax.requestWithToast(async()=>{
       let response = await Ajax.getInfo4Staff(this.data.setting.staffID);
       let staffInfo = response.data.data;
+      let companyAInfo = {};
+      let companyBInfo = {};
+      let companyPageData = response.data.data;
+      response = await Ajax.getCompanyAIndexPageData(staffInfo.merchantForLevelAID);
+      companyPageData = response.data.data;
+      companyAInfo = companyPageData.companyInfo;
       if(staffInfo.merchantForLevelBID>0){
         response = await Ajax.getCompanyBIndexPageData(staffInfo.merchantForLevelBID);
-      }else{
-        response = await Ajax.getCompanyAIndexPageData(staffInfo.merchantForLevelAID);
+        companyPageData = response.data.data;
+        companyBInfo = companyPageData.companyInfo;
       }
-      let companyPageData = response.data.data;
+
       this.setData({
         "pageData.companyPageData": companyPageData,
+        "pageData.companyAInfo": companyAInfo,
+        "pageData.companyBInfo": companyBInfo,
         "pageData.staffInfo":staffInfo,
         "setting.inited": true,
         "setting.title":companyPageData.companyInfo.companyName || '' //标题用公司名称
@@ -61,7 +69,13 @@ Page(Fai.mixin(Fai.commPageConfig, {
       });
 
       return Promise.resolve(response);
-    }, "加载中...");
+    }, "加载中...").then(()=>{
+      Ajax.checkAuth4CompanyStatusErrorIsRedirectWithToast(
+        this.data.pageData.companyAInfo,
+        this.data.pageData.companyBInfo,
+        this.data.pageData.staffInfo,
+      )
+    });
   },
 
   /**

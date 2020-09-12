@@ -5,8 +5,15 @@ const Fai = require("../../utils/util");
 const Ajax = require("../../ajax/index");
 const config = require("../../utils/config");
 import Toast from "../../miniprogram_npm/@vant/weapp/toast/toast";
+
+let TmpPageData = {
+  visitedCount: 0
+};
 Page(Fai.mixin(Fai.commPageConfig, {
   data: {
+    setting:{
+      "inited": false
+    },
     list: [{
       "text": "对话",
       "iconPath": "../../images/tabbar_icon_chat_default.png",
@@ -41,28 +48,6 @@ Page(Fai.mixin(Fai.commPageConfig, {
     })
   },
   onLoad: function () {
-
-    this.setData({
-      "setting.isPublicAcctVisible": [1047, 1124, 1089, 1038].includes(app.globalData.launchOptions.scene),
-    })
-
-    this.loadNextArticles();
-
-    (async()=>{
-      let globalData = await Ajax.getGlobalData();
-      this.setData({
-        globalData: globalData,
-        bannerList: globalData.carouselList
-      });
-      Ajax.setNormalTitle("platformIndex");
-    })();
-    Fai.Waiter.then("onOpenIdLoaded", (openId)=>{
-      
-      Ajax.reportTrace({
-        typeID:5,
-        openId
-      });
-    });
   },
   getUserInfo: function(e) {
     app.globalData.userInfo = e.detail.userInfo
@@ -72,6 +57,40 @@ Page(Fai.mixin(Fai.commPageConfig, {
     })
   },
   onShow:function(){
+    this.loadWithRedir4History();
+  },
+  //重定向到历史页面
+  loadWithRedir4History(){
+    TmpPageData.visitedCount++;
+    //判断能否重定向
+    Fai.Waiter.then("onRedirectToByHistory", (url)=>{
+      if(url && TmpPageData.visitedCount<2){
+        wx.navigateTo({
+          url: url,
+        })
+      }else{
+        this.setData({
+          "setting.isPublicAcctVisible": [1047, 1124, 1089, 1038].includes(app.globalData.launchOptions.scene),
+        })
+        this.loadNextArticles();
+        (async()=>{
+          let globalData = await Ajax.getGlobalData();
+          this.setData({
+            globalData: globalData,
+            bannerList: globalData.carouselList,
+            "setting.inited": true
+          });
+          Ajax.setNormalTitle("platformIndex");
+        })();
+        Fai.Waiter.then("onOpenIdLoaded", (openId)=>{
+          
+          Ajax.reportTrace({
+            typeID:5,
+            openId
+          });
+        });
+      }
+    });
   },
   loadNextArticles: function(){
     if(this.data.setting.articleList.length>=this.data.setting.totalSize && this.data.setting.totalSize!==null){

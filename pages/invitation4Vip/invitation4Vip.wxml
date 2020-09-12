@@ -11,5 +11,5 @@
       <van-button wx:else type="info" block open-type="getPhoneNumber" bindgetphonenumber="oninvitation4VipWhenPhoneEmpty">确定</van-button>
     </view>
   </view>
-  <van-toast id="van-toast" />
 </view>
+  <van-toast id="van-toast" />

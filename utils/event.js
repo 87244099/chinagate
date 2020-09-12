@@ -57,7 +57,9 @@ const Waiter = (function(){
     },
     then(name, handler){
       init(name);
-      cache[name].callbacks.push( handler );
+      if(!cache[name].callbacks.includes(handler)){//不推入重复的函数
+        cache[name].callbacks.push( handler );
+      };
       if(!cache[name].pendding){//如果已经结束，则无需等待了
         this.resolve(name);
       }
