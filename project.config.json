@@ -454,6 +454,13 @@
 					"pathName": "pages/login4Invitation/login4Invitation",
 					"query": "companyAID=1",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "南北信德公司首页",
+					"pathName": "pages/indexCompany/indexCompany",
+					"query": "companyAID=1&companyBID=1",
+					"scene": null
 				}
 			]
 		}

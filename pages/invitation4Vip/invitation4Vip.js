@@ -32,7 +32,9 @@ Page({
       Ajax.requestWithToast(this.loadPageData, {
         message: "加载中..."
       }).then(()=>{
-        let expireTime = new Date(this.data.pageData.companyInfo.expireDatetime).getTime();
+        
+        let expireTime = new Date(this.data.pageData.companyInfo.expireDatetime.replace(/-/g, '/')).getTime();
+        console.log(expireTime);
         let nowTime = new Date().getTime();
         if(expireTime<nowTime){
           Toast.fail("邀请已失效");
