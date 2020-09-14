@@ -74,10 +74,25 @@ function parseSharedOption(option){
   return;
 }
 
+
+function isEmptyObj(obj){
+  return equals(obj, {});
+}
+
+function equals(a, b){
+  return JSON.stringify(a) == JSON.stringify(b);
+}
+
+function deepCopy(value){
+  return JSON.parse(JSON.stringify(value));
+}
+
+
 module.exports = {
   formatTime,
   mixin,
   getLocation,
   getSetting,
-  parseSharedOption
+  parseSharedOption,
+  isEmptyObj
 };

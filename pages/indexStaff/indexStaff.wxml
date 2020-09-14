@@ -8,6 +8,7 @@
       <view class="fk_indexStaff_header_img">
         <image style="width:100%;height:100%;" src="{{pageData.staffInfo.avatarPhoto}}"></image>
       </view>
+      <view class="fk_indexStaff_header_desc">{{pageData.companyPageData.companyInfo.companyIntroductionText}}</view>
     </view>
     <view class="fk_indexStaff_func">
       <view class="fk_indexStaff_func_list">
@@ -15,7 +16,7 @@
           <view class="fk_indexStaff_func_item_icon iconfont icon-dianhua" catchtap="callPhone"></view>
           <view class="fk_indexStaff_func_item_text">呼叫</view>
         </view>
-        <view class="fk_indexStaff_func_item" wx:if="{{false}}">
+        <view class="fk_indexStaff_func_item">
           <button class="fk_indexStaff_func_item_icon iconfont icon-zhuanfa" open-type="share"></button>
           <view class="fk_indexStaff_func_item_text">转发</view>
         </view>

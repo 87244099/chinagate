@@ -21,7 +21,7 @@ Page(Fai.mixin(Fai.commPageConfig, {
     config: config
   },
 
-  onLoad(options){
+  async onLoad(options){
     options = Ajax.parseQrCodeArg(options);
     console.log("options", options);
     this.setData({
@@ -35,20 +35,13 @@ Page(Fai.mixin(Fai.commPageConfig, {
     this.setData({
       "settingStr": JSON.stringify(this.data.setting)
     });
-    // 分享行为会触发onShow，只能放onload了，避免重复统计
-    Fai.Waiter.then("onOpenIdLoaded", ()=>{
-      if(this.data.setting.sharedOpenId){
-        Ajax.reportVisit4Share({
-          typeID: this.data.setting.companyBID>0 ? 2 : 1,//一级商家、二级商家,
-          merchantForLevelAID: this.data.setting.companyAID,
-          merchantForLevelBID: this.data.setting.companyBID,
-          xcxOpenID: this.data.setting.sharedOpenId
-        });
-      }
-    });
+
+    Fai.Waiter.then("onOpenIdLoaded", async(openId)=>{
+      await Ajax.autoEmpowerLogin(this.data.setting);
+      this.loadIndexCompanyPageData();
+    })
 
 
-    this.loadIndexCompanyPageData();
   },
   async onCompanyCollect(){
     let isLogin = await Ajax.checkLoginWithRedirect(Fai.getCurrAbsPath(), "onCompanyCollect");
@@ -129,8 +122,24 @@ Page(Fai.mixin(Fai.commPageConfig, {
       path : currUrl,
     }
   },
+
+  report(){
+    // 分享行为会触发onShow，只能放onload了，避免重复统计
+    Fai.Waiter.then("onOpenIdLoaded", ()=>{
+      if(this.data.setting.sharedOpenId){
+        Ajax.reportVisit4Share({
+          typeID: this.data.setting.companyBID>0 ? 2 : 1,//一级商家、二级商家,
+          merchantForLevelAID: this.data.setting.companyAID,
+          merchantForLevelBID: this.data.setting.companyBID,
+          xcxOpenID: this.data.setting.sharedOpenId
+        });
+      }
+    });
+  },
   loadIndexCompanyPageData: async function(){
     Ajax.requestWithToast(async()=>{
+
+      
 
       let response = {};
       let companyAPageData = {};
@@ -143,6 +152,8 @@ Page(Fai.mixin(Fai.commPageConfig, {
         response = await Ajax.getCompanyAIndexPageData(this.data.setting.companyAID);
         companyPageData = companyAPageData = response.data.data;
       }
+      
+      
 
       this.setData({
         "pageData":companyPageData,
@@ -158,12 +169,20 @@ Page(Fai.mixin(Fai.commPageConfig, {
       this.setData({
         "setting.inited":true
       });
+      
+      this.report();
+
       return Promise.resolve(response);
     }, "加载中...").catch((err)=>{
       this.setData({
         "setting.inited":true
       });
       console.log(err);
+    }).then(()=>{
+      Ajax.checkAuth4CompanyStatusErrorIsRedirectWithToast(
+        this.data.pageData.companyAInfo,
+        this.data.pageData.companyBInfo
+      )
     });
   },
   loadIndexCompanyBPageData: async function(){

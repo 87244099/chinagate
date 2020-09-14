@@ -26,11 +26,22 @@ Page({
       "setting.currUrl": Fai.getCurrAbsPath(),
       "setting.scene": options.scene
     });
-    this.setCode();
     let isLogin = await Ajax.checkLoginWithRedirect();
     if(isLogin){
+      this.setCode();
       Ajax.requestWithToast(this.loadPageData, {
         message: "加载中..."
+      }).then(()=>{
+        let expireTime = new Date(this.data.pageData.companyInfo.expireDatetime).getTime();
+        let nowTime = new Date().getTime();
+        if(expireTime<nowTime){
+          Toast.fail("邀请已失效");
+          setTimeout(()=>{
+            wx.navigateTo({
+              url: '/pages/index/index',
+            });
+          }, 1500)
+        }
       });
     }
   },
@@ -45,9 +56,12 @@ Page({
 
     let memberInfo = response.data.data;
     response = await Ajax.getInvitationVipPageData(this.data.setting.vipCustomerInvitationID);
+    let companyInfo = response.data.data.companyInfo;
+    
+
     this.setData({
       "setting.memberInfo": memberInfo,
-      "pageData.companyInfo":response.data.data.companyInfo
+      "pageData.companyInfo": companyInfo
     });
 
     return Promise.resolve(response);

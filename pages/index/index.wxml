@@ -1,5 +1,5 @@
 <!--index.wxml-->
-<view class="fk_page">
+<view class="fk_page" wx:if="{{setting.inited}}">
   <view style="height:84px;position:fixed;left:0;top:0;width:100%;z-index:99; {{setting.publicAcctVisible?'display:block':'display:none'}}">
     <official-account></official-account>
   </view>
@@ -86,7 +86,7 @@
     </view>
   </view>
   <tab-bar class="fk_tabBar" rollbackVisible="{{_commPageConfigData.rollbackVisible}}"></tab-bar>
-  <van-toast id="van-toast" />
 </view>
 
 <view class="fk_wxapp_collect" wx:if="{{setting.shareMaskVisible}}" catchtap="onShareMaskClick"></view>
+<van-toast id="van-toast" />

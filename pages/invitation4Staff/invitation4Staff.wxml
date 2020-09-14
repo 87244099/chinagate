@@ -4,11 +4,20 @@
       <view class="fk_invitation4Staff_logo">
         <image src="{{config.wwwwStaticDomain}}/{{pageData.companyInfo.companyLogoUrl}}" mode="aspectFit" style="width:100%;height:100%;"></image>
       </view>
-      <view class="fk_invitation4Staff_name">你即将绑定{{pageData.companyInfo.companyName}}员工账号</view>
+      <view class="fk_invitation4Staff_name"  wx:if="{{setting.memberInfo.staffID>0}}">此微信已经绑定</view>
+      <view class="fk_invitation4Staff_name">公司: {{pageData.companyInfo.companyName}}</view>
+      <view class="fk_invitation4Staff_name">员工: {{pageData.staffInfo.staffName}}</view>
+      <view class="fk_invitation4Staff_name" wx:if="{{setting.memberInfo.staffID===0}}">微信: {{pageData.staffInfo.weChat}}</view>
     </view>
     <view class="fk_btn_wrap">
-      <van-button wx:if="{{setting.memberInfo.memberPhone}}" type="info" block catchtap="oninvitation4Staff">确定</van-button>
-      <van-button wx:else type="info" block open-type="getPhoneNumber" bindgetphonenumber="oninvitation4StaffWhenPhoneEmpty">确定</van-button>
+      <view class="fk_btn_wrap_item" >
+        <van-button wx:if="{{setting.memberInfo.memberPhone}}" type="info" block catchtap="oninvitation4Staff">确定</van-button>
+        <van-button wx:else type="info" block open-type="getPhoneNumber" bindgetphonenumber="oninvitation4StaffWhenPhoneEmpty">确定</van-button>
+      </view>
+      <view class="fk_btn_wrap_item" wx:if="{{setting.memberInfo.staffID===0}}">
+        <van-button type="warning" block open-type="getPhoneNumber" catchtap="jump2CompanyIndex">放弃</van-button>
+      </view>
+      
     </view>
   </view>
   <van-toast id="van-toast" />

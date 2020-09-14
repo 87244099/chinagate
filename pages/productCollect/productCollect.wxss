@@ -60,7 +60,9 @@
 .fk_productSearch_product_priceInfo_value{
   flex: 1;
 }
-
+.fk_productCollect{
+  padding-top: 30rpx;
+}
 .fk_productCollect_list{
   padding: 20rpx;
   display: flex;

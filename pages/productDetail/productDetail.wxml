@@ -79,7 +79,7 @@
   <view style="padding:0 20rpx">
     <trace wx:if="{{(setting.companyAID>0 || setting.companyBID>0) && setting.productId>0}}" companyAID="{{setting.companyAID}}" companyBID="{{setting.companyBID}}" subID="{{setting.productId}}" typeID="4" fixRollback="{{false}}"></trace>
   </view>
-  <tab-bar class="fk_tabBar" type="company" rollbackVisible="{{_commPageConfigData.rollbackVisible}}" style="background-color:{{pageData.companyInfo.themeColor}}" companyInfo="{{pageData.companyInfo}}"  companyAID="{{setting.companyAID}}" companyBID="{{setting.companyBID}}" staffID="{{setting.staffID}}"></tab-bar>
+  <tab-bar shared class="fk_tabBar" type="company" rollbackVisible="{{_commPageConfigData.rollbackVisible}}" style="background-color:{{pageData.companyInfo.themeColor}}" companyInfo="{{pageData.companyInfo}}"  companyAID="{{setting.companyAID}}" companyBID="{{setting.companyBID}}" staffID="{{setting.staffID}}"></tab-bar>
 </view>
   <van-toast id="van-toast" />
 

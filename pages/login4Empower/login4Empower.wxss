@@ -1,0 +1,22 @@
+
+.fk_login_logo{
+  width: 200rpx;
+  height: 200rpx;
+  overflow: hidden;
+  margin: 120rpx auto 60rpx auto;
+  border: 1rpx solid #eee;
+  border-radius: 30rpx;
+}
+.fk_login_logo_wrap{
+  width: 100%;
+  height: 535rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.fk_login_name{
+  width: 660rpx;
+  margin: 0 auto;
+  font-size: 32rpx;
+  text-align: center;
+}

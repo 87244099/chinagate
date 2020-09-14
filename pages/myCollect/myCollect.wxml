@@ -1,7 +1,7 @@
 <!--pages/myCollect/myCollect.wxml-->
 <view class="fk_page">
   <view class="fk_myCollect">
-    <view class="fk_myCollect_list">
+    <view class="fk_myCollect_list" wx:if="{{false}}">
       <navigator url="/pages/shopCollect/shopCollect" class="fk_myCollect_item">
         <view class="fk_myCollect_item_icon iconfont icon-qiye" style="color: green;"></view>
         <view class="fk_myCollect_item_text">店铺收藏</view>
@@ -16,5 +16,17 @@
       </navigator>
     </view>
   </view>
+  <van-tabs active="{{ 0 }}" bind:change="onChange" color="#0062d7">
+    <van-tab title="店铺" name="{{0}}">
+      <shopCollect></shopCollect>
+    </van-tab>
+    <van-tab title="产品" name="{{1}}">
+      <productCollect></productCollect>
+    </van-tab>
+    <van-tab title="名片" name="{{2}}">
+      <staffCollect></staffCollect>
+    </van-tab>
+  </van-tabs>
   <tab-bar class="fk_tabBar"></tab-bar>
 </view>
+<van-toast id="van-toast" />

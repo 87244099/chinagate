@@ -1,6 +1,7 @@
 
 
 async function getLoginCodeNullIsEmpty(){
+  console.log(1111111111111);
   return new Promise((resolve)=>{
     wx.login({
       complete: (res) => {

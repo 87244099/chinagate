@@ -435,11 +435,25 @@
 					"scene": null
 				},
 				{
-					"id": -1,
-					"name": "首页上来上报",
+					"id": 53,
+					"name": "首页检查历史访问记录",
 					"pathName": "pages/index/index",
 					"query": "scene=id%3D1",
 					"scene": 1026
+				},
+				{
+					"id": 54,
+					"name": "登录隐藏授权",
+					"pathName": "pages/login4Empower/login4Empower",
+					"query": "companyAID=1",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "员工邀请-登录回调",
+					"pathName": "pages/login4Invitation/login4Invitation",
+					"query": "companyAID=1",
+					"scene": null
 				}
 			]
 		}

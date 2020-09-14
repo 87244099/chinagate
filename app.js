@@ -28,35 +28,41 @@ App({
       })();
     })
   },
-  async redirectToByHistory(){
-    let sceneList = [1026, 1005, 1006];
-    let launchOptions = this.globalData.launchOptions;
-    if(sceneList.includes(launchOptions.scene)){
-      // 跳转到对应页面
-      let response = await Ajax.getLastLocus(this.globalData.openId);
-      let data = response.data.data;
-      const {
-        typeID,
-        merchantForLevelAID,
-        merchantForLevelBID,
-        staffID,
-        subID
-      } = data;
-      let urlMap = {
-        "1": "/pages/indexCompany/indexCompany",
-        "2": "/pages/indexCompany/indexCompany",
-        "3": "/pages/indexStaff/indexStaff",
-        "4": "/pages/productDetail/productDetail",
-        "5": "/pages/index/index"
+  redirectToByHistory(){
+    Fai.Waiter.wait("onRedirectToByHistory", async(resolve)=>{
+      let sceneList = [1026, 1005, 1006];
+      let launchOptions = this.globalData.launchOptions;
+      if(sceneList.includes(launchOptions.scene)){
+        // 跳转到对应页面
+        let response = await Ajax.getLastLocus(this.globalData.openId);
+        let data = response.data.data;
+        const {
+          typeID,
+          merchantForLevelAID,
+          merchantForLevelBID,
+          staffID,
+          subID
+        } = data;
+        let urlMap = {
+          "1": "/pages/indexCompany/indexCompany",
+          "2": "/pages/indexCompany/indexCompany",
+          "3": "/pages/indexStaff/indexStaff",
+          "4": "/pages/productDetail/productDetail",
+          "5": "/pages/index/index"
+        }
+        let url = urlMap[typeID];
+        let currUrl = launchOptions.path;
+        console.log("url", url)
+        console.log("currUrl", currUrl)
+        if(url && !url.includes(currUrl)){//需要跳转,但不是同一个页面,目前进来的一般是首页,所以判断首页即可,不需要考虑其他子页面是否相同
+          url = url + `?companyAID=${merchantForLevelAID}&companyBID=${merchantForLevelBID}&staffID=${staffID}&id=${subID}`;
+          return resolve(url);
+        }
       }
-      let url = urlMap[typeID];
-      if(url){
-        url = url + `?companyAID=${merchantForLevelAID}&companyBID=${merchantForLevelBID}&staffID=${staffID}&productID=${subID}`;
-        wx.navigateTo({
-          url: url,
-        });
-      }
-    }
+
+      return resolve('');
+    });
+    
     
   },
   onShow(options){

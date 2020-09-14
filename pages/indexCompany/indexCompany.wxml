@@ -62,14 +62,14 @@
     </view> -->
     <view class="fk_indexCompany_productIntro">
       <template is="bigTitle" data="{{cn:'产品展示', en:'PRODUCT', pageData}}"></template>
-      <view class="fk_indexCompany_productIntro_group" wx:for-item="group" wx:for="{{pageData.productGroupList}}">
+      <view class="fk_indexCompany_productIntro_group" wx:key="id" wx:for-item="group" wx:for="{{pageData.productGroupList}}">
         <view class="fk_indexCompany_productIntro_group_title">
           <view class="fk_indexCompany_productIntro_group_title_text" style="border-color:{{pageData.companyInfo.themeColor}}">{{group.productTypeName}}</view>
           <navigator url="/pages/productCenter/productCenter?companyAID={{setting.companyAID}}&companyBID={{setting.companyBID}}&staffID={{setting.staffID}}" open-type="redirect" class="fk_indexCompany_productIntro_group_title_arrow">更多></navigator>
         </view>
         <view class="fk_indexCompany_productIntro_group_main">
           <view class="fk_indexCompany_productIntro_group_main_product_list">
-            <product class="fk_indexCompany_productIntro_group_main_product_item" setting="{{setting}}" config="{{config}}" product="{{product}}" data-id="{{product.productID}}"  wx:for-item="product" wx:for="{{group.productList}}"></product>
+            <product class="fk_indexCompany_productIntro_group_main_product_item" setting="{{setting}}" config="{{config}}" product="{{product}}" data-id="{{product.productID}}"  wx:key="id" wx:for-item="product" wx:for="{{group.productList}}"></product>
           </view>
         </view>
       </view>

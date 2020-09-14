@@ -25,6 +25,8 @@
     "pages/staffCollect/staffCollect",
     "pages/reg/reg",
     "pages/login/login",
+    "pages/login4Empower/login4Empower",
+    "pages/login4Invitation/login4Invitation",
     "pages/cutFace/cutFace",
     "pages/personal4Company/personal4Company",
     "pages/invitation4Staff/invitation4Staff",

@@ -1,7 +1,8 @@
 {
+  "component": true,
   "usingComponents": {
     "mp-tabbar": "weui-miniprogram/tabbar/tabbar",
     "tab-bar": "/components/tab-bar/tab-bar",
-    "van-toast": "@vant/weapp/toast/index"
+    "van-toast": "../../miniprogram_npm/@vant/weapp/toast/index"
   }
 }

@@ -25,18 +25,32 @@ Page({
     this.setData({
       "setting.backUrl": option.backUrl ? decodeURIComponent(option.backUrl) : "",
       "setting.methodName": option.methodName ? decodeURIComponent(option.methodName) : "",
-    });
-    wx.getUserInfo({
-      success:(response)=>{
-        if(response.errMsg == "getUserInfo:ok"){
-          this.setData({
-            "pageData.wxUserInfo": response
-          })
-        }
-      }
+      "setting.companyAID": parseInt(option.companyAID)||0,
+      "setting.companyBID": parseInt(option.companyBID)||0
     });
 
-    Ajax.setNormalTitle("login")
+    if(!this.data.setting.companyAID){
+      return;
+    }
+
+    Ajax.requestWithToast(async()=>{
+      let companyInfo = {};
+      let response;
+      if(this.data.setting.companyBID > 0){
+        response = await Ajax.getInfo4CompanyB(this.data.setting.companyBID);
+      }else{
+        response = await Ajax.getInfo4CompanyA(this.data.setting.companyAID);
+      }
+      companyInfo = response.data.data;
+      this.setData({
+        "pageData.companyInfo":companyInfo
+      });
+      
+      return response;
+    }, "加载中...");
+    
+
+    // Ajax.setNormalTitle("login")
   },  
   
 
