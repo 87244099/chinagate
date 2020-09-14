@@ -204,6 +204,7 @@ Page(Fai.mixin({
     data.merchantForLevelAID = this.data.setting.companyAID;
     data.merchantForLevelBID = this.data.setting.companyBID
     data.staffID = this.data.pageData.memberInfo.staffID;
+    data.productID = this.data.setting.productId;//有大小写的区别
     Ajax.requestWithToast(async()=>{
       let response = await Fai.promiseRequestPost({
         url:"/ajax/apply/applyForm?cmd=applyService",

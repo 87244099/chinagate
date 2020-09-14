@@ -529,9 +529,11 @@ async function checkAuth4CompanyStatusErrorIsRedirectWithToast(companyAInfo, com
   // 一级商家的时间
   if(companyAInfo){
     let now = new Date().getTime();
-    let startTime = new Date(companyAInfo.startTime).getTime();
-    let endTime = new Date(companyAInfo.endTime).getTime();
-    if((now>=startTime && now<=endTime) == true){
+    let startTime = new Date(companyAInfo.startTime.replace(/-/g, '/')).getTime();
+    let endTime = new Date(companyAInfo.endTime.replace(/-/g, '/')).getTime();
+    console.log("startTime", startTime);
+    console.log("endTime", endTime);
+    if((now>=startTime && now<=endTime) === false){
       return ToastFailWithRedirect("商家已关闭");
     }
   }
