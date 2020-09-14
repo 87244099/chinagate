@@ -69,21 +69,18 @@ Page(Fai.mixin(Fai.commPageConfig, {
           url: url,
         })
       }else{
-        this.setData({
-          "setting.isPublicAcctVisible": [1047, 1124, 1089, 1038].includes(app.globalData.launchOptions.scene),
-        })
-        this.loadNextArticles();
-        (async()=>{
+        
+        Fai.Waiter.then("onOpenIdLoaded", async(openId)=>{
+          await Ajax.autoEmpowerLogin(this.data.setting);
           let globalData = await Ajax.getGlobalData();
           this.setData({
             globalData: globalData,
             bannerList: globalData.carouselList,
-            "setting.inited": true
+            "setting.inited": true,
+            "setting.isPublicAcctVisible": [1047, 1124, 1089, 1038].includes(app.globalData.launchOptions.scene),
           });
+          this.loadNextArticles();
           Ajax.setNormalTitle("platformIndex");
-        })();
-        Fai.Waiter.then("onOpenIdLoaded", (openId)=>{
-          
           Ajax.reportTrace({
             typeID:5,
             openId

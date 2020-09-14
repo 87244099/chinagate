@@ -31,7 +31,11 @@ Page(Fai.mixin(Fai.commPageConfig, {
       "setting.staffID": parseInt(options.staffID) || -1,
     });
     
-    Fai.Waiter.then("onOpenIdLoaded", ()=>{
+    Fai.Waiter.then("onOpenIdLoaded", async()=>{
+      
+      // await Ajax.autoEmpowerLogin(this.data.setting);
+      this.init4LoadPage();
+
       Ajax.reportVisit4Share({
         typeID: 3,
         xcxOpenID:this.data.setting.sharedOpenId,
@@ -39,8 +43,11 @@ Page(Fai.mixin(Fai.commPageConfig, {
         merchantForLevelBID:this.data.setting.companyBID,
         staffID:this.data.setting.staffID,
       });
-    });
+    }); 
 
+    
+  },
+  init4LoadPage(){
     Ajax.requestWithToast(async()=>{
       let response = await Ajax.getInfo4Staff(this.data.setting.staffID);
       let staffInfo = response.data.data;
