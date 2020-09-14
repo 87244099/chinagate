@@ -26,9 +26,9 @@ Page({
       "setting.currUrl": Fai.getCurrAbsPath(),
       "setting.scene": options.scene
     });
-    this.setCode();
     let isLogin = await Ajax.checkLoginWithRedirect();
     if(isLogin){
+      this.setCode();
       Ajax.requestWithToast(this.loadPageData, {
         message: "加载中..."
       }).then(()=>{
@@ -40,7 +40,7 @@ Page({
             wx.navigateTo({
               url: '/pages/index/index',
             });
-          },1500)
+          }, 1500)
         }
       });
     }
@@ -61,7 +61,7 @@ Page({
 
     this.setData({
       "setting.memberInfo": memberInfo,
-      "pageData.companyInfo":response.data.data.companyInfo
+      "pageData.companyInfo": companyInfo
     });
 
     return Promise.resolve(response);

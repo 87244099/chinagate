@@ -28,7 +28,7 @@ Component({
      */
     onLoad: function () {
       this.loadStaffCollections();
-      Ajax.setNormalTitle("cardCollect");
+      // Ajax.setNormalTitle("cardCollect");
     },
 
     /**

@@ -24,7 +24,7 @@ Page({
   onLoad: function (option) {
     this.setData({
       "setting.backUrl": option.backUrl ? decodeURIComponent(option.backUrl) : "",
-      "setting.methodName": option.methodName ? decodeURIComponent(option.methodName) : "",
+      "setting.methodName": option.methodName ? decodeURIComponent(option.methodName) : ""
     });
     wx.getUserInfo({
       success:(response)=>{
@@ -36,7 +36,7 @@ Page({
       }
     });
 
-    Ajax.setNormalTitle("login")
+    // Ajax.setNormalTitle("login")
   },  
   
 

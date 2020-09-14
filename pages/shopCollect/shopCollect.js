@@ -32,7 +32,7 @@ Component({
      */
     onLoad: function () {
       this.loadData();
-      Ajax.setNormalTitle("shopCollect");
+      // Ajax.setNormalTitle("shopCollect");
     },
     async loadData(){
       this.loadShopCollections();

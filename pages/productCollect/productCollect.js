@@ -39,7 +39,7 @@ Component({
       Ajax.reportShare();
       
 
-      Ajax.setNormalTitle("productCollect");
+      // Ajax.setNormalTitle("productCollect");
     },
 
     /**

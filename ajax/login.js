@@ -174,6 +174,17 @@ async function checkLoginWithRedirect(url, methodName){
 
   return response.data.data.isLogin;
 }
+async function checkLoginWithRedirect4Invitation(url, methodName){
+  url = url || Fai.getCurrAbsPath();
+  let response = await checkLogin();
+  if(!response.data.data.isLogin){
+    wx.navigateTo({
+      url: '/pages/login4Invitation/login4Invitation?backUrl='+encodeURIComponent(url)+"&methodName="+methodName,
+    })
+  }
+
+  return response.data.data.isLogin;
+}
 //自动授权登录
 async function autoEmpowerLogin(setting){
   setting = setting ||{};
@@ -218,5 +229,6 @@ module.exports = {
   checkLoginWithRedirect,
   loginByOpenId,
   checkUserExistBoolean,
-  autoEmpowerLogin
+  autoEmpowerLogin,
+  checkLoginWithRedirect4Invitation
 };

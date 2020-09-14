@@ -19,3 +19,13 @@
 .fk_btn_wrap{
   width:660rpx;margin:0 auto;
 }
+.fk_btn_wrap{
+  display: flex;
+}
+.fk_btn_wrap_item{
+  flex: 1;
+  margin-left: 40rpx;
+}
+.fk_btn_wrap_item:first-child{
+  margin-left: 0;
+}

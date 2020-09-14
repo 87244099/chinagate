@@ -27,7 +27,7 @@ Page({
     });
     this.setCode();
 
-    let isLogin = await Ajax.checkLoginWithRedirect();
+    let isLogin = await Ajax.checkLoginWithRedirect4Invitation();
     if(isLogin){
       Ajax.requestWithToast(this.loadPageData, "加载中...");
     }
@@ -145,5 +145,10 @@ Page({
       tip4Success:true
     });
   },
-  
+  jump2CompanyIndex(){
+    let companyInfo = this.data.pageData.companyInfo;
+    wx.redirectTo({
+      url: `/pages/indexCompany/indexCompany?companyAID=${companyInfo.merchantForLevelAID}&companyBID=${companyInfo.merchantForLevelBID}`
+    })
+  }
 })
