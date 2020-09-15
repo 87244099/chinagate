@@ -495,19 +495,20 @@ async function reportVisit4Share(data){
     staffID,
     subID
   } = data;
+
   /*
     分享到单人是1007
     分享到群是：1044
     去掉shareTicket 后分享到群：1008
   */
   // //进入只统计这2种渠道的流量
-  // if(![1044, 1007, 1008].includes(app.globalData.showOptions.scene)){
-  //   return Promise.resolve();
-  // }
-  // // 如果没有当前的访问入口的分享者openId，则不上报
-  // if(!xcxOpenID){
-  //   return Promise.resolve();
-  // }
+  if(![1044, 1007, 1008].includes(app.globalData.showOptions.scene)){
+    return Promise.resolve();
+  }
+  // 如果没有当前的访问入口的分享者openId，则不上报
+  if(!xcxOpenID){
+    return Promise.resolve();
+  }
 
   let sourceTypeID = 1;
   if([1044, 1008].includes(app.globalData.showOptions.scene)){
@@ -555,7 +556,9 @@ async function checkAuth4CompanyStatusErrorIsRedirectWithToast(companyAInfo, com
     let now = new Date().getTime();
     let startTime = new Date(companyAInfo.startTime).getTime();
     let endTime = new Date(companyAInfo.endTime).getTime();
-    if((now>=startTime && now<=endTime) == true){
+    let isExpire = !(now>=startTime && now<=endTime);
+    console.log(now, startTime, endTime, isExpire);
+     if(isExpire){
       return ToastFailWithRedirect("商家已关闭");
     }
   }
