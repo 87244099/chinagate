@@ -135,6 +135,12 @@ Page({
     
   },
   oninvitation4Staff: async function(){
+
+    if(this.data.setting.memberInfo.staffID === this.data.setting.staffID){//id相同，证明已经绑定过了，直接跳转到对应企业的首页
+      this.jump2CompanyIndex();
+    }
+
+    // 已绑定的情况下，确定按钮点击后不是提交，而是去到这个商家的页面。
     Ajax.requestWithToast(async()=>{
       let response = await Ajax.memberUpToStaff(this.data.setting.staffID, this.data.setting.memberInfo.memberPhone);
       wx.navigateTo({

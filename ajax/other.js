@@ -469,6 +469,10 @@ async function reportShare(data){
     subID
   } = data;
 
+  if(!xcxOpenID){
+    return Promise.resolve();
+  }
+
   return Fai.promiseRequestPost({
     url: "/ajax/common/getCommData?cmd=reportShare",
     data: {
@@ -558,7 +562,7 @@ async function checkAuth4CompanyStatusErrorIsRedirectWithToast(companyAInfo, com
     let endTime = new Date(companyAInfo.endTime.replace(/-/g, '/')).getTime();
     let isExpire = (now>=startTime && now<=endTime);
     if(isExpire === false){
-      return ToastFailWithRedirect("商家已关闭");
+      return ToastFailWithRedirect("商家已过期");
     }
   }
   // 各级商家 员工的状态
