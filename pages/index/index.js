@@ -71,7 +71,7 @@ Page(Fai.mixin(Fai.commPageConfig, {
       }else{
         
         Fai.Waiter.then("onOpenIdLoaded", async(openId)=>{
-          await Ajax.autoEmpowerLogin(this.data.setting);
+          // await Ajax.autoEmpowerLogin(this.data.setting);//强制授权登录
           let globalData = await Ajax.getGlobalData();
           this.setData({
             globalData: globalData,

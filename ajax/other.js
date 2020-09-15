@@ -505,7 +505,7 @@ async function reportVisit4Share(data){
   if(![1044, 1007, 1008].includes(app.globalData.showOptions.scene)){
     return Promise.resolve();
   }
-  // 如果没有当前的访问入口的分享者openId，则不上报
+  // // 如果没有当前的访问入口的分享者openId，则不上报
   if(!xcxOpenID){
     return Promise.resolve();
   }
@@ -554,11 +554,10 @@ async function checkAuth4CompanyStatusErrorIsRedirectWithToast(companyAInfo, com
   // 一级商家的时间
   if(companyAInfo){
     let now = new Date().getTime();
-    let startTime = new Date(companyAInfo.startTime).getTime();
-    let endTime = new Date(companyAInfo.endTime).getTime();
-    let isExpire = !(now>=startTime && now<=endTime);
-    console.log(now, startTime, endTime, isExpire);
-     if(isExpire){
+    let startTime = new Date(companyAInfo.startTime.replace(/-/g, '/')).getTime();
+    let endTime = new Date(companyAInfo.endTime.replace(/-/g, '/')).getTime();
+    let isExpire = (now>=startTime && now<=endTime);
+    if(isExpire === false){
       return ToastFailWithRedirect("商家已关闭");
     }
   }
@@ -566,7 +565,6 @@ async function checkAuth4CompanyStatusErrorIsRedirectWithToast(companyAInfo, com
   //statusForA
   //statusForB
   //statusForStaff
-  console.log(companyAInfo , !Fai.isEmptyObj(companyAInfo) , companyAInfo.statusForA);
   if(companyAInfo && !Fai.isEmptyObj(companyAInfo) && companyAInfo.statusForA!==1){
     return ToastFailWithRedirect("商家状态异常");
   }
@@ -590,7 +588,7 @@ async function checkAuth4CompanyStatusErrorIsRedirectWithToast(companyAInfo, com
   }
 }
 const delayNavigateTo = Fai.delay((option)=>{
-  wx.navigateTo(option);
+  wx.redirectTo(option);
 }, 2500);
 
 async function getLastLocus(openId){

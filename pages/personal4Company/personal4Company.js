@@ -81,19 +81,28 @@ Page(Fai.mixin(Fai.commPageConfig, {
       let response = await Ajax.getMemberInfo();
       let memberInfo = response.data.data;
       let companyAInfo = {};
+      let companyBInfo = {};
+      let companyInfo = {};
       let staffInfo = {};
       if(memberInfo.staffID>0){
         response = await Ajax.getInfo4Staff(memberInfo.staffID);
         staffInfo = response.data.data;
       }
       if(staffInfo.merchantForLevelAID>0){
-        response = await Ajax.getInfo4CompanyA(staffInfo.merchantForLevelAID);
-        companyAInfo = response.data.data;
+        response = await Ajax.getCompanyAIndexPageData(staffInfo.merchantForLevelAID);
+        companyInfo = companyAInfo = response.data.data.companyInfo;
       }
+      if(staffInfo.merchantForLevelBID>0){
+        response = await Ajax.getCompanyBIndexPageData(staffInfo.merchantForLevelBID);
+        companyInfo = companyBInfo = response.data.data.companyInfo;
+      }
+
       this.setData({
         "pageData.memberInfo":memberInfo,
         "pageData.staffInfo":staffInfo,
-        "pageData.companyAInfo": companyAInfo
+        "pageData.companyAInfo": companyAInfo,
+        "pageData.companyBInfo": companyBInfo,
+        "pageData.companyInfo": companyInfo,
       });
       return Promise.resolve(response);
     }, "加载中...");
