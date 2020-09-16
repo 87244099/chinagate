@@ -137,7 +137,8 @@ Page({
   oninvitation4Staff: async function(){
 
     if(this.data.setting.memberInfo.staffID === this.data.setting.staffID){//id相同，证明已经绑定过了，直接跳转到对应企业的首页
-      this.jump2CompanyIndex();
+      this.jump2CompanyPersonal();
+      return;
     }
 
     // 已绑定的情况下，确定按钮点击后不是提交，而是去到这个商家的页面。
@@ -155,6 +156,13 @@ Page({
     let companyInfo = this.data.pageData.companyInfo;
     wx.redirectTo({
       url: `/pages/indexCompany/indexCompany?companyAID=${companyInfo.merchantForLevelAID}&companyBID=${companyInfo.merchantForLevelBID}`
+    })
+  },
+  jump2CompanyPersonal(){
+    let companyInfo = this.data.pageData.companyInfo;
+    let staffID = this.data.staffID;
+    wx.redirectTo({
+      url: `/pages/personal4Company/personal4Company?companyAID=${companyInfo.merchantForLevelAID}&companyBID=${companyInfo.merchantForLevelBID}&staffID=${staffID}`
     })
   }
 })
