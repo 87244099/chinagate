@@ -72,25 +72,14 @@ Component({
       }
     },
     //只有企业才会有号码呼叫
-    callPhone(res){
-      let phone = this.data.companyInfo.companyPhone;
-      if(this.data.staffID>0){//如果是员工呼叫
-        
-        Ajax.requestWithToast(async()=>{
-          let response = await Ajax.getInfo4Staff(this.data.staffID);
-          let staffInfo = response.data.data;
-          wx.makePhoneCall({
-            phoneNumber: staffInfo.phone,
-          });
-          return Promise.resolve(response);
-        });
-
-      }else{
+    async callPhone(res){
+      if(this.data.companyInfo.companyPhone){
         wx.makePhoneCall({
-          phoneNumber: phone,
+          phoneNumber: this.data.companyInfo.companyPhone,
         });
+      }else{
+        Toast.fail("该企业暂无联系方式");
       }
-
       
     },
     jump4Personal(){
