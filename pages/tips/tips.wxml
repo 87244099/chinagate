@@ -8,7 +8,7 @@
     </view>
     <view style="width:660rpx;margin:0 auto;">
       <auto-login-reg bindjump="jump4Personal">
-        <van-button style="width:100%" type="info" block>登录</van-button>
+        <van-button style="width:100%" type="info" block>确定</van-button>
       </auto-login-reg>
     </view>
   </view>

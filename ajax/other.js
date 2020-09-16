@@ -562,7 +562,7 @@ async function checkAuth4CompanyStatusErrorIsRedirectWithToast(companyAInfo, com
     let endTime = new Date(companyAInfo.endTime.replace(/-/g, '/')).getTime();
     let isExpire = (now>=startTime && now<=endTime);
     if(isExpire === false){
-      return ToastFailWithRedirect("商家已过期");
+      return ToastFailWithRedirect2Tips("该商家已过期，请联系管理员");
     }
   }
   // 各级商家 员工的状态
@@ -570,15 +570,15 @@ async function checkAuth4CompanyStatusErrorIsRedirectWithToast(companyAInfo, com
   //statusForB
   //statusForStaff
   if(companyAInfo && !Fai.isEmptyObj(companyAInfo) && companyAInfo.statusForA!==1){
-    return ToastFailWithRedirect4Tips("商家状态异常");
+    return ToastFailWithRedirect2Tips("商家状态异常，请联系管理员");
   }
-  
+
   if(companyBInfo && !Fai.isEmptyObj(companyBInfo) && companyBInfo.statusForB!==1){
-    return ToastFailWithRedirect4Tips("商家状态异常");
+    return ToastFailWithRedirect2Tips("商家状态异常，请联系管理员");
   }
 
   if((staffInfo && !Fai.isEmptyObj(staffInfo) && staffInfo.statusForStaff!==1)){
-    return ToastFailWithRedirect4Tips("员工状态异常");
+    return ToastFailWithRedirect2Tips("员工状态异常，请联系管理员");
   }
 
   return true;
@@ -592,14 +592,12 @@ async function checkAuth4CompanyStatusErrorIsRedirectWithToast(companyAInfo, com
     return false;
   }
 
-  function ToastFailWithRedirect4Tips(message){
-    Toast.fail(message);
-    delayNavigateTo({
+  function ToastFailWithRedirect2Tips(message){
+    wx.redirectTo({
       url: '/pages/tips/tips?message='+message,
     });
 
     return false;
-
   }
 }
 const delayNavigateTo = Fai.delay((option)=>{
