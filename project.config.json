@@ -253,10 +253,10 @@
 					"scene": null
 				},
 				{
-					"id": 29,
-					"name": "vip升级",
+					"id": 27,
+					"name": "本地-邀请vip-过期",
 					"pathName": "pages/invitation4Vip/invitation4Vip",
-					"query": "scene=vipCustomerInvitationID%3D2",
+					"query": "scene=vipCustomerInvitationID%3D1",
 					"scene": null
 				},
 				{

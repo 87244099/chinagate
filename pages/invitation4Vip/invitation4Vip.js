@@ -37,12 +37,7 @@ Page({
         console.log(expireTime);
         let nowTime = new Date().getTime();
         if(expireTime<nowTime){
-          Toast.fail("邀请已失效");
-          setTimeout(()=>{
-            wx.navigateTo({
-              url: '/pages/index/index',
-            });
-          }, 1500)
+          Ajax.ToastFailWithRedirect2Tips("邀请已失效");
         }
       });
     }

@@ -592,13 +592,14 @@ async function checkAuth4CompanyStatusErrorIsRedirectWithToast(companyAInfo, com
     return false;
   }
 
-  function ToastFailWithRedirect2Tips(message){
-    wx.redirectTo({
-      url: '/pages/tips/tips?message='+message,
-    });
 
-    return false;
-  }
+}
+function ToastFailWithRedirect2Tips(message){
+  wx.redirectTo({
+    url: '/pages/tips/tips?message='+message,
+  });
+
+  return false;
 }
 const delayNavigateTo = Fai.delay((option)=>{
   wx.redirectTo(option);
@@ -634,5 +635,6 @@ module.exports = {
   getOpenIdByCode,
   getShareRank,
   getLastLocus,
-  checkAuth4CompanyStatusErrorIsRedirectWithToast
+  checkAuth4CompanyStatusErrorIsRedirectWithToast,
+  ToastFailWithRedirect2Tips
 };
