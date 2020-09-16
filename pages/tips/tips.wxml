@@ -1,0 +1,16 @@
+<view class="fk_page">
+  <view class="fk_login">
+    <view class="fk_login_logo_wrap">
+      <view class="fk_login_logo" style="visibility:hidden;">
+        <image src="{{config.staticDomain}}/Content/Images/logo.png" mode="aspectFit" style="width:100%;height:100%;"></image>
+      </view>
+      <view class="fk_login_name">{{setting.message}}</view>
+    </view>
+    <view style="width:660rpx;margin:0 auto;">
+      <auto-login-reg bindjump="jump4Personal">
+        <van-button style="width:100%" type="info" block>登录</van-button>
+      </auto-login-reg>
+    </view>
+  </view>
+  <van-toast id="van-toast" />
+</view>

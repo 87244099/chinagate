@@ -14,6 +14,7 @@ Page(Fai.mixin(Fai.commPageConfig, {
     pageData:{
       memberInfo: {},
       staffInfo: {},
+      settingCompanyInfo:{}
     }
   },
 
@@ -84,6 +85,7 @@ Page(Fai.mixin(Fai.commPageConfig, {
       let companyBInfo = {};
       let companyInfo = {};
       let staffInfo = {};
+      let settingCompanyInfo = {};//根据页面传参查询公司信息
       if(memberInfo.staffID>0){
         response = await Ajax.getInfo4Staff(memberInfo.staffID);
         staffInfo = response.data.data;
@@ -96,6 +98,14 @@ Page(Fai.mixin(Fai.commPageConfig, {
         response = await Ajax.getCompanyBIndexPageData(staffInfo.merchantForLevelBID);
         companyInfo = companyBInfo = response.data.data.companyInfo;
       }
+      if(this.data.setting.companyBID>0){
+        response = await Ajax.getCompanyBIndexPageData(this.data.setting.companyBID);
+        settingCompanyInfo = response.data.data.companyInfo;
+      }else if(this.data.setting.companyAID>0){
+        response = await Ajax.getCompanyAIndexPageData(this.data.setting.companyAID);
+        settingCompanyInfo = response.data.data.companyInfo;
+      }
+
 
       this.setData({
         "pageData.memberInfo":memberInfo,
@@ -103,6 +113,7 @@ Page(Fai.mixin(Fai.commPageConfig, {
         "pageData.companyAInfo": companyAInfo,
         "pageData.companyBInfo": companyBInfo,
         "pageData.companyInfo": companyInfo,
+        "pageData.settingCompanyInfo": settingCompanyInfo
       });
       return Promise.resolve(response);
     }, "加载中...");

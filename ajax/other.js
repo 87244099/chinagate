@@ -570,14 +570,15 @@ async function checkAuth4CompanyStatusErrorIsRedirectWithToast(companyAInfo, com
   //statusForB
   //statusForStaff
   if(companyAInfo && !Fai.isEmptyObj(companyAInfo) && companyAInfo.statusForA!==1){
-    return ToastFailWithRedirect("商家状态异常");
+    return ToastFailWithRedirect4Tips("商家状态异常");
   }
+  
   if(companyBInfo && !Fai.isEmptyObj(companyBInfo) && companyBInfo.statusForB!==1){
-    return ToastFailWithRedirect("商家状态异常");
+    return ToastFailWithRedirect4Tips("商家状态异常");
   }
 
-  if(staffInfo && !Fai.isEmptyObj(staffInfo) && staffInfo.statusForStaff!==1){
-    return ToastFailWithRedirect("员工状态异常");
+  if((staffInfo && !Fai.isEmptyObj(staffInfo) && staffInfo.statusForStaff!==1)){
+    return ToastFailWithRedirect4Tips("员工状态异常");
   }
 
   return true;
@@ -589,6 +590,16 @@ async function checkAuth4CompanyStatusErrorIsRedirectWithToast(companyAInfo, com
     });
 
     return false;
+  }
+
+  function ToastFailWithRedirect4Tips(message){
+    Toast.fail(message);
+    delayNavigateTo({
+      url: '/pages/tips/tips?message='+message,
+    });
+
+    return false;
+
   }
 }
 const delayNavigateTo = Fai.delay((option)=>{

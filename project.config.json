@@ -461,6 +461,13 @@
 					"pathName": "pages/indexCompany/indexCompany",
 					"query": "companyAID=1&companyBID=1",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "提示语句页面",
+					"pathName": "pages/tips/tips",
+					"query": "message=错误信息",
+					"scene": null
 				}
 			]
 		}

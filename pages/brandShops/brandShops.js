@@ -94,7 +94,7 @@ Page(Fai.mixin(Fai.commPageConfig, {
   onJumpToCompany(event){
     let item = event.currentTarget.dataset.item;
     wx.navigateTo({
-      url: "/pages/indexCompany/indexCompany?companyAID="+item.merchantForLevelAID+"&companyBID="+item.merchantForLevelBID,
+      url: "/pages/indexCompany/indexCompany?companyAID="+(item.merchantForLevelAID)+"&companyBID="+(item.merchantForLevelBID||0),
     });
   },
   searchBlur: function(event){
