@@ -48,6 +48,10 @@ Page(Fai.mixin(Fai.commPageConfig, {
     })
   },
   onLoad: function () {
+    Toast.loading({
+      message:"加载中...",
+      duration:0
+    });
   },
   getUserInfo: function(e) {
     app.globalData.userInfo = e.detail.userInfo
@@ -61,30 +65,39 @@ Page(Fai.mixin(Fai.commPageConfig, {
   },
   //重定向到历史页面
   loadWithRedir4History(){
+    Toast.loading({
+      message:"加载中...",
+      duration:0
+    });
     TmpPageData.visitedCount++;
     //判断能否重定向
     Fai.Waiter.then("onRedirectToByHistory", (url)=>{
       if(url && TmpPageData.visitedCount<2){
         wx.navigateTo({
           url: url,
-        })
+        });
+        Toast.clear();
       }else{
         
         Fai.Waiter.then("onOpenIdLoaded", async(openId)=>{
-          // await Ajax.autoEmpowerLogin(this.data.setting);//强制授权登录
-          let globalData = await Ajax.getGlobalData();
-          this.setData({
-            globalData: globalData,
-            bannerList: globalData.carouselList,
-            "setting.inited": true,
-            "setting.isPublicAcctVisible": [1047, 1124, 1089, 1038].includes(app.globalData.launchOptions.scene),
-          });
-          this.loadNextArticles();
-          Ajax.setNormalTitle("platformIndex");
-          Ajax.reportTrace({
-            typeID:5,
-            openId
-          });
+          try{
+            // await Ajax.autoEmpowerLogin(this.data.setting);//强制授权登录
+            let globalData = await Ajax.getGlobalData();
+            this.setData({
+              globalData: globalData,
+              bannerList: globalData.carouselList,
+              "setting.inited": true,
+              "setting.isPublicAcctVisible": [1047, 1124, 1089, 1038].includes(app.globalData.launchOptions.scene),
+            });
+            this.loadNextArticles();
+            Ajax.setNormalTitle("platformIndex");
+            Ajax.reportTrace({
+              typeID:5,
+              openId
+            });
+          }catch(e){
+            Toast.clear();
+          }
         });
       }
     });

@@ -30,7 +30,7 @@ App({
   },
   redirectToByHistory(){
     Fai.Waiter.wait("onRedirectToByHistory", async(resolve)=>{
-      let sceneList = [1026, 1005, 1006, 1027, 1054, 1089, 1169];
+      let sceneList = [1026, 1005, 1006, 1027, 1054, 1089, 1169, 1106];
       let launchOptions = this.globalData.launchOptions;
       console.log("launchOptions.scene", launchOptions.scene);
       if(sceneList.includes(launchOptions.scene)){
