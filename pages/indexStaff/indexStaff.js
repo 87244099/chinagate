@@ -53,20 +53,22 @@ Page(Fai.mixin(Fai.commPageConfig, {
       let staffInfo = response.data.data;
       let companyAInfo = {};
       let companyBInfo = {};
+      let companyInfo = {};
       let companyPageData = response.data.data;
       response = await Ajax.getCompanyAIndexPageData(staffInfo.merchantForLevelAID);
       companyPageData = response.data.data;
-      companyAInfo = companyPageData.companyInfo;
+      companyInfo = companyAInfo = companyPageData.companyInfo;
       if(staffInfo.merchantForLevelBID>0){
         response = await Ajax.getCompanyBIndexPageData(staffInfo.merchantForLevelBID);
         companyPageData = response.data.data;
-        companyBInfo = companyPageData.companyInfo;
+        companyInfo = companyBInfo = companyPageData.companyInfo;
       }
 
       this.setData({
         "pageData.companyPageData": companyPageData,
         "pageData.companyAInfo": companyAInfo,
         "pageData.companyBInfo": companyBInfo,
+        "pageData.companyInfo": companyInfo,
         "pageData.staffInfo":staffInfo,
         "setting.inited": true,
         "setting.title":companyPageData.companyInfo.companyName || '' //标题用公司名称
