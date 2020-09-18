@@ -3,7 +3,7 @@
 <view class="fk_page" wx:if="{{setting.inited}}">
     <view class="fk_indexCompany">
     <view class="fk_indexCompany_banner">
-      <swiper style="height:100%;" indicator-dots="true"
+      <swiper style="height:{{setting.bannerHeight}}rpx;" indicator-dots="true"
         indicator-active-color="{{pageData.companyInfo.themeColor}}"
         autoplay="true" interval="3000" duration="500" circular="true">
         <block wx:for="{{pageData.carouselList}}" wx:key="*this">

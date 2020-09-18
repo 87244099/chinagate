@@ -88,11 +88,22 @@ function deepCopy(value){
 }
 
 
+async function getImageInfo(src){
+  return new Promise((resolve, reject)=>{
+    wx.getImageInfo({
+      src: src,
+      success:resolve,
+      fail: reject
+    })
+  });
+}
+
 module.exports = {
   formatTime,
   mixin,
   getLocation,
   getSetting,
   parseSharedOption,
-  isEmptyObj
+  isEmptyObj,
+  getImageInfo
 };
