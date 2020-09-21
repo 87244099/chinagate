@@ -3,16 +3,16 @@
 <view class="fk_page" wx:if="{{setting.inited}}">
     <view class="fk_indexCompany">
     <view class="fk_indexCompany_banner">
-      <swiper style="height:100%;" indicator-dots="true"
+      <swiper style="height:{{setting.bannerHeight}}rpx;" indicator-dots="true"
         indicator-active-color="{{pageData.companyInfo.themeColor}}"
         autoplay="true" interval="3000" duration="500" circular="true">
         <block wx:for="{{pageData.carouselList}}" wx:key="*this">
           <swiper-item>
             <block wx:if="{{setting.companyBID>0}}">
-              <image style="width:100%;height:100%" mode="aspectFill" src="{{config.wwwwStaticDomain}}/{{item}}"/>
+              <image style="width:100%;height:100%" mode="aspectFit" src="{{config.wwwwStaticDomain}}/{{item}}"/>
             </block>
             <block wx:else>
-              <image style="width:100%;height:100%" mode="aspectFill" src="{{config.staticDomain}}/{{item}}"/>
+              <image style="width:100%;height:100%" mode="aspectFit" src="{{config.staticDomain}}/{{item}}"/>
             </block>
           </swiper-item>
         </block>

@@ -48,8 +48,7 @@
 }
 
 .fk_indexCompany_banner{
-  height: 352rpx;
-  background-color: #ccc;
+  /* height: 352rpx; */
   text-align: center;
 }
 

@@ -16,6 +16,7 @@ Page(Fai.mixin(Fai.commPageConfig, {
       companyAID: 0,//一级商家
       companyBID: 0,//二级商家
       staffID: 0,//员工
+      bannerHeight:-1
     },
     pageData: {},
     config: config
@@ -116,6 +117,8 @@ Page(Fai.mixin(Fai.commPageConfig, {
       merchantForLevelAID: this.data.setting.companyAID,
       merchantForLevelBID: this.data.setting.companyBID
     };
+
+
     Ajax.reportShare(reportData);
     return {
       title: this.data.setting.title,
@@ -161,28 +164,45 @@ Page(Fai.mixin(Fai.commPageConfig, {
         "pageData.companyBInfo": companyBPageData.companyInfo,
         "setting.title":companyPageData.companyInfo.companyName || ''
       });
+
+      
       
       wx.setNavigationBarTitle({
         title: this.data.setting.title
       });
 
-      this.setData({
-        "setting.inited":true
-      });
       
       this.report();
 
       return Promise.resolve(response);
-    }, "加载中...").catch((err)=>{
+    }, "加载中...").then(async()=>{
+      Toast.loading("加载中...");
+      try{
+        Ajax.checkAuth4CompanyStatusErrorIsRedirectWithToast(
+          this.data.pageData.companyAInfo,
+          this.data.pageData.companyBInfo
+        );
+  
+        let bannerHeight = undefined;
+        if(this.data.pageData.carouselList.length>0){
+          let imgUrl = this.data.config.wwwwStaticDomain+"/"+this.data.pageData.carouselList[0];
+          let res = await Fai.getImageInfo(imgUrl);
+          console.log("res", res);
+          bannerHeight = 750/(res.width/res.height);
+        }
+        this.setData({
+          "setting.bannerHeight": bannerHeight,
+          "setting.inited":true
+        });
+      }catch(e){}
+      Toast.clear();
+
+    }).catch((err)=>{
       this.setData({
         "setting.inited":true
       });
+      Toast.clear();
       console.log(err);
-    }).then(()=>{
-      Ajax.checkAuth4CompanyStatusErrorIsRedirectWithToast(
-        this.data.pageData.companyAInfo,
-        this.data.pageData.companyBInfo
-      )
     });
   },
   loadIndexCompanyBPageData: async function(){
