@@ -13,6 +13,10 @@
           <view class="fk_productDetail_func_item_text">咨询</view>
         </view>
         <view class="fk_productDetail_func_item">
+          <button class="fk_productDetail_func_item_icon iconfont icon-zhuanfa" style="background-color:{{pageData.companyInfo.themeColor}}" open-type="share"></button>
+          <view class="fk_productDetail_func_item_text">转发</view>
+        </view>
+        <view class="fk_productDetail_func_item">
           <view catchtap="setProductCollect" class="fk_productDetail_func_item_icon iconfont icon-start" style="background-color:{{pageData.companyInfo.themeColor}}"></view>
           <view class="fk_productDetail_func_item_text">收藏</view>
         </view>
