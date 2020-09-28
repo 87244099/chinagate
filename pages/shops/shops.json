@@ -5,5 +5,5 @@
     "van-dialog": "@vant/weapp/dialog/index",
     "van-toast": "@vant/weapp/toast/index"
   },
-  "navigationBarTitleText": "附近商家"
+  "navigationBarTitleText": "附近服务商"
 }

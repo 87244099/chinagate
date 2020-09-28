@@ -87,6 +87,7 @@ Page(Fai.mixin(Fai.commPageConfig, {
               globalData: globalData,
               bannerList: globalData.carouselList,
               "setting.inited": true,
+              "setting.recentUrlInfo": await Ajax.getRecentVisitUrlInfo(getApp()),
               "setting.isPublicAcctVisible": [1047, 1124, 1089, 1038].includes(app.globalData.launchOptions.scene),
             });
             this.loadNextArticles();
@@ -96,6 +97,7 @@ Page(Fai.mixin(Fai.commPageConfig, {
               openId
             });
           }catch(e){
+            console.log("err", e);
             Toast.clear();
           }
         });
@@ -188,6 +190,11 @@ Page(Fai.mixin(Fai.commPageConfig, {
   noticePublicAcct(){
     this.setData({
       "setting.publicAcctVisible": !this.data.setting.publicAcctVisible
+    })
+  },
+  jump2RecentVisitUrl(){
+    wx.navigateTo({
+      url: this.data.setting.recentUrlInfo.url,
     })
   }
 }));

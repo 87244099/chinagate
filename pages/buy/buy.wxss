@@ -9,6 +9,7 @@
   background-color: #fff;
   border-radius: 10rpx;
   overflow: hidden;
+  padding: 0 16px;
 }
 .van-field__label, .van-cell__title{
   width: 135rpx !important;
@@ -21,8 +22,39 @@
 }
 .fk_buy_button_wrap{
   padding:  40rpx;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 .fk_buy .van-button--info{
   background-color: #0062d7;
 }
+/* .wgd.van-field__input::placeholder,
+.wgd.van-field__input--textarea::placeholder{
+  color: rgb(128, 128, 128);
+  color: #333;
+} */
+
+.fk_van_field .van-cell{
+  padding-left: 0;
+  padding-right: 0;
+  border-bottom: solid rgb(243, 243, 243) 1px;
+}
+.fk_van_field:last-child .van-cell{
+  border-bottom: none;
+}
+ .fk_van_field .van-field__label{
+  color: #000;
+}/*
+.fk_van_field .van-field__input{
+  color: #000;
+  border-bottom: solid 1rpx rgb(153, 203, 184);
+  /* font-size: 28rpx;
+}
+.fk_van_field .van-field__input--textarea{
+  border: solid 1rpx rgb(153, 203, 184);
+  padding: 10rpx;
+}  .fk_van_field input.van-field__input:focus{
+  color: #0062d7;
+  border-bottom: solid 1rpx #0062d7;
+} */
