@@ -33,7 +33,7 @@
           bind:blur="onFieldBlur"
           data-field="address"
           placeholder-style="color:rgb(128,128,128)"
-        />
+        /> 
         <van-field 
           class="fk_van_field"
           value="{{ setting.form.leaveMessage }}"

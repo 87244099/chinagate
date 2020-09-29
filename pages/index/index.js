@@ -87,7 +87,7 @@ Page(Fai.mixin(Fai.commPageConfig, {
               globalData: globalData,
               bannerList: globalData.carouselList,
               "setting.inited": true,
-              "setting.recentUrlInfo": await Ajax.getRecentVisitUrlInfo(getApp()),
+              "setting.recentUrlInfo": await Ajax.getRecentVisitUrlInfo4Index(getApp()),
               "setting.isPublicAcctVisible": [1047, 1124, 1089, 1038].includes(app.globalData.launchOptions.scene),
             });
             this.loadNextArticles();

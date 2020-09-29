@@ -627,12 +627,20 @@ const delayNavigateTo = Fai.delay((option)=>{
   wx.redirectTo(option);
 }, 2500);
 
-async function getLastLocus(openId, filterType){
+async function getLastLocus(openId){
   return Fai.promiseRequest({
     url: "/ajax/common/getCommData?cmd=getLastLocus",
     data: {
-      openId,
-      filterType
+      openId
+    }
+  });
+}
+
+async function getLastLocusWithOutIndex(openId){
+  return Fai.promiseRequest({
+    url: "/ajax/common/getCommData?cmd=getLastLocusWithOutIndex",
+    data: {
+      openId
     }
   });
 }
@@ -696,6 +704,52 @@ async function getRecentVisitUrlInfo(app, sceneList){
     return Promise.resolve({});
 }
 
+async function getRecentVisitUrlInfo4Index(app, sceneList){
+  sceneList = sceneList || [];
+    let launchOptions = app.globalData.launchOptions;
+    console.log("launchOptions.scene", launchOptions.scene);
+    if(sceneList.length===0 || sceneList.includes(launchOptions.scene)){
+      // 跳转到对应页面
+      let response = await getLastLocusWithOutIndex(app.globalData.openId, "");
+      let data = response.data.data;
+      const {
+        typeID,
+        merchantForLevelAID,
+        merchantForLevelBID,
+        staffID,
+        subID
+      } = data;
+      let urlMap = {
+        "1": "/pages/indexCompany/indexCompany",
+        "2": "/pages/indexCompany/indexCompany",
+        "3": "/pages/indexStaff/indexStaff",
+        "4": "/pages/productDetail/productDetail",
+        "5": "/pages/index/index"
+      };
+
+      let companyInfo = {};
+      let Company = require("./company");
+      if(merchantForLevelBID>0){
+        let response = await Company.getInfo4CompanyB(merchantForLevelBID);
+        companyInfo = response.data.data;
+      }else if(merchantForLevelAID>0){
+        let response = await Company.getInfo4CompanyA(merchantForLevelAID);
+        companyInfo = response.data.data;
+      }
+
+      return Promise.resolve({
+        url4Map: urlMap[typeID],
+        url: urlMap[typeID] + `?companyAID=${merchantForLevelAID}&companyBID=${merchantForLevelBID}&staffID=${staffID}&id=${subID}`,
+        merchantForLevelAID,
+        merchantForLevelBID,
+        // merchantForLevelBID,
+        companyInfo
+      });
+    }
+
+    return Promise.resolve({});
+}
+
 module.exports = {
   getQrCode,
   previewQrCode,
@@ -717,8 +771,10 @@ module.exports = {
   getOpenIdByCode,
   getShareRank,
   getLastLocus,
+  getLastLocusWithOutIndex,
   checkAuth4CompanyStatusErrorIsRedirectWithToast,
   ToastFailWithRedirect2Tips,
   getRecentVisitUrlInfo,
-  getRecentVisitUrlInfo4Scene
+  getRecentVisitUrlInfo4Scene,
+  getRecentVisitUrlInfo4Index
 };

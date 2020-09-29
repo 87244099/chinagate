@@ -9,6 +9,7 @@
   background-color: #fff;
   border-radius: 10rpx;
   overflow: hidden;
+  padding: 0 40rpx;
 }
 .van-field__label, .van-cell__title{
   width: 135rpx !important;
@@ -26,9 +27,23 @@
   height: 200rpx !important;
 }
 .fk_suggest_button_wrap{
-  padding:  40rpx;
+  padding: 40rpx 0;
 }
 
 .fk_suggest .van-button--info{
   background-color: #0062d7;
+}
+
+
+
+.fk_van_field .van-cell{
+  padding-left: 0;
+  padding-right: 0;
+  border-bottom: solid rgb(243, 243, 243) 1px;
+}
+.fk_van_field:last-child .van-cell{
+  border-bottom: none;
+} 
+ .fk_van_field .van-field__label{
+  color: #000;
 }

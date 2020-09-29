@@ -42,7 +42,7 @@
 }
 .fk_van_field:last-child .van-cell{
   border-bottom: none;
-}
+} 
  .fk_van_field .van-field__label{
   color: #000;
 }/*
