@@ -8,11 +8,11 @@ Component({
     async attached(){
 
       let isLogin = await Ajax.checkLoginBoolean();
-      let code = await Fai.getLoginCodeNullIsEmpty();
       if(isLogin){//已经登录
 
         Fai.Waiter.then("onOpenIdLoaded", ()=>{
           (async()=>{
+            let code = await Fai.getLoginCodeNullIsEmpty();
             // 初始化code
             this.setData({
               code
@@ -20,6 +20,7 @@ Component({
           })();
         });
       }else{
+        let code = await Fai.getLoginCodeNullIsEmpty();
         this.setData({
           code
         });
