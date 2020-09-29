@@ -8,8 +8,8 @@
           placeholder="请输入您的姓名"
           border="{{ false }}"
           bind:blur="onFieldBlur"
-
           data-field="customerName"
+          class="fk_van_field"
         />
         <van-field
           label="您的手机"
@@ -18,6 +18,7 @@
           border="{{ false }}"
           bind:blur="onFieldBlur"
           data-field="customerTel"
+          class="fk_van_field"
         />
         <van-field
           label="邮箱地址"
@@ -26,6 +27,7 @@
           border="{{ false }}"
           bind:blur="onFieldBlur"
           data-field="email"
+          class="fk_van_field"
         />
         <van-field
           class="fk_suggest_advContent"
@@ -36,6 +38,7 @@
           border="{{ false }}"
           data-field="leaveMessage"
           bind:blur="onFieldBlur"
+          class="fk_van_field"
         />
       </van-cell-group>
       <view class="fk_suggest_button_wrap">

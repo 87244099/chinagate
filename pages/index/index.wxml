@@ -36,9 +36,9 @@
       </navigator>
       <navigator url="/pages/shops/shops" class="fk_main_func_item" open-type="redirect">
         <view class="iconfont icon-fujin  fk_main_func_item_icon" style="color:red"></view>
-        <view class="fk_main_func_item_text">附近商家</view>
+        <view class="fk_main_func_item_text">附近服务商</view>
       </navigator>
-      <navigator url="/pages/brandShops/brandShops" class="fk_main_func_item" open-type="redirect">
+      <navigator url="/pages/brandShops/brandShops" class="fk_main_func_item" open-type="redirect" wx:if="{{false}}">
         <view class="iconfont icon-cailiaochangjia  fk_main_func_item_icon" style="color:#000"></view>
         <view class="fk_main_func_item_text">品牌厂商</view>
       </navigator>
@@ -67,6 +67,9 @@
         <view class="fk_main_func_item_text">投诉建议</view>
       </navigator>
     </view>
+
+    <view wx:if="{{setting.recentUrlInfo.companyInfo.companyName}}" style="padding:10rpx;background:#fff;font-size:28rpx;color:red;margin-bottom:20rpx;text-align:center;" catchtap="jump2RecentVisitUrl">最近浏览： {{setting.recentUrlInfo.companyInfo.companyName}}</view>
+
     <view class="fk_main_article_list">
       <view class="fk_main_article_list_header">
         <view class="fk_main_article_list_header_dot"></view>

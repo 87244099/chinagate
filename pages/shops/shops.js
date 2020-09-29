@@ -142,5 +142,12 @@ Page(Fai.mixin(Fai.commPageConfig, {
     wx.navigateTo({
       url: "/pages/indexCompany/indexCompany?companyAID="+item.merchantForLevelAID+"&companyBID="+item.merchantForLevelBID,
     });
+  },
+  async jump2CreateCompany(){
+    if(await Ajax.checkLoginWithRedirect("/pages/createCompany/createCompany")){
+      wx.navigateTo({
+        url: '/pages/createCompany/createCompany',
+      });
+    }
   }
 }));

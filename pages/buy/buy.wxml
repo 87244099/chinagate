@@ -2,7 +2,8 @@
   <view class="fk_buy">
     <view class="fk_buy_form">
       <van-cell-group>
-        <van-field
+        <van-field 
+          class="fk_van_field"
           label="您的姓名"
           value="{{setting.form.customerName}}"
           placeholder="请输入您的姓名"
@@ -10,25 +11,31 @@
           bind:blur="onFieldBlur"
 
           data-field="customerName"
+          placeholder-style="color:rgb(128,128,128)"
         />
-        <van-field
+        <van-field 
+          class="fk_van_field"
           label="您的手机"
           value="{{setting.form.customerTel}}"
           placeholder="请输入您的手机"
           border="{{ false }}"
           bind:blur="onFieldBlur"
           data-field="customerTel"
+          placeholder-style="color:rgb(128,128,128)"
 
         />
-        <van-field
+        <van-field 
+          class="fk_van_field"
           label="您的地址"
           value="{{setting.form.address}}"
           placeholder="请输入您的地址"
           border="{{ false }}"
           bind:blur="onFieldBlur"
           data-field="address"
-        />
-        <van-field
+          placeholder-style="color:rgb(128,128,128)"
+        /> 
+        <van-field 
+          class="fk_van_field"
           value="{{ setting.form.leaveMessage }}"
           label="需求说明"
           type="textarea"
@@ -37,7 +44,7 @@
 
           data-field="leaveMessage"
           bind:blur="onFieldBlur"
-
+          placeholder-style="color:rgb(128,128,128)"
         />
       </van-cell-group>
       <view class="fk_buy_button_wrap">
