@@ -73,7 +73,11 @@ Component({
     },
     //只有企业才会有号码呼叫
     async callPhone(res){
-      if(this.data.companyInfo.companyPhone){
+      if(this.data.staffInfo.phone){
+        wx.makePhoneCall({
+          phoneNumber: this.data.staffInfo.phone,
+        });
+      }else if(this.data.companyInfo.companyPhone){
         wx.makePhoneCall({
           phoneNumber: this.data.companyInfo.companyPhone,
         });
