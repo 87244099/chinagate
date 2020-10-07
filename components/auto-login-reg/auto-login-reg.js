@@ -4,6 +4,11 @@ const Ajax = require("../../ajax/index");
 const Fai = require("../../utils/util");
 import Toast from "../../miniprogram_npm/@vant/weapp/toast/toast";
 Component({
+  data:{
+    setting:{
+      isLogin: false
+    }
+  },
   lifetimes:{
     async attached(){
 
@@ -15,7 +20,8 @@ Component({
             let code = await Fai.getLoginCodeNullIsEmpty();
             // 初始化code
             this.setData({
-              code
+              code,
+              "setting.isLogin": true
             });
           })();
         });
@@ -55,6 +61,7 @@ Component({
       let url = this.data.url;
       
       let isLogin = await Ajax.checkLoginBoolean();
+      console.log("isLogin", isLogin);
       if(isLogin){//当前已是登录态了
         this.triggerEvent("jump");
       }else{

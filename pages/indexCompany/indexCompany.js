@@ -148,12 +148,18 @@ Page(Fai.mixin(Fai.commPageConfig, {
       let companyAPageData = {};
       let companyBPageData = {};
       let companyPageData = {};
+      let staffInfo = {};
       if(this.data.setting.companyBID >0){
         response = await Ajax.getCompanyBIndexPageData(this.data.setting.companyBID);
         companyPageData = companyBPageData = response.data.data;
       }else{
         response = await Ajax.getCompanyAIndexPageData(this.data.setting.companyAID);
         companyPageData = companyAPageData = response.data.data;
+      }
+
+      if(this.data.setting.staffID>0){
+        response = await Ajax.getInfo4Staff(this.data.setting.staffID);
+        staffInfo = response.data.data;
       }
       
       console.log("companyPageData", companyPageData);
@@ -164,6 +170,7 @@ Page(Fai.mixin(Fai.commPageConfig, {
       this.setData({
         "pageData.companyAInfo": companyAPageData.companyInfo,
         "pageData.companyBInfo": companyBPageData.companyInfo,
+        "pageData.staffInfo": staffInfo,
         "setting.title":companyPageData.companyInfo.companyName || ''
       })
       

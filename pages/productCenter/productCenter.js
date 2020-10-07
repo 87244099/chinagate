@@ -32,6 +32,7 @@ Page(Fai.mixin({
 
     Ajax.requestWithToast(async()=>{
       let response = {};
+      let staffInfo = {};
       if(this.data.setting.companyBID>0){
         response = await Ajax.getCompanyBIndexPageData(this.data.setting.companyBID);
       }else{
@@ -41,10 +42,16 @@ Page(Fai.mixin({
       response = await Fai.promiseRequest({
         url:"/ajax/product/product?cmd=getProductCenterPageData&id="+this.data.setting.companyAID,
       });
+      let productGroupList = response.data.data.productGroupList;
+      if(this.data.setting.staffID>0){
+        response = await Ajax.getInfo4Staff(this.data.setting.staffID);
+        staffInfo = response.data.data;
+      }
       
       this.setData({
-        "pageData.productGroupList": response.data.data.productGroupList,
-        "pageData.companyPageData": companyPageData
+        "pageData.productGroupList": productGroupList,
+        "pageData.companyPageData": companyPageData,
+        "pageData.staffInfo": staffInfo
       });
       this.setData({
         "setting.inited":true

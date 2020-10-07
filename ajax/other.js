@@ -491,7 +491,7 @@ async function reportShare(data){
     subID
   } = data;
 
-  if(!xcxOpenID){
+  if(!app.globalData.openId){
     return Promise.resolve();
   }
 
