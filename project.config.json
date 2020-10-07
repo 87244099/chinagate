@@ -482,6 +482,34 @@
 					"pathName": "pages/indexCompany/indexCompany",
 					"query": "companyAID=1&companyBID=1",
 					"scene": null
+				},
+				{
+					"id": 60,
+					"name": "线上-员工推广企业首页详情",
+					"pathName": "pages/productDetail/productDetail",
+					"query": "companyAID=1&companyBID=0&id=33&staffID=5",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "线上-员工推广企业首页",
+					"pathName": "pages/indexCompany/indexCompany",
+					"query": "companyAID=1&companyBID=0&staffID=5",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "线上-员工推广产品中心",
+					"pathName": "pages/productCenter/productCenter",
+					"query": "companyAID=1&companyBID=0&staffID=5",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "线上-员工推广产品搜搜",
+					"pathName": "pages/productSearch/productSearch",
+					"query": "word=不锈钢&companyAID=1&companyBID=0&staffID=5",
+					"scene": null
 				}
 			]
 		}
