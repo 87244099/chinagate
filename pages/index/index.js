@@ -92,10 +92,10 @@ Page(Fai.mixin(Fai.commPageConfig, {
             });
             this.loadNextArticles();
             Ajax.setNormalTitle("platformIndex");
-            Ajax.reportTrace({
-              typeID:5,
-              openId
-            });
+            // Ajax.reportTrace({
+            //   typeID:5,
+            //   openId
+            // });
           }catch(e){
             console.log("err", e);
             Toast.clear();
