@@ -14,15 +14,17 @@ App({
       (async()=>{
         if(openId){
           this.globalData.openId = openId;
+          await Ajax.loginByOpenId(openId);
           resolve(openId);
         }else{
           let code = await Fai.getLoginCodeNullIsEmpty();
           let response = await Ajax.getOpenIdByCode(code);
           this.globalData.openId = response.data.data.openId;
           Fai.DiskCache.setCache("openId",  this.globalData.openId);
+          await Ajax.loginByOpenId(this.globalData.openId);
           resolve(this.globalData.openId);
         }
-
+        
         this.redirectToByHistory();
 
       })();
