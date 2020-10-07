@@ -80,26 +80,28 @@ Page(Fai.mixin(Fai.commPageConfig, {
       }else{
         
         Fai.Waiter.then("onOpenIdLoaded", async(openId)=>{
+          console.log("openId", openId);
+          let globalData = {};
+          let recentUrlInfo = {};
+          let bannerList = [];
           try{
-            // await Ajax.autoEmpowerLogin(this.data.setting);//强制授权登录
-            let globalData = await Ajax.getGlobalData();
-            this.setData({
-              globalData: globalData,
-              bannerList: globalData.carouselList,
-              "setting.inited": true,
-              "setting.recentUrlInfo": await Ajax.getRecentVisitUrlInfo4Index(getApp()),
-              "setting.isPublicAcctVisible": [1047, 1124, 1089, 1038].includes(app.globalData.launchOptions.scene),
-            });
-            this.loadNextArticles();
-            Ajax.setNormalTitle("platformIndex");
-            // Ajax.reportTrace({
-            //   typeID:5,
-            //   openId
-            // });
+            globalData = await Ajax.getGlobalData();
+            bannerList = globalData.carouselList;
+            recentUrlInfo = await Ajax.getRecentVisitUrlInfo4Index(getApp());
           }catch(e){
             console.log("err", e);
-            Toast.clear();
           }
+
+          this.loadNextArticles();
+          Ajax.setNormalTitle("platformIndex");
+          this.setData({
+            globalData: globalData,
+            bannerList: bannerList,
+            "setting.recentUrlInfo": recentUrlInfo,
+            "setting.isPublicAcctVisible": [1047, 1124, 1089, 1038].includes(app.globalData.launchOptions.scene),
+            "setting.inited": true,
+          });
+          Toast.clear();
         });
       }
     });
