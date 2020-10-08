@@ -646,7 +646,7 @@ async function getLastLocusWithOutIndex(openId){
 }
 
 async function getRecentVisitUrlInfo4Scene(app){
-  let sceneList = [1026, 1005, 1006, 1027, 1054, 1089, 1169, 1106];
+  let sceneList = [1026, 1005, 1006, 1027, 1054, 1089, 1169, 1106, 1017];
   let urlInfo = await getRecentVisitUrlInfo(app, sceneList);
 
   let launchOptions = app.globalData.launchOptions;

@@ -57,43 +57,38 @@ Component({
    * 组件的方法列表
    */
   methods: {
+    async autoLoginReg4Logined(){
+      this.triggerEvent("jump");
+    },
     async autoLoginReg(event){
       let url = this.data.url;
-      
-      let isLogin = await Ajax.checkLoginBoolean();
-      console.log("isLogin", isLogin);
-      if(isLogin){//当前已是登录态了
-        this.triggerEvent("jump");
-      }else{
-        if(event.detail.errMsg == "getUserInfo:ok"){
-          // if(getApp().globalData.isLogin){
-          //   this.triggerEvent("jump");
-          // }else{
-            let detail = event.detail;
-            try{
-              await Ajax.loginWithAutoReg({
-                code: this.data.code,
-                nickName: detail.userInfo.nickName,
-                avatarPhoto: detail.userInfo.avatarUrl,
-                iv:detail.iv,
-                encryptedData: detail.encryptedData
-              });
-              this.triggerEvent("jump");
-            }catch(response){
-              if(response){
-                Toast.fail(response.data.msg);
-              }else{
-                Toast.fail("网络繁忙,请稍后重试");
-              }
+      if(event.detail.errMsg == "getUserInfo:ok"){
+        // if(getApp().globalData.isLogin){
+        //   this.triggerEvent("jump");
+        // }else{
+          let detail = event.detail;
+          try{
+            await Ajax.loginWithAutoReg({
+              code: this.data.code,
+              nickName: detail.userInfo.nickName,
+              avatarPhoto: detail.userInfo.avatarUrl,
+              iv:detail.iv,
+              encryptedData: detail.encryptedData
+            });
+            this.triggerEvent("jump");
+          }catch(response){
+            if(response){
+              Toast.fail(response.data.msg);
+            }else{
+              Toast.fail("网络繁忙,请稍后重试");
             }
-            //每次使用完，code会失效
-            this.setData({
-              code: await Fai.getLoginCodeNullIsEmpty()
-            })
-          // }
-        }
+          }
+          //每次使用完，code会失效
+          this.setData({
+            code: await Fai.getLoginCodeNullIsEmpty()
+          })
+        // }
       }
-      
     }
   }
 })

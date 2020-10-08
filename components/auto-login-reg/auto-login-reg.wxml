@@ -1,6 +1,6 @@
 <view>
   <block wx:if="{{setting.isLogin}}">
-    <button class="fk_tabBar_item_button" catchtap="autoLoginReg">
+    <button class="fk_tabBar_item_button" catchtap="autoLoginReg4Logined">
       <slot></slot>
     </button>
   </block>
