@@ -37,7 +37,7 @@ module.exports = {
   onShow: function () {
     console.log(222);
 
-    this.loadPersonalData();
+    // this.loadPersonalData();
   },
 
   /**

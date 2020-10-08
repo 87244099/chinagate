@@ -82,6 +82,7 @@ Page(Fai.mixin(Fai.commPageConfig, {
       let response = await Ajax.getMemberInfo();
       let memberInfo = response.data.data;
       let companyAInfo = {};
+      let myCompanyAInfo = {};
       let companyBInfo = {};
       let companyInfo = {};
       let staffInfo = {};
@@ -106,6 +107,10 @@ Page(Fai.mixin(Fai.commPageConfig, {
         settingCompanyInfo = response.data.data.companyInfo;
       }
 
+      if(memberInfo.merchantForLevelAID>0){
+        response = await Ajax.getInfo4CompanyA(memberInfo.merchantForLevelAID);
+        myCompanyAInfo = response.data.data;
+      }
 
       this.setData({
         "pageData.memberInfo":memberInfo,
@@ -113,6 +118,7 @@ Page(Fai.mixin(Fai.commPageConfig, {
         "pageData.companyAInfo": companyAInfo,
         "pageData.companyBInfo": companyBInfo,
         "pageData.companyInfo": companyInfo,
+        "pageData.myCompanyAInfo": myCompanyAInfo,
         "pageData.settingCompanyInfo": settingCompanyInfo
       });
       return Promise.resolve(response);
