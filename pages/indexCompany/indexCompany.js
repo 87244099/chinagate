@@ -162,6 +162,10 @@ Page(Fai.mixin(Fai.commPageConfig, {
         staffInfo = response.data.data;
       }
       
+      let memberInfo = {};
+      response = await Ajax.getMemberInfo();
+      memberInfo = response.data.data;
+
       console.log("companyPageData", companyPageData);
 
       this.setData({
@@ -171,6 +175,7 @@ Page(Fai.mixin(Fai.commPageConfig, {
         "pageData.companyAInfo": companyAPageData.companyInfo,
         "pageData.companyBInfo": companyBPageData.companyInfo,
         "pageData.staffInfo": staffInfo,
+        "pageData.memberInfo": memberInfo,
         "setting.title":companyPageData.companyInfo.companyName || ''
       })
       
@@ -272,8 +277,8 @@ Page(Fai.mixin(Fai.commPageConfig, {
     let url = Fai.getCurrAbsPath();
     let urlArr = url.split("?");
     let qr = Ajax.stringifyQrCodeArg(this.data.setting);
-    console.log("qr",qr);
-    let companyLogoUrl = this.data.config.wwwwStaticDomain + "/" + this.data.pageData.companyInfo.companyLogoUrl;
+    // let companyLogoUrl = this.data.config.wwwwStaticDomain + "/" + this.data.pageData.companyInfo.companyLogoUrl;
+    let companyLogoUrl = "";
     Ajax.previewQrCode(urlArr[0], "qr="+qr, companyLogoUrl);
   },
   openArg(){

@@ -15,6 +15,10 @@ Component({
     product: {
       type: Object,
       value: {}
+    },
+    companyAInfo:{
+      type: Object,
+      value: {}
     }
   },
 
