@@ -1,6 +1,6 @@
 const Fai = require("../utils/util");
-
-
+const Login = require("./login");
+const Company = require("./company");
 
 async function getQrCode(page, scene){
   return new Promise((resolve,reject)=>{
@@ -663,42 +663,90 @@ async function getRecentVisitUrlInfo(app, sceneList){
     let launchOptions = app.globalData.launchOptions;
     console.log("launchOptions.scene", launchOptions.scene);
     if(sceneList.length===0 || sceneList.includes(launchOptions.scene)){
-      // 跳转到对应页面
-      let response = await getLastLocus(app.globalData.openId, "");
-      let data = response.data.data;
-      const {
-        typeID,
-        merchantForLevelAID,
-        merchantForLevelBID,
-        staffID,
-        subID
-      } = data;
-      let urlMap = {
-        "1": "/pages/indexCompany/indexCompany",
-        "2": "/pages/indexCompany/indexCompany",
-        "3": "/pages/indexStaff/indexStaff",
-        "4": "/pages/productDetail/productDetail",
-        "5": "/pages/index/index"
-      };
+      
 
-      let companyInfo = {};
-      let Company = require("./company");
-      if(merchantForLevelBID>0){
-        let response = await Company.getInfo4CompanyB(merchantForLevelBID);
-        companyInfo = response.data.data;
-      }else if(merchantForLevelAID>0){
-        let response = await Company.getInfo4CompanyA(merchantForLevelAID);
-        companyInfo = response.data.data;
+      let tmpResponse = await Login.getMemberInfo();
+      let memberInfo = tmpResponse.data.data; 
+      let staffInfo = null;
+      try{
+        if(memberInfo.staffID>0){
+          tmpResponse = await Company.getInfo4Staff(memberInfo.staffID);
+          staffInfo = tmpResponse.data.data;
+          console.log("staffInfo",staffInfo);
+        } 
+      }catch(e){}
+      
+      if(staffInfo){
+        let typeID = 1;
+        let staffID = staffInfo.staffID;
+        let subID = 0;
+        let urlMap = {
+          "1": "/pages/indexCompany/indexCompany",
+          "2": "/pages/indexCompany/indexCompany",
+          "3": "/pages/indexStaff/indexStaff",
+          "4": "/pages/productDetail/productDetail",
+          "5": "/pages/index/index"
+        };
+        let merchantForLevelBID = staffInfo.merchantForLevelBID;
+        let merchantForLevelAID = staffInfo.merchantForLevelAID;
+        let companyInfo = {};
+        if(merchantForLevelBID>0){
+          let response = await Company.getInfo4CompanyB(merchantForLevelBID);
+          companyInfo = response.data.data;
+        }else if(merchantForLevelAID>0){
+          let response = await Company.getInfo4CompanyA(merchantForLevelAID);
+          companyInfo = response.data.data;
+        }
+
+        let data = {
+          url4Map: urlMap[typeID],
+          url: urlMap[typeID] + `?companyAID=${merchantForLevelAID}&companyBID=${merchantForLevelBID}&staffID=${staffID}&id=${subID}`,
+          merchantForLevelAID,
+          merchantForLevelBID,
+          companyInfo
+        };
+        return Promise.resolve(data);
+
+      }else{
+
+        // 跳转到对应页面
+        let response = await getLastLocus(app.globalData.openId, "");
+        let data = response.data.data;
+        const {
+          typeID,
+          merchantForLevelAID,
+          merchantForLevelBID,
+          staffID,
+          subID
+        } = data;
+        let urlMap = {
+          "1": "/pages/indexCompany/indexCompany",
+          "2": "/pages/indexCompany/indexCompany",
+          "3": "/pages/indexStaff/indexStaff",
+          "4": "/pages/productDetail/productDetail",
+          "5": "/pages/index/index"
+        };
+
+        let companyInfo = {};
+        let Company = require("./company");
+        if(merchantForLevelBID>0){
+          let response = await Company.getInfo4CompanyB(merchantForLevelBID);
+          companyInfo = response.data.data;
+        }else if(merchantForLevelAID>0){
+          let response = await Company.getInfo4CompanyA(merchantForLevelAID);
+          companyInfo = response.data.data;
+        }
+
+        return Promise.resolve({
+          url4Map: urlMap[typeID],
+          url: urlMap[typeID] + `?companyAID=${merchantForLevelAID}&companyBID=${merchantForLevelBID}&staffID=${staffID}&id=${subID}`,
+          merchantForLevelAID,
+          merchantForLevelBID,
+          companyInfo
+        });
       }
 
-      return Promise.resolve({
-        url4Map: urlMap[typeID],
-        url: urlMap[typeID] + `?companyAID=${merchantForLevelAID}&companyBID=${merchantForLevelBID}&staffID=${staffID}&id=${subID}`,
-        merchantForLevelAID,
-        merchantForLevelBID,
-        // merchantForLevelBID,
-        companyInfo
-      });
+      
     }
 
     return Promise.resolve({});
