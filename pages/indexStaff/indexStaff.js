@@ -46,7 +46,7 @@ Page(Fai.mixin(Fai.commPageConfig, {
     }); 
 
     
-  },
+  }, 
   init4LoadPage(){
     Ajax.requestWithToast(async()=>{
       let response = await Ajax.getInfo4Staff(this.data.setting.staffID);
@@ -64,12 +64,16 @@ Page(Fai.mixin(Fai.commPageConfig, {
         companyInfo = companyBInfo = companyPageData.companyInfo;
       }
 
+      response = await Ajax.belongVip(this.data.setting.companyAID);
+      let isVip = response.data.data.isVip;
+
       this.setData({
         "pageData.companyPageData": companyPageData,
         "pageData.companyAInfo": companyAInfo,
         "pageData.companyBInfo": companyBInfo,
         "pageData.companyInfo": companyInfo,
         "pageData.staffInfo":staffInfo,
+        "pageData.isVip": isVip,
         "setting.inited": true,
         "setting.title":companyPageData.companyInfo.companyName || '' //标题用公司名称
       });

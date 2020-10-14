@@ -510,6 +510,27 @@
 					"pathName": "pages/productSearch/productSearch",
 					"query": "word=不锈钢&companyAID=1&companyBID=0&staffID=5",
 					"scene": null
+				},
+				{
+					"id": 64,
+					"name": "本地-价格测试-产品详情",
+					"pathName": "pages/productDetail/productDetail",
+					"query": "companyAID=1&companyBID=0&id=33&staffID=0",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "本地-价格测试-企业首页",
+					"pathName": "pages/indexCompany/indexCompany",
+					"query": "companyAID=1&companyBID=0&id=33&staffID=0",
+					"scene": null
+				},
+				{
+					"id": 66,
+					"name": "本地-价格测试-产品搜索",
+					"pathName": "pages/productSearch/productSearch",
+					"query": "word=不锈钢&companyAID=1&companyBID=0&staffID=0",
+					"scene": null
 				}
 			]
 		}

@@ -133,13 +133,15 @@ Page(Fai.mixin({
         response = await Ajax.getCompanyAIndexPageData(this.data.setting.companyAID);
       }
       let companyInfo = response.data.data.companyInfo;
-
+      response = await Ajax.belongVip(this.data.setting.companyAID);
+      let isVip = response.data.data.isVip;
       let staffInfo = {};
       if(this.data.setting.staffID > 0){
         response = await Ajax.getInfo4Staff(this.data.setting.staffID);
         staffInfo = response.data.data;
       }
       this.setData({
+        "pageData.isVip": isVip,
         "setting.title":`${productInfo.title}-${companyInfo.companyName}`
       });
 

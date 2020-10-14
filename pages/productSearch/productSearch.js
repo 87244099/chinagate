@@ -47,9 +47,14 @@ Page(Fai.mixin(Fai.commPageConfig, {
           response = await Ajax.getInfo4Staff(this.data.setting.staffID);
           staffInfo = response.data.data;
         }
+
+        response = await Ajax.belongVip(this.data.setting.companyAID);
+        let isVip = response.data.data.isVip;
         this.setData({
           "pageData.companyPageData": companyPageData,
-          "pageData.staffInfo": staffInfo
+          "pageData.staffInfo": staffInfo,
+          "pageData.companyInfo": companyPageData.companyInfo,
+          "pageData.isVip":isVip
         }); 
         this.searchProduct4Init(this.data.setting.word);
         this.setData({

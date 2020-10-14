@@ -39,7 +39,7 @@ Component({
         ...this.data.setting,
         id: this.data.setting.productId
       });
-      Ajax.previewQrCode(urlArr[0], "qr="+qr,  this.data.logo, companyInfo.shortName);
+      Ajax.previewQrCode(urlArr[0], "qr="+qr,  this.data.logo, this.data.companyInfo.shortName);
     }
   }
 })
