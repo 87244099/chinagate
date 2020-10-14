@@ -201,6 +201,6 @@ Page(Fai.mixin(Fai.commPageConfig, {
     let url = Fai.getCurrAbsPath();
     let urlArr = url.split("?");
     let qr = Ajax.stringifyQrCodeArg(this.data.setting);
-    Ajax.previewQrCode(urlArr[0], "qr="+qr, this.data.pageData.staffInfo.avatarPhoto);
+    Ajax.previewQrCode(urlArr[0], "qr="+qr, this.data.pageData.staffInfo.avatarPhoto, this.data.pageData.companyInfo.shortName);
   } 
 }));

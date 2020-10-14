@@ -57,23 +57,37 @@ async function loginByOpenId(openId){
 
   });
 }
-
+// 加一层内存缓存，临时缓存同一个页面多次调用
 async function getMemberInfo(){
   return new Promise((resolve, reject)=>{
-    Fai.request({
-      url: "/ajax/logAction/action?cmd=getMemberInfo",
-      success:(response)=>{
-        let result = response.data;
-        if(result.success){
-          resolve(response);
-        }else{
-          reject(response);
+    let memberInfo = Fai.MemoryCache.getCache("memberInfo");
+    if(memberInfo){
+      resolve({
+        data: {
+          data: memberInfo
         }
-      },
-      fail:()=>{
-        reject();
-      }
-    });
+      });
+    }else{
+      Fai.request({
+        url: "/ajax/logAction/action?cmd=getMemberInfo",
+        success:(response)=>{
+          let result = response.data;
+          if(result.success){
+            memberInfo = response.data.data;
+            Fai.MemoryCache.setCache("memberInfo", memberInfo);
+            
+            resolve(response);
+          }else{
+            reject(response);
+          }
+        },
+        fail:()=>{
+          reject();
+        }
+      });
+    }
+
+    
   });
 }
 async function getMemberInfoById(id){

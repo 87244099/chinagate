@@ -4,17 +4,27 @@
   </view> 
   <view class="fk_indexCompany_productIntro_group_main_product_item_name">{{product.title}}</view>
   <view class="fk_indexCompany_productIntro_group_main_product_priceInfo">
-    <view class="fk_indexCompany_productIntro_group_main_product_priceInfo_line" wx:if="{{product.showOrdinaryWholesalePriceFlag}}">
-      <view class="fk_indexCompany_productIntro_group_main_product_priceInfo_label">普通批发价：￥</view>
-      <view class="fk_indexCompany_productIntro_group_main_product_priceInfo_value">{{product.ordinaryWholesalePrice}}</view>
-    </view>
-    <view class="fk_indexCompany_productIntro_group_main_product_priceInfo_line" wx:if="{{product.showVipWholesalePriceFlag}}">
-      <view class="fk_indexCompany_productIntro_group_main_product_priceInfo_label">vip批发价：￥</view>
-      <view class="fk_indexCompany_productIntro_group_main_product_priceInfo_value">{{product.vipWholesalePrice}}</view>
-    </view>
-    <view class="fk_indexCompany_productIntro_group_main_product_priceInfo_line" wx:if="{{product.showRetailPriceFlag}}">
+    <!--1.不显示价格
+        2.显示价格（普通会员显示普通价格，vip会员显示vip价格
+        3.显示vip价格（仅vip需要显示vip价格，普通会员不显示价格）
+     -->
+    <product-price companyInfo="{{context.companyInfo}}" isVip="{{context.isVip}}">
+      <view slot="vip">
+        <view class="fk_indexCompany_productIntro_group_main_product_priceInfo_line">
+          <view class="fk_indexCompany_productIntro_group_main_product_priceInfo_label">vip批发价：￥</view>
+          <view class="fk_indexCompany_productIntro_group_main_product_priceInfo_value">{{product.vipWholesalePrice}}</view>
+        </view>
+      </view>
+      <view slot="normal">
+        <view class="fk_indexCompany_productIntro_group_main_product_priceInfo_line">
+          <view class="fk_indexCompany_productIntro_group_main_product_priceInfo_label">普通批发价：￥</view>
+          <view class="fk_indexCompany_productIntro_group_main_product_priceInfo_value">{{product.ordinaryWholesalePrice}}</view>
+        </view>
+      </view>
+    </product-price>
+    <!-- <view class="fk_indexCompany_productIntro_group_main_product_priceInfo_line" wx:if="{{product.showRetailPriceFlag}}">
       <view class="fk_indexCompany_productIntro_group_main_product_priceInfo_label">零售价：￥</view>
       <view class="fk_indexCompany_productIntro_group_main_product_priceInfo_value">{{product.retailPrice}}</view>
-    </view>
+    </view> -->
   </view>
 </view>

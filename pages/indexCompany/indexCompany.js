@@ -166,7 +166,8 @@ Page(Fai.mixin(Fai.commPageConfig, {
       response = await Ajax.getMemberInfo();
       memberInfo = response.data.data;
 
-      console.log("companyPageData", companyPageData);
+      response = await Ajax.belongVip(this.data.setting.companyAID);
+      let isVip = response.data.data.isVip;
 
       this.setData({
         "pageData":companyPageData
@@ -176,8 +177,9 @@ Page(Fai.mixin(Fai.commPageConfig, {
         "pageData.companyBInfo": companyBPageData.companyInfo,
         "pageData.staffInfo": staffInfo,
         "pageData.memberInfo": memberInfo,
+        "pageData.isVip": isVip,
         "setting.title":companyPageData.companyInfo.companyName || ''
-      })
+      });
       
 
       
@@ -277,9 +279,9 @@ Page(Fai.mixin(Fai.commPageConfig, {
     let url = Fai.getCurrAbsPath();
     let urlArr = url.split("?");
     let qr = Ajax.stringifyQrCodeArg(this.data.setting);
-    // let companyLogoUrl = this.data.config.wwwwStaticDomain + "/" + this.data.pageData.companyInfo.companyLogoUrl;
-    let companyLogoUrl = "";
-    Ajax.previewQrCode(urlArr[0], "qr="+qr, companyLogoUrl);
+    let companyLogoUrl = this.data.config.wwwwStaticDomain + "/" + this.data.pageData.companyInfo.companyLogoUrl;
+    // let companyLogoUrl = "";
+    Ajax.previewQrCode(urlArr[0], "qr="+qr, companyLogoUrl, this.data.pageData.companyInfo.shortName);
   },
   openArg(){
     this.setData({

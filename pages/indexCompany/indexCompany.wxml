@@ -69,7 +69,8 @@
         </view>
         <view class="fk_indexCompany_productIntro_group_main">
           <view class="fk_indexCompany_productIntro_group_main_product_list">
-            <product class="fk_indexCompany_productIntro_group_main_product_item" setting="{{setting}}" config="{{config}}" product="{{product}}" data-id="{{product.productID}}"  wx:key="id" wx:for-item="product" wx:for="{{group.productList}}"></product>
+            <product class="fk_indexCompany_productIntro_group_main_product_item" setting="{{setting}}" config="{{config}}" product="{{product}}" data-id="{{product.productID}}"  wx:key="id" wx:for-item="product" wx:for="{{group.productList}}" context="{{pageData}}"
+            ></product>
           </view>
         </view>
       </view>

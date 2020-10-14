@@ -72,6 +72,6 @@ Page(Fai.mixin(Fai.commPageConfig, IndexCompany, {
     let qr = Ajax.stringifyQrCodeArg(this.data.setting);
     console.log("qr",qr);
     let companyLogoUrl = this.data.config.wwwwStaticDomain + "/" + this.data.pageData.companyInfo.companyLogoUrl;
-    Ajax.previewQrCode(urlArr[0], "qr="+qr, companyLogoUrl);
+    Ajax.previewQrCode(urlArr[0], "qr="+qr, companyLogoUrl, this.data.pageData.companyInfo.shortName);
   }
 }));
