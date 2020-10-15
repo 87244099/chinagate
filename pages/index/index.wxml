@@ -16,9 +16,11 @@
   </view>
   <view class="fk_main">
     <view class="fk_main_func_list">
-      <navigator class="fk_main_func_item" url="/pages/myCard/myCard">
-        <view class="iconfont icon-mingpian  fk_main_func_item_icon" style="color:#3f51b5"></view>
-        <view class="fk_main_func_item_text">我的名片</view>
+      <navigator class="fk_main_func_item" >
+        <auto-login-reg bindjump="jumpUrl" data-url="/pages/myCard/myCard">
+          <view class="iconfont icon-mingpian  fk_main_func_item_icon" style="color:#3f51b5"></view>
+          <view class="fk_main_func_item_text">我的名片</view>
+        </auto-login-reg>
       </navigator>
       <view class="fk_main_func_item">
         <auto-login-reg bindjump="jump4MyCompany">
@@ -26,13 +28,17 @@
           <view class="fk_main_func_item_text">我的企业</view>
         </auto-login-reg>
       </view>
-      <navigator url="/pages/buy/buy" class="fk_main_func_item" open-type="redirect">
-        <view class="iconfont icon-goumai  fk_main_func_item_icon" style="color:#cfcf00"></view>
-        <view class="fk_main_func_item_text">我要购买</view>
+      <navigator class="fk_main_func_item">
+        <auto-login-reg bindjump="jumpUrl" data-url="/pages/buy/buy">
+          <view class="iconfont icon-goumai  fk_main_func_item_icon" style="color:#cfcf00"></view>
+          <view class="fk_main_func_item_text">我要购买</view>
+        </auto-login-reg>
       </navigator>
-      <navigator url="/pages/repairSign/repairSign" class="fk_main_func_item" open-type="redirect">
-        <view class="iconfont icon-weixiu  fk_main_func_item_icon" style="color:green"></view>
-        <view class="fk_main_func_item_text">我要维修</view>
+      <navigator class="fk_main_func_item" >
+        <auto-login-reg bindjump="jumpUrl" data-url="/pages/repairSign/repairSign">
+          <view class="iconfont icon-weixiu  fk_main_func_item_icon" style="color:green"></view>
+          <view class="fk_main_func_item_text">我要维修</view>
+        </auto-login-reg>
       </navigator>
       <navigator url="/pages/shops/shops" class="fk_main_func_item" open-type="redirect">
         <view class="iconfont icon-fujin  fk_main_func_item_icon" style="color:red"></view>
@@ -62,9 +68,11 @@
         <view class="iconfont icon-weixingongzhonghao  fk_main_func_item_icon" style="color:#043649"></view>
         <view class="fk_main_func_item_text">关注公众号</view>
       </view>
-      <navigator url="/pages/suggest/suggest" class="fk_main_func_item" open-type="redirect">
-        <view class="iconfont icon-tousu  fk_main_func_item_icon" style="color:#760000"></view>
-        <view class="fk_main_func_item_text">投诉建议</view>
+      <navigator class="fk_main_func_item" open-type="redirect">
+        <auto-login-reg bindjump="jumpUrl" data-url="/pages/suggest/suggest">
+          <view class="iconfont icon-tousu  fk_main_func_item_icon" style="color:#760000"></view>
+          <view class="fk_main_func_item_text">投诉建议</view>
+        </auto-login-reg>
       </navigator>
     </view>
 

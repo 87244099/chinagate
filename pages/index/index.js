@@ -140,6 +140,15 @@ Page(Fai.mixin(Fai.commPageConfig, {
       }
     })
   },
+  jump2MyCard(){
+
+  },
+  jumpUrl(event){
+    let url = event.currentTarget.dataset.url;
+    wx.navigateTo({
+      url: url,
+    })
+  },
   onReachBottom: function(){
     this.loadNextArticles();
   },
