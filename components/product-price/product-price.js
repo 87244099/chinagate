@@ -12,8 +12,7 @@ Component({
       value:{}
     },
     isVip: {
-      type:Boolean,
-      value:false
+      type:Boolean
     }
   },
 
