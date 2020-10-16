@@ -5,6 +5,7 @@
     "trace": "/components/trace/trace",
     "qrcode-preview": "/components/qrcode-preview/qrcode-preview",
     "tab-bar": "/components/tab-bar/tab-bar",
+    "product-price": "/components/product-price/product-price",
     "van-toast": "@vant/weapp/toast/index"
   }
 }

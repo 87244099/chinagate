@@ -35,10 +35,6 @@ Component({
      */
     onLoad: function () {
       this.loadPageData();
-
-      Ajax.reportShare();
-      
-
       // Ajax.setNormalTitle("productCollect");
     },
 

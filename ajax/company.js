@@ -161,6 +161,17 @@ function getInfo4Staff(id){
   });
 }
 
+async function belongVip(merchantForLevelAID=0, merchantForLevelBID=0){
+  return Fai.promiseRequest({
+    url:"/ajax/company/companyInfo?cmd=belongVip",
+    data: {
+      merchantForLevelAID,
+      merchantForLevelBID,
+      openId: getApp().globalData.openId
+    }
+  });
+}
+
 module.exports = {
   getCompanyAIndexPageData,
   getInfo4CompanyA,
@@ -172,5 +183,6 @@ module.exports = {
   getBrandCompanyListByName,
   getInfo4Staff,
   getInvitationStaffPageData,
-  getInvitationVipPageData
+  getInvitationVipPageData,
+  belongVip
 };

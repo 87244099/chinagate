@@ -1,4 +1,5 @@
 // components/product/product.js
+const Ajax = require("../../ajax/index.js");
 Component({
   /**
    * 组件的属性列表
@@ -14,6 +15,19 @@ Component({
     },
     product: {
       type: Object,
+      value: {}
+    },
+    context:{
+      type: Object,
+      value: {
+        companyInfo:{
+          showPriceType: 1
+        },
+        isVip: false
+      }
+    },
+    memberInfo: {
+      type:Object,
       value: {}
     }
   },

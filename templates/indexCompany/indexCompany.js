@@ -104,8 +104,8 @@ module.exports = {
     let companyInfo = this.data.pageData.companyInfo;
     let locData = {
       name: companyInfo.companyName,
-      latitude:parseInt( companyInfo.position.latitude) || 0,
-      longitude: parseInt(companyInfo.position.longitude) || 0,
+      latitude:parseFloat( companyInfo.position.latitude) || 0,
+      longitude: parseFloat(companyInfo.position.longitude) || 0,
       scale: 18
     };
     wx.openLocation(locData);

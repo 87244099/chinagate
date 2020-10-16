@@ -14,6 +14,10 @@ Component({
     logo: {
       type: String,
       value: ""
+    },
+    companyInfo: {
+      type: Object,
+      value: {}
     }
   },
 
@@ -35,7 +39,7 @@ Component({
         ...this.data.setting,
         id: this.data.setting.productId
       });
-      Ajax.previewQrCode(urlArr[0], "qr="+qr,  this.data.logo);
+      Ajax.previewQrCode(urlArr[0], "qr="+qr,  this.data.logo, this.data.companyInfo.shortName);
     }
   }
 })

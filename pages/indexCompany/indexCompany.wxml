@@ -21,7 +21,7 @@
     <view class="fk_indexCompany_func">
       <view class="fk_indexCompany_func_list">
         <view class="fk_indexCompany_func_item">
-          <view class="fk_indexCompany_func_item_icon iconfont icon-dianhua" data-phone="{{pageData.companyInfo.companyPhone}}" catchtap="callPhone" style="background-color:{{pageData.companyInfo.themeColor}}"></view>
+          <view class="fk_indexCompany_func_item_icon iconfont icon-dianhua" data-phone="{{setting.staffID>0 ? pageData.staffInfo.phone : pageData.companyInfo.companyPhone}}" catchtap="callPhone" style="background-color:{{pageData.companyInfo.themeColor}}"></view>
           <view class="fk_indexCompany_func_item_text">咨询</view>
         </view>
         <view class="fk_indexCompany_func_item">
@@ -69,7 +69,8 @@
         </view>
         <view class="fk_indexCompany_productIntro_group_main">
           <view class="fk_indexCompany_productIntro_group_main_product_list">
-            <product class="fk_indexCompany_productIntro_group_main_product_item" setting="{{setting}}" config="{{config}}" product="{{product}}" data-id="{{product.productID}}"  wx:key="id" wx:for-item="product" wx:for="{{group.productList}}"></product>
+            <product class="fk_indexCompany_productIntro_group_main_product_item" setting="{{setting}}" config="{{config}}" product="{{product}}" data-id="{{product.productID}}"  wx:key="id" wx:for-item="product" wx:for="{{group.productList}}" context="{{pageData}}"
+            ></product>
           </view>
         </view>
       </view>
@@ -108,7 +109,7 @@
 
     
   </view>
-  <tab-bar shared class="fk_tabBar" type="company" style="background-color:{{pageData.companyInfo.themeColor}}" rollbackVisible="{{_commPageConfigData.rollbackVisible}}" companyInfo="{{pageData.companyInfo}}" companyAID="{{setting.companyAID}}" companyBID="{{setting.companyBID}}"  staffID="{{setting.staffID}}"></tab-bar>
+  <tab-bar shared class="fk_tabBar" type="company" style="background-color:{{pageData.companyInfo.themeColor}}" rollbackVisible="{{_commPageConfigData.rollbackVisible}}" companyInfo="{{pageData.companyInfo}}" companyAID="{{setting.companyAID}}" companyBID="{{setting.companyBID}}"  staffID="{{setting.staffID}}" staffInfo="{{pageData.staffInfo}}"></tab-bar>
 </view>
 <van-toast id="van-toast" />
 

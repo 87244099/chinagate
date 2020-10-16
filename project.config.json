@@ -262,7 +262,7 @@
 				{
 					"id": -1,
 					"name": "创建企业",
-					"pathName": "pages/createComapny/createCompany",
+					"pathName": "pages/createCompany/createCompany",
 					"query": "companyId=1&word=不锈钢",
 					"scene": null
 				},
@@ -470,17 +470,66 @@
 					"scene": null
 				},
 				{
-					"id": -1,
-					"name": "本地-员工邀请-测试vip过期",
-					"pathName": "pages/invitation4Staff/invitation4Staff",
-					"query": "scene=staffID%3D1",
+					"id": 58,
+					"name": "线上-邀请会员-过期",
+					"pathName": "pages/invitation4Vip/invitation4Vip",
+					"query": "scene=vipCustomerInvitationID%3D2",
 					"scene": null
 				},
 				{
 					"id": -1,
-					"name": "本地-vip邀请-邀请过期",
-					"pathName": "pages/invitation4Vip/invitation4Vip",
-					"query": "scene=vipCustomerInvitationID%3D1",
+					"name": "本地-南北德信有限公司",
+					"pathName": "pages/indexCompany/indexCompany",
+					"query": "companyAID=1&companyBID=1",
+					"scene": null
+				},
+				{
+					"id": 60,
+					"name": "线上-员工推广企业首页详情",
+					"pathName": "pages/productDetail/productDetail",
+					"query": "companyAID=1&companyBID=0&id=33&staffID=5",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "线上-员工推广企业首页",
+					"pathName": "pages/indexCompany/indexCompany",
+					"query": "companyAID=1&companyBID=0&staffID=5",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "线上-员工推广产品中心",
+					"pathName": "pages/productCenter/productCenter",
+					"query": "companyAID=1&companyBID=0&staffID=5",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "线上-员工推广产品搜搜",
+					"pathName": "pages/productSearch/productSearch",
+					"query": "word=不锈钢&companyAID=1&companyBID=0&staffID=5",
+					"scene": null
+				},
+				{
+					"id": 64,
+					"name": "本地-价格测试-产品详情",
+					"pathName": "pages/productDetail/productDetail",
+					"query": "companyAID=1&companyBID=0&id=33&staffID=0",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "本地-价格测试-企业首页",
+					"pathName": "pages/indexCompany/indexCompany",
+					"query": "companyAID=1&companyBID=0&id=33&staffID=0",
+					"scene": null
+				},
+				{
+					"id": 66,
+					"name": "本地-价格测试-产品搜索",
+					"pathName": "pages/productSearch/productSearch",
+					"query": "word=不锈钢&companyAID=1&companyBID=0&staffID=0",
 					"scene": null
 				}
 			]

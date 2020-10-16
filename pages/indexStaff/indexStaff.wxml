@@ -83,7 +83,7 @@
         </view>
         <view class="fk_indexStaff_productIntro_group_main">
           <view class="fk_indexStaff_productIntro_group_main_product_list">
-            <product class="fk_indexStaff_productIntro_group_main_product_item" setting="{{setting}}" config="{{config}}" product="{{product}}" wx:for-item="product" wx:for="{{productGroup.productList}}"></product>
+            <product context="{{pageData}}" class="fk_indexStaff_productIntro_group_main_product_item" setting="{{setting}}" config="{{config}}" product="{{product}}" wx:for-item="product" wx:for="{{productGroup.productList}}"></product>
           </view>
         </view>
       </view>
@@ -121,6 +121,6 @@
       <trace wx:if="{{(setting.companyAID>0 || setting.companyBID>0) && pageData.staffInfo.staffID>0}}" companyAID="{{setting.companyAID}}" companyBID="{{setting.companyBID}}" staffID="{{pageData.staffInfo.staffID}}" typeID="3"></trace>
     </view>
   </view>
-  <tab-bar shared class="fk_tabBar" type="company" companyInfo="{{pageData.companyPageData.companyInfo}}" rollbackVisible="{{_commPageConfigData.rollbackVisible}}" companyAID="{{setting.companyAID}}" companyBID="{{setting.companyBID}}" staffID="{{pageData.staffInfo.staffID}}" staffInfo="{{pageData.staffInfo}}"></tab-bar>
+  <tab-bar shared class="fk_tabBar" type="company" companyInfo="{{pageData.companyPageData.companyInfo}}" rollbackVisible="{{_commPageConfigData.rollbackVisible}}" companyAID="{{setting.companyAID}}" companyBID="{{setting.companyBID}}" staffID="{{setting.staffID}}" tmp-staffID="{{pageData.staffInfo.staffID}}" staffInfo="{{pageData.staffInfo}}"></tab-bar>
 </view>
   <van-toast id="van-toast" />

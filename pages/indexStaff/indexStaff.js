@@ -46,7 +46,7 @@ Page(Fai.mixin(Fai.commPageConfig, {
     }); 
 
     
-  },
+  }, 
   init4LoadPage(){
     Ajax.requestWithToast(async()=>{
       let response = await Ajax.getInfo4Staff(this.data.setting.staffID);
@@ -64,12 +64,16 @@ Page(Fai.mixin(Fai.commPageConfig, {
         companyInfo = companyBInfo = companyPageData.companyInfo;
       }
 
+      response = await Ajax.belongVip(this.data.setting.companyAID);
+      let isVip = response.data.data.isVip;
+
       this.setData({
         "pageData.companyPageData": companyPageData,
         "pageData.companyAInfo": companyAInfo,
         "pageData.companyBInfo": companyBInfo,
         "pageData.companyInfo": companyInfo,
         "pageData.staffInfo":staffInfo,
+        "pageData.isVip": isVip,
         "setting.inited": true,
         "setting.title":companyPageData.companyInfo.companyName || '' //标题用公司名称
       });
@@ -159,8 +163,8 @@ Page(Fai.mixin(Fai.commPageConfig, {
     let companyInfo = this.data.pageData.companyPageData.companyInfo;
     let locData = {
       name: companyInfo.companyName,
-      latitude:parseInt( companyInfo.position.latitude) || 0,
-      longitude: parseInt(companyInfo.position.longitude) || 0,
+      latitude:parseFloat( companyInfo.position.latitude) || 0,
+      longitude: parseFloat(companyInfo.position.longitude) || 0,
       scale: 18
     };
     wx.openLocation(locData);
@@ -201,6 +205,6 @@ Page(Fai.mixin(Fai.commPageConfig, {
     let url = Fai.getCurrAbsPath();
     let urlArr = url.split("?");
     let qr = Ajax.stringifyQrCodeArg(this.data.setting);
-    Ajax.previewQrCode(urlArr[0], "qr="+qr, this.data.pageData.staffInfo.avatarPhoto);
+    Ajax.previewQrCode(urlArr[0], "qr="+qr, this.data.pageData.staffInfo.avatarPhoto, this.data.pageData.companyInfo.shortName);
   } 
 }));

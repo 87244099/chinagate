@@ -14,15 +14,17 @@ App({
       (async()=>{
         if(openId){
           this.globalData.openId = openId;
+          try{await Ajax.loginByOpenId(openId);}catch(e){console.log("loginByOpenId err", e);}
           resolve(openId);
         }else{
           let code = await Fai.getLoginCodeNullIsEmpty();
           let response = await Ajax.getOpenIdByCode(code);
           this.globalData.openId = response.data.data.openId;
           Fai.DiskCache.setCache("openId",  this.globalData.openId);
+          try{await Ajax.loginByOpenId(this.globalData.openId);}catch(e){console.log("loginByOpenId err", e);}
           resolve(this.globalData.openId);
         }
-
+        
         this.redirectToByHistory();
 
       })();
@@ -37,6 +39,7 @@ App({
     
   },
   onShow(options){
+    console.log("on app show")
     this.globalData.showOptions = options;
   }
 });

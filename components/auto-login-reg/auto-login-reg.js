@@ -4,27 +4,23 @@ const Ajax = require("../../ajax/index");
 const Fai = require("../../utils/util");
 import Toast from "../../miniprogram_npm/@vant/weapp/toast/toast";
 Component({
+  data:{
+    setting:{
+      isLogin: false
+    }
+  },
   lifetimes:{
     async attached(){
-
       let isLogin = await Ajax.checkLoginBoolean();
-      let code = await Fai.getLoginCodeNullIsEmpty();
-      if(isLogin){//已经登录
-
-        Fai.Waiter.then("onOpenIdLoaded", ()=>{
-          (async()=>{
-            // 初始化code
+      Fai.Waiter.then("onOpenIdLoaded", ()=>{
+          if(isLogin){//已经登录
             this.setData({
-              code
+              "setting.isLogin": true
             });
-          })();
-        });
-      }else{
-        this.setData({
-          code
-        });
-      }
-
+          }else{
+            Ajax.delaySetCode();
+          }
+      });
       
     }
   },
@@ -50,42 +46,31 @@ Component({
    * 组件的方法列表
    */
   methods: {
+    async autoLoginReg4Logined(){
+      this.triggerEvent("jump");
+    },
     async autoLoginReg(event){
-      let url = this.data.url;
-      
-      let isLogin = await Ajax.checkLoginBoolean();
-      if(isLogin){//当前已是登录态了
-        this.triggerEvent("jump");
-      }else{
-        if(event.detail.errMsg == "getUserInfo:ok"){
-          // if(getApp().globalData.isLogin){
-          //   this.triggerEvent("jump");
-          // }else{
-            let detail = event.detail;
-            try{
-              await Ajax.loginWithAutoReg({
-                code: this.data.code,
-                nickName: detail.userInfo.nickName,
-                avatarPhoto: detail.userInfo.avatarUrl,
-                iv:detail.iv,
-                encryptedData: detail.encryptedData
-              });
-              this.triggerEvent("jump");
-            }catch(response){
-              if(response){
-                Toast.fail(response.data.msg);
-              }else{
-                Toast.fail("网络繁忙,请稍后重试");
-              }
+      if(event.detail.errMsg == "getUserInfo:ok"){
+          let detail = event.detail;
+          try{
+            await Ajax.loginWithAutoReg({
+              code: Ajax.getLoginCode(),
+              nickName: detail.userInfo.nickName,
+              avatarPhoto: detail.userInfo.avatarUrl,
+              iv:detail.iv,
+              encryptedData: detail.encryptedData
+            });
+            this.triggerEvent("jump");
+          }catch(response){
+            if(response){
+              Toast.fail(response.data.msg);
+            }else{
+              Toast.fail("网络繁忙,请稍后重试");
             }
-            //每次使用完，code会失效
-            this.setData({
-              code: await Fai.getLoginCodeNullIsEmpty()
-            })
-          // }
-        }
+          }
+          //每次使用完，code会失效
+          Ajax.delaySetCode(true);//强制刷新code，一般一瞬间只有一次触发
       }
-      
     }
   }
 })

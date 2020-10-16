@@ -1,3 +1,12 @@
-<button open-type="getUserInfo" class="fk_tabBar_item_button" bindgetuserinfo="autoLoginReg">
-  <slot></slot>
-</button>
+<view>
+  <block wx:if="{{setting.isLogin}}">
+    <button class="fk_tabBar_item_button" catchtap="autoLoginReg4Logined">
+      <slot></slot>
+    </button>
+  </block>
+  <block wx:else>
+    <button open-type="getUserInfo" class="fk_tabBar_item_button" bindgetuserinfo="autoLoginReg">
+      <slot></slot>
+    </button>
+  </block>
+</view>

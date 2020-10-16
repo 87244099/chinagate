@@ -21,7 +21,7 @@
           <view class="fk_productDetail_func_item_text">收藏</view>
         </view>
         <view class="fk_productDetail_func_item">
-          <qrcode-preview setting="{{setting}}" logo="{{config.wwwwStaticDomain}}/{{pageData.companyInfo.companyLogoUrl}}">
+          <qrcode-preview companyInfo="{{pageData.companyInfo}}" setting="{{setting}}" logo="{{config.wwwwStaticDomain}}/{{pageData.companyInfo.companyLogoUrl}}">
             <view class="fk_productDetail_func_item_icon iconfont icon-erweima" style="background-color:{{pageData.companyInfo.themeColor}}"></view>
           </qrcode-preview>
           <view class="fk_productDetail_func_item_text">产品码</view>
@@ -30,15 +30,21 @@
     </view>
     <view class="fk_productDetail_info">
       <view class="fk_productDetail_info_priceInfo">
-        <view class="fk_productDetail_info_priceInfo_line fk_productDetail_info_priceInfo_normal" wx:if="{{pageData.productInfo.showOrdinaryWholesalePriceFlag}}">普通价：￥
-          <text class="fk_productDetail_info_priceInfo_price">{{pageData.productInfo.ordinaryWholesalePrice}}</text>
-        </view>
-        <view class="fk_productDetail_info_priceInfo_line fk_productDetail_info_priceInfo_vip" wx:if="{{pageData.productInfo.showVipWholesalePriceFlag}}">vip价：￥
-          <text class="fk_productDetail_info_priceInfo_price">{{pageData.productInfo.vipWholesalePrice}}</text>
-        </view>
-        <view class="fk_productDetail_info_priceInfo_line fk_productDetail_info_priceInfo_vip" wx:if="{{pageData.productInfo.showRetailPriceFlag}}">零售价：￥
+        <product-price companyInfo="{{pageData.companyInfo}}" isVip="{{pageData.isVip}}">
+          <view slot="vip">
+            <view class="fk_productDetail_info_priceInfo_line fk_productDetail_info_priceInfo_vip" wx:if="{{pageData.productInfo.showVipWholesalePriceFlag}}">vip价：￥
+              <text class="fk_productDetail_info_priceInfo_price">{{pageData.productInfo.vipWholesalePrice}}</text>
+            </view>
+          </view>
+          <view slot="normal">
+            <view class="fk_productDetail_info_priceInfo_line fk_productDetail_info_priceInfo_normal" wx:if="{{pageData.productInfo.showOrdinaryWholesalePriceFlag}}">普通价：￥
+              <text class="fk_productDetail_info_priceInfo_price">{{pageData.productInfo.ordinaryWholesalePrice}}</text>
+            </view>
+          </view>
+        </product-price>
+        <!-- <view class="fk_productDetail_info_priceInfo_line fk_productDetail_info_priceInfo_vip" wx:if="{{pageData.productInfo.showRetailPriceFlag}}">零售价：￥
           <text class="fk_productDetail_info_priceInfo_price">{{pageData.productInfo.retailPrice}}</text>
-        </view>
+        </view> -->
       </view>
       <view class="fk_productDetail_info_name">{{pageData.productInfo.title}}</view>
     </view>
@@ -86,7 +92,7 @@
   <view style="padding:0 20rpx">
     <trace wx:if="{{(setting.companyAID>0 || setting.companyBID>0) && setting.productId>0}}" companyAID="{{setting.companyAID}}" companyBID="{{setting.companyBID}}" subID="{{setting.productId}}" typeID="4" fixRollback="{{false}}"></trace>
   </view>
-  <tab-bar shared class="fk_tabBar" type="company" rollbackVisible="{{_commPageConfigData.rollbackVisible}}" style="background-color:{{pageData.companyInfo.themeColor}}" companyInfo="{{pageData.companyInfo}}"  companyAID="{{setting.companyAID}}" companyBID="{{setting.companyBID}}" staffID="{{setting.staffID}}"></tab-bar>
+  <tab-bar shared class="fk_tabBar" type="company" rollbackVisible="{{_commPageConfigData.rollbackVisible}}" style="background-color:{{pageData.companyInfo.themeColor}}" companyInfo="{{pageData.companyInfo}}"  companyAID="{{setting.companyAID}}" companyBID="{{setting.companyBID}}" staffID="{{setting.staffID}}" staffInfo="{{pageData.staffInfo}}"></tab-bar>
 </view>
   <van-toast id="van-toast" />
 

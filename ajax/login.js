@@ -57,23 +57,37 @@ async function loginByOpenId(openId){
 
   });
 }
-
+// 加一层内存缓存，临时缓存同一个页面多次调用
 async function getMemberInfo(){
   return new Promise((resolve, reject)=>{
-    Fai.request({
-      url: "/ajax/logAction/action?cmd=getMemberInfo",
-      success:(response)=>{
-        let result = response.data;
-        if(result.success){
-          resolve(response);
-        }else{
-          reject(response);
+    let memberInfo = Fai.MemoryCache.getCache("memberInfo");
+    if(memberInfo){
+      resolve({
+        data: {
+          data: memberInfo
         }
-      },
-      fail:()=>{
-        reject();
-      }
-    });
+      });
+    }else{
+      Fai.request({
+        url: "/ajax/logAction/action?cmd=getMemberInfo",
+        success:(response)=>{
+          let result = response.data;
+          if(result.success){
+            memberInfo = response.data.data;
+            Fai.MemoryCache.setCache("memberInfo", memberInfo);
+            
+            resolve(response);
+          }else{
+            reject(response);
+          }
+        },
+        fail:()=>{
+          reject();
+        }
+      });
+    }
+
+    
   });
 }
 async function getMemberInfoById(id){
@@ -217,6 +231,27 @@ async function autoEmpowerLogin(setting){
   });
 }
 
+const delaySetCode = Fai.delay(async(isFlush)=>{
+  //默认情况是，没有就设置，有就不重复设置
+  let page = Fai.getCurrPage();
+
+  if(!isFlush){//是否强制更新
+    if(page.data.loginCode){
+      return;
+    }
+  }
+  let code = await Fai.getLoginCodeNullIsEmpty();
+  page.setData({
+    "loginCode": code
+  });
+
+}, 300);
+
+function getLoginCode(){
+  let page = Fai.getCurrPage();
+  return page.data.loginCode;
+}
+
 module.exports = {
   login,
   getMemberInfo,
@@ -230,5 +265,7 @@ module.exports = {
   loginByOpenId,
   checkUserExistBoolean,
   autoEmpowerLogin,
-  checkLoginWithRedirect4Invitation
+  checkLoginWithRedirect4Invitation,
+  delaySetCode,
+  getLoginCode
 };

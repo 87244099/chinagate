@@ -1,6 +1,6 @@
 const Fai = require("../utils/util");
-
-
+const Login = require("./login");
+const Company = require("./company");
 
 async function getQrCode(page, scene){
   return new Promise((resolve,reject)=>{
@@ -121,7 +121,7 @@ async function getSystemInfo(){
 }
 
 
-function previewQrCode(page, scene, logoUrl){
+function previewQrCode(page, scene, logoUrl, text){
 
   if(page.startsWith("/")){
     page = page.slice(1);
@@ -144,11 +144,8 @@ function previewQrCode(page, scene, logoUrl){
     let imgData = response.data.imgData;
     let systemInfo  = await getSystemInfo();
     let isPC = systemInfo.platform==="windows";
-    console.log("systemInfo", JSON.stringify(systemInfo));
-    console.log("systemInfo.platform", systemInfo.platform);
-    console.log("isPC", isPC);
-    if(logoUrl && !isPC){
-      imgData = await genCompanyQrCodeBase64(imgData, logoUrl);
+    if((logoUrl || text) && !isPC){
+      imgData = await genCompanyQrCodeBase64(imgData, logoUrl, text);
     }
     Fai.MemoryCache.setCache(url, imgData);
     wx.previewImage({
@@ -375,12 +372,9 @@ async function getImageInfo(url){
   });
 }
 
-async function genCompanyQrCodeBase64(imgBase64, companyLogoUrl){
+async function genCompanyQrCodeBase64(imgBase64, companyLogoUrl, text){
   let filePath = `${wx.env.USER_DATA_PATH}/tmp_base64src`+Math.random(); 
-
-  console.log("companyLogoUrl", companyLogoUrl);
-  let loadedCompanyLogoUrl = await getImageInfo(companyLogoUrl);
-  
+  let loadedCompanyLogoUrl = "";
   await removeSavedFileNullIsEmpty({
     filePath: filePath
   });
@@ -391,37 +385,38 @@ async function genCompanyQrCodeBase64(imgBase64, companyLogoUrl){
       data: wx.base64ToArrayBuffer(imgBase64),
       encoding: 'binary',
       success: (res) => { 
-        console.log("res base64", res);
-        console.log(111111);
         wx.getImageInfo({
           src: filePath,
           success:async (res)=>{
-            console.log(22222);
             await removeSavedFileNullIsEmpty({
               filePath: filePath
             });
 
             var ctx = wx.createCanvasContext('myCanvas');
-            const sysInfo = wx.getSystemInfoSync();
-            let windowWidth = sysInfo.windowWidth;
-            let ratio = windowWidth/750;
             let width = 430;
             let height = 430;
             ctx.save();
             // let width = 430*ratio;
             ctx.drawImage(res.path, 0, 0, 430, 430, 0, 0, width, height);
-            // console.log("loadedCompanyLogoUrl", loadedCompanyLogoUrl);
-            ctx.beginPath()
+            ctx.beginPath();
             ctx.arc(215,215, 100, 0, 2*Math.PI);
             ctx.clip();
             ctx.setFillStyle("#fff");
             ctx.fillRect(0, 0, width, height);
-            // ctx.drawImage("./company.jpg", 115, 115, 200, 200);
-            ctx.drawImage(loadedCompanyLogoUrl, 115, 115, 200, 200);
+
+            if(companyLogoUrl){
+              loadedCompanyLogoUrl = await getImageInfo(companyLogoUrl);
+              ctx.drawImage(loadedCompanyLogoUrl, 115, 115, 200, 200);
+            }else if(text){
+              ctx.fillStyle = '#000';
+              ctx.font = 'bold 30px "Gill Sans Extrabold"';
+              ctx.textBaseline = 'middle';
+              ctx.textAlign = 'center';
+              ctx.fillText(text, 215, 215);
+            }
+
             ctx.restore();
             ctx.draw(false, ()=>{
-            console.log(333333);
-
               wx.canvasToTempFilePath({ //获取生成的临时图片
                 canvasId: 'myCanvas',
                 success: function (res) {
@@ -449,9 +444,11 @@ async function genCompanyQrCodeBase64(imgBase64, companyLogoUrl){
                   })
                 },
                 async complete(){
-                  await removeSavedFileNullIsEmpty({
-                    filePath: loadedCompanyLogoUrl
-                  });
+                  if(loadedCompanyLogoUrl){
+                    await removeSavedFileNullIsEmpty({
+                      filePath: loadedCompanyLogoUrl
+                    });
+                  }
                 }
               })
               // wx.canvasGetImageData({
@@ -491,7 +488,7 @@ async function reportShare(data){
     subID
   } = data;
 
-  if(!xcxOpenID){
+  if(!app.globalData.openId){
     return Promise.resolve();
   }
 
@@ -646,7 +643,7 @@ async function getLastLocusWithOutIndex(openId){
 }
 
 async function getRecentVisitUrlInfo4Scene(app){
-  let sceneList = [1026, 1005, 1006, 1027, 1054, 1089, 1169, 1106];
+  let sceneList = [1026, 1005, 1006, 1027, 1054, 1089, 1169, 1106, 1017];
   let urlInfo = await getRecentVisitUrlInfo(app, sceneList);
 
   let launchOptions = app.globalData.launchOptions;
@@ -663,42 +660,90 @@ async function getRecentVisitUrlInfo(app, sceneList){
     let launchOptions = app.globalData.launchOptions;
     console.log("launchOptions.scene", launchOptions.scene);
     if(sceneList.length===0 || sceneList.includes(launchOptions.scene)){
-      // 跳转到对应页面
-      let response = await getLastLocus(app.globalData.openId, "");
-      let data = response.data.data;
-      const {
-        typeID,
-        merchantForLevelAID,
-        merchantForLevelBID,
-        staffID,
-        subID
-      } = data;
-      let urlMap = {
-        "1": "/pages/indexCompany/indexCompany",
-        "2": "/pages/indexCompany/indexCompany",
-        "3": "/pages/indexStaff/indexStaff",
-        "4": "/pages/productDetail/productDetail",
-        "5": "/pages/index/index"
-      };
+      
 
-      let companyInfo = {};
-      let Company = require("./company");
-      if(merchantForLevelBID>0){
-        let response = await Company.getInfo4CompanyB(merchantForLevelBID);
-        companyInfo = response.data.data;
-      }else if(merchantForLevelAID>0){
-        let response = await Company.getInfo4CompanyA(merchantForLevelAID);
-        companyInfo = response.data.data;
+      let tmpResponse = await Login.getMemberInfo();
+      let memberInfo = tmpResponse.data.data; 
+      let staffInfo = null;
+      try{
+        if(memberInfo.staffID>0){
+          tmpResponse = await Company.getInfo4Staff(memberInfo.staffID);
+          staffInfo = tmpResponse.data.data;
+          console.log("staffInfo",staffInfo);
+        } 
+      }catch(e){}
+      
+      if(staffInfo){
+        let typeID = 1;
+        let staffID = staffInfo.staffID;
+        let subID = 0;
+        let urlMap = {
+          "1": "/pages/indexCompany/indexCompany",
+          "2": "/pages/indexCompany/indexCompany",
+          "3": "/pages/indexStaff/indexStaff",
+          "4": "/pages/productDetail/productDetail",
+          "5": "/pages/index/index"
+        };
+        let merchantForLevelBID = staffInfo.merchantForLevelBID;
+        let merchantForLevelAID = staffInfo.merchantForLevelAID;
+        let companyInfo = {};
+        if(merchantForLevelBID>0){
+          let response = await Company.getInfo4CompanyB(merchantForLevelBID);
+          companyInfo = response.data.data;
+        }else if(merchantForLevelAID>0){
+          let response = await Company.getInfo4CompanyA(merchantForLevelAID);
+          companyInfo = response.data.data;
+        }
+
+        let data = {
+          url4Map: urlMap[typeID],
+          url: urlMap[typeID] + `?companyAID=${merchantForLevelAID}&companyBID=${merchantForLevelBID}&staffID=${staffID}&id=${subID}`,
+          merchantForLevelAID,
+          merchantForLevelBID,
+          companyInfo
+        };
+        return Promise.resolve(data);
+
+      }else{
+
+        // 跳转到对应页面
+        let response = await getLastLocus(app.globalData.openId, "");
+        let data = response.data.data;
+        const {
+          typeID,
+          merchantForLevelAID,
+          merchantForLevelBID,
+          staffID,
+          subID
+        } = data;
+        let urlMap = {
+          "1": "/pages/indexCompany/indexCompany",
+          "2": "/pages/indexCompany/indexCompany",
+          "3": "/pages/indexStaff/indexStaff",
+          "4": "/pages/productDetail/productDetail",
+          "5": "/pages/index/index"
+        };
+
+        let companyInfo = {};
+        let Company = require("./company");
+        if(merchantForLevelBID>0){
+          let response = await Company.getInfo4CompanyB(merchantForLevelBID);
+          companyInfo = response.data.data;
+        }else if(merchantForLevelAID>0){
+          let response = await Company.getInfo4CompanyA(merchantForLevelAID);
+          companyInfo = response.data.data;
+        }
+
+        return Promise.resolve({
+          url4Map: urlMap[typeID],
+          url: urlMap[typeID] + `?companyAID=${merchantForLevelAID}&companyBID=${merchantForLevelBID}&staffID=${staffID}&id=${subID}`,
+          merchantForLevelAID,
+          merchantForLevelBID,
+          companyInfo
+        });
       }
 
-      return Promise.resolve({
-        url4Map: urlMap[typeID],
-        url: urlMap[typeID] + `?companyAID=${merchantForLevelAID}&companyBID=${merchantForLevelBID}&staffID=${staffID}&id=${subID}`,
-        merchantForLevelAID,
-        merchantForLevelBID,
-        // merchantForLevelBID,
-        companyInfo
-      });
+      
     }
 
     return Promise.resolve({});

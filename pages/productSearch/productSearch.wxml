@@ -17,10 +17,10 @@
     <view class="fk_productSearch_word">当前搜索词：{{setting.inputWord}}</view>
     <view class="fk_productSearch_main">
       <view class="fk_productSearch_product_list">
-        <product class="fk_productSearch_product_item" wx:key="productID" wx:for="{{setting.productList}}" config="{{config}}" product="{{item}}" setting="{{setting}}"></product>
+        <product class="fk_productSearch_product_item" wx:key="productID" wx:for="{{setting.productList}}" config="{{config}}" product="{{item}}" setting="{{setting}}" context="{{pageData}}"></product>
       </view>
     </view>
   </view>
-  <tab-bar style="background-color:{{pageData.companyPageData.companyInfo.themeColor}}" class="fk_tabBar" type="company" rollbackVisible="{{_commPageConfigData.rollbackVisible}}" companyInfo="{{pageData.companyPageData.companyInfo}}" companyAID="{{setting.companyAID}}" companyBID="{{setting.companyBID}}" staffID="{{setting.staffID}}"></tab-bar>
+  <tab-bar style="background-color:{{pageData.companyPageData.companyInfo.themeColor}}" class="fk_tabBar" type="company" rollbackVisible="{{_commPageConfigData.rollbackVisible}}" companyInfo="{{pageData.companyPageData.companyInfo}}" companyAID="{{setting.companyAID}}" companyBID="{{setting.companyBID}}" staffID="{{setting.staffID}}" staffInfo="{{pageData.staffInfo}}"></tab-bar>
 </view>
   <van-toast id="van-toast"/>

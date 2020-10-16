@@ -35,13 +35,26 @@ Page(Fai.mixin(Fai.commPageConfig, {
 
       Ajax.requestWithToast(async()=>{
         let response = {};
+        let staffInfo = {};
+
         if(this.data.setting.companyBID>0){
           response = await Ajax.getCompanyBIndexPageData(this.data.setting.companyBID);
         }else{
           response = await Ajax.getCompanyAIndexPageData(this.data.setting.companyAID);
         }
+        let companyPageData = response.data.data;
+        if(this.data.setting.staffID>0){
+          response = await Ajax.getInfo4Staff(this.data.setting.staffID);
+          staffInfo = response.data.data;
+        }
+
+        response = await Ajax.belongVip(this.data.setting.companyAID);
+        let isVip = response.data.data.isVip;
         this.setData({
-          "pageData.companyPageData": response.data.data
+          "pageData.companyPageData": companyPageData,
+          "pageData.staffInfo": staffInfo,
+          "pageData.companyInfo": companyPageData.companyInfo,
+          "pageData.isVip":isVip
         }); 
         this.searchProduct4Init(this.data.setting.word);
         this.setData({

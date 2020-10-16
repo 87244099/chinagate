@@ -148,6 +148,7 @@ Page(Fai.mixin(Fai.commPageConfig, {
       let companyAPageData = {};
       let companyBPageData = {};
       let companyPageData = {};
+      let staffInfo = {};
       if(this.data.setting.companyBID >0){
         response = await Ajax.getCompanyBIndexPageData(this.data.setting.companyBID);
         companyPageData = companyBPageData = response.data.data;
@@ -155,15 +156,31 @@ Page(Fai.mixin(Fai.commPageConfig, {
         response = await Ajax.getCompanyAIndexPageData(this.data.setting.companyAID);
         companyPageData = companyAPageData = response.data.data;
       }
+
+      if(this.data.setting.staffID>0){
+        response = await Ajax.getInfo4Staff(this.data.setting.staffID);
+        staffInfo = response.data.data;
+      }
       
-      
+      let memberInfo = {};
+      response = await Ajax.getMemberInfo();
+      memberInfo = response.data.data;
+
+      response = await Ajax.belongVip(this.data.setting.companyAID);
+      let isVip = response.data.data.isVip;
 
       this.setData({
-        "pageData":companyPageData,
+        "pageData":companyPageData
+      });
+      this.setData({
         "pageData.companyAInfo": companyAPageData.companyInfo,
         "pageData.companyBInfo": companyBPageData.companyInfo,
+        "pageData.staffInfo": staffInfo,
+        "pageData.memberInfo": memberInfo,
+        "pageData.isVip": isVip,
         "setting.title":companyPageData.companyInfo.companyName || ''
       });
+      
 
       
       
@@ -191,10 +208,14 @@ Page(Fai.mixin(Fai.commPageConfig, {
           bannerHeight = 750/(res.width/res.height);
         }
         this.setData({
-          "setting.bannerHeight": bannerHeight,
-          "setting.inited":true
+          "setting.bannerHeight": bannerHeight
         });
-      }catch(e){}
+      }catch(e){
+        
+      }
+      this.setData({
+        "setting.inited":true
+      })
       Toast.clear();
 
     }).catch((err)=>{
@@ -220,10 +241,11 @@ Page(Fai.mixin(Fai.commPageConfig, {
     let companyInfo = this.data.pageData.companyInfo;
     let locData = {
       name: companyInfo.companyName,
-      latitude:parseInt( companyInfo.position.latitude) || 0,
-      longitude: parseInt(companyInfo.position.longitude) || 0,
+      latitude:parseFloat( companyInfo.position.latitude) || 0,
+      longitude: parseFloat(companyInfo.position.longitude) || 0,
       scale: 18
     };
+    console.log(locData);
     wx.openLocation(locData);
   },
   async setProductCollectCancel(){
@@ -257,9 +279,9 @@ Page(Fai.mixin(Fai.commPageConfig, {
     let url = Fai.getCurrAbsPath();
     let urlArr = url.split("?");
     let qr = Ajax.stringifyQrCodeArg(this.data.setting);
-    console.log("qr",qr);
     let companyLogoUrl = this.data.config.wwwwStaticDomain + "/" + this.data.pageData.companyInfo.companyLogoUrl;
-    Ajax.previewQrCode(urlArr[0], "qr="+qr, companyLogoUrl);
+    // let companyLogoUrl = "";
+    Ajax.previewQrCode(urlArr[0], "qr="+qr, companyLogoUrl, this.data.pageData.companyInfo.shortName);
   },
   openArg(){
     this.setData({
