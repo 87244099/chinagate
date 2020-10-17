@@ -231,6 +231,27 @@ async function autoEmpowerLogin(setting){
   });
 }
 
+const delaySetCode = Fai.delay(async(isFlush)=>{
+  //默认情况是，没有就设置，有就不重复设置
+  let page = Fai.getCurrPage();
+
+  if(!isFlush){//是否强制更新
+    if(page.data.loginCode){
+      return;
+    }
+  }
+  let code = await Fai.getLoginCodeNullIsEmpty();
+  page.setData({
+    "loginCode": code
+  });
+
+}, 300);
+
+function getLoginCode(){
+  let page = Fai.getCurrPage();
+  return page.data.loginCode;
+}
+
 module.exports = {
   login,
   getMemberInfo,
@@ -244,5 +265,7 @@ module.exports = {
   loginByOpenId,
   checkUserExistBoolean,
   autoEmpowerLogin,
-  checkLoginWithRedirect4Invitation
+  checkLoginWithRedirect4Invitation,
+  delaySetCode,
+  getLoginCode
 };

@@ -7,5 +7,5 @@
     "van-toast": "@vant/weapp/toast/index",
     "wxparser": "plugin://wxparserPlugin/wxparser"
   },
-  "navigationBarTitleText": "首页"
+  "navigationBarTitleText": "  "
 }

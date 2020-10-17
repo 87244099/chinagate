@@ -407,14 +407,12 @@ async function genCompanyQrCodeBase64(imgBase64, companyLogoUrl, text){
             if(companyLogoUrl){
               loadedCompanyLogoUrl = await getImageInfo(companyLogoUrl);
               ctx.drawImage(loadedCompanyLogoUrl, 115, 115, 200, 200);
-            }
-
-            if(text){
+            }else if(text){
               ctx.fillStyle = '#000';
               ctx.font = 'bold 30px "Gill Sans Extrabold"';
               ctx.textBaseline = 'middle';
               ctx.textAlign = 'center';
-              ctx.fillText('文本内容', 215, 215);
+              ctx.fillText(text, 215, 215);
             }
 
             ctx.restore();

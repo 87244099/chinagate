@@ -11,27 +11,16 @@ Component({
   },
   lifetimes:{
     async attached(){
-
       let isLogin = await Ajax.checkLoginBoolean();
-      if(isLogin){//已经登录
-
-        Fai.Waiter.then("onOpenIdLoaded", ()=>{
-          (async()=>{
-            let code = await Fai.getLoginCodeNullIsEmpty();
-            // 初始化code
+      Fai.Waiter.then("onOpenIdLoaded", ()=>{
+          if(isLogin){//已经登录
             this.setData({
-              code,
               "setting.isLogin": true
             });
-          })();
-        });
-      }else{
-        let code = await Fai.getLoginCodeNullIsEmpty();
-        this.setData({
-          code
-        });
-      }
-
+          }else{
+            Ajax.delaySetCode();
+          }
+      });
       
     }
   },
@@ -61,15 +50,11 @@ Component({
       this.triggerEvent("jump");
     },
     async autoLoginReg(event){
-      let url = this.data.url;
       if(event.detail.errMsg == "getUserInfo:ok"){
-        // if(getApp().globalData.isLogin){
-        //   this.triggerEvent("jump");
-        // }else{
           let detail = event.detail;
           try{
             await Ajax.loginWithAutoReg({
-              code: this.data.code,
+              code: Ajax.getLoginCode(),
               nickName: detail.userInfo.nickName,
               avatarPhoto: detail.userInfo.avatarUrl,
               iv:detail.iv,
@@ -84,10 +69,7 @@ Component({
             }
           }
           //每次使用完，code会失效
-          this.setData({
-            code: await Fai.getLoginCodeNullIsEmpty()
-          })
-        // }
+          Ajax.delaySetCode(true);//强制刷新code，一般一瞬间只有一次触发
       }
     }
   }

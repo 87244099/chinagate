@@ -531,6 +531,13 @@
 					"pathName": "pages/productSearch/productSearch",
 					"query": "word=不锈钢&companyAID=1&companyBID=0&staffID=0",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "线上-我的公司名片",
+					"pathName": "pages/indexStaff/indexStaff",
+					"query": "companyAID=1&companyBID=0&staffID=5",
+					"scene": null
 				}
 			]
 		}
