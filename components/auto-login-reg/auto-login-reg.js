@@ -10,16 +10,20 @@ Component({
     }
   },
   lifetimes:{
-    async attached(){
-      let isLogin = await Ajax.checkLoginBoolean();
-      Fai.Waiter.then("onOpenIdLoaded", ()=>{
-          if(isLogin){//已经登录
-            this.setData({
-              "setting.isLogin": true
-            });
-          }else{
-            Ajax.delaySetCode();
-          }
+    async attached(){//节点挂上页面的阶段
+
+      // 两个阶段，open和created的时候要更新
+      Fai.Waiter.then("onOpenIdLoaded", async()=>{
+
+        this.init();
+
+        // 监听onShow阶段
+        let page = Fai.getCurrPage();
+        let eventName = "onShow."+page.getPageId();
+        Fai.Event.on(eventName, ()=>{
+          this.init();
+        });
+
       });
       
     }
@@ -46,9 +50,23 @@ Component({
    * 组件的方法列表
    */
   methods: {
+    async init(){//这个方法可能会被执行多次，需要做延迟优化，批量收集回调
+      console.log("inited", Math.random());
+      let isLogin = await Ajax.checkLoginBoolean();
+      if(isLogin){//已经登录
+        this.setData({
+          "setting.isLogin": true
+        });
+        console.log("setting success", new Date().getTime());
+      }else{
+        Ajax.delaySetCode();
+      }
+    },
+    // 登录成功时所触发的回调
     async autoLoginReg4Logined(){
       this.triggerEvent("jump");
     },
+    // 未登录注册时所触发的回调
     async autoLoginReg(event){
       if(event.detail.errMsg == "getUserInfo:ok"){
           let detail = event.detail;

@@ -169,11 +169,35 @@ async function checkLogin(){
     url:"/ajax/logAction/action?cmd=checkLogin",
   });
 }
-// 检查当前是否处于登录状态, 并且返回布尔值
-async function checkLoginBoolean(){
-  let response = await checkLogin();
-  return response.data.data.isLogin;
+function cacheResult(handler, seconds){
+  let timer;
+  let result;
+  return ()=>{
+    if(timer){
+      return result;
+    }else{
+      result = handler(...arguments);
+      timer = setTimeout(()=>{
+
+        clearTimeout(timer);
+        timer = null;
+
+      }, seconds*1000);
+      return result;
+    }
+  }
 }
+// 检查当前是否处于登录状态, 并且返回布尔值(频繁调用，则这里可以做短暂的缓存，比如2s内，达到节省请求的目的)
+function checkLoginBoolean(){
+  return new Promise(async (resolve, reject)=>{
+    let response = await checkLogin();
+    let isLogin = response.data.data.isLogin;
+    resolve(isLogin);
+  });
+}
+// 对结果缓存3s
+checkLoginBoolean = cacheResult(checkLoginBoolean, 3);
+
 
 
 //检查是否登录，没有登录则直接跳转登录页，带着回退链接
