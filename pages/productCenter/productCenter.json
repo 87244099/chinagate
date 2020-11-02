@@ -4,6 +4,7 @@
     "wxparser": "plugin://wxparserPlugin/wxparser",
     "mp-tabbar": "weui-miniprogram/tabbar/tabbar",
     "tab-bar": "/components/tab-bar/tab-bar",
+    "product": "/components/product/product",
     "van-toast": "@vant/weapp/toast/index",
     "van-search": "@vant/weapp/search/index"
   },

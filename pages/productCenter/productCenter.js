@@ -12,6 +12,7 @@ Page(Fai.mixin({
   data: {
     pageData: {},
     setting: {
+      groupVisible: false,
       tabIndex: 0,
       companyAID: -1,
       companyBID: -1,
@@ -19,7 +20,11 @@ Page(Fai.mixin({
     },
     config,
   },
-
+  toggleGroup(){
+    this.setData({
+      "setting.groupVisible": !this.data.setting.groupVisible
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
