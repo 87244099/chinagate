@@ -8,9 +8,15 @@
           </view>
           <view class="fk_shopCollect_item_info">
             <view class="fk_shopCollect_item_info_name">{{item.companyName}}</view>
-            <view class="fk_shopCollect_item_info_opt" data-company="{{item}}" data-index="{{index}}" catchtap="onCancelShopCollect">
-              <view class="fk_shopCollect_item_info_opt_icon iconfont icon-start1"></view>
-              <view class="fk_shopCollect_item_info_opt_text">取消收藏</view>
+            <view style="display:flex;justify-content: space-between;padding-top:20rpx;">
+              <view style="color:#0062d7" class="fk_shopCollect_item_info_opt" data-company="{{item}}" data-index="{{index}}" >
+                <view class="fk_shopCollect_item_info_opt_icon iconfont icon-chakanyanjingshishifenxi2"></view>
+                <view class="fk_shopCollect_item_info_opt_text">查看</view>
+              </view>
+              <view class="fk_shopCollect_item_info_opt" data-company="{{item}}" data-index="{{index}}" catchtap="onCancelShopCollect" style="color:#b2b2b2">
+                <view class="fk_shopCollect_item_info_opt_icon iconfont icon-false"></view>
+                <view class="fk_shopCollect_item_info_opt_text">删除</view>
+              </view>
             </view>
           </view>
         </view>

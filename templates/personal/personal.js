@@ -91,5 +91,5 @@ module.exports = {
       });
       return Promise.resolve(response);
     }, "加载中...");
-  }
+  },
 };
