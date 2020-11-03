@@ -74,6 +74,7 @@ Page(Fai.mixin(Fai.commPageConfig, {
         "pageData.companyInfo": companyInfo,
         "pageData.staffInfo":staffInfo,
         "pageData.isVip": isVip,
+        "globalData":getApp().globalData,
         "setting.inited": true,
         "setting.title":companyPageData.companyInfo.companyName || '' //标题用公司名称
       });

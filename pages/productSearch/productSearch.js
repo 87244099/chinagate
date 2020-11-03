@@ -54,7 +54,8 @@ Page(Fai.mixin(Fai.commPageConfig, {
           "pageData.companyPageData": companyPageData,
           "pageData.staffInfo": staffInfo,
           "pageData.companyInfo": companyPageData.companyInfo,
-          "pageData.isVip":isVip
+          "pageData.isVip":isVip,
+          "globalData": getApp().globalData
         }); 
         this.searchProduct4Init(this.data.setting.word);
         this.setData({

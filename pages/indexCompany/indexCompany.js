@@ -40,6 +40,9 @@ Page(Fai.mixin(Fai.commPageConfig, {
     Fai.Waiter.then("onOpenIdLoaded", async(openId)=>{
       await Ajax.autoEmpowerLogin(this.data.setting);
       this.loadIndexCompanyPageData();
+      this.setData({
+        "globalData": getApp().globalData
+      });
     })
 
 

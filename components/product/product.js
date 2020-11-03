@@ -29,6 +29,10 @@ Component({
     memberInfo: {
       type:Object,
       value: {}
+    },
+    globalData:{
+      type:Object,
+      value: {}
     }
   },
 

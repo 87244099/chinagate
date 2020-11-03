@@ -52,6 +52,9 @@ Page(Fai.mixin({
         subID: this.data.setting.productId
       });
     });
+    this.setData({
+      "globalData": getApp().globalData
+    });
     this.loadPageData();
   },
 
@@ -119,7 +122,7 @@ Page(Fai.mixin({
     }
   },
   loadPageData: async function(){
-      
+
     Ajax.requestWithToast(async()=>{
       
       let response = await Fai.promiseRequest({

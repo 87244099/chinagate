@@ -11,6 +11,7 @@ App({
     let openId = Fai.DiskCache.getCache("openId");
     
     Fai.Waiter.wait("onOpenIdLoaded", (resolve)=>{
+      this.assignGlobalData();
       (async()=>{
         if(openId){
           this.globalData.openId = openId;
@@ -26,9 +27,14 @@ App({
         }
         
         this.redirectToByHistory();
-
+        
+        
       })();
     })
+  },
+  async assignGlobalData(){
+    let data = await Ajax.getGlobalData();
+    this.globalData = Object.assign(this.globalData, data) ;
   },
   redirectToByHistory(){
     Fai.Waiter.wait("onRedirectToByHistory", async(resolve)=>{

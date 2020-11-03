@@ -83,7 +83,7 @@
         </view>
         <view class="fk_indexStaff_productIntro_group_main">
           <view class="fk_indexStaff_productIntro_group_main_product_list">
-            <product context="{{pageData}}" class="fk_indexStaff_productIntro_group_main_product_item" setting="{{setting}}" config="{{config}}" product="{{product}}" wx:for-item="product" wx:for="{{productGroup.productList}}"></product>
+            <product context="{{pageData}}" class="fk_indexStaff_productIntro_group_main_product_item" setting="{{setting}}" config="{{config}}" product="{{product}}" wx:for-item="product" wx:for="{{productGroup.productList}}" globalData="{{globalData}}"></product>
           </view>
         </view>
       </view>
