@@ -11,7 +11,8 @@
     "van-button": "@vant/weapp/button/index",
     "van-radio-group": "@vant/weapp/radio-group/index",
     "van-radio": "@vant/weapp/radio/index",
-    "van-toast": "@vant/weapp/toast/index"
+    "van-toast": "@vant/weapp/toast/index",
+    "ui-banner": "../../components/ui-banner/ui-banner"
   },
   "navigationBarTitleText": "创建企业"
 }

@@ -106,7 +106,13 @@
         <view class="fk_indexStaff_contact_message_line">
           企业：{{pageData.companyPageData.companyInfo.companyName}}
         </view>
-        <view class="fk_indexStaff_contact_message_line">电话：{{pageData.staffInfo.phone ? pageData.staffInfo.phone : '暂无'}}
+        <view class="fk_indexStaff_contact_message_line">电话：
+          <block wx:if="{{pageData.staffInfo.phone}}">
+            <text style="color:#34aaef"  data-phone="{{pageData.staffInfo.phone}}" catchtap="callPhone">{{pageData.staffInfo.phone}}</text>
+          </block>
+          <block wx:else>
+            <text>暂无</text>
+          </block>
         </view>
         <view class="fk_indexStaff_contact_message_line">地区：{{comm.parseAddr(
           pageData.companyPageData.companyInfo.addrInfo.provinceName,

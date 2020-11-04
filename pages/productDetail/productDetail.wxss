@@ -52,9 +52,10 @@
   padding-left: 27rpx;
 }
 .fk_productDetail_info_priceInfo{
-  /* display: flex; */
+  display: flex;
   font-size: 34rpx;
   align-items: center;
+  justify-content: flex-end;
 }
 .fk_productDetail_info_priceInfo_normal,
 .fk_productDetail_info_priceInfo_vip
@@ -65,15 +66,19 @@
 }
 
 .fk_productDetail_main{
-  margin-top: 20rpx;
+  /* margin-top: 20rpx; */
   padding: 20rpx;
   background-color: #fff;
+  border-top: solid #ebebeb 10rpx;
 }
-
+.fk_productDetail_info{
+  border-top: solid #ebebeb 10rpx;
+  margin-top: 0;
+}
 .fk_productDetail_intro_title{
   border-left: 8rpx solid #0062d7;
   padding-left: 30rpx;
-    font-size: 44rpx;
+    font-size: 40rpx;
     color: #8f8f8f;
 }
 
@@ -96,9 +101,11 @@
 .fk_productDetail_service_form_label{
   min-width: 120rpx;
     margin-right: 30rpx;
+    font-size: 30rpx;
 }
 .fk_productDetail_service_form_value{
   flex: 1;
+  font-size: 30rpx;
 }
 textarea{
   width: 100%;
@@ -137,4 +144,15 @@ textarea{
 .fk_productDetail_info_priceInfo_line{
   line-height: 1;
   padding-bottom: 32rpx;
+  padding : 0;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.fk_required{
+ color:red;
+ font-size:30rpx;
+ display: inline-block;
+ width: 22rpx;
+ text-align: center;
 }

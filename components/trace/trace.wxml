@@ -1,6 +1,6 @@
 <view class="fk_trace" data-fixRollback="{{fixRollback}}">
   <view class="fk_trace_top" style="font-size:36rpx;color:rgb(119,119,119)">
-    浏览用户记录：
+    最新浏览：
   </view>
   <view class="fk_trace_bottom">
     <view class="fk_trace_list">

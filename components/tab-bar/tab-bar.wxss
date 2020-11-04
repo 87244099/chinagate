@@ -58,7 +58,7 @@ navigator{
 
 .fk_goTop{
   position: fixed;
-  bottom: 300rpx;
+  bottom: 260rpx;
   /* bottom: 154rpx; */
   right: 20rpx;
   width: 88rpx;

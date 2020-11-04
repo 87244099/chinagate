@@ -33,7 +33,7 @@
 
 .fk_indexStaff_message{
   background-color: #fff;
-  padding: 30rpx 20rpx;
+  padding: 20rpx 30rpx;
   margin-top: 8rpx;
 }
 .fk_indexStaff_message_line{
@@ -64,6 +64,7 @@
 
 .fk_indexStaff_productIntro_bigTitle{
   text-align: center;
+  padding: 20rpx 0;
 }
 .fk_indexStaff_productIntro_bigTitle_text{
   font-size: 50rpx;
@@ -221,5 +222,15 @@
   -webkit-box-orient: vertical;
   font-size: 28rpx;
   padding-top: 10rpx;
+  color: #8f8f8f;
+}
+
+.fk_indexStaff_productIntro_group_main_product_item{
+  /* border: solid 1rpx #969696; */
+}
+
+
+.wxparser--wxParser-inline{
+  font-size: 32rpx;
   color: #8f8f8f;
 }

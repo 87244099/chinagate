@@ -1,0 +1,24 @@
+
+
+.fk_ui_banner{
+  background-image: -moz-linear-gradient( 90deg, rgb(1,215,254) 0%, rgb(1,178,255) 100%);
+  background-image: -webkit-linear-gradient( 90deg, rgb(1,215,254) 0%, rgb(1,178,255) 100%);
+  background-image: -ms-linear-gradient( 90deg, rgb(1,215,254) 0%, rgb(1,178,255) 100%);
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  padding: 30rpx 40rpx 90rpx;
+  box-sizing: border-box;
+}
+.fk_ui_banner_head{
+  height: 120rpx;
+  width: 120rpx;
+}
+.fk_ui_banner_title_cn{
+  font-size: 44rpx;
+  line-height: 66rpx;
+}
+.fk_ui_banner_title_en{
+  font-size: 36rpx;
+  line-height: 54rpx;
+}

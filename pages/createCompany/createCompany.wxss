@@ -7,6 +7,7 @@
   background-color: #ebebeb;
   color: #8c8c8c;
   padding: 40rpx 30rpx;
+  display: none;
 }
 .fk_createCompany_header_title{
   font-size: 36rpx;
@@ -42,14 +43,21 @@
 .fk_createCompany .weui-cells__title{
   padding: 0 30rpx;
   font-size: 32rpx;
-  height: 96rpx;
-  line-height: 96rpx;
-  background-color: #ebebeb;
+  /* background-color: #ebebeb; */
   color: #8c8c8c;
   margin: 0;
+  border-left: 6rpx solid #0062d7;
+  padding-left: 10px;
+  font-size: 30rpx;
+  color: #8f8f8f;
+  margin-bottom: 10rpx;
+  box-sizing: border-box;
+  line-height:45rpx;
 }
 .fk_createCompany .cell--weui-cell{
   padding: 20rpx 30rpx;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 .fk_createCompany_area{
@@ -59,4 +67,12 @@
   width: 100%;
   background-color: #fff;
   z-index: 999;
+}
+.fk_container{
+  padding: 10px 20px 5px;
+  width: 690rpx;
+  margin: 0 auto;
+  box-sizing: border-box;
+  border-radius: 10rpx;
+  position: relative;
 }
