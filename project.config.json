@@ -46,17 +46,10 @@
   "simulatorType": "wechat",
   "simulatorPluginLibVersion": {},
   "condition": {
-    "search": {
-      "list": []
-    },
-    "conversation": {
-      "list": []
-    },
     "plugin": {
       "list": []
     },
     "game": {
-      "currentL": -1,
       "list": []
     },
     "gamePlugin": {
@@ -537,6 +530,24 @@
           "id": -1,
           "name": "线上-我的公司名片",
           "pathName": "pages/indexStaff/indexStaff",
+          "query": "companyAID=1&companyBID=0&staffID=5",
+          "scene": null
+        },
+        {
+          "name": "本地-我的企业",
+          "pathName": "pages/indexCompany/indexCompany",
+          "query": "scene=qr%3D1%2C0%2C5",
+          "scene": null
+        },
+        {
+          "name": "本地-企业首页不带员工参数",
+          "pathName": "pages/indexCompany/indexCompany",
+          "query": "companyAID=1&companyBID=0",
+          "scene": null
+        },
+        {
+          "name": "本地-企业首页带员工参数",
+          "pathName": "pages/indexCompany/indexCompany",
           "query": "companyAID=1&companyBID=0&staffID=5",
           "scene": null
         }

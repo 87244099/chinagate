@@ -46,6 +46,10 @@ Component({
     shared:{
       type: Boolean,
       value: false
+    },
+    isCompanyIndex:{
+      type:Boolean,
+      value: false
     }
   },
   /**
@@ -73,18 +77,16 @@ Component({
     },
     //只有企业才会有号码呼叫
     async callPhone(res){
-      if(this.data.staffInfo && this.data.staffInfo.phone){
+      // 有员工的参数，就拨打员工的
+      if(this.data.staffID>0){
         wx.makePhoneCall({
           phoneNumber: this.data.staffInfo.phone,
         });
-      }else if(this.data.companyInfo.companyPhone){
+      }else{//没有员工参数，就拨打企业的
         wx.makePhoneCall({
           phoneNumber: this.data.companyInfo.companyPhone,
         });
-      }else{
-        Toast.fail("该企业暂无联系方式");
       }
-      
     },
     jump4Personal(){
       wx.redirectTo({
@@ -94,6 +96,11 @@ Component({
     jump4CompanyPersonal(){
       wx.redirectTo({
         url: '/pages/personal4Company/personal4Company?companyAID='+ this.data.companyAID +'&companyBID='+this.data.companyBID+"&staffID="+this.data.staffID,
+      })
+    },
+    jump2StaffIndex(){
+      wx.redirectTo({
+        url: `/pages/indexStaff/indexStaff?companyAID=${this.data.companyAID}&companyBID=${this.data.companyBID}&staffID=${this.data.staffID}`,
       })
     }
   },

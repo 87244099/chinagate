@@ -52,7 +52,7 @@
 <block wx:elif="{{type=='company'}}">
   <view class="fk_tabBar">
     <view class="fk_tabBar_item">
-      <block wx:if="{{staffID>0}}">
+      <block wx:if="{{staffID>0 && false}}">
         <navigator open-type="redirect" url="/pages/indexStaff/indexStaff?companyAID={{companyAID}}&companyBID={{companyBID}}&staffID={{staffID}}">
           <view class="iconfont icon-home fk_tabBar_item_icon"></view>
           <view class="fk_tabBar_item_text">首页</view>
@@ -71,16 +71,22 @@
         <view class="fk_tabBar_item_text">产品中心</view>
       </navigator>
     </view>
-    <view class="fk_tabBar_item" wx:if="{{shared}}">
+    <view class="fk_tabBar_item" wx:if="{{shared&&false}}">
       <button open-type="share">
         <view class="iconfont icon-zhuanfa1 fk_tabBar_item_icon"></view>
         <view class="fk_tabBar_item_text">转发</view>
       </button>
     </view>
     <view class="fk_tabBar_item">
-      <view catchtap="callPhone" data-phone="{{companyInfo.companyPhone}}">
+      <view catchtap="callPhone">
         <view class="iconfont icon-fujin fk_tabBar_item_icon"></view>
         <view class="fk_tabBar_item_text">联系电话</view>
+      </view>
+    </view>
+    <view class="fk_tabBar_item" wx:if="{{staffID>0}}">
+      <view catchtap="jump2StaffIndex">
+        <view class="iconfont icon-mingpian fk_tabBar_item_icon"></view>
+        <view class="fk_tabBar_item_text">联系信息</view>
       </view>
     </view>
     <view class="fk_tabBar_item">

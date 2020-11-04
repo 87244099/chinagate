@@ -109,7 +109,7 @@
 
     
   </view>
-  <tab-bar shared class="fk_tabBar" type="company" style="background-color:{{pageData.companyInfo.themeColor}}" rollbackVisible="{{_commPageConfigData.rollbackVisible}}" companyInfo="{{pageData.companyInfo}}" companyAID="{{setting.companyAID}}" companyBID="{{setting.companyBID}}"  staffID="{{setting.staffID}}" staffInfo="{{pageData.staffInfo}}"></tab-bar>
+  <tab-bar class="fk_tabBar" type="company" style="background-color:{{pageData.companyInfo.themeColor}}" rollbackVisible="{{_commPageConfigData.rollbackVisible}}" companyInfo="{{pageData.companyInfo}}" companyAID="{{setting.companyAID}}" companyBID="{{setting.companyBID}}"  staffID="{{setting.staffID}}" staffInfo="{{pageData.staffInfo}}"></tab-bar>
 </view>
 <van-toast id="van-toast" />
 
