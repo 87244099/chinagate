@@ -207,6 +207,11 @@ Page(Fai.mixin(Fai.commPageConfig, {
     wx.navigateTo({
       url: this.data.setting.recentUrlInfo.url,
     })
+  },
+  jump2SvrMall(){
+    wx.navigateTo({
+      url: '/pages/shops/shops',
+    })
   }
 }));
 

@@ -70,8 +70,20 @@
         </view>
       </navigator>
     </view>
-
   </view>
-
+  <view class="fk_personal_section">
+    <view class="fk_personal_section_title">技术支持</view>
+    <view class="fk_personal_section_list">
+      <view class="fk_personal_section_item" catchtap="callTechSupport">
+        <view class="fk_personal_section_item_left">
+          <view class="fk_personal_section_item_icon iconfont icon-kefu" style="color: #ffbd27;"></view>
+          <view class="fk_personal_section_item_text">技术支持联系</view>
+        </view>
+        <view class="fk_personal_section_item_right">
+          <view class="iconfont icon-right"></view> 
+        </view>
+      </view>
+    </view>
+  </view>
 
 </template>

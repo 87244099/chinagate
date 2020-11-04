@@ -7,10 +7,14 @@
             <image style="width:100%;height:100%;" mode="aspectFill" src="{{item.avatarPhoto}}"></image>
           </view>
           <view class="fk_staffCollect_item_info">
-            <view class="fk_staffCollect_item_info_name">名片收藏：{{item.name}}</view>
-            <view class="fk_staffCollect_item_info_opt">
-              <view style="display:flex;align-items:center;" data-item="{{item}}" data-index="{{index}}" catchtap="onCancelStaffCollect">
-                <view class="fk_staffCollect_item_info_opt_icon iconfont icon-start1"></view>
+            <view class="fk_staffCollect_item_info_name">个人名片：{{item.name}}</view>
+            <view class="fk_staffCollect_item_info_opt" style="margin-top:20rpx">
+              <view style="display:flex;align-items:center; color:#0062d7;" data-item="{{item}}" data-index="{{index}}" catchtap="onCancelStaffCollect">
+                <view class="fk_staffCollect_item_info_opt_icon iconfont icon-chakanyanjingshishifenxi2"></view>
+                <view class="fk_staffCollect_item_info_opt_text">查看</view>
+              </view>
+              <view style="display:flex;align-items:center;color:#b2b2b2;" data-item="{{item}}" data-index="{{index}}" catchtap="onCancelStaffCollect">
+                <view class="fk_staffCollect_item_info_opt_icon iconfont icon-false"></view>
                 <view class="fk_staffCollect_item_info_opt_text">取消收藏</view>
               </view>
             </view>

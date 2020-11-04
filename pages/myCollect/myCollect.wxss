@@ -22,3 +22,6 @@
   font-size: 60rpx;
   margin-bottom: 10rpx;
 }
+.fk_page{
+  padding-bottom: 0;
+}

@@ -52,6 +52,14 @@
   align-items: flex-start;
   height: calc( 100vh - 116rpx - 48px );
 }
+
+.fk_productCenter_group .fk_productCenter_group_side{
+  display: none;
+}
+.fk_productCenter_group[data-visible="true"] .fk_productCenter_group_side{
+  display: block;
+}
+
 .fk_productCenter_group_side{
   min-width: 224rpx;
   width: 224rpx;
@@ -103,6 +111,9 @@
   text-indent: 24rpx;
   height: 80rpx;
   line-height: 80rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .fk_productCenter_group_side_list{
@@ -143,4 +154,21 @@
   box-sizing: border-box;
   display: inline-block;
   height: auto;
+}
+
+
+.fk_indexStaff_productIntro_group_main_product_item{
+  width: 50%;
+  box-sizing: border-box;
+}
+.fk_toggleGroup{
+  height: 44rpx;
+  font-size: 24rpx;
+  text-align: center;
+  line-height: 44rpx;
+  width: 132rpx;
+  margin-right: 20rpx;
+  border-radius: 22rpx;
+  border: solid #cccc00 1rpx;
+  color: #cccc00;
 }

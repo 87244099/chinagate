@@ -5,6 +5,7 @@
   border-bottom: 4rpx solid #ebebeb;
   background-color: #fff;
   box-sizing: border-box;
+  padding: 50rpx;
 }
 .fk_main_article_item_content{
   display: flex;
@@ -33,4 +34,6 @@
   margin-bottom: 20rpx;
   width: 100%;
   text-align: left;
+  font-size: 30rpx;
+  line-height: 45rpx;
 }

@@ -1,37 +1,76 @@
 
-// 只存在于一个页面周期中
 const Event = (function(){
   let cache = {};
   return {
-    on(name, handler){
-      init(name);
-      cache[name].push(handler);
+    cache,
+    on(key, handler){
+      let namespace = getNamespace(key);
+      get(key).push(handler);
+      return this;
     },
-    off(name){
-      delete cache[name];
+    off(key){
+      get(key).length = 0;
+      return this;
     },
-    emit(name){
-      init(name);
-      cache[name].forEach(item=>item());
+    emit(key, isOnce){
+      init(key);
+      let namespace = getNamespace(key);
+      if(namespace.sub.length>0){
+        let handlers = get(key);
+        handlers.forEach(item=>item());
+        if(isOnce){
+          handlers.length = 0;
+        }
+      }else{
+        Object.keys(cache[namespace.main]).forEach(sub=>{
+          cache[namespace.main][sub].forEach(item=>item())
+        });
+        if(isOnce){
+          cache[namespace.main] = {};
+        }
+      }
+
+      return this;
     },
     // 触发一次性函数
-    emitOnce(){
-      init(name);
-      cache[name].forEach(item=>item());
-      this.off(name);
+    emitOnce(key){
+      this.emit(key, true);
+      return this;
     },
     clear(){
       cache = {};
+      return this;
     }
   };
 
-  function init(name){
-    if(!cache[name]){
-      cache[name] = [];
+  function init(key){
+    let namespace = getNamespace(key);
+    if(!cache[namespace.main]){
+      cache[namespace.main] = {};
+    }
+    if(!cache[namespace.main][namespace.sub]){
+      cache[namespace.main][namespace.sub] = [];
+    }
+  }
+
+  function get(key){
+    init(key);
+    let namespace = getNamespace(key);
+    return cache[namespace.main][namespace.sub];
+  }
+
+  function getNamespace(key){
+    let arr = key.split(".");
+
+    return {
+      main: arr[0] || '',
+      sub: arr[1] || ''
     }
   }
 
 })();
+
+global.EventTool = Event;
 
 const Waiter = (function(){
   // 等待某件事情结束
@@ -83,4 +122,3 @@ module.exports = {
 }
 
 global.Waiter  = Waiter;
-console.log(Math.random());

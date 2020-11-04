@@ -31,7 +31,8 @@ Page({
       let response = await Ajax.getShareRank(type);
       this.setData({
         "pageData.myRank": response.data.data.myRank,
-        "pageData.rankList": response.data.data.rankList
+        "pageData.rankList": response.data.data.rankList,
+        "pageData.bannerList": response.data.data.bannerList,
       })
     }, "加载中...");
   },

@@ -94,5 +94,12 @@ Page(Fai.mixin(Fai.commPageConfig, {
       });
       return Promise.resolve(response);
     }, "加载中...");
+  },
+  
+  async callTechSupport(){
+    let globalData = await Ajax.getGlobalData();
+    wx.makePhoneCall({
+      phoneNumber: globalData.supportPhone,
+    });
   }
 }));

@@ -1,9 +1,10 @@
 /* pages/shareRank/shareRank.wxss */
 .fk_rank_banner{
-  height: 311rpx;
+  height: 346rpx;
   margin-bottom: 33rpx;
-  background: url(https://pf.86crk.com/Content/Images/rankTopBg.png);
-  background-size: 750rpx 311rpx;
+  /* background: url(https://pf.86crk.com/Content/Images/rankTopBg.png); */
+  background-size: 750rpx 346rpx;
+  padding-bottom: 0;
 }
 .fk_rank_tip{
   height: 30rpx;
@@ -13,20 +14,24 @@
   color: #FFFFFF;
   margin-bottom: 33rpx;
   text-align: center;
+  display: none;
+  border-top: 8px solid #ebebeb;
 }
 .fk_rank{
-  width: 631rpx;
+  /* width: 631rpx; */
   background: #FFFFFF;
   border-radius: 15rpx;
-  margin: 0 auto;
+  /* margin: 0 auto; */
   /* padding: 0 32rpx; */
   box-sizing: border-box;
   overflow: hidden;
   min-height: 550rpx;
+  padding: 20rpx 30rpx;
 }
 .fk_rank_content{
   padding: 43rpx 32rpx;
   padding-bottom: 0;
+  padding-top: 0;
 }
 .fk_rank_header{
   height: 104rpx;
@@ -43,6 +48,7 @@
   font-weight: bold;
   color: #0488FC;
   margin: 0 auto;
+  display: none;
 }
 .fk_rank_table_head{
   padding-top: 72rpx;
@@ -79,23 +85,26 @@
 }
 .fk_rank_table_head .fk_rank_table_row > view{
   text-align: center;
-  font-size: 32rpx;
+  font-size: 34rpx;
   color: #0488FC;
+  font-weight: bolder;
 }
 .fk_rank_table_head{
   font-weight: bold;
   color: rgb(4,135, 253);
+  padding: 40rpx 0;
 }
 .fk_rank_table_body .fk_rank_table_row:first-child{
   border-top: none;
 }
 .fk_rank_table_body .fk_rank_table_row{
-    padding-top: 63rpx;padding-bottom: 31rpx;
-    border-top: solid #E6E6E6 1rpx;
+  border-top: solid #E6E6E6 1rpx;
+  padding: 20rpx 0;
+  line-height: 1;
 }
 
 .fk_page{
-  background-color: rgb(9, 133, 252);
+  /* background-color: rgb(9, 133, 252); */
   min-height: 100vh;
   box-sizing: border-box;
   overflow: hidden;
