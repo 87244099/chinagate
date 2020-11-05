@@ -12,13 +12,14 @@ Page(Fai.mixin({
   data: {
     pageData: {},
     setting: {
-      groupVisible: false,
+      groupVisible: true,
       tabIndex: 0,
       companyAID: -1,
       companyBID: -1,
       staffID: -1
     },
-    config,
+    config
+    
   },
   toggleGroup(){
     this.setData({
@@ -56,6 +57,8 @@ Page(Fai.mixin({
       this.setData({
         "pageData.productGroupList": productGroupList,
         "pageData.companyPageData": companyPageData,
+        "pageData.companyInfo": companyPageData.companyInfo,
+        "globalData": getApp().globalData,
         "pageData.staffInfo": staffInfo
       });
       this.setData({

@@ -27,7 +27,7 @@
       </view>
       <view class="fk_productCenter_group_main">
         <view class="fk_productCenter_group_main_title" style="color:{{pageData.companyPageData.companyInfo.themeColor}}">
-          <view>产品列表</view>
+          <view style="padding-left:24rpx">产品列表</view>
           <view class="fk_toggleGroup" catchtap="toggleGroup">{{setting.groupVisible?'隐藏分类':'显示分类'}}</view>
         </view>
         <scroll-view scroll-y class="fk_productCenter_group_main_content">
@@ -40,7 +40,7 @@
             </navigator>
           </view>
           <view wx:else style="padding: 8px;display: flex;align-items: center;flex-wrap: wrap;">
-            <product context="{{pageData}}" class="fk_indexStaff_productIntro_group_main_product_item" setting="{{setting}}" config="{{config}}" product="{{product}}" wx:for-item="product" wx:for="{{pageData.productGroupList[setting.tabIndex].productList}}"></product>
+            <product color="#969696" context="{{pageData}}" class="fk_indexStaff_productIntro_group_main_product_item fk_product_item" setting="{{setting}}" config="{{config}}" product="{{product}}" wx:for-item="product" wx:for="{{pageData.productGroupList[setting.tabIndex].productList}}" globalData="{{globalData}}"></product>
           </view>
         </scroll-view>
       </view>

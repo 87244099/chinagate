@@ -114,6 +114,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  text-indent:0;
 }
 
 .fk_productCenter_group_side_list{
@@ -171,4 +172,8 @@
   border-radius: 22rpx;
   border: solid #cccc00 1rpx;
   color: #cccc00;
+}
+
+.fk_product_item .fk_indexCompany_productIntro_group_main_product_priceInfo_line{
+  color: #969696;
 }

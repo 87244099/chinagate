@@ -550,6 +550,18 @@
           "pathName": "pages/indexCompany/indexCompany",
           "query": "companyAID=1&companyBID=0&staffID=5",
           "scene": null
+        },
+        {
+          "name": "线上-企业首页-产品价格参数",
+          "pathName": "pages/indexCompany/indexCompany",
+          "query": "companyAID=1&companyBID=1",
+          "scene": null
+        },
+        {
+          "name": "线上-产品中心-价格参数",
+          "pathName": "pages/productCenter/productCenter",
+          "query": "companyAID=1&companyBID=1",
+          "scene": null
         }
       ]
     }

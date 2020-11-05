@@ -1,10 +1,13 @@
 // components/product/product.js
 const Ajax = require("../../ajax/index.js");
 Component({
+  externalClasses: ["fk_product_item"],
   /**
    * 组件的属性列表
    */
   properties: {
+    color:String,
+    
     setting:{
       type:Object,
       value:{}
