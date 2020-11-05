@@ -1,13 +1,17 @@
+.fk_page{
+  background-color: #ebebeb;
+}
 .fk_repairSign{
   padding: 20rpx;
-  background-color: #ebebeb;
-  height: 100vh;
+  /* height: 100vh; */
   box-sizing: border-box;
+  padding: 0 30rpx;
 }
 .fk_repairSign_form{
   background-color: #fff;
   border-radius: 10rpx;
   overflow: hidden;
+  margin-top: -60rpx;
 }
 .van-field__label, .van-cell__title{
   width: 135rpx !important;

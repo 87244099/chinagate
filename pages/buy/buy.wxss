@@ -1,15 +1,20 @@
 /* pages/buy/buy.wxss */
-.fk_buy{
-  padding: 20rpx;
+.fk_page{
   background-color: #ebebeb;
-  height: 100vh;
+}
+.fk_buy{
+  padding: 30rpx;
+  /* min-height: cal; */
   box-sizing: border-box;
+  padding-top: 0;
 }
 .fk_buy_form{
   background-color: #fff;
   border-radius: 10rpx;
   overflow: hidden;
   padding: 0 16px;
+  padding:20rpx 40rpx 10rpx;
+  margin-top: -60rpx;
 }
 .van-field__label, .van-cell__title{
   width: 135rpx !important;
@@ -58,3 +63,36 @@
   color: #0062d7;
   border-bottom: solid 1rpx #0062d7;
 } */
+.fk_required{
+  width: 22rpx;
+  color: red;
+  text-align: center;
+  display: inline-block;
+}
+
+.fk_buy .van-cell__title{
+  width: 214rpx !important;
+  min-width: 214rpx !important;
+  max-width: 214rpx !important;
+  box-sizing: border-box;
+}
+.fk_buy_button_wrap{
+  text-align: center;
+  padding-top: 60rpx;
+}
+
+.fk_submit_button{
+    background-image: -moz-linear-gradient( 90deg, rgb(1,215,254) 0%, rgb(1,178,255) 100%);
+    background-image: -webkit-linear-gradient( 90deg, rgb(1,215,254) 0%, rgb(1,178,255) 100%);
+    background-image: -ms-linear-gradient( 90deg, rgb(1,215,254) 0%, rgb(1,178,255) 100%);
+    width: 400rpx;
+    height: 70rpx;
+    line-height: 70rpx;
+    text-align: center;
+    color: #fff;
+    margin: 60rpx auto 0;
+    display: block;
+    border-radius: 70rpx;
+    font-size: 32rpx;
+    margin: auto;
+}

@@ -532,7 +532,6 @@
           "pathName": "pages/indexStaff/indexStaff",
           "query": "companyAID=1&companyBID=0&staffID=5",
           "scene": null
-<<<<<<< HEAD
         },
         {
           "name": "本地-我的企业",
@@ -551,8 +550,6 @@
           "pathName": "pages/indexCompany/indexCompany",
           "query": "companyAID=1&companyBID=0&staffID=5",
           "scene": null
-=======
->>>>>>> 0fa757ec7a86ef8a70c118a754314920d6ce4135
         }
       ]
     }

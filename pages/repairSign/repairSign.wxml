@@ -1,4 +1,6 @@
 <view class="fk_page">
+  <ui-banner cn="我需要维修" en="SUGGESTIONS"></ui-banner>
+
   <view class="fk_repairSign">
     <view class="fk_repairSign_form" style="padding:0 40rpx">
       <van-cell-group>

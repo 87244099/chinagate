@@ -1,55 +1,60 @@
 <view class="fk_page">
+  <ui-banner cn="我要购买" en="BUY"></ui-banner>
   <view class="fk_buy">
     <view class="fk_buy_form">
       <van-cell-group>
         <van-field 
           class="fk_van_field"
-          label="您的姓名"
           value="{{setting.form.customerName}}"
-          placeholder="请输入您的姓名"
+          placeholder="请输入您的姓名（必填）"
           border="{{ false }}"
           bind:blur="onFieldBlur"
-
           data-field="customerName"
           placeholder-style="color:rgb(128,128,128)"
-        />
+        >
+          <view slot="label"><text class="fk_required">*</text>您的姓名：</view>
+        </van-field>
         <van-field 
           class="fk_van_field"
-          label="您的手机"
           value="{{setting.form.customerTel}}"
-          placeholder="请输入您的手机"
+          placeholder="请输入您的手机（必填）"
           border="{{ false }}"
           bind:blur="onFieldBlur"
           data-field="customerTel"
           placeholder-style="color:rgb(128,128,128)"
-
-        />
+          >
+          <view slot="label"><text class="fk_required">*</text>您的手机：</view>
+        </van-field>
         <van-field 
           class="fk_van_field"
-          label="您的地址"
           value="{{setting.form.address}}"
           placeholder="请输入您的地址"
           border="{{ false }}"
           bind:blur="onFieldBlur"
           data-field="address"
           placeholder-style="color:rgb(128,128,128)"
-        /> 
+        >
+          <view slot="label"><text class="fk_required">*</text>您的城市：</view>
+        </van-field> 
         <van-field 
           class="fk_van_field"
           value="{{ setting.form.leaveMessage }}"
-          label="需求说明"
-          type="textarea"
-          placeholder="请输入购买产品的需求"
           border="{{ false }}"
+          type="textarea"
+          placeholder="请输入购买产品的需求（必填）"
 
           data-field="leaveMessage"
           bind:blur="onFieldBlur"
           placeholder-style="color:rgb(128,128,128)"
-        />
+        >
+          <view slot="label"><text class="fk_required">*</text>购买需求：</view>
+        </van-field> 
       </van-cell-group>
-      <view class="fk_buy_button_wrap">
-        <van-button type="info" size="small" block catchtap="onSubmitForm">确定提交</van-button>
-      </view>
+      
+    </view>
+
+    <view class="fk_buy_button_wrap">
+      <view class="fk_submit_button" catchtap="onSubmitForm">确定提交</view>
     </view>
     
   </view>
