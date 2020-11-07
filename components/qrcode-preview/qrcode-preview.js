@@ -32,7 +32,21 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    previewQrCode(){
+    belongMember(memberInfo, setting){
+      return memberInfo.merchantForLevelAID == setting.companyAID 
+      && memberInfo.merchantForLevelBID == setting.companyBID;
+    },
+    async previewQrCode(){
+      let response = await Ajax.getMemberInfo();
+      let memberInfo = response.data.data;
+      let setting = Fai.deepCopy(this.data.setting);
+      if(this.belongMember(memberInfo, setting)){
+        setting.staffID = memberInfo.staffID;
+        console.log("员工生成产品码")
+      }else{
+        console.log("普通人生成产品码")
+      }
+
       let url = Fai.getCurrAbsPath();
       let urlArr = url.split("?");
       let qr = Ajax.stringifyQrCodeArg({

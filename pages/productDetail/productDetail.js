@@ -108,7 +108,12 @@ Page(Fai.mixin(Fai.commPageConfig, {
     let currUrl = Fai.getCurrAbsPath();
     let sharedOpenId = getApp().globalData.openId;
     currUrl = Fai.addPageQuery(currUrl, "sharedOpenId", sharedOpenId);
-    
+    if(this.belongMember(this.data.pageData.memberInfo, this.data.setting)){
+      currUrl = Fai.addPageQuery(currUrl, "staffID", this.data.pageData.memberInfo.staffID);
+      console.log("员工分享");
+    }else{
+      console.log("普通人分享");
+    }
     let reportData = {
       typeID : 4,//产品详情
       merchantForLevelAID: this.data.setting.companyAID,
@@ -120,6 +125,10 @@ Page(Fai.mixin(Fai.commPageConfig, {
       title: this.data.setting.title,
       path : currUrl,
     }
+  },
+  belongMember(memberInfo, setting){
+    return memberInfo.merchantForLevelAID == setting.companyAID 
+    && memberInfo.merchantForLevelBID == setting.companyBID;
   },
   loadPageData: async function(){
 

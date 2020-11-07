@@ -105,5 +105,6 @@ module.exports = {
   getSetting,
   parseSharedOption,
   isEmptyObj,
-  getImageInfo
+  getImageInfo,
+  deepCopy
 };

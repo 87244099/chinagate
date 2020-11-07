@@ -562,6 +562,18 @@
           "pathName": "pages/productCenter/productCenter",
           "query": "companyAID=1&companyBID=1",
           "scene": null
+        },
+        {
+          "name": "线上-产品详情-员工带参访问",
+          "pathName": "pages/productDetail/productDetail",
+          "query": "companyAID=1&companyBID=0&id=33&staffID=5",
+          "scene": null
+        },
+        {
+          "name": "线上-产品详情-员工不带参访问",
+          "pathName": "pages/productDetail/productDetail",
+          "query": "companyAID=1&companyBID=0&id=33&staffID=0",
+          "scene": null
         }
       ]
     }

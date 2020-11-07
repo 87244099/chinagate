@@ -122,20 +122,21 @@ Page(Fai.mixin(Fai.commPageConfig, {
 
     let staffID = 0;//如果是自己公司的分享，就携带自己的员工id参数
     let memberInfo = this.data.pageData.memberInfo;
-    if(  memberInfo.merchantForLevelAID == this.data.setting.companyAID 
-      && memberInfo.merchantForLevelBID == this.data.setting.companyBID
-      ){
+    if( this.belongMember(memberInfo, this.data.setting) ){
         staffID = memberInfo.staffID;
     }
     currUrl = Fai.addPageQuery(currUrl, "staffID", staffID);
-
+    console.log("currUrl", currUrl);
     Ajax.reportShare(reportData);
     return {
       title: this.data.setting.title,
       path : currUrl,
     }
   },
-
+  belongMember(memberInfo, setting){
+    return memberInfo.merchantForLevelAID == setting.companyAID 
+    && memberInfo.merchantForLevelBID == setting.companyBID;
+  },
   report(){
     // 分享行为会触发onShow，只能放onload了，避免重复统计
     Fai.Waiter.then("onOpenIdLoaded", ()=>{
@@ -285,17 +286,26 @@ Page(Fai.mixin(Fai.commPageConfig, {
     }
     
   },
+  
   onShowQrCode(){
     let url = Fai.getCurrAbsPath();
     let urlArr = url.split("?");
-    let qr = Ajax.stringifyQrCodeArg(this.data.setting);
+    let setting = Fai.deepCopy(this.data.setting);
+    let memberInfo = this.data.pageData.memberInfo;
+    if(this.belongMember(memberInfo, setting)){//如果是这家公司的会员，带上员工参数，标记为员工分享
+      setting.staffID = memberInfo.staffID;
+      console.log("员工生成小程序码");
+    }else{
+      console.log("普通人生成小程序码");
+    }
+    let qr = Ajax.stringifyQrCodeArg(setting);
     let companyLogoUrl = this.data.config.wwwwStaticDomain + "/" + this.data.pageData.companyInfo.companyLogoUrl;
     // let companyLogoUrl = "";
     Ajax.previewQrCode(urlArr[0], "qr="+qr, companyLogoUrl, this.data.pageData.companyInfo.shortName);
   },
   openArg(){
     this.setData({
-      "setting.visibleArg":!this.data.setting.visibleArg
+      "setting.visibleArg":!setting.visibleArg
     })
   }
 }));
