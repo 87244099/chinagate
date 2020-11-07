@@ -37,8 +37,8 @@
   font-size: 32rpx;
 }
 .fk_createCompany .weui-label{
-  width: 160rpx;
-  margin-right: 20rpx;
+  width: 170rpx;
+  margin-right: 10rpx;
 }
 .fk_createCompany .weui-cells__title{
   padding: 0 30rpx;
@@ -53,6 +53,7 @@
   margin-bottom: 10rpx;
   box-sizing: border-box;
   line-height:45rpx;
+  margin-top: 30rpx;
 }
 .fk_createCompany .cell--weui-cell{
   padding: 20rpx 30rpx;

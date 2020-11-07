@@ -1,9 +1,9 @@
 /* pages/shareRank/shareRank.wxss */
 .fk_rank_banner{
-  height: 346rpx;
-  margin-bottom: 33rpx;
+  /* height: 374rpx; */
+  /* margin-bottom: 33rpx; */
   /* background: url(https://pf.86crk.com/Content/Images/rankTopBg.png); */
-  background-size: 750rpx 346rpx;
+  /* background-size: 750rpx 374rpx; */
   padding-bottom: 0;
 }
 .fk_rank_tip{

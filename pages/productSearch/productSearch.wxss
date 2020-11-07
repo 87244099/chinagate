@@ -106,3 +106,26 @@
 .fk_page .van-field__input{
   font-size: 28rpx;
 }
+.fk_page .van-field__input{
+  height: 60rpx;
+  line-height: 60rpx;
+}
+.fk_page .van-field__page{
+  line-height: 60rpx;
+  height: 60rpx;
+}
+.fk_page .van-cell{
+  display: flex;
+  align-items: center;
+}
+.fk_page .van-cell{
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+.fk_page .van-search__action{
+  line-height: normal;
+}
+
+.fk_page .van-field__input{
+  font-size: 28rpx;
+}

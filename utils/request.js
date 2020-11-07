@@ -91,16 +91,20 @@ function trans4AutoLogin(option){
     if(!result.success){
       if(option.authCheck){
         if(result.rt === -1){//未登录
-          getApp().globalData.isLogin=false;
-          let loginUrl = '/pages/login/login';
-          if(option.authCheckBackUrl){
-            loginUrl = '/pages/login/login?backUrl='+encodeURIComponent(option.authCheckBackUrl);
-          }
-          //跳转到登录页
+          //丢回首页，不走登录了
           wx.redirectTo({
-            url: loginUrl,
+            url: '/pages/index/index',
           });
           return;
+          // getApp().globalData.isLogin=false;
+          // let loginUrl = '/pages/login/login';
+          // if(option.authCheckBackUrl){
+          //   loginUrl = '/pages/login/login?backUrl='+encodeURIComponent(option.authCheckBackUrl);
+          // }
+          // //跳转到登录页
+          // wx.redirectTo({
+          //   url: loginUrl,
+          // });
         }
       }
     }

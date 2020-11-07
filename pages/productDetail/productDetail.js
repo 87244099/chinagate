@@ -145,6 +145,7 @@ Page(Fai.mixin(Fai.commPageConfig, {
         response = await Ajax.getCompanyAIndexPageData(this.data.setting.companyAID);
       }
       let companyInfo = response.data.data.companyInfo;
+      let carouselList = response.data.data.carouselList|| [];
       response = await Ajax.belongVip(this.data.setting.companyAID);
       let isVip = response.data.data.isVip;
       let staffInfo = {};
@@ -184,6 +185,7 @@ Page(Fai.mixin(Fai.commPageConfig, {
       
       this.setData({
         "pageData.companyInfo": companyInfo,
+        "pageData.carouselList" : carouselList,
         "pageData.productInfo":productInfo,
         "pageData.staffInfo": staffInfo,
         "setting.serviceForm":serviceForm,

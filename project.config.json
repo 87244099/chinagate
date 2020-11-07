@@ -574,6 +574,12 @@
           "pathName": "pages/productDetail/productDetail",
           "query": "companyAID=1&companyBID=0&id=33&staffID=0",
           "scene": null
+        },
+        {
+          "name": "线上-产品搜索结果",
+          "pathName": "pages/productSearch/productSearch",
+          "query": "companyAID=1&companyBID=0&id=33&staffID=0",
+          "scene": null
         }
       ]
     }

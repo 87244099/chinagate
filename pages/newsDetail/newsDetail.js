@@ -1,6 +1,7 @@
 // pages/newsDetail/newsDetail.js
 //获取应用实例
 const Fai = require("../../utils/util");
+import Ajax from "../../ajax/index";
 import Toast from "../../miniprogram_npm/@vant/weapp/toast/toast";
 
 Page(Fai.mixin(Fai.commPageConfig,{
@@ -27,33 +28,21 @@ Page(Fai.mixin(Fai.commPageConfig,{
   },
   loadArticle: function(){
     // https://pf.86crk.com/ajax/article/article?cmd=getArticle&id=568
-    
-    Toast.loading({
-      message: '加载中...',
-      duration: 0
-    });
-    Fai.request({
-      url: "/ajax/article/article?cmd=getArticle&id="+this.data.setting.newsId,
-      beforeConsume(){
-        Toast.clear();
-      },
-      success: (res)=>{
-        let result = res.data;
-        if(result.success){
-          this.setData({
-            "setting.newsInfo":result.data
-          });
-          wx.setNavigationBarTitle({
-            title: this.data.setting.newsInfo.title,
-          })
-        }else{
-          Toast.fail(result.msg || '网络繁忙，请稍后重试');
-        }
-      },
-      fail:()=>{
-        Toast.fail("网络繁忙，请稍后重试");
-      }
+    Ajax.requestWithToast(async()=>{
+      let response = await Fai.promiseRequest({
+        url: "/ajax/article/article?cmd=getArticle&id="+this.data.setting.newsId,
+      });
+      this.setData({
+        "setting.newsInfo":response.data.data
+      });
+      wx.setNavigationBarTitle({
+        title: this.data.setting.newsInfo.title,
+      })
+      return response;
+    },{
+      message: "加载中..."
     })
+    
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

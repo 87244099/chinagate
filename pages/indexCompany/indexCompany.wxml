@@ -97,7 +97,7 @@
 
       <trace wx:if="{{setting.companyAID>0 || setting.companyBID>0}}" companyAID="{{setting.companyAID}}" companyBID="{{setting.companyBID}}" staffID="0" typeID="{{setting.companyBID>0?2:1}}" fixRollback="{{false}}"></trace>
 
-      <view catchtap="openArg">
+      <view catchtap="openArg" wx:if="{{false}}">
         <view>查看企业参数</view>
         <view wx:if="{{setting.visibleArg}}">
           <view style="word-break: break-word;">企业码：{{options}}</view>
