@@ -82,7 +82,8 @@ Page(Fai.mixin(Fai.commPageConfig, {
         data: this.data.setting.position
       });
       this.setData({
-        "pageData.companyList": response.data.data.companyList
+        "pageData.companyList": response.data.data.companyList,
+        "pageData.totalSize":  response.data.data.totalSize
       });
 
       return Promise.resolve(response);

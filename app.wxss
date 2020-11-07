@@ -21,6 +21,7 @@
   bottom: 0;
   width: 100%;
   background-color: #0062d7;
+  z-index: 999;
 }
 .fk_page{
   padding-bottom: 100rpx;
