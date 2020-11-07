@@ -114,13 +114,20 @@ Page(Fai.mixin(Fai.commPageConfig, {
     let currUrl = Fai.getCurrAbsPath();
     let sharedOpenId = app.globalData.openId;
     currUrl = Fai.addPageQuery(currUrl, "sharedOpenId", sharedOpenId);
-    console.log("currUrl", currUrl);
     let reportData = {
       typeID : this.data.setting.companyBID>0 ? 2 : 1,//一级商家、二级商家
       merchantForLevelAID: this.data.setting.companyAID,
       merchantForLevelBID: this.data.setting.companyBID
     };
 
+    let staffID = 0;//如果是自己公司的分享，就携带自己的员工id参数
+    let memberInfo = this.data.pageData.memberInfo;
+    if(  memberInfo.merchantForLevelAID == this.data.setting.companyAID 
+      && memberInfo.merchantForLevelBID == this.data.setting.companyBID
+      ){
+        staffID = memberInfo.staffID;
+    }
+    currUrl = Fai.addPageQuery(currUrl, "staffID", staffID);
 
     Ajax.reportShare(reportData);
     return {

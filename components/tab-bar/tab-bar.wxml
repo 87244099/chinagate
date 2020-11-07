@@ -1,4 +1,10 @@
-<view data-visible="{{rollbackVisible}}" class="iconfont icon-gouTop fk_goTop" id="gotoTop" catchtap="goTop"></view>
+<view 
+  data-visible="{{rollbackVisible}}" 
+  class="iconfont icon-gouTop fk_goTop" 
+  id="gotoTop" 
+  catchtap="goTop"
+  style="{{type == 'index' ? 'bottom:164rpx' : ' '}}"
+></view>
 <block wx:if="{{type=='index'}}">
   <view class="fk_tabBar">
     <view class="fk_tabBar_item">

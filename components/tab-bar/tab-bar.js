@@ -3,6 +3,7 @@ const Ajax = require("../../ajax/index");
 const Fai = require("../../utils/util");
 import Toast from "../../miniprogram_npm/@vant/weapp/toast/toast";
 Component({
+  externalClasses:["fk_ext_goTop"],
   /**
    * 组件的属性列表
    */

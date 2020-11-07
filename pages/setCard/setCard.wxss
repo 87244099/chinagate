@@ -60,3 +60,10 @@
   background-color: #fff;
   z-index: 999;
 }
+
+.fk_card_button .van-button{
+  border-radius: 10rpx;
+  font-size: 40rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+}

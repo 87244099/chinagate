@@ -42,7 +42,6 @@ App({
     
   },
   onShow(options){
-    console.log("on app show")
     this.globalData.showOptions = options;
   }
 });

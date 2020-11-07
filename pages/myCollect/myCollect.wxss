@@ -24,4 +24,5 @@
 }
 .fk_page{
   padding-bottom: 0;
+  background-color: #ebebeb;
 }

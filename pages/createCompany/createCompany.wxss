@@ -37,8 +37,8 @@
   font-size: 32rpx;
 }
 .fk_createCompany .weui-label{
-  width: 140rpx;
-  margin-right: 32rpx;
+  width: 160rpx;
+  margin-right: 20rpx;
 }
 .fk_createCompany .weui-cells__title{
   padding: 0 30rpx;
@@ -75,4 +75,48 @@
   box-sizing: border-box;
   border-radius: 10rpx;
   position: relative;
+}
+
+
+.fk_van_field .van-cell{
+  padding-left: 0;
+  padding-right: 0;
+  border-bottom: solid rgb(243, 243, 243) 1px;
+}
+.fk_van_field:last-child .van-cell{
+  border-bottom: none;
+} 
+ .fk_van_field .van-field__label{
+  color: #000;
+}
+
+
+.fk_createCompany .van-cell__title{
+  width: 214rpx !important;
+  min-width: 214rpx !important;
+  max-width: 214rpx !important;
+  box-sizing: border-box;
+}
+.fk_label{
+  display: flex;
+}
+
+.van-radio__label{
+  margin-left: 0 !important;
+}
+.fk_submit_button{
+    background-image: -moz-linear-gradient( 90deg, rgb(1,215,254) 0%, rgb(1,178,255) 100%);
+    background-image: -webkit-linear-gradient( 90deg, rgb(1,215,254) 0%, rgb(1,178,255) 100%);
+    background-image: -ms-linear-gradient( 90deg, rgb(1,215,254) 0%, rgb(1,178,255) 100%);
+    width: 400rpx;
+    height: 70rpx;
+    line-height: 70rpx;
+    text-align: center;
+    color: #fff;
+    margin: 60rpx auto 0;
+    display: block;
+    border-radius: 70rpx;
+    font-size: 32rpx;
+    margin: auto;
+    margin-top: 60rpx;
 }

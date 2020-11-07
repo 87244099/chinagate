@@ -17,14 +17,14 @@
     </view>
     <mp-cells title="基本信息">
       <mp-cell show-error prop="idcard" title="昵称" ext-class="">
-          <input disabled="true" value="{{pageData.memberInfo.nickName}}" data-field="memberName" class="weui-input" placeholder="请输入您的姓名"/>
+          <input disabled="true" value="{{pageData.memberInfo.nickName}}" data-field="memberName" class="weui-input" placeholder="请输入您的昵称（必填）"/>
       </mp-cell>
       <mp-cell show-error prop="idcard" title="姓名" ext-class="">
-          <input bindblur="onFieldBlur" value="{{pageData.cardInfo.memberName}}" data-field="memberName" class="weui-input" placeholder="请输入您的姓名"/>
+          <input bindblur="onFieldBlur" value="{{pageData.cardInfo.memberName}}" data-field="memberName" class="weui-input" placeholder="请输入您的姓名（必填）"/>
       </mp-cell>
       <mp-cell show-error prop="idcard" title="手机" ext-class="" >
         <view style="display:flex;">
-          <input style="flex:1" disabled="true" value="{{pageData.cardInfo.memberPhone}}" class="weui-input" placeholder="请输入您的手机号"/>
+          <input style="flex:1" disabled="true" value="{{pageData.cardInfo.memberPhone}}" class="weui-input" placeholder="请输入您的手机号（必填）"/>
           <van-button wx:if="{{!pageData.cardInfo.memberPhone}}" size="mini" type="info" open-type="getPhoneNumber" bindgetphonenumber="getphonenumber">
             <view style="padding:0 16rpx;width:auto;" >获取手机号</view>
           </van-button>
@@ -57,7 +57,7 @@
           <input bindblur="onFieldBlur" value="{{pageData.cardInfo.memberEmail}}" data-field="memberEmail" class="weui-input" placeholder="请输入您的邮箱"/>
       </mp-cell>
     </mp-cells>
-    <view class="weui-cells__title">介绍简介</view>
+    <view class="weui-cells__title">自我介绍</view>
     <view class="weui-cells weui-cells_after-title">
         <view class="weui-cell">
             <view class="weui-cell__bd">
@@ -66,10 +66,11 @@
             </view>
         </view>
     </view>
-    <view class="weui-btn-area">
-        <!-- <button class="weui-btn" type="primary" bindtap="submitForm">确定</button> -->
-        <!-- <button class="weui-btn" bindtap="reback">返回</button> -->
-        <van-button type="primary" bindtap="onCardFormSubmit" block>确定</van-button>
+    <view style="padding: 50rpx;">
+      <van-button class="fk_card_button" type="primary" bindtap="onCardFormSubmit" block color="#1aac19">确定</van-button>
+      <view style="margin-top:30rpx">
+        <van-button  class="fk_card_button" bindtap="gotoBack" block>返回</van-button>
+      </view>
     </view>
   </mp-form>
 

@@ -44,3 +44,29 @@
  .fk_van_field .van-field__label{
   color: #000;
 }
+
+
+.fk_repairSign .van-cell__title{
+  width: 214rpx !important;
+  min-width: 214rpx !important;
+  max-width: 214rpx !important;
+  box-sizing: border-box;
+}
+.fk_label{
+  display: flex;
+  align-items: flex-start;
+}
+.fk_repairSign_button{
+  background-image: -moz-linear-gradient( 90deg, rgb(1,215,254) 0%, rgb(1,178,255) 100%);
+  background-image: -webkit-linear-gradient( 90deg, rgb(1,215,254) 0%, rgb(1,178,255) 100%);
+  background-image: -ms-linear-gradient( 90deg, rgb(1,215,254) 0%, rgb(1,178,255) 100%);
+  width: 400rpx;
+  height: 70rpx;
+  line-height: 70rpx;
+  text-align: center;
+  color: #fff;
+  margin: 60rpx auto 0;
+  display: block;
+  border-radius: 35rpx;
+  font-size: 32rpx;
+}

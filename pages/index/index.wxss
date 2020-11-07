@@ -112,3 +112,7 @@
   margin-bottom: 20rpx;
   width: inherit;
 }
+
+.fk_ext_goTop{
+  bottom: 164rpx;
+}

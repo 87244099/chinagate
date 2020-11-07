@@ -55,6 +55,8 @@ Page({
     let dataset = event.currentTarget.dataset;
     let field = dataset.field;
     let value = event.detail.value;
+    console.log("field", field);
+    console.log("value", value);
     this.setData({
       [`pageData.cardInfo.${field}`]:value
     });
@@ -297,43 +299,42 @@ Page({
   getAddrCode(addrList, index){
     return (addrList.length>0 && addrList[index] ? addrList[index] : {}).id || -1
   },
-  onCardFormSubmit(){
-    
-    let cardInfo = this.data.pageData.cardInfo;
-    let setting = this.data.setting;
-    let data = {
-      region: JSON.stringify({
-        provinceCode: this.getAddrCode(setting.provinceList, setting.provinceIndex),
-        cityCode: this.getAddrCode(setting.cityList, setting.cityIndex),
-        countryCode: this.getAddrCode(setting.countryList, setting.countryIndex),
-      }),
-      id: cardInfo.memberID,
-      memberName: cardInfo.memberName,
-      address: cardInfo.address,
-      weChat: cardInfo.weChat,
-      memberEmail: cardInfo.memberEmail,
-      qq: cardInfo.qq,
-      personalIntroduction: cardInfo.personalIntroduction,
-      memberPhone: cardInfo.memberPhone 
-    };
-    Ajax.requestWithToast(async()=>{
-      let response = await Fai.promiseRequest({
-        url: "/ajax/user/userCollection?cmd=setUserCollectInfo",
-        method: "POST",
-        data: data
+  onCardFormSubmit: Fai.delay(function(){
+      let cardInfo = this.data.pageData.cardInfo;
+      let setting = this.data.setting;
+      let data = {
+        region: JSON.stringify({
+          provinceCode: this.getAddrCode(setting.provinceList, setting.provinceIndex),
+          cityCode: this.getAddrCode(setting.cityList, setting.cityIndex),
+          countryCode: this.getAddrCode(setting.countryList, setting.countryIndex),
+        }),
+        id: cardInfo.memberID,
+        memberName: cardInfo.memberName,
+        address: cardInfo.address,
+        weChat: cardInfo.weChat,
+        memberEmail: cardInfo.memberEmail,
+        qq: cardInfo.qq,
+        personalIntroduction: cardInfo.personalIntroduction,
+        memberPhone: cardInfo.memberPhone 
+      };
+      Ajax.requestWithToast(async()=>{
+        let response = await Fai.promiseRequest({
+          url: "/ajax/user/userCollection?cmd=setUserCollectInfo",
+          method: "POST",
+          data: data
+        });
+  
+        wx.redirectTo({
+          url: '/pages/myCard/myCard',
+        })
+  
+        return Promise.resolve(response);
+      }, {
+        tip4Success:true
       });
-
-      wx.redirectTo({
-        url: '/pages/myCard/myCard',
-      })
-
-      return Promise.resolve(response);
-    }, {
-      tip4Success:true
-    });
-
-    
-  },
+  
+      
+  }, 300),
   onUploadHeadImg(){
     wx.navigateTo({
       url: '/pages/cutFace/cutFace',
@@ -367,6 +368,11 @@ Page({
       fail(){
         Toast.fail("网络繁忙，请稍后重试");
       }
+    })
+  },
+  gotoBack(){
+    wx.navigateBack({
+      delta: 0,
     })
   }
 })

@@ -79,3 +79,11 @@
   flex: 1;
 }
 
+
+.fk_sharedCard_main_intro{
+  display: block;
+  font-size: 30rpx;
+  color: #777;
+  line-height: 1.8;
+  margin-top: 20rpx;
+}

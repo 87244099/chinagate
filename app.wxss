@@ -76,3 +76,11 @@ van-toast{
   /* background-color: rgba(0,0,0, 0.6); */
   z-index: 23;
 }
+
+
+.fk_required{
+  width: 22rpx;
+  color: red;
+  text-align: center;
+  display: inline-block;
+}

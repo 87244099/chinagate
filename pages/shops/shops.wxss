@@ -6,11 +6,15 @@
   overflow: hidden;
   box-sizing: border-box;
   min-height: 100vh;
+  background-color: #fff;
+  padding-left: 30rpx;
+  padding-right: 30rpx;
 }
 .fk_shops_item{
   display: flex;
-  padding: 50rpx 30rpx;
+  padding: 30rpx 30rpx;
   background-color: #fff;
+  border-bottom: 1px solid #ececec;
 }
 .fk_shops_item{
   display: flex;
@@ -18,7 +22,7 @@
   box-sizing: border-box;
   justify-content: center;
   flex-direction: row;
-  margin-top: 20rpx;
+  margin-top: 30rpx;
 }
 .fk_shops_item_right{
   width: 30rpx;
@@ -70,4 +74,13 @@
   align-items: center;
   text-align: center;
   /* margin-right: 10px; */
+}
+.fk_shop_banner{
+  background-image: -moz-linear-gradient( 90deg, rgb(1,215,254) 0%, rgb(1,178,255) 100%);
+  background-image: -webkit-linear-gradient( 90deg, rgb(1,215,254) 0%, rgb(1,178,255) 100%);
+  background-image: -ms-linear-gradient( 90deg, rgb(1,215,254) 0%, rgb(1,178,255) 100%);
+  color: #fff;
+  font-size: 30rpx;
+  padding: 30rpx 0;
+  text-align: center;
 }

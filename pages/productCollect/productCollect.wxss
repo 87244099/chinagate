@@ -20,6 +20,7 @@
   width: 100%;
   background: #ccc;
   width: 280rpx;
+  height: 160rpx;
 }
 .fk_productSearch_product_name{
   overflow: hidden;
@@ -63,7 +64,7 @@
   flex: 1;
 }
 .fk_productCollect{
-  padding-top: 30rpx;
+  /* padding-top: 30rpx; */
 }
 .fk_productCollect_list{
   /* padding: 20rpx; */
@@ -71,6 +72,7 @@
   /* flex-wrap: wrap; */
   background-color: #ebebeb;
   min-height: calc(100vh - 54px);
+  overflow: hidden;
 }
 .fk_productCollect_list_item{
   margin-top: 30rpx;
@@ -111,6 +113,8 @@
   flex: 1;
   flex-direction: column;
   padding-left: 50rpx;
+  justify-content: space-between;
+  display: flex;
 }
 .fk_productSearch_product_name{
   flex: 1;

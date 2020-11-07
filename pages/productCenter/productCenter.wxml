@@ -8,7 +8,7 @@
         bind:change="searchChange"
         use-action-slot
       >
-        <view slot="action" bind:tap="doSearch" style="color:#fff">搜索</view>
+        <view slot="action" bind:tap="doSearch" style="color:#fff;font-size:28rpx">搜索</view>
       </van-search>
       <!-- <mp-searchbar style="background-color:{{pageData.companyPageData.companyInfo.themeColor}}" bindselectresult="selectResult" bindblur="searchBlur" bindclear="searchClear" cancel="{{false}}"></mp-searchbar> -->
     </view>

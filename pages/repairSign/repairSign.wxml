@@ -5,49 +5,44 @@
     <view class="fk_repairSign_form" style="padding:0 40rpx">
       <van-cell-group>
         <van-field
-          label="您的姓名"
           value="{{setting.form.customerName}}"
-          placeholder="请输入您的姓名"
+          placeholder="请输入您的姓名（必填）"
           border="{{ false }}"
           class="fk_van_field"
           bind:blur="onFieldBlur"
 
           data-field="customerName"
-        />
+        ><view slot="label"><text class="fk_required">*</text>您的姓名：</view></van-field>
         <van-field
-          label="您的手机"
           value="{{setting.form.customerTel}}"
-          placeholder="请输入您的手机"
+          placeholder="请输入您的手机（必填）"
           border="{{ false }}"
           bind:blur="onFieldBlur"
           class="fk_van_field"
           data-field="customerTel"
-        />
+        ><view slot="label"><text class="fk_required">*</text>您的手机：</view></van-field>
         <van-field
-          label="您的地址"
           value="{{setting.form.address}}"
-          placeholder="请输入您的地址"
+          placeholder="请输入您的地址（必填）"
           border="{{ false }}"
           bind:blur="onFieldBlur"
           class="fk_van_field"
           data-field="address"
-        />
+        ><view slot="label"><text class="fk_required">*</text>您的地址：</view></van-field>
         <van-field
           value="{{ setting.form.leaveMessage }}"
-          label="维修内容"
           type="textarea"
-          placeholder="请填写需要维修的产品类型和故障描述"
+          placeholder="请填写需要维修的产品类型和故障描述（必填）"
           autosize
           border="{{ false }}"
           class="fk_van_field"
           data-field="leaveMessage"
           bind:blur="onFieldBlur"
-        />
+        ><view slot="label"><text class="fk_required">*</text>维修内容：</view></van-field>
       </van-cell-group>
-      <view class="fk_repairSign_button_wrap">
-        <van-button type="info" size="small" block catchtap="onSubmitForm">确定提交</van-button>
-      </view>
     </view>
+
+    <view class="fk_repairSign_button" catchtap="onSubmitForm">确定提交</view>
     
   </view>
   <!-- <tab-bar class="fk_tabBar"></tab-bar> -->

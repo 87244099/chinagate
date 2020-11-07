@@ -3,6 +3,24 @@ const Timer = require("./timer");
 const Cacher = require("./cache");
 const Event = require("./event").Event;
 
+function queryString2Object(queryString){
+  let queryObject = {};
+  let keyValueArr = queryString.split("&");
+  keyValueArr.forEach(kv=>{
+    let kvArr = kv.split("=");
+    let key = kvArr[0] || '';
+    let val = kvArr[1] || '';
+    queryObject[key] = val;
+  });
+  return queryObject;
+}
+
+function queryObject2String(queryObject){
+  return Object.keys(queryObject).map(key=>{
+    return key+"="+queryObject[key];
+  }).join("&");
+}
+
 function getCurrAbsPath(){
   let page = getCurrentPages()[getCurrentPages().length-1];
   let queryObject = page.options;
@@ -85,11 +103,12 @@ function isPaginationEnd(pageNo, pageSize, totalSize){
 
 function addPageQuery(url, name, value){
   let urlArr = url.split("?");
-  if(urlArr.length===1){
-    return urlArr[0] + "?" + (name+"="+value);
-  }else{
-    return url + "&" + (name+"="+value);
-  }
+  //先把get参数序反序列化会obj，如果有新增，则增加，反之则覆盖
+  let queryString = urlArr[1] || '';
+  let queryObject = queryString2Object(queryString);
+  queryObject[name] = value;
+  queryString = queryObject2String(queryObject);
+  return urlArr[0] + "?" +queryString;
 }
 
 function getPrevPage(){

@@ -28,7 +28,7 @@
         <van-field 
           class="fk_van_field"
           value="{{setting.form.address}}"
-          placeholder="请输入您的地址"
+          placeholder="请输入您的地址（必填）"
           border="{{ false }}"
           bind:blur="onFieldBlur"
           data-field="address"

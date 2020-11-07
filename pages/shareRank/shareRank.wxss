@@ -46,7 +46,7 @@
   font-size: 30rpx;
   font-family: SourceHanSansCN;
   font-weight: bold;
-  color: #0488FC;
+  color: #0062d7;
   margin: 0 auto;
   display: none;
 }
@@ -59,8 +59,8 @@
 }
 .fk_rank_table_row > view{
   text-align: center;
-  font-size: 32rpx;
-  color: #666666;
+  font-size: 30rpx;
+  color: #929292;
   text-align: center;
   overflow: hidden;
   text-overflow:ellipsis;
@@ -81,12 +81,12 @@
 .fk_rank_header .fk_rank_table_row > view{
   text-align: center;
   font-size: 32rpx;
-  color: #0488FC;
+  color: #0062d7;
 }
 .fk_rank_table_head .fk_rank_table_row > view{
   text-align: center;
   font-size: 34rpx;
-  color: #0488FC;
+  color: #0062d7;
   font-weight: bolder;
 }
 .fk_rank_table_head{
@@ -112,7 +112,7 @@
 .fk_rank_table_row_num_text{
   width: 37rpx;
   height: 37rpx;
-  background: #0488FC;
+  background: #0062d7;
   border-radius: 50%;
   text-align: center;
   color: #fff;
@@ -120,4 +120,27 @@
   display: inline-block;
 }
 .fk_rank_table_row_name{
+}
+
+.van-ellipsis{
+  color: #000;
+}
+
+.publicTitle{
+  text-align: center;
+  margin-top: 40rpx;
+  margin-bottom: 40rpx;
+  line-height: 1;
+}
+.publicTitle .ch{
+  font-size: 46rpx;
+  color: #0062d7;
+}
+.publicTitle .ch:before {
+  content: "—";
+  margin-right: 30rpx;
+}
+.publicTitle .ch::after {
+  content: "—";
+  margin-left: 30rpx;
 }

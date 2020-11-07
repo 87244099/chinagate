@@ -237,15 +237,12 @@ async function autoEmpowerLogin(setting){
         resolve();
       }else{
         let backUrl = Fai.getCurrAbsPath();
-        console.log("setting", setting);
         let queryArr = Object.keys(setting).map(key=>{
           return key + '=' + setting[key];
         });
         queryArr.push("backUrl="+encodeURIComponent(backUrl));
         let queryString = queryArr.join("&");
-        console.log("queryString", queryString);
         let url = `/pages/login4Empower/login4Empower?${queryString}`;
-        console.log("url", url);
         wx.navigateTo({
           url: url,
         });

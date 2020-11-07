@@ -12,12 +12,12 @@
 
       style="background-color:{{pageData.companyPageData.companyInfo.themeColor}}"
     >
-      <view slot="action" bind:tap="doSearch" style="color:#fff">搜索</view>
+      <view slot="action" bind:tap="doSearch" style="color:#fff;font-size:24rpx">搜索</view>
     </van-search>
     <view class="fk_productSearch_word">当前搜索词：{{setting.inputWord}}</view>
     <view class="fk_productSearch_main">
       <view class="fk_productSearch_product_list">
-        <product class="fk_productSearch_product_item" wx:key="productID" wx:for="{{setting.productList}}" config="{{config}}" product="{{item}}" setting="{{setting}}" context="{{pageData}}" globalData="{{globalData}}"></product>
+        <product color="rgb(150, 150, 150)" class="fk_productSearch_product_item" wx:key="productID" wx:for="{{setting.productList}}" config="{{config}}" product="{{item}}" setting="{{setting}}" context="{{pageData}}" globalData="{{globalData}}"></product>
       </view>
     </view>
   </view>

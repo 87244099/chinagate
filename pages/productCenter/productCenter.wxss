@@ -177,3 +177,29 @@
 .fk_product_item .fk_indexCompany_productIntro_group_main_product_priceInfo_line{
   color: #969696;
 }
+
+
+.fk_page .van-search--withaction{
+  padding: 24rpx 18rpx;
+  padding-right: 0;
+  height: auto !important;
+}
+.fk_page .van-search__content{
+  height: 60rpx;
+  line-height: 60rpx;
+  min-height: 60rpx;
+  max-height: 60rpx;
+  font-size: 26rpx;
+  border-radius: 8rpx;
+}
+.fk_page .van-cell{
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+.fk_page .van-search__action{
+  line-height: normal;
+}
+
+.fk_page .van-field__input{
+  font-size: 28rpx;
+}

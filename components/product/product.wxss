@@ -34,3 +34,7 @@
   color: #ff5000;
   display: flex;
 }
+.fk_indexCompany_productIntro_group_main_product_item_content{
+  border: 1rpx solid #f3f3f3;
+  box-sizing: border-box;
+}

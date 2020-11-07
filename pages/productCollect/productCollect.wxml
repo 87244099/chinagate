@@ -11,7 +11,7 @@
             </view>
             <view class="fk_productSearch_product_content">
               <view class="fk_productSearch_product_img">
-                <image style="width:100%;height:100%" mode="" src="{{staticDomain}}/{{item.smallImgPath}}"></image>
+                <image style="width:100%;height:100%" mode="aspectFill" src="{{staticDomain}}/{{item.smallImgPath}}"></image>
               </view>
               <view class="fk_productSearch_product_img_info">
                 <view class="fk_productSearch_product_name">{{item.title}}</view>

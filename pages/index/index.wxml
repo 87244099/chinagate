@@ -15,7 +15,7 @@
     </swiper><!--  -->
   </view>
 
-  <view style="background:#fff;font-size:30rpx;height:70rpx;line-height:70rpx;color:red;margin:0 20rpx;margin-top:20rpx;text-align:center;" catchtap="jump2SvrMall"> 附近的：销售安装维修服务商 </view>
+  <view style="background:#fff;font-size:30rpx;height:70rpx;line-height:70rpx;color:red;margin:0 20rpx;margin-top:20rpx;text-align:center;border-radius:10rpx" catchtap="jump2SvrMall"> 附近的：销售安装维修服务商 </view>
 
   <view class="fk_main">
     <view class="fk_main_func_list">
@@ -79,7 +79,7 @@
       </navigator>
     </view>
 
-    <view wx:if="{{setting.recentUrlInfo.companyInfo.companyName}}" style="background:#fff;font-size:30rpx;height:70rpx;line-height:70rpx;color:red;margin-bottom:20rpx;text-align:center;" catchtap="jump2RecentVisitUrl">最近浏览： {{setting.recentUrlInfo.companyInfo.companyName}}</view>
+    <view wx:if="{{setting.recentUrlInfo.companyInfo.companyName}}" style="background:#fff;font-size:30rpx;height:70rpx;line-height:70rpx;color:red;margin-bottom:20rpx;text-align:center;border-radius:10rpx" catchtap="jump2RecentVisitUrl">最近浏览： {{setting.recentUrlInfo.companyInfo.companyName}}</view>
 
     <view class="fk_main_article_list">
       <view class="fk_main_article_list_header">

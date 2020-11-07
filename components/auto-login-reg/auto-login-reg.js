@@ -51,13 +51,13 @@ Component({
    */
   methods: {
     async init(){//这个方法可能会被执行多次，需要做延迟优化，批量收集回调
-      console.log("inited", Math.random());
+      // console.log("inited", Math.random());
       let isLogin = await Ajax.checkLoginBoolean();
       if(isLogin){//已经登录
         this.setData({
           "setting.isLogin": true
         });
-        console.log("setting success", new Date().getTime());
+        // console.log("setting success", new Date().getTime());
       }else{
         Ajax.delaySetCode();
       }
