@@ -65,7 +65,7 @@
       <view class="fk_indexCompany_productIntro_group" wx:key="id" wx:for-item="group" wx:for="{{pageData.productGroupList}}">
         <view class="fk_indexCompany_productIntro_group_title">
           <view class="fk_indexCompany_productIntro_group_title_text" style="border-color:{{pageData.companyInfo.themeColor}}">{{group.productTypeName}}</view>
-          <navigator url="/pages/productCenter/productCenter?companyAID={{setting.companyAID}}&companyBID={{setting.companyBID}}&staffID={{setting.staffID}}" open-type="redirect" class="fk_indexCompany_productIntro_group_title_arrow">更多></navigator>
+          <navigator url="/pages/productCenter/productCenter?companyAID={{setting.companyAID}}&companyBID={{setting.companyBID}}&staffID={{setting.staffID}}&productTypeID={{group.productTypeID}}" open-type="redirect" class="fk_indexCompany_productIntro_group_title_arrow">更多></navigator>
         </view>
         <view class="fk_indexCompany_productIntro_group_main">
           <view class="fk_indexCompany_productIntro_group_main_product_list">
@@ -77,7 +77,8 @@
     </view>
     <view class="fk_indexCompany_about">
       <template is="bigTitle" data="{{cn:'关于我们', en:'ABOUT', pageData}}"></template>
-      <scroll-view style="max-height:348rpx;padding-bottom: 20rpx" scroll-y>
+      <!-- max-height:348rpx;padding-bottom: 20rpx -->
+      <scroll-view style="" scroll-y>
         <wxparser class="fk_artile_wxparse" rich-text="{{pageData.companyInfo.companyIntroduction}}"/>
       </scroll-view>
     </view>
@@ -87,7 +88,13 @@
         <view class="fk_indexCompany_contact_message_line">
           企业：{{pageData.companyInfo.companyName}}
         </view>
-        <view class="fk_indexCompany_contact_message_line">电话：{{pageData.companyInfo.companyPhone}}
+        <view class="fk_indexCompany_contact_message_line">电话：
+          <block wx:if="{{setting.staffID>0}}">
+            {{pageData.staffInfo.phone}}
+          </block>
+          <block wx:else>
+            {{pageData.companyInfo.companyPhone}}
+          </block>
         </view>
         <view class="fk_indexCompany_contact_message_line">地区： {{comm.parseAddr(pageData.companyInfo.addrInfo.provinceName, pageData.companyInfo.addrInfo.cityName, pageData.companyInfo.addrInfo.coutryName)}}
         </view>

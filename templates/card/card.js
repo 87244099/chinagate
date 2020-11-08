@@ -104,7 +104,8 @@ module.exports = {
     })
   },
   onShowWxAppCode: function(){
-    Ajax.previewQrCode("/pages/sharedCard/sharedCard", "id="+this.data.setting.memberId);
+    let qr = "id="+this.data.setting.memberId;
+    Ajax.previewQrCode("/pages/sharedCard/sharedCard", qr, this.data.pageData.memberInfo.avatarPhoto);
   },
   onCollect: async function(){
     Ajax.requestWithToast(async()=>{

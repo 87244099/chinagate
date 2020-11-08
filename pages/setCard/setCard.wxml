@@ -74,21 +74,24 @@
     </view>
   </mp-form>
 
-  <van-popup 
-    show="{{ setting.areaPickerOpened }}"
-    position="bottom"
-    bind:close="onAreaPopupClose">
-    <van-picker
-      show-toolbar 
-      wx:if="{{setting.areaPickerOpened}}"
-      confirm="onAreaPickerConfirm"
-      columns="{{ setCard.map(setting.currAreaList, 'name') }}" 
-      default-index="{{setting.areaDefaultIndex}}"
+  <view style="position:relative;z-index:99">
 
-      bind:confirm="onAreaPickerConfirm"
-      bind:cancel="onAreaPickerCancel"
-      bind:change="onAreaPickerChange"
-    />
-  </van-popup>
+    <van-popup 
+      show="{{ setting.areaPickerOpened }}"
+      position="bottom"
+      bind:close="onAreaPopupClose">
+      <van-picker
+        show-toolbar 
+        wx:if="{{setting.areaPickerOpened}}"
+        confirm="onAreaPickerConfirm"
+        columns="{{ setCard.map(setting.currAreaList, 'name') }}" 
+        default-index="{{setting.areaDefaultIndex}}"
+
+        bind:confirm="onAreaPickerConfirm"
+        bind:cancel="onAreaPickerCancel"
+        bind:change="onAreaPickerChange"
+      />
+    </van-popup>
+  </view>
   <van-toast id="van-toast" />
 </view>

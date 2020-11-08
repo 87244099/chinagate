@@ -33,7 +33,8 @@ Page(Fai.mixin({
     this.setData({
       "setting.companyAID":parseInt(options.companyAID) || 0,
       "setting.companyBID":parseInt(options.companyBID) || 0,
-      "setting.staffID":parseInt(options.staffID) || 0
+      "setting.staffID":parseInt(options.staffID) || 0,
+      "setting.productTypeID": parseInt(options.productTypeID) || 0
     });
 
     Ajax.requestWithToast(async()=>{
@@ -54,12 +55,20 @@ Page(Fai.mixin({
         staffInfo = response.data.data;
       }
       
+      let tabIndex = 0;
+      productGroupList.forEach((group, index)=>{
+        if(group.productTypeID === this.data.setting.productTypeID){
+          tabIndex =index;
+        }
+      })
+
       this.setData({
         "pageData.productGroupList": productGroupList,
         "pageData.companyPageData": companyPageData,
         "pageData.companyInfo": companyPageData.companyInfo,
         "globalData": getApp().globalData,
-        "pageData.staffInfo": staffInfo
+        "pageData.staffInfo": staffInfo,
+        "setting.tabIndex": tabIndex
       });
       this.setData({
         "setting.inited":true

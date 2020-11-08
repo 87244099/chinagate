@@ -23,7 +23,7 @@
           <view class="fk_sharedCard_func_item_text">转发</view>
         </block>
         <block wx:else>
-          <view class="fk_sharedCard_func_item_icon iconfont icon-zhuanfa1" catchtap="onWantShare" style="background-color: #1dabff;"></view>
+          <button open-type="share" class="fk_sharedCard_func_item_icon iconfont icon-zhuanfa1"  style="background-color: #1dabff;"></button>
           <view class="fk_sharedCard_func_item_text">转发</view>
         </block>
       </view>

@@ -51,10 +51,10 @@
           <view class="iconfont icon-right"></view> 
         </view>
       </navigator>
-      <navigator class="fk_personal_section_item" url="/pages/indexCompany/indexCompany?companyAID={{pageData.memberInfo.merchantForLevelAID}}&companyBID={{pageData.staffInfo.merchantForLevelBID?pageData.staffInfo.merchantForLevelBID:0}}">
+      <navigator class="fk_personal_section_item" url="/pages/indexCompany/indexCompany?companyAID={{pageData.memberInfo.merchantForLevelAID}}&companyBID={{pageData.staffInfo.merchantForLevelBID?pageData.staffInfo.merchantForLevelBID:0}}&staffID={{pageData.memberInfo.staffID>0 ? pageData.memberInfo.staffID : -1}}">
         <view class="fk_personal_section_item_left">
           <view class="fk_personal_section_item_icon iconfont icon-yonghu1-copy" style="color: #daa520;"></view>
-          <view class="fk_personal_section_item_text">我的公司</view>
+          <view class="fk_personal_section_item_text">我所在的公司</view>
         </view>
         <view class="fk_personal_section_item_right">
           <view class="iconfont icon-right"></view> 
@@ -63,7 +63,7 @@
       <navigator class="fk_personal_section_item" url="/pages/shareRank/shareRank" wx:if="{{pageData.myCompanyAInfo.openRankFlag}}">
         <view class="fk_personal_section_item_left">
           <view class="fk_personal_section_item_icon iconfont icon-paihangbang" style="color: #e37429;"></view>
-          <view class="fk_personal_section_item_text">排行榜</view>
+          <view class="fk_personal_section_item_text">分享排行榜</view>
         </view>
         <view class="fk_personal_section_item_right">
           <view class="iconfont icon-right"></view> 

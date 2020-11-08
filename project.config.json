@@ -580,6 +580,12 @@
           "pathName": "pages/productSearch/productSearch",
           "query": "companyAID=1&companyBID=0&id=33&staffID=0",
           "scene": null
+        },
+        {
+          "name": "线上-企版本-个人中心",
+          "pathName": "pages/personal4Company/personal4Company",
+          "query": "companyAID=12&companyBID=0&staffID=0",
+          "scene": null
         }
       ]
     }
