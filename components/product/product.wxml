@@ -11,13 +11,13 @@
       -->
       <product-price companyInfo="{{context.companyInfo}}" isVip="{{context.isVip}}">
         <view slot="vip">
-          <view class="fk_indexCompany_productIntro_group_main_product_priceInfo_line" style="color:{{color}}">
+          <view class="fk_indexCompany_productIntro_group_main_product_priceInfo_line" style="color:{{priceColor||color}}">
             <view class="fk_indexCompany_productIntro_group_main_product_priceInfo_label">{{globalData.productTips.vipPrice}}：￥</view>
             <view class="fk_indexCompany_productIntro_group_main_product_priceInfo_value">{{product.vipWholesalePrice}}</view>
           </view>
         </view>
         <view slot="normal">
-          <view class="fk_indexCompany_productIntro_group_main_product_priceInfo_line" style="color:{{color}}">
+          <view class="fk_indexCompany_productIntro_group_main_product_priceInfo_line" style="color:{{priceColor||color}}">
             <view class="fk_indexCompany_productIntro_group_main_product_priceInfo_label">{{globalData.productTips.price}}：￥</view>
             <view class="fk_indexCompany_productIntro_group_main_product_priceInfo_value">{{product.ordinaryWholesalePrice}}</view>
           </view>

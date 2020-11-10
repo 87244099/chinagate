@@ -7,6 +7,7 @@ Component({
    */
   properties: {
     color:String,
+    priceColor:String,
     
     setting:{
       type:Object,

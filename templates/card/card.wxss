@@ -86,4 +86,5 @@
   color: #777;
   line-height: 1.8;
   margin-top: 20rpx;
+  text-align: left;
 }

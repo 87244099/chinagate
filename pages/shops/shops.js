@@ -141,10 +141,18 @@ Page(Fai.mixin(Fai.commPageConfig, {
 
   },
   onJumpToCompany(event){
+
     let item = event.currentTarget.dataset.item;
-    wx.navigateTo({
-      url: "/pages/indexCompany/indexCompany?companyAID="+item.merchantForLevelAID+"&companyBID="+item.merchantForLevelBID,
-    });
+    if(item.typeID === 1 && item.merchantForLevelAID){
+      wx.navigateTo({
+        url: "/pages/h5/h5?src="+encodeURIComponent(`https://m.86crk.com/Repair/${item.companyID}.html`)
+      });
+    }else{
+      wx.navigateTo({
+        url: "/pages/indexCompany/indexCompany?companyAID="+item.merchantForLevelAID+"&companyBID="+item.merchantForLevelBID,
+      });
+    }
+
   },
   async jump2CreateCompany(){
     if(await Ajax.checkLoginWithRedirect("/pages/createCompany/createCompany")){

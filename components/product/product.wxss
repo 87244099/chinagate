@@ -31,7 +31,7 @@
 }
 .fk_indexCompany_productIntro_group_main_product_priceInfo_line{
   font-size: 26rpx;
-  color: #ff5000;
+  /* color: #ff5000; */
   display: flex;
 }
 .fk_indexCompany_productIntro_group_main_product_item_content{

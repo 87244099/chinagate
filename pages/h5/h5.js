@@ -6,15 +6,18 @@ Page({
    */
   data: {
     setting: {
-      src: "https://m.86crk.com/"
+      // src: "https://m.86crk.com/"
     }
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function () {
-
+  onLoad: function (options) {
+    let src = decodeURIComponent(options.src) || "https://m.86crk.com/";
+    this.setData({
+      "setting.src": src
+    });
   },
 
   /**

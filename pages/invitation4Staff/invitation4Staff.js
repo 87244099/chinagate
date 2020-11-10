@@ -164,5 +164,10 @@ Page({
     wx.redirectTo({
       url: `/pages/personal4Company/personal4Company?companyAID=${companyInfo.merchantForLevelAID}&companyBID=${companyInfo.merchantForLevelBID}&staffID=${staffID}`
     })
+  },
+  callPhone(event){
+    wx.makePhoneCall({
+      phoneNumber: event.currentTarget.dataset.phone,
+    })
   }
 })

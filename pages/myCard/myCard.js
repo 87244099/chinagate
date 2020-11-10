@@ -38,9 +38,11 @@ Page(Fai.mixin(Fai.commPageConfig, Card, {
         "setting.memberId":memberInfo.memberID
       });
 
-      this.loadData();
+      return response;
+    }).then(()=>{
+      
 
-      return Promise.resolve(response);
+      this.loadData();
     });
   },
 }));

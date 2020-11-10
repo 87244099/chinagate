@@ -7,7 +7,8 @@
       <view class="fk_invitation4Staff_name"  wx:if="{{setting.memberInfo.staffID>0}}">此微信已经绑定</view>
       <view class="fk_invitation4Staff_name">公司: {{pageData.companyInfo.companyName}}</view>
       <view class="fk_invitation4Staff_name">员工: {{pageData.staffInfo.staffName}}</view>
-      <view class="fk_invitation4Staff_name" wx:if="{{setting.memberInfo.staffID===0}}">微信: {{pageData.staffInfo.weChat}}</view>
+      <view class="fk_invitation4Staff_name">手机号: <text catchtap="callPhone" data-phone="{{pageData.staffInfo.phone}}"> {{pageData.staffInfo.phone}}</text></view>
+      <!-- <view class="fk_invitation4Staff_name" wx:if="{{setting.memberInfo.staffID===0}}">微信: {{pageData.staffInfo.weChat}}</view> -->
     </view>
     <view class="fk_btn_wrap">
       <view class="fk_btn_wrap_item" >
