@@ -105,7 +105,9 @@ module.exports = {
   },
   onShowWxAppCode: function(){
     let qr = "id="+this.data.setting.memberId;
-    Ajax.previewQrCode("/pages/sharedCard/sharedCard", qr, this.data.pageData.memberInfo.avatarPhoto);
+    let logoUrl = this.data.pageData.memberInfo.avatarPhoto.replace("thirdwx.qlogo.cn", "wx.qlogo.cn");
+    console.log("logoUrl", logoUrl);
+    Ajax.previewQrCode("/pages/sharedCard/sharedCard", qr, logoUrl);
   },
   onCollect: async function(){
     Ajax.requestWithToast(async()=>{

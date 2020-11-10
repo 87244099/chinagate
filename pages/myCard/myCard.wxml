@@ -1,6 +1,7 @@
 <wxs src="../../comm.wxs" module="comm" />
 <import src="../../templates/card/card.wxml"/>
 <view class="fk_page">
+  <view style="height:65px;background:#fff;"></view>
   <template is="card" data="{{setting, pageData, config}}"></template>
   <tab-bar class="fk_tabBar" type="card" readonly="{{setting.shared}}"></tab-bar>
 

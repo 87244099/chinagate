@@ -375,22 +375,30 @@ async function getImageInfo(url){
 async function genCompanyQrCodeBase64(imgBase64, companyLogoUrl, text){
   let filePath = `${wx.env.USER_DATA_PATH}/tmp_base64src`+Math.random(); 
   let loadedCompanyLogoUrl = "";
-  await removeSavedFileNullIsEmpty({
-    filePath: filePath
-  });
+  console.log(111);
+  try{
+    await removeSavedFileNullIsEmpty({
+      filePath: filePath
+    });
+  }catch(e){}
 
   return new Promise((resolve, reject)=>{
+    console.log(222);
+
     wx.getFileSystemManager().writeFile({
       filePath: filePath,
       data: wx.base64ToArrayBuffer(imgBase64),
       encoding: 'binary',
       success: (res) => { 
-        wx.getImageInfo({
+      console.log(333);
+      wx.getImageInfo({
           src: filePath,
           success:async (res)=>{
+            console.log(444);
             await removeSavedFileNullIsEmpty({
               filePath: filePath
             });
+            console.log(555);
 
             var ctx = wx.createCanvasContext('myCanvas');
             let width = 430;
@@ -404,19 +412,27 @@ async function genCompanyQrCodeBase64(imgBase64, companyLogoUrl, text){
             ctx.setFillStyle("#fff");
             ctx.fillRect(0, 0, width, height);
 
+            console.log(666);
             if(companyLogoUrl){
+              console.log(77);
+              console.log("loadedCompanyLogoUrl before", loadedCompanyLogoUrl);
               loadedCompanyLogoUrl = await getImageInfo(companyLogoUrl);
+              console.log("loadedCompanyLogoUrl", loadedCompanyLogoUrl);
               ctx.drawImage(loadedCompanyLogoUrl, 115, 115, 200, 200);
+              console.log("drawImage");
             }else if(text){
-              ctx.fillStyle = '#000';
+            console.log(88);
+            ctx.fillStyle = '#000';
               ctx.font = 'bold 30px "Gill Sans Extrabold"';
               ctx.textBaseline = 'middle';
               ctx.textAlign = 'center';
               ctx.fillText(text, 215, 215);
             }
+            console.log(99);
 
             ctx.restore();
             ctx.draw(false, ()=>{
+              console.log(888);
               wx.canvasToTempFilePath({ //获取生成的临时图片
                 canvasId: 'myCanvas',
                 success: function (res) {
@@ -449,6 +465,9 @@ async function genCompanyQrCodeBase64(imgBase64, companyLogoUrl, text){
                       filePath: loadedCompanyLogoUrl
                     });
                   }
+                },
+                fail(){
+                  console.log("err", arguments);
                 }
               })
               // wx.canvasGetImageData({
