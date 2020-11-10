@@ -13,23 +13,23 @@
     <view class="fk_indexStaff_func">
       <view class="fk_indexStaff_func_list">
         <view class="fk_indexStaff_func_item">
-          <view class="fk_indexStaff_func_item_icon iconfont icon-dianhua" catchtap="callPhone"></view>
+          <view class="fk_indexStaff_func_item_icon iconfont icon-dianhua" catchtap="callPhone"  style="background-color:{{pageData.companyInfo.themeColor}}"></view>
           <view class="fk_indexStaff_func_item_text">呼叫</view>
         </view>
         <view class="fk_indexStaff_func_item">
-          <button class="fk_indexStaff_func_item_icon iconfont icon-zhuanfa" open-type="share"></button>
+          <button class="fk_indexStaff_func_item_icon iconfont icon-zhuanfa" open-type="share" style="background-color:{{pageData.companyInfo.themeColor}}"></button>
           <view class="fk_indexStaff_func_item_text">转发</view>
         </view>
         <view class="fk_indexStaff_func_item">
-          <view class="fk_indexStaff_func_item_icon iconfont icon-start" catchtap="setUserCollect4Staff"></view>
+          <view class="fk_indexStaff_func_item_icon iconfont icon-start" catchtap="setUserCollect4Staff" style="background-color:{{pageData.companyInfo.themeColor}}"></view>
           <view class="fk_indexStaff_func_item_text">收藏</view>
         </view>
         <view class="fk_indexStaff_func_item" catchtap="previewQrCode">
-          <view class="fk_indexStaff_func_item_icon iconfont icon-erweima"></view>
+          <view class="fk_indexStaff_func_item_icon iconfont icon-erweima" style="background-color:{{pageData.companyInfo.themeColor}}"></view>
           <view class="fk_indexStaff_func_item_text">名片码</view>
         </view>
         <view class="fk_indexStaff_func_item" wx:if="{{false}}">
-          <view class="fk_indexStaff_func_item_icon iconfont icon-liaotian"></view>
+          <view class="fk_indexStaff_func_item_icon iconfont icon-liaotian" style="background-color:{{pageData.companyInfo.themeColor}}"></view>
           <view class="fk_indexStaff_func_item_text">聊天</view>
         </view>
       </view>
@@ -59,7 +59,7 @@
     </view>
     <view class="fk_indexStaff_banner">
       <swiper style="height:100%;" indicator-dots="true"
-      indicator-active-color="#0062d7"
+      indicator-active-color="{{pageData.companyInfo.themeColor}}"
       autoplay="true" interval="3000" duration="500" circular="true">
         <block wx:for="{{pageData.companyPageData.carouselList}}" wx:key="*this">
           <swiper-item>
@@ -70,13 +70,13 @@
     </view>
     <view class="fk_indexStaff_productIntro">
       <view class="fk_indexStaff_productIntro_bigTitle">
-        <view class="fk_indexStaff_productIntro_bigTitle_text">产品展示</view>
+        <view class="fk_indexStaff_productIntro_bigTitle_text" style="color:{{pageData.companyInfo.themeColor}}">产品展示</view>
         <view class="fk_indexStaff_productIntro_bigTitle_desc">PRODUCT</view>
       </view>
 
       <view class="fk_indexStaff_productIntro_group" wx:for-item="productGroup" wx:for="{{pageData.companyPageData.productGroupList}}">
         <view class="fk_indexStaff_productIntro_group_title">
-          <view class="fk_indexStaff_productIntro_group_title_text">{{productGroup.productTypeName}}</view>
+          <view class="fk_indexStaff_productIntro_group_title_text" style="border-left-color:{{pageData.companyInfo.themeColor}}">{{productGroup.productTypeName}}</view>
           <view class="fk_indexStaff_productIntro_group_title_arrow">
             <navigator url="/pages/productCenter/productCenter?companyAID={{setting.companyAID}}&companyBID={{setting.companyBID}}">更多></navigator>
           </view>

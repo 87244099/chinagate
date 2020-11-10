@@ -24,9 +24,13 @@
           <view class="fk_indexCompany_func_item_icon iconfont icon-dianhua" data-phone="{{setting.staffID>0 ? pageData.staffInfo.phone : pageData.companyInfo.companyPhone}}" catchtap="callPhone" style="background-color:{{pageData.companyInfo.themeColor}}"></view>
           <view class="fk_indexCompany_func_item_text">咨询</view>
         </view>
-        <view class="fk_indexCompany_func_item">
+        <!-- <view class="fk_indexCompany_func_item">
           <view class="fk_indexCompany_func_item_icon iconfont icon-map" catchtap="callMap" style="background-color:{{pageData.companyInfo.themeColor}}"></view>
           <view class="fk_indexCompany_func_item_text">导航</view>
+        </view> -->
+        <view class="fk_indexCompany_func_item">
+          <button class="fk_indexCompany_func_item_icon iconfont icon-zhuanfa" type="share" style="background-color:{{pageData.companyInfo.themeColor}};padding:0"></button>
+          <view class="fk_indexCompany_func_item_text">转发</view>
         </view>
         <view class="fk_indexCompany_func_item">
           <view class="fk_indexCompany_func_item_icon iconfont icon-start" catchtap="onCompanyCollect" style="background-color:{{pageData.companyInfo.themeColor}}"></view>
