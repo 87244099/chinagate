@@ -85,35 +85,24 @@ Component({
         return;
       }
 
-      Toast.loading({
-        message: "加载中...",
-        duration: 0
-      });
-      Fai.request({
-        url: "/ajax/user/userCollection?cmd=getCollectionList",
-        data: {
-          pageNo: setting.pageNo+1,
-          pageSize: setting.pageSize
-        },
-        beforeConsume: Toast.clear,
-        success:(response)=>{
-          let result = response.data;
-          if(result.success){
-            setting.companyList.push(...result.data.companyList)
-            this.setData({
-              "setting.pageNo": setting.pageNo+1,
-              "setting.companyList": setting.companyList,
-              "setting.totalSize": result.data.totalSize
-            })
-          }else{
-            Toast.fail(result.msg || "网络繁忙，请稍后重试");
-          }
-        },
-        fail:()=>{
-          Toast.fail( "网络繁忙，请稍后重试");
-        }
-      })
-    
+      Ajax.requestWithToast(async()=>{
+        let response = await Fai.promiseRequest({
+          url: "/ajax/user/userCollection?cmd=getCollectionList",
+          data: {
+            pageNo: setting.pageNo+1,
+            pageSize: setting.pageSize
+          },
+        });
+        let result = response.data;
+        setting.companyList.push(...result.data.companyList)
+        this.setData({
+          "setting.pageNo": setting.pageNo+1,
+          "setting.companyList": setting.companyList,
+          "setting.totalSize": result.data.totalSize
+        });
+
+        return response;
+      }, "加载中...");
     },
     onCancelStaffCollect: function(event){
       let item = event.currentTarget.dataset.item;

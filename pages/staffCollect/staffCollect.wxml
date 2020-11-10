@@ -15,7 +15,7 @@
               </view>
               <view style="display:flex;align-items:center;color:#b2b2b2;" data-item="{{item}}" data-index="{{index}}" catchtap="onCancelStaffCollect">
                 <view class="fk_staffCollect_item_info_opt_icon iconfont icon-false"></view>
-                <view class="fk_staffCollect_item_info_opt_text">收藏</view>
+                <view class="fk_staffCollect_item_info_opt_text">删除</view>
               </view>
             </view>
           </view>

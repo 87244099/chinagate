@@ -89,7 +89,7 @@ Component({
     loadShopCollections: async function(){
       let setting = this.data.setting;
       if(setting.totalSize>=0 && setting.companyList.length>=setting.totalSize){
-        return Promise.reject();
+        return;
       }
 
       Ajax.requestWithToast(async()=>{
@@ -110,7 +110,7 @@ Component({
         });
 
         return Promise.resolve(response);
-      })
+      }, "加载中...")
     
     },
     onCancelShopCollect: async function(event){
