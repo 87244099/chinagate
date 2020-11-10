@@ -69,11 +69,9 @@
       </swiper>
     </view>
     <view class="fk_indexStaff_productIntro">
-      <view class="fk_indexStaff_productIntro_bigTitle">
-        <view class="fk_indexStaff_productIntro_bigTitle_text" style="color:{{pageData.companyInfo.themeColor}}">产品展示</view>
-        <view class="fk_indexStaff_productIntro_bigTitle_desc">PRODUCT</view>
-      </view>
-
+      <template is="bigTitle"
+        data="{{pageData, title:'产品展示', desc:'PRODUCT'}}"
+      ></template>
       <view class="fk_indexStaff_productIntro_group" wx:for-item="productGroup" wx:for="{{pageData.companyPageData.productGroupList}}">
         <view class="fk_indexStaff_productIntro_group_title">
           <view class="fk_indexStaff_productIntro_group_title_text" style="border-left-color:{{pageData.companyInfo.themeColor}}">{{productGroup.productTypeName}}</view>
@@ -89,19 +87,17 @@
       </view>
     </view>
     <view class="fk_indexStaff_about">
-      <view class="fk_indexStaff_productIntro_bigTitle">
-        <view class="fk_indexStaff_productIntro_bigTitle_text">关于我们</view>
-        <view class="fk_indexStaff_productIntro_bigTitle_desc">ABOUT</view>
-      </view>
+      <template is="bigTitle"
+        data="{{pageData, title:'关于我们', desc:'ABOUT'}}"
+      ></template>
       <view>
         <wxparser rich-text="{{pageData.companyPageData.companyInfo.companyIntroduction}}"/>
       </view>
     </view>
     <view class="fk_indexStaff_contact">
-      <view class="fk_indexStaff_productIntro_bigTitle">
-        <view class="fk_indexStaff_productIntro_bigTitle_text">联系我们</view>
-        <view class="fk_indexStaff_productIntro_bigTitle_desc">CONTACT</view>
-      </view>
+      <template is="bigTitle"
+        data="{{pageData, title:'联系我们', desc:'CONTACT'}}"
+      ></template>
       <view class="fk_indexStaff_contact_message">
         <view class="fk_indexStaff_contact_message_line">
           企业：{{pageData.companyPageData.companyInfo.companyName}}
@@ -127,6 +123,18 @@
       <trace wx:if="{{(setting.companyAID>0 || setting.companyBID>0) && pageData.staffInfo.staffID>0}}" companyAID="{{setting.companyAID}}" companyBID="{{setting.companyBID}}" staffID="{{pageData.staffInfo.staffID}}" typeID="3"></trace>
     </view>
   </view>
-  <tab-bar shared class="fk_tabBar" type="company" companyInfo="{{pageData.companyPageData.companyInfo}}" rollbackVisible="{{_commPageConfigData.rollbackVisible}}" companyAID="{{setting.companyAID}}" companyBID="{{setting.companyBID}}" staffID="{{setting.staffID}}" tmp-staffID="{{pageData.staffInfo.staffID}}" staffInfo="{{pageData.staffInfo}}"></tab-bar>
+  <tab-bar style="background-color:{{pageData.companyInfo.themeColor}}" shared class="fk_tabBar" type="company" companyInfo="{{pageData.companyPageData.companyInfo}}" rollbackVisible="{{_commPageConfigData.rollbackVisible}}" companyAID="{{setting.companyAID}}" companyBID="{{setting.companyBID}}" staffID="{{setting.staffID}}" tmp-staffID="{{pageData.staffInfo.staffID}}" staffInfo="{{pageData.staffInfo}}"></tab-bar>
 </view>
   <van-toast id="van-toast" />
+
+
+<template name="bigTitle">
+  <view class="fk_indexStaff_productIntro_bigTitle">
+    <view class="fk_indexStaff_productIntro_bigTitle_text" style="color:{{pageData.companyInfo.themeColor}}">
+      <view class="before" style="background-color:{{pageData.companyInfo.themeColor}}"></view>
+      {{title}}
+      <view class="after" style="background-color:{{pageData.companyInfo.themeColor}}"></view>
+    </view>
+    <view class="fk_indexStaff_productIntro_bigTitle_desc">{{desc}}</view>
+  </view>
+</template>

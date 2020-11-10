@@ -73,8 +73,8 @@
   display: inline-block;
 }
 
-.fk_indexStaff_productIntro_bigTitle_text::before,
-.fk_indexStaff_productIntro_bigTitle_text::after
+.fk_indexStaff_productIntro_bigTitle_text .before,
+.fk_indexStaff_productIntro_bigTitle_text .after
 {
   content: "";
   display: block;
@@ -86,7 +86,7 @@
   position: absolute;
   margin-left: -132rpx;
 }
-.fk_indexStaff_productIntro_bigTitle_text::after{
+.fk_indexStaff_productIntro_bigTitle_text .after{
   left: auto;
   margin-left: unset;
   right: 0;

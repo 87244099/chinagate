@@ -11,7 +11,8 @@ Page(Fai.mixin(Fai.commPageConfig, {
    */
   data: {
     setting: {
-      position:{}
+      position:{},
+      bannerText:"正在搜索附近的销售安装及维修服务商"
     },
     config:config
   },
@@ -83,7 +84,8 @@ Page(Fai.mixin(Fai.commPageConfig, {
       });
       this.setData({
         "pageData.companyList": response.data.data.companyList,
-        "pageData.totalSize":  response.data.data.totalSize
+        "pageData.totalSize":  response.data.data.totalSize,
+        "setting.bannerText":`找到${response.data.data.totalSize}家您附近的销售安装服务商`
       });
 
       return Promise.resolve(response);

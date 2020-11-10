@@ -1,6 +1,7 @@
 <view>
   <view class="fk_shop_banner">
-    找到 {{pageData.totalSize}} 家您附近的销售安装服务商
+    {{setting.bannerText}}
+    
   </view>
   <view catchtap="jump2CreateCompany" style="background:#fff;font-size:28rpx;padding: 10rpx 0;text-align:center;color:red;">
     <text style="padding-bottom:8rpx;border-bottom:1px solid #999999;color:#999;">希望您的公司出现在这里，请点击这里登记</text>
