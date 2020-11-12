@@ -64,8 +64,8 @@
           详细介绍
         </view>
         <view class="fk_productDetail_intro_content">
-          <view style="width:100%;height:292rpx;margin-top:30rpx;">
-            <image style="width:100%;height:100%;" mode="aspectFill" src="{{staticDomain}}/{{pageData.carouselList[0]}}"></image>
+          <view style="width:100%;margin-top:30rpx;">
+            <image style="width:100%;" mode="widthFix" src="{{staticDomain}}/{{pageData.productInfo.bigImgPath}}"></image>
           </view>
           <wxparser class="fk_artile_wxparse" rich-text="{{pageData.productInfo.content}}"/>
         </view>

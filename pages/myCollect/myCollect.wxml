@@ -16,14 +16,14 @@
       </navigator>
     </view>
   </view>
-  <van-tabs active="{{ 0 }}" bind:change="onChange" color="#0062d7">
-    <van-tab title="企业" name="{{0}}">
+  <van-tabs active="0" bind:change="onChange" color="#0062d7">
+    <van-tab title="企业" name="0">
       <shopCollect></shopCollect>
     </van-tab>
-    <van-tab title="产品" name="{{1}}">
+    <van-tab title="产品" name="1">
       <productCollect></productCollect>
     </van-tab>
-    <van-tab title="名片" name="{{2}}">
+    <van-tab title="名片" name="2">
       <staffCollect></staffCollect>
     </van-tab>
   </van-tabs>

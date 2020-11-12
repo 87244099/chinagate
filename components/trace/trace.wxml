@@ -1,4 +1,4 @@
-<view class="fk_trace" data-fixRollback="{{fixRollback}}">
+<view class="fk_trace" data-fixRollback="{{fixRollback}}" style="visibility:hidden;">
   <view class="fk_trace_top" style="font-size:36rpx;color:rgb(119,119,119)">
     最新浏览：
   </view>

@@ -18,11 +18,11 @@
     </view>
     <view class="fk_rank_tip" style="{{pageData.myRank && pageData.myRank.rank!=1? 'visibility:visible;' : 'visibility:hidden;'}}">距离NO.1，你还差一丢丢的努力！</view>
     <view class="fk_rank">
-      <van-tabs active="{{ 1 }}" bind:change="onTabChange"  color="#0062d7">
-        <van-tab title="月排行" name="{{1}}">
+      <van-tabs active="1" bind:change="onTabChange"  color="#0062d7">
+        <van-tab title="月排行" name="1">
           <template is="rankList" data="{{pageData}}"></template>
         </van-tab>
-        <van-tab title="总排行" name="{{0}}">
+        <van-tab title="总排行" name="0">
           <template is="rankList" data="{{pageData}}"></template>
         </van-tab>
       </van-tabs>

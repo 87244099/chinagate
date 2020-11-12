@@ -143,7 +143,7 @@ Page(Fai.mixin(Fai.commPageConfig, {
   onJumpToCompany(event){
 
     let item = event.currentTarget.dataset.item;
-    if(item.typeID === 1 && item.merchantForLevelAID){
+    if(item.typeID === 1 && !item.merchantForLevelAID){
       wx.navigateTo({
         url: "/pages/h5/h5?src="+encodeURIComponent(`https://m.86crk.com/Repair/${item.companyID}.html`)
       });

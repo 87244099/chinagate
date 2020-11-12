@@ -80,11 +80,11 @@ Component({
             });
             this.triggerEvent("jump");
           }catch(response){
-            if(response){
-              Toast.fail(response.data.msg);
-            }else{
-              Toast.fail("网络繁忙,请稍后重试");
-            }
+            // if(response){//有时候会失败，把错误吞掉，点击多几次就好了
+            //   Toast.fail(response.data.msg);
+            // }else{
+            //   Toast.fail("网络繁忙,请稍后重试");
+            // }
           }
           //每次使用完，code会失效
           Ajax.delaySetCode(true);//强制刷新code，一般一瞬间只有一次触发
