@@ -11,7 +11,12 @@
         </view>
       </view>
       <view class="fk_sharedCard_main_name" wx:if="{{pageData.cardInfo.memberName}}">{{pageData.cardInfo.memberName}}</view>
-      <view class="fk_sharedCard_main_intro" wx:if="{{pageData.cardInfo.personalIntroduction}}">{{pageData.cardInfo.personalIntroduction}}</view>
+      <view class="fk_sharedCard_main_intro" wx:if="{{pageData.cardInfo.personalIntroduction}}">
+        <text>{{pageData.cardInfo.personalIntroduction}}</text>
+      </view>
+      <!-- <view class="fk_sharedCard_main_intro" style="text-align:left;">
+        <wxparser rich-text="{{pageData.cardInfo.personalIntroduction}}"/>
+      </view> -->
     </view>
     <view class="fk_sharedCard_func"></view>
     <view class="fk_sharedCard_func_list">

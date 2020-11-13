@@ -1,554 +1,552 @@
 {
-	"description": "项目配置文件",
-	"packOptions": {
-		"ignore": []
-	},
-	"setting": {
-		"urlCheck": false,
-		"es6": true,
-		"enhance": true,
-		"postcss": true,
-		"preloadBackgroundData": false,
-		"minified": true,
-		"newFeature": true,
-		"coverView": true,
-		"nodeModules": true,
-		"autoAudits": true,
-		"showShadowRootInWxmlPanel": true,
-		"scopeDataCheck": false,
-		"uglifyFileName": true,
-		"checkInvalidKey": true,
-		"checkSiteMap": true,
-		"uploadWithSourceMap": true,
-		"useMultiFrameRuntime": false,
-		"useApiHook": true,
-		"babelSetting": {
-			"ignore": [],
-			"disablePlugins": [],
-			"outputPath": ""
-		},
-		"bundle": true,
-		"useIsolateContext": true,
-		"useCompilerModule": true,
-		"userConfirmedUseCompilerModuleSwitch": false,
-		"packNpmManually": false,
-		"packNpmRelationList": [],
-		"minifyWXSS": true
-	},
-	"compileType": "miniprogram",
-	"libVersion": "2.11.3",
-	"appid": "wx41ef0a04dcd2c3ad",
-	"projectname": "chinagate",
-	"debugOptions": {
-		"hidedInDevtools": []
-	},
-	"isGameTourist": false,
-	"simulatorType": "wechat",
-	"simulatorPluginLibVersion": {},
-	"condition": {
-		"search": {
-			"current": -1,
-			"list": []
-		},
-		"conversation": {
-			"current": -1,
-			"list": []
-		},
-		"plugin": {
-			"list": []
-		},
-		"game": {
-			"list": []
-		},
-		"gamePlugin": {
-			"list": []
-		},
-		"miniprogram": {
-			"list": [
-				{
-					"id": -1,
-					"name": "个人中心",
-					"pathName": "pages/personal/personal",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 1,
-					"name": "创建名片",
-					"pathName": "pages/setCard/setCard",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 2,
-					"name": "我的名片详情",
-					"pathName": "pages/myCard/myCard",
-					"query": "id=3228",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "新闻详情页",
-					"pathName": "pages/newsDetail/newsDetail",
-					"query": "id=1772",
-					"scene": null
-				},
-				{
-					"id": 4,
-					"name": "产品详情页",
-					"pathName": "pages/productDetail/productDetail",
-					"query": "companyAID=1&companyBID=0&id=34",
-					"scene": null
-				},
-				{
-					"id": 5,
-					"name": "产品中心",
-					"pathName": "pages/productCenter/productCenter",
-					"query": "companyAID=1&companyBID=0",
-					"scene": null
-				},
-				{
-					"id": 6,
-					"name": "产品搜索",
-					"pathName": "pages/productSearch/productSearch",
-					"query": "companyId=1&word=不锈钢",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "我的收藏",
-					"pathName": "pages/myCollect/myCollect",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "产品收藏",
-					"pathName": "pages/productCollect/productCollect",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "我要购买",
-					"pathName": "pages/buy/buy",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "我要维修",
-					"pathName": "pages/repairSign/repairSign",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "投诉建议",
-					"pathName": "pages/suggest/suggest",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "h5",
-					"pathName": "pages/h5/h5",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 13,
-					"name": "店铺收藏",
-					"pathName": "pages/shopCollect/shopCollect",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "名片收藏",
-					"pathName": "pages/staffCollect/staffCollect",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 16,
-					"name": "企业首页",
-					"pathName": "pages/indexCompany/indexCompany",
-					"query": "companyAID=1&companyBID=0",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "登录页面",
-					"pathName": "pages/login/login",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 19,
-					"name": "注册",
-					"pathName": "pages/reg/reg",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "附近商家",
-					"pathName": "pages/shops/shops",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "我的企业",
-					"pathName": "pages/myCompany/myCompany",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "资讯",
-					"pathName": "pages/newList/newList",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 22,
-					"name": "访客状态的名片",
-					"pathName": "pages/sharedCard/sharedCard",
-					"query": "id=3228",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "裁切头像",
-					"pathName": "pages/cutFace/cutFace",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 24,
-					"name": "一级企业的个人中心",
-					"pathName": "pages/personal4CompanyA/personal4CompanyA",
-					"query": "companyId=1",
-					"scene": null
-				},
-				{
-					"id": 26,
-					"name": "二级商家个人中心",
-					"pathName": "companyB/personal4CompanyB/personal4CompanyB",
-					"query": "companyId=1",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "二级商家-产品中心",
-					"pathName": "companyB/productCenterB/productCenterB",
-					"query": "companyId=1",
-					"scene": null
-				},
-				{
-					"id": 28,
-					"name": "员工邀请",
-					"pathName": "pages/invitation4Staff/invitation4Staff",
-					"query": "scene=staffID%3D5",
-					"scene": null
-				},
-				{
-					"id": 27,
-					"name": "本地-邀请vip-过期",
-					"pathName": "pages/invitation4Vip/invitation4Vip",
-					"query": "scene=vipCustomerInvitationID%3D1",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "创建企业",
-					"pathName": "pages/createCompany/createCompany",
-					"query": "companyId=1&word=不锈钢",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "员工名片",
-					"pathName": "pages/indexStaff/indexStaff",
-					"query": "companyAID=1&companyBID=0&staffID=5",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "一级商家产品中心（搜索问题）",
-					"pathName": "pages/productCenter/productCenter",
-					"query": "companyAID=1&companyBID=0&id=34",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "企业首页测试换行符",
-					"pathName": "pages/indexCompany/indexCompany",
-					"query": "companyAID=1&companyBID=0",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/invitation4Staff/invitation4Staff",
-					"pathName": "pages/invitation4Staff/invitation4Staff",
-					"query": "companyAID=1&staffID=5",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "分享出来的企业首页",
-					"pathName": "pages/indexCompany/indexCompany",
-					"query": "scene=companyAID%3D1%26companyBID%3D0",
-					"scene": null
-				},
-				{
-					"id": 36,
-					"name": "被分享的产品详情页",
-					"pathName": "pages/productDetail/productDetail",
-					"query": "scene=companyAID%3D1%26companyBID%3D0%26id%3D34",
-					"scene": null
-				},
-				{
-					"id": 36,
-					"name": "分享出来的访客状态名片",
-					"pathName": "pages/sharedCard/sharedCard",
-					"query": "scene=id%3D3242",
-					"scene": null
-				},
-				{
-					"id": 38,
-					"name": "分享出来的-我的公司名片",
-					"pathName": "pages/indexStaff/indexStaff",
-					"query": "companyAID=1&companyBID=0&staffID=5",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "品牌厂商",
-					"pathName": "pages/brandShops/brandShops",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 40,
-					"name": "品牌厂商搜索",
-					"pathName": "pages/brandShopsSearch/brandShopsSearch",
-					"query": "word=%E5%9C%A3%E7%94%B0",
-					"scene": null
-				},
-				{
-					"id": 40,
-					"name": "分享出去的产品详情（缩减参数）",
-					"pathName": "pages/productDetail/productDetail",
-					"query": "scene=qr%3D1%2C0%2C5%2C34",
-					"scene": null
-				},
-				{
-					"id": 41,
-					"name": "被分享-第三方企业首页",
-					"pathName": "pages/indexCompany/indexCompany",
-					"query": "companyAID=2&companyBID=0",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "分享出来的个人名片-小罗",
-					"pathName": "pages/sharedCard/sharedCard",
-					"query": "scene=id%3D1",
-					"scene": null
-				},
-				{
-					"id": 43,
-					"name": "小程序码进来-第三方企业",
-					"pathName": "pages/indexCompany/indexCompany",
-					"query": "scene=qr%3D2%2C0%2C0",
-					"scene": null
-				},
-				{
-					"id": 44,
-					"name": "小程序码进来-第三方产品详情",
-					"pathName": "pages/productDetail/productDetail",
-					"query": "scene=qr%3D2%2C0%2C0%2C246",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "扫码进入小程序",
-					"pathName": "pages/index/index",
-					"query": "",
-					"scene": 1047
-				},
-				{
-					"id": -1,
-					"name": "二级商家首页",
-					"pathName": "pages/indexCompany/indexCompany",
-					"query": "companyAID=1&companyBID=1",
-					"scene": null
-				},
-				{
-					"id": 46,
-					"name": "转发出去-产品详情",
-					"pathName": "pages/productDetail/productDetail",
-					"query": "companyAID=1&companyBID=0&id=34&sharedOpenId=ojqCb5Wr3jak74TlGzP4ECcd4PzM",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "转发-企业首页",
-					"pathName": "pages/indexCompany/indexCompany",
-					"query": "companyAID=1&companyBID=0&sharedOpenId=ojqCb5Wr3jak74TlGzP4ECcd4PzM",
-					"scene": null
-				},
-				{
-					"id": 48,
-					"name": "转发-二级企业首页",
-					"pathName": "pages/indexCompany/indexCompany",
-					"query": "companyAID=1&companyBID=1&sharedOpenId=ojqCb5Wr3jak74TlGzP4ECcd4PzM",
-					"scene": null
-				},
-				{
-					"id": 49,
-					"name": "转发-个人名片",
-					"pathName": "pages/indexStaff/indexStaff",
-					"query": "companyAID=1&companyBID=0&staffID=5&sharedOpenId=ojqCb5Wr3jak74TlGzP4ECcd4PzM",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "分享排行",
-					"pathName": "pages/shareRank/shareRank",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "我的二级公司首页",
-					"pathName": "pages/indexCompany/indexCompany",
-					"query": "companyAID=1&companyBID=1",
-					"scene": null
-				},
-				{
-					"id": 52,
-					"name": "测试分享",
-					"pathName": "pages/indexCompany/indexCompany",
-					"query": "scene=qr%3D2%2C0%2C0",
-					"scene": null
-				},
-				{
-					"id": 53,
-					"name": "首页检查历史访问记录",
-					"pathName": "pages/index/index",
-					"query": "scene=id%3D1",
-					"scene": 1026
-				},
-				{
-					"id": 54,
-					"name": "登录隐藏授权",
-					"pathName": "pages/login4Empower/login4Empower",
-					"query": "companyAID=1",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "员工邀请-登录回调",
-					"pathName": "pages/login4Invitation/login4Invitation",
-					"query": "companyAID=1",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "南北信德公司首页",
-					"pathName": "pages/indexCompany/indexCompany",
-					"query": "companyAID=1&companyBID=1",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "提示语句页面",
-					"pathName": "pages/tips/tips",
-					"query": "message=错误信息",
-					"scene": null
-				},
-				{
-					"id": 58,
-					"name": "线上-邀请会员-过期",
-					"pathName": "pages/invitation4Vip/invitation4Vip",
-					"query": "scene=vipCustomerInvitationID%3D2",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "本地-南北德信有限公司",
-					"pathName": "pages/indexCompany/indexCompany",
-					"query": "companyAID=1&companyBID=1",
-					"scene": null
-				},
-				{
-					"id": 60,
-					"name": "线上-员工推广企业首页详情",
-					"pathName": "pages/productDetail/productDetail",
-					"query": "companyAID=1&companyBID=0&id=33&staffID=5",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "线上-员工推广企业首页",
-					"pathName": "pages/indexCompany/indexCompany",
-					"query": "companyAID=1&companyBID=0&staffID=5",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "线上-员工推广产品中心",
-					"pathName": "pages/productCenter/productCenter",
-					"query": "companyAID=1&companyBID=0&staffID=5",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "线上-员工推广产品搜搜",
-					"pathName": "pages/productSearch/productSearch",
-					"query": "word=不锈钢&companyAID=1&companyBID=0&staffID=5",
-					"scene": null
-				},
-				{
-					"id": 64,
-					"name": "本地-价格测试-产品详情",
-					"pathName": "pages/productDetail/productDetail",
-					"query": "companyAID=1&companyBID=0&id=33&staffID=0",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "本地-价格测试-企业首页",
-					"pathName": "pages/indexCompany/indexCompany",
-					"query": "companyAID=1&companyBID=0&id=33&staffID=0",
-					"scene": null
-				},
-				{
-					"id": 66,
-					"name": "本地-价格测试-产品搜索",
-					"pathName": "pages/productSearch/productSearch",
-					"query": "word=不锈钢&companyAID=1&companyBID=0&staffID=0",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "线上-我的公司名片",
-					"pathName": "pages/indexStaff/indexStaff",
-					"query": "companyAID=1&companyBID=0&staffID=5",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "我的名片",
-					"pathName": "pages/myCard/myCard",
-					"query": "",
-					"scene": null
-				}
-			]
-		}
-	}
+  "description": "项目配置文件",
+  "packOptions": {
+    "ignore": []
+  },
+  "setting": {
+    "urlCheck": false,
+    "es6": true,
+    "enhance": true,
+    "postcss": true,
+    "preloadBackgroundData": false,
+    "minified": true,
+    "newFeature": true,
+    "coverView": true,
+    "nodeModules": true,
+    "autoAudits": true,
+    "showShadowRootInWxmlPanel": true,
+    "scopeDataCheck": false,
+    "uglifyFileName": true,
+    "checkInvalidKey": true,
+    "checkSiteMap": true,
+    "uploadWithSourceMap": true,
+    "useMultiFrameRuntime": false,
+    "useApiHook": true,
+    "babelSetting": {
+      "ignore": [],
+      "disablePlugins": [],
+      "outputPath": ""
+    },
+    "bundle": true,
+    "useIsolateContext": true,
+    "useCompilerModule": true,
+    "userConfirmedUseCompilerModuleSwitch": false,
+    "packNpmManually": false,
+    "packNpmRelationList": [],
+    "minifyWXSS": true
+  },
+  "compileType": "miniprogram",
+  "libVersion": "2.11.3",
+  "appid": "wx41ef0a04dcd2c3ad",
+  "projectname": "chinagate",
+  "debugOptions": {
+    "hidedInDevtools": []
+  },
+  "isGameTourist": false,
+  "simulatorType": "wechat",
+  "simulatorPluginLibVersion": {},
+  "condition": {
+    "plugin": {
+      "list": []
+    },
+    "game": {
+      "list": []
+    },
+    "gamePlugin": {
+      "list": []
+    },
+    "miniprogram": {
+      "list": [
+        {
+          "id": -1,
+          "name": "个人中心",
+          "pathName": "pages/personal/personal",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 1,
+          "name": "创建名片",
+          "pathName": "pages/setCard/setCard",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 2,
+          "name": "我的名片详情",
+          "pathName": "pages/myCard/myCard",
+          "query": "id=3228",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "新闻详情页",
+          "pathName": "pages/newsDetail/newsDetail",
+          "query": "id=1772",
+          "scene": null
+        },
+        {
+          "id": 4,
+          "name": "产品详情页",
+          "pathName": "pages/productDetail/productDetail",
+          "query": "companyAID=1&companyBID=0&id=34",
+          "scene": null
+        },
+        {
+          "id": 5,
+          "name": "产品中心",
+          "pathName": "pages/productCenter/productCenter",
+          "query": "companyAID=1&companyBID=0",
+          "scene": null
+        },
+        {
+          "id": 6,
+          "name": "产品搜索",
+          "pathName": "pages/productSearch/productSearch",
+          "query": "companyId=1&word=不锈钢",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "我的收藏",
+          "pathName": "pages/myCollect/myCollect",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "产品收藏",
+          "pathName": "pages/productCollect/productCollect",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "我要购买",
+          "pathName": "pages/buy/buy",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "我要维修",
+          "pathName": "pages/repairSign/repairSign",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "投诉建议",
+          "pathName": "pages/suggest/suggest",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "h5",
+          "pathName": "pages/h5/h5",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 13,
+          "name": "店铺收藏",
+          "pathName": "pages/shopCollect/shopCollect",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "名片收藏",
+          "pathName": "pages/staffCollect/staffCollect",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 16,
+          "name": "企业首页",
+          "pathName": "pages/indexCompany/indexCompany",
+          "query": "companyAID=1&companyBID=0",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "登录页面",
+          "pathName": "pages/login/login",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 19,
+          "name": "注册",
+          "pathName": "pages/reg/reg",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "附近商家",
+          "pathName": "pages/shops/shops",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "我的企业",
+          "pathName": "pages/myCompany/myCompany",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "资讯",
+          "pathName": "pages/newList/newList",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 22,
+          "name": "访客状态的名片",
+          "pathName": "pages/sharedCard/sharedCard",
+          "query": "id=3228",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "裁切头像",
+          "pathName": "pages/cutFace/cutFace",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 24,
+          "name": "一级企业的个人中心",
+          "pathName": "pages/personal4CompanyA/personal4CompanyA",
+          "query": "companyId=1",
+          "scene": null
+        },
+        {
+          "id": 26,
+          "name": "二级商家个人中心",
+          "pathName": "companyB/personal4CompanyB/personal4CompanyB",
+          "query": "companyId=1",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "二级商家-产品中心",
+          "pathName": "companyB/productCenterB/productCenterB",
+          "query": "companyId=1",
+          "scene": null
+        },
+        {
+          "id": 28,
+          "name": "员工邀请",
+          "pathName": "pages/invitation4Staff/invitation4Staff",
+          "query": "scene=staffID%3D5",
+          "scene": null
+        },
+        {
+          "id": 27,
+          "name": "本地-邀请vip-过期",
+          "pathName": "pages/invitation4Vip/invitation4Vip",
+          "query": "scene=vipCustomerInvitationID%3D1",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "创建企业",
+          "pathName": "pages/createCompany/createCompany",
+          "query": "companyId=1&word=不锈钢",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "员工名片",
+          "pathName": "pages/indexStaff/indexStaff",
+          "query": "companyAID=1&companyBID=0&staffID=5",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "一级商家产品中心（搜索问题）",
+          "pathName": "pages/productCenter/productCenter",
+          "query": "companyAID=1&companyBID=0&id=34",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "企业首页测试换行符",
+          "pathName": "pages/indexCompany/indexCompany",
+          "query": "companyAID=1&companyBID=0",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/invitation4Staff/invitation4Staff",
+          "pathName": "pages/invitation4Staff/invitation4Staff",
+          "query": "companyAID=1&staffID=5",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "分享出来的企业首页",
+          "pathName": "pages/indexCompany/indexCompany",
+          "query": "scene=companyAID%3D1%26companyBID%3D0",
+          "scene": null
+        },
+        {
+          "id": 36,
+          "name": "被分享的产品详情页",
+          "pathName": "pages/productDetail/productDetail",
+          "query": "scene=companyAID%3D1%26companyBID%3D0%26id%3D34",
+          "scene": null
+        },
+        {
+          "id": 36,
+          "name": "分享出来的访客状态名片",
+          "pathName": "pages/sharedCard/sharedCard",
+          "query": "scene=id%3D3242",
+          "scene": null
+        },
+        {
+          "id": 38,
+          "name": "分享出来的-我的公司名片",
+          "pathName": "pages/indexStaff/indexStaff",
+          "query": "companyAID=1&companyBID=0&staffID=5",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "品牌厂商",
+          "pathName": "pages/brandShops/brandShops",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 40,
+          "name": "品牌厂商搜索",
+          "pathName": "pages/brandShopsSearch/brandShopsSearch",
+          "query": "word=%E5%9C%A3%E7%94%B0",
+          "scene": null
+        },
+        {
+          "id": 40,
+          "name": "分享出去的产品详情（缩减参数）",
+          "pathName": "pages/productDetail/productDetail",
+          "query": "scene=qr%3D1%2C0%2C5%2C34",
+          "scene": null
+        },
+        {
+          "id": 41,
+          "name": "被分享-第三方企业首页",
+          "pathName": "pages/indexCompany/indexCompany",
+          "query": "companyAID=2&companyBID=0",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "分享出来的个人名片-小罗",
+          "pathName": "pages/sharedCard/sharedCard",
+          "query": "scene=id%3D1",
+          "scene": null
+        },
+        {
+          "id": 43,
+          "name": "小程序码进来-第三方企业",
+          "pathName": "pages/indexCompany/indexCompany",
+          "query": "scene=qr%3D2%2C0%2C0",
+          "scene": null
+        },
+        {
+          "id": 44,
+          "name": "小程序码进来-第三方产品详情",
+          "pathName": "pages/productDetail/productDetail",
+          "query": "scene=qr%3D2%2C0%2C0%2C246",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "扫码进入小程序",
+          "pathName": "pages/index/index",
+          "query": "",
+          "scene": 1047
+        },
+        {
+          "id": -1,
+          "name": "二级商家首页",
+          "pathName": "pages/indexCompany/indexCompany",
+          "query": "companyAID=1&companyBID=1",
+          "scene": null
+        },
+        {
+          "id": 46,
+          "name": "转发出去-产品详情",
+          "pathName": "pages/productDetail/productDetail",
+          "query": "companyAID=1&companyBID=0&id=34&sharedOpenId=ojqCb5Wr3jak74TlGzP4ECcd4PzM",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "转发-企业首页",
+          "pathName": "pages/indexCompany/indexCompany",
+          "query": "companyAID=1&companyBID=0&sharedOpenId=ojqCb5Wr3jak74TlGzP4ECcd4PzM",
+          "scene": null
+        },
+        {
+          "id": 48,
+          "name": "转发-二级企业首页",
+          "pathName": "pages/indexCompany/indexCompany",
+          "query": "companyAID=1&companyBID=1&sharedOpenId=ojqCb5Wr3jak74TlGzP4ECcd4PzM",
+          "scene": null
+        },
+        {
+          "id": 49,
+          "name": "转发-个人名片",
+          "pathName": "pages/indexStaff/indexStaff",
+          "query": "companyAID=1&companyBID=0&staffID=5&sharedOpenId=ojqCb5Wr3jak74TlGzP4ECcd4PzM",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "分享排行",
+          "pathName": "pages/shareRank/shareRank",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "我的二级公司首页",
+          "pathName": "pages/indexCompany/indexCompany",
+          "query": "companyAID=1&companyBID=1",
+          "scene": null
+        },
+        {
+          "id": 52,
+          "name": "测试分享",
+          "pathName": "pages/indexCompany/indexCompany",
+          "query": "scene=qr%3D2%2C0%2C0",
+          "scene": null
+        },
+        {
+          "id": 53,
+          "name": "首页检查历史访问记录",
+          "pathName": "pages/index/index",
+          "query": "scene=id%3D1",
+          "scene": 1026
+        },
+        {
+          "id": 54,
+          "name": "登录隐藏授权",
+          "pathName": "pages/login4Empower/login4Empower",
+          "query": "companyAID=1",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "员工邀请-登录回调",
+          "pathName": "pages/login4Invitation/login4Invitation",
+          "query": "companyAID=1",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "南北信德公司首页",
+          "pathName": "pages/indexCompany/indexCompany",
+          "query": "companyAID=1&companyBID=1",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "提示语句页面",
+          "pathName": "pages/tips/tips",
+          "query": "message=错误信息",
+          "scene": null
+        },
+        {
+          "id": 58,
+          "name": "线上-邀请会员-过期",
+          "pathName": "pages/invitation4Vip/invitation4Vip",
+          "query": "scene=vipCustomerInvitationID%3D2",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "本地-南北德信有限公司",
+          "pathName": "pages/indexCompany/indexCompany",
+          "query": "companyAID=1&companyBID=1",
+          "scene": null
+        },
+        {
+          "id": 60,
+          "name": "线上-员工推广企业首页详情",
+          "pathName": "pages/productDetail/productDetail",
+          "query": "companyAID=1&companyBID=0&id=33&staffID=5",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "线上-员工推广企业首页",
+          "pathName": "pages/indexCompany/indexCompany",
+          "query": "companyAID=1&companyBID=0&staffID=5",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "线上-员工推广产品中心",
+          "pathName": "pages/productCenter/productCenter",
+          "query": "companyAID=1&companyBID=0&staffID=5",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "线上-员工推广产品搜搜",
+          "pathName": "pages/productSearch/productSearch",
+          "query": "word=不锈钢&companyAID=1&companyBID=0&staffID=5",
+          "scene": null
+        },
+        {
+          "id": 64,
+          "name": "本地-价格测试-产品详情",
+          "pathName": "pages/productDetail/productDetail",
+          "query": "companyAID=1&companyBID=0&id=33&staffID=0",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "本地-价格测试-企业首页",
+          "pathName": "pages/indexCompany/indexCompany",
+          "query": "companyAID=1&companyBID=0&id=33&staffID=0",
+          "scene": null
+        },
+        {
+          "id": 66,
+          "name": "本地-价格测试-产品搜索",
+          "pathName": "pages/productSearch/productSearch",
+          "query": "word=不锈钢&companyAID=1&companyBID=0&staffID=0",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "线上-我的公司名片",
+          "pathName": "pages/indexStaff/indexStaff",
+          "query": "companyAID=1&companyBID=0&staffID=5",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "我的名片",
+          "pathName": "pages/myCard/myCard",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "线上-产品详情页",
+          "pathName": "pages/productDetail/productDetail",
+          "query": "companyAID=3&companyBID=0&id=346916&staffID=0",
+          "scene": null
+        }
+      ]
+    }
+  }
 }

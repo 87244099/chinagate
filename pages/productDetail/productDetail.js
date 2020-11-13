@@ -22,7 +22,8 @@ Page(Fai.mixin(Fai.commPageConfig, {
         companyAID:-1,
         companyBID:-1,
         staffID:-1
-      }
+      },
+      bannerHeight: 316
     },
     pageData: {},
     config:config,
@@ -183,12 +184,22 @@ Page(Fai.mixin(Fai.commPageConfig, {
         });
       }
       
+      // this.data.setting.bannerHeight =
+      let firstBanner = this.data.staticDomain+"/"+productInfo.productBannerList[0];
+      let imgInfo = await Fai.getImageInfo(firstBanner);
+      let {width, height} = imgInfo;
+      this.data.setting.bannerHeight = width/750*height;
+      console.log("firstBanner",  firstBanner); 
+      console.log(imgInfo);
+      console.log("bannerHeight",  this.data.setting.bannerHeight); 
+      
       this.setData({
         "pageData.companyInfo": companyInfo,
         "pageData.carouselList" : carouselList,
         "pageData.productInfo":productInfo,
         "pageData.staffInfo": staffInfo,
         "setting.serviceForm":serviceForm,
+        "setting.bannerHeight": this.data.setting.bannerHeight,
         "setting.inited": true
       });
       

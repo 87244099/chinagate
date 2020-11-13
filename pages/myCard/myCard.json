@@ -2,6 +2,7 @@
   "usingComponents": {
     "mp-tabbar": "weui-miniprogram/tabbar/tabbar",
     "tab-bar": "/components/tab-bar/tab-bar",
+    "wxparser": "plugin://wxparserPlugin/wxparser",
     "van-toast": "@vant/weapp/toast/index"
   },
   "navigationBarTitleText": "",
