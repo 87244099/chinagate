@@ -205,9 +205,13 @@ async function checkLoginWithRedirect(url, methodName){
   url = url || Fai.getCurrAbsPath();
   let response = await checkLogin();
   if(!response.data.data.isLogin){
+    // wx.navigateTo({
+    //   url: '/pages/login/login?backUrl='+encodeURIComponent(url)+"&methodName="+methodName,
+    // })
     wx.navigateTo({
-      url: '/pages/login/login?backUrl='+encodeURIComponent(url)+"&methodName="+methodName,
+      url: '/pages/index/index'
     })
+    
   }
 
   return response.data.data.isLogin;

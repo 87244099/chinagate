@@ -8,6 +8,7 @@ module.exports = {
   ...require("./page"),
   ...require("./timer"),
   ...require("./typer"),
-  ...require("./event")
+  ...require("./event"),
+  config:require("./config"),
 };
 

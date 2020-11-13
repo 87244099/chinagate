@@ -82,9 +82,7 @@
     <view class="fk_indexCompany_about">
       <template is="bigTitle" data="{{cn:'关于我们', en:'ABOUT', pageData}}"></template>
       <!-- max-height:348rpx;padding-bottom: 20rpx -->
-      <scroll-view style="" scroll-y>
-        <wxparser class="fk_artile_wxparse" rich-text="{{pageData.companyInfo.companyIntroduction}}"/>
-      </scroll-view>
+      <wxparser class="fk_artile_wxparse" rich-text="{{pageData.companyInfo.companyIntroduction}}"/>
     </view>
     <view class="fk_indexCompany_contact">
       <template is="bigTitle" data="{{cn:'联系我们', en:'CONTACT', pageData}}"></template>
