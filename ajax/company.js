@@ -39,6 +39,25 @@ async function getCompanyBIndexPageData(companyId){
   });
 }
 
+async function getProductListByGroup(data){
+  let { 
+    companyId,
+    groupId,
+    pageNo,
+    pageSize
+  } = data;
+
+  return Fai.promiseRequest({
+    url: "/ajax/product/product?cmd=getProductListByGroup",
+    data: {
+      companyId,
+      groupId,
+      pageNo,
+      pageSize,
+    }
+  })
+}
+
 async function getInfo4CompanyA(id){
   return new Promise((resolve, reject)=>{
     Fai.request({
@@ -184,5 +203,6 @@ module.exports = {
   getInfo4Staff,
   getInvitationStaffPageData,
   getInvitationVipPageData,
-  belongVip
+  belongVip,
+  getProductListByGroup
 };

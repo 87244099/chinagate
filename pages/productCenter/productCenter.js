@@ -12,6 +12,7 @@ Page(Fai.mixin(Fai.commPageConfig,{
   data: {
     pageData: {},
     setting: {
+      scrollTopView: "view-0",
       groupVisible: true,
       tabIndex: 0,
       companyAID: -1,
@@ -70,6 +71,10 @@ Page(Fai.mixin(Fai.commPageConfig,{
         "pageData.staffInfo": staffInfo,
         "setting.tabIndex": tabIndex
       });
+      
+      this.setData({
+        "setting.scrollTopView": "view-"+tabIndex
+      })
       this.setData({
         "setting.inited":true
       })
@@ -118,8 +123,15 @@ Page(Fai.mixin(Fai.commPageConfig,{
   },
   onGroupTabClick: function(event){
     let index = event.currentTarget.dataset.index;
+    
+
     this.setData({
-      "setting.tabIndex": index
+      "setting.tabIndex": index,
+    });
+
+    
+    this.setData({
+      "setting.scrollTopView": "view-"+index
     });
   },
   searchChange: function(event){
@@ -147,6 +159,33 @@ Page(Fai.mixin(Fai.commPageConfig,{
     if(event.type == "blur"){
       this.doSearch();
     }
-  }, 800)
+  }, 800),
+  loading: false,
+  loadNextProducts(){
+    if(this.loading){return};
+    let group = this.data.pageData.productGroupList[this.data.setting.tabIndex];
+    group.pageNo = group.pageNo === void 0 ? 1 : group.pageNo;
+    this.loading= true;
+    this.setData({
+      [`pageData.productGroupList[${this.data.setting.tabIndex}].pageNo`]: group.pageNo,
+    })
+    Ajax.requestWithToast(async()=>{
+      let response = await Ajax.getProductListByGroup({
+        companyId: this.data.setting.companyBID > 0 ? this.data.setting.companyBID : this.data.setting.companyAID,
+        groupId:group.productTypeID,
+        pageNo: group.pageNo+1,
+        pageSize: 10
+      });
 
+      group.productList.push(...response.data.data.productList);
+      group.pageNo = group.pageNo+1;
+      this.setData({
+        [`pageData.productGroupList[${this.data.setting.tabIndex}]`]: group
+      })
+
+      return response;
+    }, "加载中...").then(()=>{
+      this.loading= false;   
+    });
+  }
 }));
