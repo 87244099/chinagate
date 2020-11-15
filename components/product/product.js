@@ -53,9 +53,9 @@ Component({
   methods: {
     jump(event){
       let url = event.currentTarget.dataset.url;
-      wx.redirectTo({
+      wx.navigateTo({
         url: url,
-      })
+      });
     }
   }
 })

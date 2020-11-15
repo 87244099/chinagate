@@ -34,6 +34,11 @@
   box-sizing: content-box;
   border-radius: 50%;
   color: #ececec;
+  width: 84rpx;
+  height: 84rpx;
+  padding: 0;
+  line-height: 84rpx;
+
 }
 .fk_productDetail_func_item_text{
   display: block;

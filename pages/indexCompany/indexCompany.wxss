@@ -91,7 +91,7 @@
 }
 
 .fk_indexCompany_productIntro_bigTitle_desc{
-  font-size: 52rpx;
+  font-size: 30rpx;
   color: #8a8a8a;
   text-transform: uppercase;
   font-weight: bold;

@@ -73,9 +73,16 @@ Page(Fai.mixin(Fai.commPageConfig, {
     //判断能否重定向
     Fai.Waiter.then("onRedirectToByHistory", (url)=>{
       if(url && TmpPageData.visitedCount<2){
-        wx.navigateTo({
-          url: url,
-        });
+        // 企业相关路径采用不回退的跳转方式
+        if( url.toLowerCase().includes("company") || url.toLowerCase().includes("product") || url.toLowerCase().includes("staff")){
+          wx.redirectTo({
+            url: url,
+          });
+        }else{
+          wx.navigateTo({
+            url: url,
+          });
+        }
         Toast.clear();
       }else{
         
@@ -204,14 +211,14 @@ Page(Fai.mixin(Fai.commPageConfig, {
     })
   },
   jump2RecentVisitUrl(){
-    wx.navigateTo({
+    wx.redirectTo({
       url: this.data.setting.recentUrlInfo.url,
     })
   },
   jump2SvrMall(){
-    wx.navigateTo({
+    wx.redirectTo({
       url: '/pages/shops/shops',
-    })
+    });
   }
 }));
 

@@ -75,7 +75,7 @@ Page({
   jump4Personal(){
     if(this.data.setting.backUrl){
       let prevPage = Fai.getPrevPage();
-      wx.navigateTo({
+      wx.redirectTo({
         url: this.data.setting.backUrl,
       });
 
@@ -84,7 +84,7 @@ Page({
       }
       
     }else{
-      wx.navigateTo({
+      wx.redirectTo({
         url: '/pages/personal/personal',
       });
     }

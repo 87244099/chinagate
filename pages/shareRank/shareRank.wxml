@@ -29,7 +29,7 @@
       
     </view>
   </view>
-
+  <tab-bar class="fk_tabBar" type="company" style="background-color:{{pageData.companyInfo.themeColor}}"  companyInfo="{{pageData.companyInfo}}" companyAID="{{setting.companyAID}}" companyBID="{{setting.companyBID}}"  staffID="{{setting.staffID}}"></tab-bar>
   <van-toast id="van-toast"/>
 </view>
 

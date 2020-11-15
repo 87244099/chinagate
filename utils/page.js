@@ -38,6 +38,11 @@ function getCurrPage(){
 // 所有页面共享的配置
 let commPageConfig = {
   onShow(){
+    
+    wx.hideHomeButton({
+      complete: (res) => {},
+    });//隐藏返回头部的按钮
+
     console.log("Event", Event);
     // debugger;
     let page = getCurrPage();
