@@ -2,8 +2,8 @@
 <canvas canvas-id="myCanvas" style="width:430px;height:430px;position:absolute;left:-200%;top:0%"></canvas>
 <view class="fk_page" wx:if="{{setting.inited}}">
   <view class="fk_productDetail">
-    <view class="fk_productDetail_banner">
-      <swiper style="height:{{setting.bannerHeight}}rpx" indicator-dots="{{true}}"
+    <view class="fk_productDetail_banner" style="height:{{setting.globalData.productImgHeight}}px">
+      <swiper style="height:{{setting.globalData.productImgHeight}}px" indicator-dots="{{true}}"
         autoplay="{{true}}"
         indicator-dots="true"
         indicator-active-color="#0062d7"
@@ -11,7 +11,7 @@
         <block wx:for="{{pageData.productInfo.productBannerList}}" wx:key="*this">
           <swiper-item>
             <view class="swiper-item {{item}}">
-              <image style="width:100%;height:316rpx" mode="widthFix" src="{{staticDomain}}/{{item}}"></image>
+              <image style="width:100%;height:{{setting.globalData.productImgHeight}}px" mode="aspectFit" src="{{staticDomain}}/{{item}}"></image>
             </view>
           </swiper-item>
         </block>
