@@ -33,14 +33,15 @@ Page(Fai.mixin(Fai.commPageConfig, {
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  async onLoad(options) {
     options = Ajax.parseQrCodeArg(options);
     this.setData({
       "setting.productId": parseInt(options.id) || 0,
       "setting.companyAID": parseInt(options.companyAID) || 0,
       "setting.companyBID": parseInt(options.companyBID) || 0,
       "setting.sharedOpenId": options.sharedOpenId,
-      "setting.staffID": parseInt(options.staffID) || 0
+      "setting.staffID": parseInt(options.staffID) || 0,
+      "setting.globalData": getApp().globalData
     });
 
     

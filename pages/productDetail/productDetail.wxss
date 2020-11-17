@@ -4,9 +4,9 @@
 .fk_productDetail{
   background-color: #f5f5f5;
 }
-.fk_productDetail_banner{
-  /* height: 316rpx; */
-}
+/* .fk_productDetail_banner{
+  height: 316rpx;
+} */
 .fk_productDetail_func_list{
   display: flex;
   justify-content: space-between;

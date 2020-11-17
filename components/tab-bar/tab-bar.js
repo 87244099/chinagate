@@ -51,6 +51,10 @@ Component({
     isCompanyIndex:{
       type:Boolean,
       value: false
+    },
+    navigate:{//指定公司导航的跳转方式
+      type: Boolean,
+      value: true
     }
   },
   /**
@@ -90,17 +94,29 @@ Component({
       }
     },
     jump4Personal(){
-      wx.redirectTo({
+      this.jumpto({
         url: '/pages/personal/personal',
       })
     },
+    jumpto(option){
+      let url = option.url;
+      if(this.data.navigate || this.data.type === "index"){
+        wx.redirectTo({
+          url,
+        })
+      }else{
+        wx.redirectTo({
+          url,
+        });
+      }
+    },
     jump4CompanyPersonal(){
-      wx.redirectTo({
+      this.jumpto({
         url: '/pages/personal4Company/personal4Company?companyAID='+ this.data.companyAID +'&companyBID='+this.data.companyBID+"&staffID="+this.data.staffID,
       })
     },
     jump2StaffIndex(){
-      wx.redirectTo({
+      this.jumpto({
         url: `/pages/indexStaff/indexStaff?companyAID=${this.data.companyAID}&companyBID=${this.data.companyBID}&staffID=${this.data.staffID}`,
       })
     }
