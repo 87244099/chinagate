@@ -29,7 +29,7 @@
           <view class="fk_indexCompany_func_item_text">导航</view>
         </view> -->
         <view class="fk_indexCompany_func_item">
-          <button class="fk_indexCompany_func_item_icon iconfont icon-zhuanfa" type="share" style="background-color:{{pageData.companyInfo.themeColor}};padding:0"></button>
+          <button class="fk_indexCompany_func_item_icon iconfont icon-zhuanfa" open-type="share" style="background-color:{{pageData.companyInfo.themeColor}};padding:0"></button>
           <view class="fk_indexCompany_func_item_text">转发</view>
         </view>
         <view class="fk_indexCompany_func_item">

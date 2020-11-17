@@ -49,7 +49,9 @@ Page(Fai.mixin(Fai.commPageConfig, {
   }, 
   init4LoadPage(){
     Ajax.requestWithToast(async()=>{
-      let response = await Ajax.getInfo4Staff(this.data.setting.staffID);
+      let response = await Ajax.getInfo4StaffWithCheck({
+        ...this.data.setting
+      });
       let staffInfo = response.data.data;
       let companyAInfo = {};
       let companyBInfo = {};

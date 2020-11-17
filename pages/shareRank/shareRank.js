@@ -55,8 +55,15 @@ Page(Fai.mixin(Fai.commPageConfig, {
         companyInfo = response.data.data.companyInfo;
       }
 
+      let staffInfo = {};
+      if(this.data.setting.staffID>0){
+        response = await Ajax.getInfo4Staff(this.data.setting.staffID);
+        staffInfo = response.data.data;
+      }
+
       this.setData({
         "pageData.companyInfo": companyInfo,
+        "pageData.staffInfo": staffInfo,
       });
 
       return response;

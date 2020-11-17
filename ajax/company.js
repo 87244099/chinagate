@@ -1,42 +1,30 @@
 
 const Fai = require("../utils/util");
 async function getCompanyAIndexPageData(companyId){
-  return new Promise((resolve, reject)=>{
-    Fai.request({
+  try{
+    return await Fai.promiseRequest({
       url: "/ajax/company/company?cmd=getCompanyAIndexPageData&id="+companyId,
-      success:(response)=>{
-        let result = response.data;
-        if(result.success){
-          resolve(response);
-        }else{
-          reject(response);
-        }
-      },
-      fail(){
-        reject();
-      }
     });
-  });
+  }catch(e){
+    wx.redirectTo({
+      url: '/pages/index/index',
+    })
+    throw e;
+  }
 }
 
 
 async function getCompanyBIndexPageData(companyId){
-  return new Promise((resolve, reject)=>{
-    Fai.request({
-      url: "/ajax/company/company?cmd=getCompanyBIndexPageData&id="+companyId,
-      success:(response)=>{
-        let result = response.data;
-        if(result.success){
-          resolve(response);
-        }else{
-          reject(response);
-        }
-      },
-      fail(){
-        reject();
-      }
+  try{
+    return Fai.promiseRequest({
+      url: "/ajax/company/company?cmd=getCompanyBIndexPageData&id="+companyId
     });
-  });
+  }catch(e){
+    wx.redirectTo({
+      url: '/pages/index/index',
+    })
+    throw e;
+  }
 }
 
 async function getProductListByGroup(data){
@@ -171,6 +159,27 @@ async function memberUpToVipA(vipCustomerInvitationID, memberPhone){
   });
 }
 
+async function getInfo4StaffWithCheck(data){
+  let {
+    companyAID,
+    companyBID,
+    staffID
+  } = data;
+  try{
+    return await getInfo4Staff(staffID);
+  }catch(e){
+
+    let url = "/pages/indexCompany/indexCompany";
+    url = Fai.addPageQuery(url, "companyAID", companyAID);
+    url = Fai.addPageQuery(url, "companyBID", companyBID);
+    // url = Fai.addPageQuery(url, "staffID", staffID);
+    wx.redirectTo({
+      url,
+    })
+    throw e;
+  }
+}
+
 function getInfo4Staff(id){
   return Fai.promiseRequest({
     url:"/ajax/user/userInfo?cmd=getInfo4Staff",
@@ -191,6 +200,37 @@ async function belongVip(merchantForLevelAID=0, merchantForLevelBID=0){
   });
 }
 
+async function getProductDetailPageData(data){
+
+  let {
+    companyAID,
+    companyBID,
+    staffID,
+    id
+  } = data
+
+  try{
+    
+    return await Fai.promiseRequest({
+      url:"/ajax/product/product?cmd=getProductDetailPageData&productId="+id
+    });
+
+  }catch(e){
+    let url = "/pages/indexCompany/indexCompany";
+    url = Fai.addPageQuery(url, "companyAID", companyAID);
+    url = Fai.addPageQuery(url, "companyBID", companyBID);
+    url = Fai.addPageQuery(url, "staffID", staffID);
+    // url = Fai.addPageQuery(url, staffID, staffID);
+    wx.redirectTo({
+      url: url,
+    })
+
+    console.log("err", e);
+
+    throw e;
+  }
+}
+
 module.exports = {
   getCompanyAIndexPageData,
   getInfo4CompanyA,
@@ -204,5 +244,7 @@ module.exports = {
   getInvitationStaffPageData,
   getInvitationVipPageData,
   belongVip,
-  getProductListByGroup
+  getProductListByGroup,
+  getProductDetailPageData,
+  getInfo4StaffWithCheck
 };
