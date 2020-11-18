@@ -1,8 +1,8 @@
 
 .fk_indexCompany_productIntro_group_main_product_item{
   width: inherit;
-  padding-left: 10rpx;
-  padding-right: 10rpx;
+  /* padding-left: 10rpx; */
+  /* padding-right: 10rpx; */
   overflow: hidden;
   padding-bottom: 8rpx;
   box-sizing: border-box;
@@ -17,14 +17,17 @@
 }
 
 .fk_indexCompany_productIntro_group_main_product_item_name{
-  text-align: center;
-  font-size: 28rpx;
+  /* text-align: center; */
+  font-size: 26rpx;
   padding-top: 10rpx;
-  color: #333;
+  color: #969696;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
   width: 100%;
+  padding-left: 12rpx;
+  padding-right: 12rpx;
+  box-sizing: border-box;
 }
 .fk_indexCompany_productIntro_group_main_product_priceInfo{
   width: 100%;
@@ -33,8 +36,13 @@
   font-size: 26rpx;
   /* color: #ff5000; */
   display: flex;
+  line-height: 1.2;
+  padding-left: 12rpx;
+  padding-right: 12rpx;
+  padding-bottom: 10rpx;
 }
 .fk_indexCompany_productIntro_group_main_product_item_content{
   border: 1rpx solid #f3f3f3;
   box-sizing: border-box;
+  padding: 2rpx;
 }

@@ -1,6 +1,9 @@
 // components/product/product.js
 const Ajax = require("../../ajax/index.js");
 Component({
+  options: {
+    addGlobalClass: true,
+  },
   externalClasses: ["fk_product_item"],
   /**
    * 组件的属性列表

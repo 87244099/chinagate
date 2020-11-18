@@ -551,6 +551,12 @@
           "pathName": "pages/shareRank/shareRank",
           "query": "companyAID=1&companyBID=0&staffID=0",
           "scene": null
+        },
+        {
+          "name": "线上-产品搜索结果页",
+          "pathName": "pages/productSearch/productSearch",
+          "query": "word=铝合金&companyAID=1&companyBID=0&staffID=0",
+          "scene": null
         }
       ]
     }

@@ -161,6 +161,7 @@
 .fk_indexStaff_productIntro_group_main_product_item{
   width: 50%;
   box-sizing: border-box;
+  width: 340rpx;
 }
 .fk_toggleGroup{
   height: 44rpx;
@@ -214,4 +215,21 @@
 
 .fk_page .van-field__input{
   font-size: 28rpx;
+}
+
+/* .fk_indexCompany_productIntro_group_main_product_item_name {
+  border: none;
+} */
+
+.fk_productCenter .fk_indexCompany_productIntro_group_main_product_item_content {
+  border: none;
+}
+.fk_productCenter .fk_indexCompany_productIntro_group_main_product_item_name  {
+  padding-left: 0;
+  padding-right: 0;
+}
+.fk_productCenter .fk_indexCompany_productIntro_group_main_product_priceInfo_line {
+  padding-left: 0;
+  padding-right: 0;
+
 }

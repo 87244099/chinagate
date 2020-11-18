@@ -17,6 +17,7 @@
 } 
 .fk_productSearch_main{
   padding: 20rpx;
+  padding-top: 0;
 }
 
 .fk_productSearch_product_list{
@@ -128,4 +129,19 @@
 
 .fk_page .van-field__input{
   font-size: 28rpx;
+}
+
+.fk_productSearch .fk_indexCompany_productIntro_group_main_product_item_content {
+  width: 350rpx;
+  box-sizing: border-box;
+}
+.fk_productSearch .fk_indexCompany_productIntro_group_main_product_item_img {
+  margin: 0 auto;
+  width: 344rpx;
+}
+.fk_productSearch_product_list {
+  justify-content: space-between;
+}
+.fk_productSearch_product_item {
+  width: 350rpx;
 }

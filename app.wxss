@@ -37,8 +37,11 @@ van-toast{
 
 .fk_artile_wxparse{
   font-size: 24rpx;
-  text-indent: 48rpx;
+  text-indent: 0;
   line-height: 43.2rpx;
+}
+.wxparser--wxParser-p{
+  text-indent: 48rpx;
 }
 .fk_artile_wxparse .wxparser--wxParser-p{
   margin-bottom: 24rpx;

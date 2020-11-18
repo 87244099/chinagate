@@ -41,8 +41,10 @@
               <view class="fk_productCenter_group_main_content_product_name">{{item.title}}</view>
             </navigator>
           </view>
-          <view wx:else style="padding: 8px;display: flex;align-items: center;flex-wrap: wrap;">
-            <product color="#969696" context="{{pageData}}" class="fk_indexStaff_productIntro_group_main_product_item fk_product_item" setting="{{setting}}" config="{{config}}" product="{{product}}" wx:for-item="product" wx:for="{{pageData.productGroupList[setting.tabIndex].productList}}" globalData="{{globalData}}"></product>
+          <view wx:else style="padding: 8px;">
+            <view style="display: flex;align-items: center;flex-wrap: wrap;justify-content: space-between;background-color:#fff;padding: 20rpx 10rpx;">
+              <product color="#969696" context="{{pageData}}" class="fk_indexStaff_productIntro_group_main_product_item fk_product_item" setting="{{setting}}" config="{{config}}" product="{{product}}" wx:for-item="product" wx:for="{{pageData.productGroupList[setting.tabIndex].productList}}" globalData="{{globalData}}"></product>
+            </view>
           </view>
         </scroll-view>
       </view>
