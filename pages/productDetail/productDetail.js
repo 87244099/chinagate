@@ -136,8 +136,11 @@ Page(Fai.mixin(Fai.commPageConfig, {
 
     Ajax.requestWithToast(async()=>{
       
-      let response = await Fai.promiseRequest({
-        url:"/ajax/product/product?cmd=getProductDetailPageData&productId="+this.data.setting.productId
+      let response = await Ajax.getProductDetailPageData({
+        id: this.data.setting.productId,
+        companyAID: this.data.setting.companyAID,
+        companyBID: this.data.setting.companyBID,
+        staffID: this.data.setting.staffID
       });
       let productInfo =  response.data.data.productInfo;
 

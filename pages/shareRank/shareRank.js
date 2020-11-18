@@ -16,9 +16,11 @@ Page(Fai.mixin(Fai.commPageConfig, {
    */
   async onLoad (options) {
 
-    this.setData({
-      "setting": options
-    })
+      this.setData({
+        "setting.companyAID": parseInt(options.companyAID) || 0,
+        "setting.companyBID": parseInt(options.companyBID) || 0,
+        "setting.staffID": parseInt(options.staffID) || 0,
+      })
 
     let isLogin = await Ajax.checkLoginWithRedirect(Fai.getCurrAbsPath());
     if(isLogin){
@@ -41,23 +43,27 @@ Page(Fai.mixin(Fai.commPageConfig, {
       })
 
       let memberInfo = await Ajax.getMemberInfo();
-      
+
       //  memberInfo.merchantForLevelAID == setting.companyAID 
       // && memberInfo.merchantForLevelBID == setting.companyBID;
       let companyInfo = {};
-      if(memberInfo.merchantForLevelBID>0){
-        response = await Ajax.getInfo4CompanyA(memberInfo.merchantForLevelBID);
-        companyInfo = response.data.data;
-      }else if(memberInfo.merchantForLevelAID>0){
-        response = await Ajax.getInfo4CompanyA(memberInfo.merchantForLevelAID);
-        companyInfo = response.data.data;
+      if(this.data.setting.companyBID>0){
+        response = await Ajax.getCompanyBIndexPageData(this.data.setting.companyBID);
+        companyInfo = response.data.data.companyInfo;
+      }else if(this.data.setting.companyAID>0){
+        response = await Ajax.getCompanyAIndexPageData(this.data.setting.companyAID);
+        companyInfo = response.data.data.companyInfo;
+      }
+
+      let staffInfo = {};
+      if(this.data.setting.staffID>0){
+        response = await Ajax.getInfo4Staff(this.data.setting.staffID);
+        staffInfo = response.data.data;
       }
 
       this.setData({
-        "setting.companyAID": memberInfo.merchantForLevelAID,
-        "setting.companyBID": memberInfo.merchantForLevelBID,
-        "setting.staffID": memberInfo.staffID,
-        "pageData.companyInfo": memberInfo.staffID,
+        "pageData.companyInfo": companyInfo,
+        "pageData.staffInfo": staffInfo,
       });
 
       return response;

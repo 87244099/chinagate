@@ -1,6 +1,6 @@
 <import src="../../templates/personal/personal.wxml"/>
 <view class="fk_page">
   <template is="personal" data="{{setting, pageData, config}}"></template>
-  <tab-bar class="fk_tabBar" rollbackVisible="{{_commPageConfigData.rollbackVisible}}" type="company" companyInfo="{{pageData.settingCompanyInfo}}" companyAID="{{setting.companyAID}}" companyBID="{{setting.companyBID}}" staffID="{{setting.staffID}}" style="background-color:{{pageData.settingCompanyInfo.themeColor}}"></tab-bar>
+  <tab-bar class="fk_tabBar" rollbackVisible="{{_commPageConfigData.rollbackVisible}}" type="company" companyInfo="{{pageData.settingCompanyInfo}}" companyAID="{{setting.companyAID}}" companyBID="{{setting.companyBID}}" staffID="{{setting.staffID}}" staffInfo="{{pageData.staffInfo}}" style="background-color:{{pageData.settingCompanyInfo.themeColor}}"></tab-bar>
   <van-toast id="van-toast" />
 </view>
