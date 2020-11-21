@@ -40,7 +40,17 @@ Page(Fai.mixin(Fai.commPageConfig, {
         "pageData.myRank": response.data.data.myRank,
         "pageData.rankList": response.data.data.rankList,
         "pageData.bannerList": response.data.data.bannerList,
-      })
+      });
+        let bannerHeight = 346;
+        if(this.data.pageData.bannerList.length>0){
+          let imgUrl = this.data.config.wwwwStaticDomain+"/"+this.data.pageData.bannerList[0];
+          let res = await Fai.getImageInfo(imgUrl);
+          console.log("res", res);
+          bannerHeight = 750/(res.width/res.height);
+        }
+        this.setData({
+          "setting.bannerHeight": bannerHeight
+        });
 
       let memberInfo = await Ajax.getMemberInfo();
 

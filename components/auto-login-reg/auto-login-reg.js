@@ -6,7 +6,7 @@ import Toast from "../../miniprogram_npm/@vant/weapp/toast/toast";
 Component({
   data:{
     setting:{
-      isLogin: false
+      isLogin: true
     }
   },
   lifetimes:{
@@ -51,14 +51,21 @@ Component({
    */
   methods: {
     async init(){//这个方法可能会被执行多次，需要做延迟优化，批量收集回调
-      // console.log("inited", Math.random());
       let isLogin = await Ajax.checkLoginBoolean();
+      if(!isLogin){//未登录的情况下尝试一次静默登录(如果还是登录失败的情况下，证明是没注册过)
+        try{ await Ajax.loginByOpenId(getApp().globalData.openId); }catch(e){}
+        isLogin = await Ajax.checkLoginBoolean();//判断是否登录成功。还是失败的情况下，就是没注册过
+      }
+
       if(isLogin){//已经登录
         this.setData({
           "setting.isLogin": true
         });
         // console.log("setting success", new Date().getTime());
       }else{
+        this.setData({
+          "setting.isLogin": false
+        });
         Ajax.delaySetCode();
       }
     },

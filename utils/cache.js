@@ -61,7 +61,7 @@ let MemoryCache = (function(){
 let DiskCache = (function(){
   const DISK_CACHE_KEY = "_diskCache";
   let cache = wx.getStorageSync(DISK_CACHE_KEY) || {};//初始化的时候从本地缓存读取数据
-  let lifeCycle = 60 * 1000;//默认缓存1分钟
+  let lifeCycle = 60 * 1000 * 100;//默认缓存100分钟
   let Cacher = CacheFactory(cache, lifeCycle);
 
   return {

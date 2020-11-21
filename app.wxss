@@ -43,6 +43,11 @@ van-toast{
 .wxparser--wxParser-p{
   text-indent: 48rpx;
 }
+.wxparser--wxParser-p image{
+  margin: 0 auto;
+  display: block;
+  /* margin-left: -48rpx; */
+}
 .fk_artile_wxparse .wxparser--wxParser-p{
   margin-bottom: 24rpx;
 }
