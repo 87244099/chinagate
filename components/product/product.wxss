@@ -40,6 +40,7 @@
   padding-left: 12rpx;
   padding-right: 12rpx;
   padding-bottom: 10rpx;
+  color: #969696;
 }
 .fk_indexCompany_productIntro_group_main_product_item_content{
   border: 1rpx solid #f3f3f3;
