@@ -232,9 +232,9 @@
   color: #8f8f8f;
 }
 
-.fk_indexStaff_productIntro_group_main_product_item{
-  /* border: solid 1rpx #969696; */
-}
+/* .fk_indexStaff_productIntro_group_main_product_item{
+  border: solid 1rpx #969696;
+} */
 
 
 .wxparser--wxParser-inline{

@@ -575,6 +575,13 @@
 					"pathName": "pages/indexStaff/indexStaff",
 					"query": "companyAID=1&companyBID=0&staffID=5555555",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "本地-产品详情-红色主题",
+					"pathName": "pages/productDetail/productDetail",
+					"query": "companyAID=3&companyBID=0&id=327175&staffID=0",
+					"scene": null
 				}
 			]
 		}

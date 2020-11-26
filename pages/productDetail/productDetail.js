@@ -150,6 +150,12 @@ Page(Fai.mixin(Fai.commPageConfig, {
         response = await Ajax.getCompanyAIndexPageData(this.data.setting.companyAID);
       }
       let companyInfo = response.data.data.companyInfo;
+
+      this.setData({
+        "pageData.companyInfo": companyInfo,
+        "setting.inited": true
+      });
+
       let carouselList = response.data.data.carouselList|| [];
       response = await Ajax.belongVip(this.data.setting.companyAID);
       let isVip = response.data.data.isVip;
@@ -198,13 +204,11 @@ Page(Fai.mixin(Fai.commPageConfig, {
       console.log("bannerHeight",  this.data.setting.bannerHeight); 
       
       this.setData({
-        "pageData.companyInfo": companyInfo,
         "pageData.carouselList" : carouselList,
         "pageData.productInfo":productInfo,
         "pageData.staffInfo": staffInfo,
         "setting.serviceForm":serviceForm,
         "setting.bannerHeight": this.data.setting.bannerHeight,
-        "setting.inited": true
       });
       
 
