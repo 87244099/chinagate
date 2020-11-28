@@ -167,6 +167,10 @@ Page(Fai.mixin(Fai.commPageConfig, {
         response = await Ajax.getCompanyAIndexPageData(this.data.setting.companyAID);
         companyPageData = companyAPageData = response.data.data;
       }
+      this.setData({
+        "pageData":companyPageData,
+        "setting.inited":true
+      });
 
       if(this.data.setting.staffID>0){
         response = await Ajax.getInfo4Staff(this.data.setting.staffID);
@@ -180,9 +184,7 @@ Page(Fai.mixin(Fai.commPageConfig, {
       response = await Ajax.belongVip(this.data.setting.companyAID);
       let isVip = response.data.data.isVip;
 
-      this.setData({
-        "pageData":companyPageData
-      });
+      
       this.setData({
         "pageData.companyAInfo": companyAPageData.companyInfo,
         "pageData.companyBInfo": companyBPageData.companyInfo,
@@ -224,9 +226,6 @@ Page(Fai.mixin(Fai.commPageConfig, {
       }catch(e){
         
       }
-      this.setData({
-        "setting.inited":true
-      })
       Toast.clear();
 
     }).catch((err)=>{

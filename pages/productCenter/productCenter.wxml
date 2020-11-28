@@ -20,7 +20,7 @@
         </view>
         <scroll-view scroll-y="{{true}}" class="fk_productCenter_group_side_list">
           <view catchtap="onGroupTabClick" data-index="{{index}}" class="fk_productCenter_group_side_item" wx:for="{{pageData.productGroupList}}" wx:key="productTypeID" data-active="{{setting.tabIndex == index}}">
-            <view class="fk_productCenter_group_side_item_text">{{item.productTypeName}}</view>
+            <view class="fk_productCenter_group_side_item_text" style="border-color:{{ setting.tabIndex == index ? pageData.companyPageData.companyInfo.themeColor : ''}}">{{item.productTypeName}}</view>
           </view>
         </scroll-view>
           
@@ -31,10 +31,10 @@
           <view class="fk_toggleGroup" catchtap="toggleGroup" style="border-color:{{pageData.companyPageData.companyInfo.themeColor}};color:{{pageData.companyPageData.companyInfo.themeColor}}">{{setting.groupVisible?'隐藏分类':'显示分类'}}</view>
         </view>
         <scroll-view scroll-into-view="{{setting.scrollTopView}}" scroll-y class="fk_productCenter_group_main_content" bindscrolltolower="loadNextProducts">
-          <view id="view-{{index}}" wx:for="{{pageData.productGroupList[setting.tabIndex].productList}}"></view>
+          <view id="view-{{index}}" wx:for="{{pageData.productList}}"></view>
           
           <view wx:if="{{setting.groupVisible}}" style="padding:20rpx;">
-            <navigator url="/pages/productDetail/productDetail?id={{item.productID}}&companyAID={{setting.companyAID}}&companyBID={{setting.companyBID}}&staffID={{setting.staffID}}" class="fk_productCenter_group_main_content_product" open-type="redirect"  wx:key="productID" wx:for="{{pageData.productGroupList[setting.tabIndex].productList}}">
+            <navigator url="/pages/productDetail/productDetail?id={{item.productID}}&companyAID={{setting.companyAID}}&companyBID={{setting.companyBID}}&staffID={{setting.staffID}}" class="fk_productCenter_group_main_content_product" open-type="redirect"  wx:key="productID" wx:for="{{pageData.productList}}">
               <view class="fk_productCenter_group_main_content_product_img">
                 <image style="width:100%;height:100%" lazy-load="{{true}}"  mode="aspectFill" src="{{config.staticDomain}}/{{item.smallImgPath}}" />
               </view>
@@ -43,7 +43,7 @@
           </view>
           <view wx:else style="padding: 8px;">
             <view style="display: flex;align-items: center;flex-wrap: wrap;justify-content: space-between;background-color:#fff;padding: 20rpx 10rpx;">
-              <product color="#969696" context="{{pageData}}" class="fk_indexStaff_productIntro_group_main_product_item fk_product_item" setting="{{setting}}" config="{{config}}" product="{{product}}" wx:for-item="product" wx:for="{{pageData.productGroupList[setting.tabIndex].productList}}" globalData="{{globalData}}"></product>
+              <product color="#969696" context="{{pageData}}" class="fk_indexStaff_productIntro_group_main_product_item fk_product_item" setting="{{setting}}" config="{{config}}" product="{{product}}" wx:for-item="product" wx:for="{{pageData.productList}}" globalData="{{globalData}}"></product>
             </view>
           </view>
         </scroll-view>

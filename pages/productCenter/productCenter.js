@@ -47,10 +47,16 @@ Page(Fai.mixin(Fai.commPageConfig,{
         response = await Ajax.getCompanyAIndexPageData(this.data.setting.companyAID);
       }
       let companyPageData = response.data.data;
+      this.setData({
+        "pageData.companyPageData": companyPageData,
+        "pageData.companyInfo": companyPageData.companyInfo,
+        "setting.inited":true
+      });
       response = await Fai.promiseRequest({
-        url:"/ajax/product/product?cmd=getProductCenterPageData&id="+this.data.setting.companyAID,
+        url:"/ajax/product/product?cmd=getProductCenterPageData&id="+this.data.setting.companyAID+"&defaultTypeID="+this.data.setting.productTypeID,
       });
       let productGroupList = response.data.data.productGroupList;
+      let productList = response.data.data.productList;
       if(this.data.setting.staffID>0){
         response = await Ajax.getInfo4Staff(this.data.setting.staffID);
         staffInfo = response.data.data;
@@ -65,8 +71,7 @@ Page(Fai.mixin(Fai.commPageConfig,{
 
       this.setData({
         "pageData.productGroupList": productGroupList,
-        "pageData.companyPageData": companyPageData,
-        "pageData.companyInfo": companyPageData.companyInfo,
+        "pageData.productList": productList,
         "globalData": getApp().globalData,
         "pageData.staffInfo": staffInfo,
         "setting.tabIndex": tabIndex
@@ -103,17 +108,30 @@ Page(Fai.mixin(Fai.commPageConfig,{
         response = await Ajax.getCompanyAIndexPageData(companyInfo.merchantForLevelAID);
       let companyPageData = response.data.data;
       response = await Fai.promiseRequest({
-        url:"/ajax/product/product?cmd=getProductCenterPageData&id="+this.data.setting.companyAId,
+        url:"/ajax/product/product?cmd=getProductCenterPageData&id="+this.data.setting.companyAID+"&defaultTypeID="+this.data.setting.productTypeID,
       });
       
       this.setData({
         "pageData.productGroupList": response.data.data.productGroupList,
+        "pageData.productList": response.data.data.productList,
         "pageData.companyPageData": companyPageData
       });
       return Promise.resolve(response);
     }, "加载中...");
   },
-
+  // 点击切换分类时，进行首屏加载
+  loadProductByGroup(productTypeID){
+    Ajax.requestWithToast(async()=>{
+      let response = await Fai.promiseRequest({
+        url:"/ajax/product/product?cmd=getProductCenterPageData&id="+this.data.setting.companyAID+"&defaultTypeID="+productTypeID,
+      });
+      
+      this.setData({
+        "pageData.productGroupList": response.data.data.productGroupList,
+        "pageData.productList": response.data.data.productList,
+      });
+    },"加载中...");
+  },
   async getPageData(companyId){
     
   },
@@ -133,6 +151,8 @@ Page(Fai.mixin(Fai.commPageConfig,{
     this.setData({
       "setting.scrollTopView": "view-"+index
     });
+
+    this.loadProductByGroup(this.data.pageData.productGroupList[this.data.setting.tabIndex].productTypeID);
   },
   searchChange: function(event){
     
@@ -177,10 +197,11 @@ Page(Fai.mixin(Fai.commPageConfig,{
         pageSize: 10
       });
 
-      group.productList.push(...response.data.data.productList);
+      this.data.pageData.productList.push(...response.data.data.productList);
       group.pageNo = group.pageNo+1;
       this.setData({
-        [`pageData.productGroupList[${this.data.setting.tabIndex}]`]: group
+        [`pageData.productGroupList[${this.data.setting.tabIndex}]`]: group,
+        "pageData.productList": this.data.pageData.productList,
       })
 
       return response;

@@ -43,6 +43,12 @@ Page(Fai.mixin(Fai.commPageConfig, {
           response = await Ajax.getCompanyAIndexPageData(this.data.setting.companyAID);
         }
         let companyPageData = response.data.data;
+
+        this.setData({
+          "pageData.companyPageData": companyPageData,
+          "setting.inited": true
+        });
+
         if(this.data.setting.staffID>0){
           response = await Ajax.getInfo4Staff(this.data.setting.staffID);
           staffInfo = response.data.data;
@@ -51,16 +57,12 @@ Page(Fai.mixin(Fai.commPageConfig, {
         response = await Ajax.belongVip(this.data.setting.companyAID);
         let isVip = response.data.data.isVip;
         this.setData({
-          "pageData.companyPageData": companyPageData,
           "pageData.staffInfo": staffInfo,
           "pageData.companyInfo": companyPageData.companyInfo,
           "pageData.isVip":isVip,
           "globalData": getApp().globalData
         }); 
         this.searchProduct4Init(this.data.setting.word);
-        this.setData({
-          "setting.inited": true
-        });
         return Promise.resolve(response);
       },"加载中...").catch(()=>{
         this.setData({
