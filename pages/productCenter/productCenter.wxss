@@ -233,3 +233,44 @@
   padding-right: 0;
 
 }
+
+.fk_productCenter[data-group="true"] .fk_indexCompany_productIntro_group_main_product_item_img {
+  width: 226rpx;
+  height: 139rpx;
+}
+.fk_productCenter[data-group="true"] .fk_indexCompany_productIntro_group_main_product_item_name,
+.fk_productCenter[data-group="true"] .fk_indexCompany_productIntro_group_main_product_priceInfo_line   {
+  display: block;
+  padding: 12rpx;
+  font-size: 24rpx;
+  text-align: center;
+  color: #8c8c8c;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  box-sizing: border-box;
+  width: 224rpx;
+  text-align: left;
+}
+
+.fk_productCenter[data-group="true"] .fk_indexCompany_productIntro_group_main_product_priceInfo_line  {
+  display: flex;
+  padding-top: 0;
+}
+.fk_productCenter[data-group="true"] .fk_indexCompany_productIntro_group_main_product_item_content {
+  padding: 8rpx !important;
+  width: auto;
+  /* display: flex; */
+  background-color: #fff;
+  width: 242rpx;
+  box-sizing: border-box;
+}
+.fk_productCenter[data-group="true"] .fk_indexCompany_productIntro_group_main_product_item {
+  width: auto;
+}
+.fk_productCenter[data-group="true"] .fk_indexStaff_productIntro_group_main_product_item  {
+  width: 242rpx;
+}
+.fk_productCenter[data-group="true"] .fk_indexCompany_productIntro_group_main_product_item {
+  padding-bottom: 0;
+}
