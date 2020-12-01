@@ -101,11 +101,11 @@ Component({
     jumpto(option){
       let url = option.url;
       if(this.data.navigate || this.data.type === "index"){
-        wx.redirectTo({
+        Fai.jumpTo({
           url,
         })
       }else{
-        wx.redirectTo({
+        Fai.jumpTo({
           url,
         });
       }
@@ -119,6 +119,12 @@ Component({
       this.jumpto({
         url: `/pages/indexStaff/indexStaff?companyAID=${this.data.companyAID}&companyBID=${this.data.companyBID}&staffID=${this.data.staffID}`,
       })
+    },
+    jumpurl(event){
+      let url = event.currentTarget.dataset.url;
+      Fai.jumpTo({
+        url: url
+      });
     }
   },
 });

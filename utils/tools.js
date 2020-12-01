@@ -98,6 +98,15 @@ async function getImageInfo(src){
   });
 }
 
+async function jumpTo(object){
+  if (getCurrentPages().length > 9) {
+    wx.redirectTo(object)
+    // this.reLaunch(object)
+  } else {
+    wx.navigateTo(object)
+  }
+}
+
 module.exports = {
   formatTime,
   mixin,
@@ -106,5 +115,6 @@ module.exports = {
   parseSharedOption,
   isEmptyObj,
   getImageInfo,
-  deepCopy
+  deepCopy,
+  jumpTo
 };

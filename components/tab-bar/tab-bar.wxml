@@ -59,23 +59,23 @@
   <view class="fk_tabBar">
     <view class="fk_tabBar_item">
       <block wx:if="{{staffID>0 && false}}">
-        <navigator open-type="{{navigate?'navigate':'redirect'}}" url="/pages/indexStaff/indexStaff?companyAID={{companyAID}}&companyBID={{companyBID}}&staffID={{staffID}}">
+        <view open-type="{{navigate?'navigate':'redirect'}}" data-url="/pages/indexStaff/indexStaff?companyAID={{companyAID}}&companyBID={{companyBID}}&staffID={{staffID}}" catchtap="jumpurl">
           <view class="iconfont icon-home fk_tabBar_item_icon"></view>
           <view class="fk_tabBar_item_text">首页</view>
-        </navigator>
+        </view>
       </block>
       <block wx:else>
-        <navigator open-type="{{navigate?'navigate':'redirect'}}" url="/pages/indexCompany/indexCompany?companyAID={{companyAID}}&companyBID={{companyBID}}&staffID={{staffID}}">
+        <view catchtap="jumpurl" open-type="{{navigate?'navigate':'redirect'}}" data-url="/pages/indexCompany/indexCompany?companyAID={{companyAID}}&companyBID={{companyBID}}&staffID={{staffID}}">
           <view class="iconfont icon-home fk_tabBar_item_icon"></view>
           <view class="fk_tabBar_item_text">首页</view>
-        </navigator>
+        </view>
       </block>
     </view>
     <view class="fk_tabBar_item">
-      <navigator open-type="{{navigate?'navigate':'redirect'}}" url="/pages/productCenter/productCenter?companyAID={{companyAID}}&companyBID={{companyBID}}&staffID={{staffID}}">
+      <view  catchtap="jumpurl" open-type="{{navigate?'navigate':'redirect'}}" data-url="/pages/productCenter/productCenter?companyAID={{companyAID}}&companyBID={{companyBID}}&staffID={{staffID}}">
         <view class="iconfont icon-apply fk_tabBar_item_icon"></view>
         <view class="fk_tabBar_item_text">产品中心</view>
-      </navigator>
+      </view>
     </view>
     <view class="fk_tabBar_item" wx:if="{{shared&&false}}">
       <button open-type="share">

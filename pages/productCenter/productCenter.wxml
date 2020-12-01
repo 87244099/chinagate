@@ -34,7 +34,7 @@
           <view id="view-{{index}}" wx:for="{{pageData.productList}}"></view>
           
           <view wx:if="{{setting.groupVisible}}" style="padding:20rpx;">
-            <navigator url="/pages/productDetail/productDetail?id={{item.productID}}&companyAID={{setting.companyAID}}&companyBID={{setting.companyBID}}&staffID={{setting.staffID}}" class="fk_productCenter_group_main_content_product" open-type="redirect"  wx:key="productID" wx:for="{{pageData.productList}}">
+            <navigator url="/pages/productDetail/productDetail?id={{item.productID}}&companyAID={{setting.companyAID}}&companyBID={{setting.companyBID}}&staffID={{setting.staffID}}" class="fk_productCenter_group_main_content_product" open-type="navigate"  wx:key="productID" wx:for="{{pageData.productList}}">
               <view class="fk_productCenter_group_main_content_product_img">
                 <image style="width:100%;height:100%" lazy-load="{{true}}"  mode="aspectFill" src="{{config.staticDomain}}/{{item.smallImgPath}}" />
               </view>
