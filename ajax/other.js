@@ -144,8 +144,13 @@ function previewQrCode(page, scene, logoUrl, text){
     let imgData = response.data.imgData;
     let systemInfo  = await getSystemInfo();
     let isPC = systemInfo.platform==="windows";
-    if((logoUrl || text) && !isPC){
-      imgData = await genCompanyQrCodeBase64(imgData, logoUrl, text);
+    let isLogoUrlRight = logoUrl;
+    if((isLogoUrlRight || text) && !isPC){
+      if(logoUrl && !logoUrl.includes("null")){
+        imgData = await genCompanyQrCodeBase64(imgData, logoUrl, text);
+      }else if(text){
+        imgData = await genCompanyQrCodeBase64(imgData, '', text);
+      }
     }
     Fai.MemoryCache.setCache(url, imgData);
     wx.previewImage({
@@ -375,7 +380,6 @@ async function getImageInfo(url){
 async function genCompanyQrCodeBase64(imgBase64, companyLogoUrl, text){
   let filePath = `${wx.env.USER_DATA_PATH}/tmp_base64src`+Math.random(); 
   let loadedCompanyLogoUrl = "";
-  console.log(111);
   try{
     await removeSavedFileNullIsEmpty({
       filePath: filePath
