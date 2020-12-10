@@ -179,7 +179,8 @@ Page(Fai.mixin(Fai.commPageConfig, {
         response = await Ajax.getMemberInfo();
         let memberInfo = response.data.data;
         serviceForm.name = memberInfo.memberName;
-        serviceForm.phone = memberInfo.memberPhone;
+        serviceForm.phone = '';
+        // serviceForm.phone = memberInfo.memberPhone;
         this.setData({
           "pageData.memberInfo": memberInfo,
         });
