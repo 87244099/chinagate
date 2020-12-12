@@ -47,6 +47,27 @@ function request(option){
   wx.request(requestOption);
 }
 
+if(false){//调试，用于统计接口耗时，有需要再打开
+    // 添加时间耗时统计
+  request = (function(oldRequest){
+    return function(option){
+      let start = new Date().getTime();
+
+      let success = option.success;
+      option.success =function(){
+        let end = new Date().getTime();
+        let offset = end - start;
+        success(...arguments);
+        console.log("url path", option.url);
+        console.log("url time", offset);
+      };
+
+      oldRequest(option);
+    }
+    
+  }(request));
+}
+
 function noop(){}
 function assignOption(option){
   let defaultOption = {

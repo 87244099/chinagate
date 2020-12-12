@@ -91,6 +91,10 @@ Page(Fai.mixin(Fai.commPageConfig, {
           let globalData = {};
           let recentUrlInfo = {};
           let bannerList = [];
+
+          this.setData({
+            "setting.inited": true,
+          });
           try{
             globalData = await Ajax.getGlobalData();
             bannerList = globalData.carouselList;
@@ -106,7 +110,6 @@ Page(Fai.mixin(Fai.commPageConfig, {
             bannerList: bannerList,
             "setting.recentUrlInfo": recentUrlInfo,
             "setting.isPublicAcctVisible": [1047, 1124, 1089, 1038].includes(app.globalData.launchOptions.scene),
-            "setting.inited": true,
           });
           Toast.clear();
         });
