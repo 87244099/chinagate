@@ -34,6 +34,7 @@ Page(Fai.mixin(Fai.commPageConfig, {
    * 生命周期函数--监听页面加载
    */
   async onLoad(options) {
+    this.startTime = new Date().getTime();
     options = Ajax.parseQrCodeArg(options);
     this.setData({
       "setting.productId": parseInt(options.id) || 0,
@@ -143,19 +144,20 @@ Page(Fai.mixin(Fai.commPageConfig, {
         staffID: this.data.setting.staffID
       });
       let productInfo =  response.data.data.productInfo;
-
+      let companyInfo = {};
       if(this.data.setting.companyBID>0){
-        response = await Ajax.getCompanyBIndexPageData(this.data.setting.companyBID);
+        response = await Ajax.getInfo4CompanyB(this.data.setting.companyBID);
+        companyInfo = response.data.data;
       }else{
-        response = await Ajax.getCompanyAIndexPageData(this.data.setting.companyAID);
+        response = await Ajax.getInfo4CompanyA(this.data.setting.companyAID);
+        companyInfo = response.data.data;
       }
-      let companyInfo = response.data.data.companyInfo;
 
       this.setData({
         "pageData.companyInfo": companyInfo,
         "setting.inited": true
       });
-
+      
       let carouselList = response.data.data.carouselList|| [];
       response = await Ajax.belongVip(this.data.setting.companyAID);
       let isVip = response.data.data.isVip;
@@ -212,6 +214,7 @@ Page(Fai.mixin(Fai.commPageConfig, {
         "setting.bannerHeight": this.data.setting.bannerHeight,
       });
       
+      console.log("productDetail time", (new Date().getTime() - this.startTime));
 
       return Promise.resolve(response);
     }, "加载中...");

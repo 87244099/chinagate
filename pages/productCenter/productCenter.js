@@ -42,14 +42,14 @@ Page(Fai.mixin(Fai.commPageConfig,{
       let response = {};
       let staffInfo = {};
       if(this.data.setting.companyBID>0){
-        response = await Ajax.getCompanyBIndexPageData(this.data.setting.companyBID);
+        response = await Ajax.getInfo4CompanyB(this.data.setting.companyBID);
       }else{
-        response = await Ajax.getCompanyAIndexPageData(this.data.setting.companyAID);
+        response = await Ajax.getInfo4CompanyA(this.data.setting.companyAID);
       }
-      let companyPageData = response.data.data;
+      let companyInfo = response.data.data;
       this.setData({
-        "pageData.companyPageData": companyPageData,
-        "pageData.companyInfo": companyPageData.companyInfo,
+        // "pageData.companyPageData": companyPageData,
+        "pageData.companyInfo": companyInfo,
         "setting.inited":true
       });
       response = await Fai.promiseRequest({
@@ -100,25 +100,25 @@ Page(Fai.mixin(Fai.commPageConfig,{
   noop:function(){},
 
 
-  async loadCompanyBPageData(companyId){
-    Ajax.requestWithToast(async()=>{
+  // async loadCompanyBPageData(companyId){
+  //   Ajax.requestWithToast(async()=>{
 
-      let response = await Ajax.getInfo4CompanyB(companyId);
-      let companyInfo = response.data.data;
-        response = await Ajax.getCompanyAIndexPageData(companyInfo.merchantForLevelAID);
-      let companyPageData = response.data.data;
-      response = await Fai.promiseRequest({
-        url:"/ajax/product/product?cmd=getProductCenterPageData&id="+this.data.setting.companyAID+"&defaultTypeID="+this.data.setting.productTypeID,
-      });
+  //     let response = await Ajax.getInfo4CompanyB(companyId);
+  //     let companyInfo = response.data.data;
+  //     response = await Ajax.getInfo4CompanyA(companyInfo.merchantForLevelAID);
+  //     let companyInfo = response.data.data;
+  //     response = await Fai.promiseRequest({
+  //       url:"/ajax/product/product?cmd=getProductCenterPageData&id="+this.data.setting.companyAID+"&defaultTypeID="+this.data.setting.productTypeID,
+  //     });
       
-      this.setData({
-        "pageData.productGroupList": response.data.data.productGroupList,
-        "pageData.productList": response.data.data.productList,
-        "pageData.companyPageData": companyPageData
-      });
-      return Promise.resolve(response);
-    }, "加载中...");
-  },
+  //     this.setData({
+  //       "pageData.productGroupList": response.data.data.productGroupList,
+  //       "pageData.productList": response.data.data.productList,
+  //       "pageData.companyInfo": companyInfo
+  //     });
+  //     return Promise.resolve(response);
+  //   }, "加载中...");
+  // },
   // 点击切换分类时，进行首屏加载
   loadProductByGroup(productTypeID){
     Ajax.requestWithToast(async()=>{
