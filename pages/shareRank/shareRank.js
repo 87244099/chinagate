@@ -58,11 +58,11 @@ Page(Fai.mixin(Fai.commPageConfig, {
       // && memberInfo.merchantForLevelBID == setting.companyBID;
       let companyInfo = {};
       if(this.data.setting.companyBID>0){
-        response = await Ajax.getCompanyBIndexPageData(this.data.setting.companyBID);
-        companyInfo = response.data.data.companyInfo;
+        response = await Ajax.getInfo4CompanyB(this.data.setting.companyBID);
+        companyInfo = response.data.data;
       }else if(this.data.setting.companyAID>0){
-        response = await Ajax.getCompanyAIndexPageData(this.data.setting.companyAID);
-        companyInfo = response.data.data.companyInfo;
+        response = await Ajax.getInfo4CompanyA(this.data.setting.companyAID);
+        companyInfo = response.data.data;
       }
 
       let staffInfo = {};

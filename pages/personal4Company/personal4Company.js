@@ -89,11 +89,11 @@ Page(Fai.mixin(Fai.commPageConfig, {
       let settingCompanyInfo = {};//根据页面传参查询公司信息
       
       if(this.data.setting.companyBID>0){
-        response = await Ajax.getCompanyBIndexPageData(this.data.setting.companyBID);
-        settingCompanyInfo = response.data.data.companyInfo;
+        response = await Ajax.getInfo4CompanyB(this.data.setting.companyBID);
+        settingCompanyInfo = response.data.data;
       }else if(this.data.setting.companyAID>0){
-        response = await Ajax.getCompanyAIndexPageData(this.data.setting.companyAID);
-        settingCompanyInfo = response.data.data.companyInfo;
+        response = await Ajax.getInfo4CompanyA(this.data.setting.companyAID);
+        settingCompanyInfo = response.data.data;
       }
 
       this.setData({
@@ -106,12 +106,12 @@ Page(Fai.mixin(Fai.commPageConfig, {
         staffInfo = response.data.data;
       }
       if(staffInfo.merchantForLevelAID>0){
-        response = await Ajax.getCompanyAIndexPageData(staffInfo.merchantForLevelAID);
-        companyInfo = companyAInfo = response.data.data.companyInfo;
+        response = await Ajax.getInfo4CompanyA(staffInfo.merchantForLevelAID);
+        companyInfo = companyAInfo = response.data.data;
       }
       if(staffInfo.merchantForLevelBID>0){
-        response = await Ajax.getCompanyBIndexPageData(staffInfo.merchantForLevelBID);
-        companyInfo = companyBInfo = response.data.data.companyInfo;
+        response = await Ajax.getInfo4CompanyB(staffInfo.merchantForLevelBID);
+        companyInfo = companyBInfo = response.data.data;
       }
 
       if(memberInfo.merchantForLevelAID>0){

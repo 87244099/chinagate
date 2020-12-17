@@ -4,13 +4,13 @@
   <view class="fk_productSearch">
     <van-search
       class="fk_productSearch_searchBar"
-      style="background-color:{{pageData.companyPageData.companyInfo.themeColor}}"
+      style="background-color:{{pageData.companyInfo.themeColor}}"
       value="{{ setting.word }}"
       placeholder="请输入搜索关键词"
       bind:change="searchChange"
       use-action-slot
 
-      style="background-color:{{pageData.companyPageData.companyInfo.themeColor}}"
+      style="background-color:{{pageData.companyInfo.themeColor}}"
     >
       <view slot="action" bind:tap="doSearch" style="color:#fff;font-size:24rpx">搜索</view>
     </van-search>
@@ -21,6 +21,6 @@
       </view>
     </view>
   </view>
-  <tab-bar style="background-color:{{pageData.companyPageData.companyInfo.themeColor}}" class="fk_tabBar" type="company" rollbackVisible="{{_commPageConfigData.rollbackVisible}}" companyInfo="{{pageData.companyPageData.companyInfo}}" companyAID="{{setting.companyAID}}" companyBID="{{setting.companyBID}}" staffID="{{setting.staffID}}" staffInfo="{{pageData.staffInfo}}"></tab-bar>
+  <tab-bar style="background-color:{{pageData.companyInfo.themeColor}}" class="fk_tabBar" type="company" rollbackVisible="{{_commPageConfigData.rollbackVisible}}" companyInfo="{{pageData.companyInfo}}" companyAID="{{setting.companyAID}}" companyBID="{{setting.companyBID}}" staffID="{{setting.staffID}}" staffInfo="{{pageData.staffInfo}}"></tab-bar>
 </view>
   <van-toast id="van-toast"/>
