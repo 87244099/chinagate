@@ -39,9 +39,7 @@ Page(Fai.mixin(Fai.commPageConfig,{
         title: this.data.setting.newsInfo.title,
       })
       return response;
-    },{
-      message: "加载中..."
-    })
+    });
     
   },
   /**
