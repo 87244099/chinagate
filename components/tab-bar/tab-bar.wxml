@@ -42,7 +42,7 @@
 <block wx:elif="{{type=='card'}}">
   <view class="fk_tabBar fk_tabBar_card">
     <view class="fk_tabBar_item">
-      <navigator open-type="redirect" url="/pages/personal/personal">
+      <navigator open-type="redirect" catchtap="jump2Personal">
         <view class="iconfont icon-houtui fk_tabBar_item_icon"></view>
         <view class="fk_tabBar_item_text">返回个人中心</view>
       </navigator>

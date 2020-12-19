@@ -818,6 +818,12 @@ async function getRecentVisitUrlInfo4Index(app, sceneList){
     return Promise.resolve({});
 }
 
+async function testTime(){
+  return Fai.promiseRequest({
+    url: "/ajax/test/TestTime"
+  })
+}
+
 module.exports = {
   getQrCode,
   previewQrCode,
@@ -844,5 +850,6 @@ module.exports = {
   ToastFailWithRedirect2Tips,
   getRecentVisitUrlInfo,
   getRecentVisitUrlInfo4Scene,
-  getRecentVisitUrlInfo4Index
+  getRecentVisitUrlInfo4Index,
+  testTime
 };

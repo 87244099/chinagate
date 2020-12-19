@@ -125,6 +125,12 @@ Component({
       Fai.jumpTo({
         url: url
       });
+    },
+    jump2Personal(){
+      
+      wx.navigateBack({
+        delta: 0,
+      })
     }
   },
 });
