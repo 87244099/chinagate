@@ -20,27 +20,32 @@ Page({
    */
   async onLoad (options) {
     
-    let sharedOption = Fai.parseSharedOption(options);
-    this.setData({
-      "setting.vipCustomerInvitationID":parseInt(sharedOption.vipCustomerInvitationID || 0),
-      "setting.currUrl": Fai.getCurrAbsPath(),
-      "setting.scene": options.scene
-    });
-    let isLogin = await Ajax.checkLoginWithRedirect();
-    if(isLogin){
-      this.setCode();
-      Ajax.requestWithToast(this.loadPageData, {
-        message: "加载中..."
-      }).then(()=>{
-        
-        let expireTime = new Date(this.data.pageData.companyInfo.expireDatetime.replace(/-/g, '/')).getTime();
-        console.log(expireTime);
-        let nowTime = new Date().getTime();
-        if(expireTime<nowTime){
-          Ajax.ToastFailWithRedirect2Tips("邀请已失效");
-        }
+    Fai.Waiter.wait("onOpenIdLoaded", async(resolve)=>{
+      
+      let sharedOption = Fai.parseSharedOption(options);
+      this.setData({
+        "setting.vipCustomerInvitationID":parseInt(sharedOption.vipCustomerInvitationID || 0),
+        "setting.currUrl": Fai.getCurrAbsPath(),
+        "setting.scene": options.scene
       });
-    }
+      let isLogin = await Ajax.checkLoginWithRedirect();
+      if(isLogin){
+        this.setCode();
+        Ajax.requestWithToast(this.loadPageData, {
+          message: "加载中..."
+        }).then(()=>{
+          
+          let expireTime = new Date(this.data.pageData.companyInfo.expireDatetime.replace(/-/g, '/')).getTime();
+          console.log(expireTime);
+          let nowTime = new Date().getTime();
+          if(expireTime<nowTime){
+            Ajax.ToastFailWithRedirect2Tips("邀请已失效");
+          }
+        });
+      }
+
+    });
+    
   },
   async setCode(){
     let code = await Fai.getLoginCodeNullIsEmpty();

@@ -19,18 +19,24 @@ Page(Fai.mixin(Fai.commPageConfig, {
    * 生命周期函数--监听页面加载
    */
   async onLoad (options) {
-    let sharedOption = Fai.parseSharedOption(options);
-    this.setData({
-      "setting.staffID":parseInt(sharedOption.staffID || 0),
-      "setting.currUrl": Fai.getCurrAbsPath(),
-      "setting.scene": options.scene
-    });
-    this.setCode();
+    
+    Fai.Waiter.wait("onOpenIdLoaded", async(resolve)=>{
+      
+      let sharedOption = Fai.parseSharedOption(options);
+      this.setData({
+        "setting.staffID":parseInt(sharedOption.staffID || 0),
+        "setting.currUrl": Fai.getCurrAbsPath(),
+        "setting.scene": options.scene
+      });
+      this.setCode();
 
-    let isLogin = await Ajax.checkLoginWithRedirect4Invitation();
-    if(isLogin){
-      Ajax.requestWithToast(this.loadPageData, "加载中...");
-    }
+      let isLogin = await Ajax.checkLoginWithRedirect4Invitation();
+      if(isLogin){
+        Ajax.requestWithToast(this.loadPageData, "加载中...");
+      }
+
+    });
+    
   },
   async setCode(){
     let code = await Fai.getLoginCodeNullIsEmpty();
