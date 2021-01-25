@@ -20,7 +20,7 @@ Page(Fai.mixin(Fai.commPageConfig, {
    */
   async onLoad (options) {
     
-    Fai.Waiter.wait("onOpenIdLoaded", async(resolve)=>{
+    Fai.Waiter.then("onOpenIdLoaded", async(resolve)=>{
       
       let sharedOption = Fai.parseSharedOption(options);
       this.setData({
