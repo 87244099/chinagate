@@ -20,7 +20,7 @@
     "checkInvalidKey": true,
     "checkSiteMap": true,
     "uploadWithSourceMap": true,
-    "compileHotReLoad": false,
+    "compileHotReLoad": true,
     "useMultiFrameRuntime": false,
     "useApiHook": true,
     "babelSetting": {
@@ -243,8 +243,7 @@
           "scene": null
         },
         {
-          "id": 28,
-          "name": "员工邀请",
+          "name": "线上-员工邀请",
           "pathName": "pages/invitation4Staff/invitation4Staff",
           "query": "scene=staffID%3D5",
           "scene": null
