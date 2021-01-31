@@ -2,7 +2,7 @@
 const Ajax = require("../../ajax/index");
 const Fai = require("../../utils/util");
 const config = require("../../utils/config");
-import Toast from "../../miniprogram_npm/@vant/weapp/toast/toast";
+import Dialog from "../../miniprogram_npm/@vant/weapp/dialog/dialog";
 Page(Fai.mixin(Fai.commPageConfig, {
 
   /**
@@ -13,6 +13,10 @@ Page(Fai.mixin(Fai.commPageConfig, {
       wxUserInfo:{},
     },
     config,
+
+    setting:{
+      phoneConfirmVisible:false
+    }
   },
 
   /**
@@ -20,7 +24,7 @@ Page(Fai.mixin(Fai.commPageConfig, {
    */
   async onLoad (options) {
     
-    Fai.Waiter.wait("onOpenIdLoaded", async(resolve)=>{
+    Fai.Waiter.then("onOpenIdLoaded", async(resolve)=>{
       
       let sharedOption = Fai.parseSharedOption(options);
       this.setData({
@@ -30,10 +34,21 @@ Page(Fai.mixin(Fai.commPageConfig, {
       });
       this.setCode();
 
-      let isLogin = await Ajax.checkLoginWithRedirect4Invitation();
-      if(isLogin){
-        Ajax.requestWithToast(this.loadPageData, "加载中...");
+      // 如果判断未登录，就是新的会员了
+      if(await Ajax.checkLoginBoolean()){
+        let response = await Ajax.getMemberInfo();
+        let memberInfo = response.data.data;
+        this.setData({
+          "setting.memberInfo": memberInfo,
+        })
       }
+
+      Ajax.requestWithToast(this.loadPageData, "加载中...");
+
+      // let isLogin = await Ajax.checkLoginWithRedirect4Invitation();
+      // if(isLogin){
+      //   Ajax.requestWithToast(this.loadPageData, "加载中...");
+      // }
 
     });
     
@@ -45,9 +60,7 @@ Page(Fai.mixin(Fai.commPageConfig, {
     })
   },
   async loadPageData(){
-    let response = await Ajax.getMemberInfo();
-    let memberInfo = response.data.data;
-    response = await Ajax.getInfo4Staff(this.data.setting.staffID);
+    let response = await Ajax.getInfo4Staff(this.data.setting.staffID);
     let staffInfo = response.data.data;
     let companyInfo= {};
     if(staffInfo.merchantForLevelBID){
@@ -58,7 +71,7 @@ Page(Fai.mixin(Fai.commPageConfig, {
       companyInfo = response.data.data;
     }
     this.setData({
-      "setting.memberInfo": memberInfo,
+      // "setting.memberInfo": memberInfo,
       "pageData.companyInfo": companyInfo,
       "pageData.staffInfo": staffInfo
     });
@@ -139,6 +152,27 @@ Page(Fai.mixin(Fai.commPageConfig, {
       });
     }
     
+  },
+  async oninvitation4Staff4Regist(){
+    this.setData({
+      "setting.phoneConfirmVisible": true
+    });
+    // Dialog.confirm({
+    //   title: '标题',
+    //   message: '弹窗内容',
+    // });
+  },
+  onPhoneClose(){
+    
+    this.setData({
+      "setting.phoneConfirmVisible": false
+    });
+  },
+  onPhoneConfirm(event){
+    this.oninvitation4StaffWhenPhoneEmpty(event);
+    this.setData({
+      "setting.phoneConfirmVisible": false
+    });
   },
   oninvitation4Staff: async function(){
 

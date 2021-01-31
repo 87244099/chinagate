@@ -12,8 +12,17 @@
     </view>
     <view class="fk_btn_wrap">
       <view class="fk_btn_wrap_item" >
-        <van-button wx:if="{{setting.memberInfo.memberPhone}}" type="info" block catchtap="oninvitation4Staff">确定</van-button>
-        <van-button wx:else type="info" block open-type="getPhoneNumber" bindgetphonenumber="oninvitation4StaffWhenPhoneEmpty">确定</van-button>
+        <block wx:if="{{setting.memberInfo}}">
+          <!-- 注册过的会员 -->
+          <van-button wx:if="{{setting.memberInfo.memberPhone}}" type="info" block catchtap="oninvitation4Staff">确定</van-button>
+          <van-button wx:else type="info" block open-type="getPhoneNumber" bindgetphonenumber="oninvitation4StaffWhenPhoneEmpty">确定</van-button>
+        </block>
+        <block wx:else>
+          <auto-login-reg bindjump="oninvitation4Staff4Regist" style="width:100%">
+            <van-button type="info" block style="width:100%">确定</van-button>
+          </auto-login-reg>
+        </block>
+
       </view>
       <view class="fk_btn_wrap_item" wx:if="{{setting.memberInfo.staffID===0}}">
         <van-button type="warning" block open-type="getPhoneNumber" catchtap="jump2CompanyIndex">放弃</van-button>
@@ -22,4 +31,20 @@
     </view>
   </view>
   <van-toast id="van-toast" />
+  <!-- <van-dialog 
+    id="van-dialog" 
+    message="成为员工需要提供个人联系方式"
+    confirmButtonOpenType="getUserInfo" 
+    bindgetphonenumber="oninvitation4StaffWhenPhoneEmpty"
+  ></van-dialog> -->
+  <van-dialog 
+    id="van-dialog" 
+    use-slot
+    title="成为员工需要提供个人手机号"
+    show="{{ setting.phoneConfirmVisible }}"
+    show-cancel-button
+    confirm-button-open-type="getPhoneNumber"
+    bind:close="onPhoneClose"
+    bind:getphonenumber="onPhoneConfirm"
+  ></van-dialog>
 </view>
