@@ -3,7 +3,9 @@
     "mp-tabbar": "weui-miniprogram/tabbar/tabbar",
     "tab-bar": "/components/tab-bar/tab-bar",
     "van-toast": "@vant/weapp/toast/index",
-    "van-button": "@vant/weapp/button/index"
+    "van-dialog": "@vant/weapp/dialog/index",
+    "van-button": "@vant/weapp/button/index",
+    "auto-login-reg": "/components/auto-login-reg/auto-login-reg"
   },
   "navigationBarTitleText": "邀请"
 }
